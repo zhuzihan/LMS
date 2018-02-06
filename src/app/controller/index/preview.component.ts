@@ -1,11 +1,11 @@
 import {Component,OnInit} from '@angular/core'
 
 @Component({
-    selector: 'man-template',
-    templateUrl: './preview.component.html',
+    selector: 'preview',
+    templateUrl: '../../view/preview.component.html',
     // styleUrls: ['./preview.component.css']
 })
-export class ManTemplateComponent implements OnInit{
+export class PreviewComponent implements OnInit{
 
     constructor() { }
   

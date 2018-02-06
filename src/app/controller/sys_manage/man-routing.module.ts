@@ -1,7 +1,7 @@
 import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { SysManagementComponent }      from './sys-management.component';
+import { SysManagementComponent }      from '../index/sys-management.component';
 import { ManEquipParaComponent }      from './man-equip-para.component';
 import { ManBlockComponent }  from './man-block.component';
 import { ManTemplateComponent }  from './man-template.component';

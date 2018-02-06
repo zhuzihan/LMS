@@ -1,40 +1,24 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
+import { Router } from '@angular/router';
 
-import { ManRoutingModule } from "./man-routing.module";
+import { ManModule } from './controller/sys_manage/man.module'
+import { IndexModule } from './controller/index/index.module';
 import { AppRoutingModule } from './app-routing.module';
 
-import { ManEquipParaComponent }   from './man-equip-para.component';
-import { ManBlockComponent }      from './man-block.component';
-import { ManTemplateComponent }  from './man-template.component';
-import { ManJobModuleComponent }  from './man-job-module.component';
+import { PageNotFoundComponent} from './not-found.component'
 
-import { PreviewComponent }   from './preview.component';
-import { RegistrationComponent }      from './registration.component';
-import { AnalysisComponent }  from './analysis.component';
-import { CalculateComponent }  from './calculate.component';
-import { SysManagementComponent }  from './sys-management.component';
 @NgModule({
   imports: [
     BrowserModule,
-    ManRoutingModule,
-    AppRoutingModule
+    ManModule,
+    IndexModule,
+    AppRoutingModule,
   ],
   declarations: [
     AppComponent,
-
-    ManEquipParaComponent,
-    ManBlockComponent,
-    ManTemplateComponent,
-    ManJobModuleComponent,
-
-    PreviewComponent,
-    RegistrationComponent,
-    AnalysisComponent,
-    CalculateComponent,
-    SysManagementComponent
-
+    PageNotFoundComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

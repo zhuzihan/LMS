@@ -2,8 +2,8 @@ import {Component,OnInit} from '@angular/core'
 
 @Component({
     selector: 'analysis',
-    templateUrl: './analysis.component.html',
-    styleUrls: ['./analysis.component.css']
+    templateUrl: '../../view/analysis.component.html',
+    // styleUrls: ['./analysis.component.css']
 })
 export class AnalysisComponent implements OnInit{
 
