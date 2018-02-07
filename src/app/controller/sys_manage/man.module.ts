@@ -12,11 +12,13 @@ import {ManRoutingModule} from './man-routing.module';
 // import {CdkTableModule} from '@angular/cdk/table';
 import {MatTableDataSource} from '@angular/material';
 
+import { MaterialModule } from '../../material.module'
 
 @NgModule({
   imports: [
     ManRoutingModule,
     // CdkTableModule
+    MaterialModule,
   ],
   declarations: [
     ManEquipParaComponent,

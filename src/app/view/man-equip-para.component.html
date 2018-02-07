@@ -1,15 +1,13 @@
+<h2></h2>
 <div class="example-container mat-elevation-z8">
-    <!-- <div class="example-header">
+    <div class="example-header">
         <mat-form-field>
-        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="搜索">
         </mat-form-field>
-    </div> -->
+    </div>
 
-    <mat-table >
-
-    </mat-table>
     
-    <!-- <mat-table #table [dataSource]="dataSource"> -->
+    <mat-table #table [dataSource]="dataSource">
     
         <!-- Position Column -->
 
@@ -20,27 +18,27 @@
     
         <!-- Name Column -->
 
-        <!-- <ng-container matColumnDef="name">
-        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+        <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> 名称 </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
-        </ng-container> -->
+        </ng-container>
     
         <!-- Weight Column -->
 
-        <!-- <ng-container matColumnDef="weight">
-        <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
+        <ng-container matColumnDef="weight">
+        <mat-header-cell *matHeaderCellDef> 分子量 </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
-        </ng-container> -->
+        </ng-container>
     
         <!-- Symbol Column -->
 
-        <!-- <ng-container matColumnDef="symbol">
-        <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
+        <ng-container matColumnDef="symbol">
+        <mat-header-cell *matHeaderCellDef> 当量数 </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
         </ng-container>
     
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row> -->
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 
-    <!-- </mat-table> -->
+    </mat-table>
 </div>
