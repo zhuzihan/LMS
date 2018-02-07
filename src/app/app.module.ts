@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { Router } from '@angular/router';
@@ -11,9 +12,14 @@ import { PageNotFoundComponent} from './not-found.component'
 
 import { PizzaPartyAppModule } from './pizza-party-app.module'
 import { MaterialModule } from './material.module'
+import './polyfill';
+
+
+
 @NgModule({
   imports: [
     BrowserModule,
+
     ManModule,
     IndexModule,
     AppRoutingModule,

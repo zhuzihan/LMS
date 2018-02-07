@@ -9,9 +9,14 @@ import { ManJobModuleComponent }  from './man-job-module.component';
 
 import {ManRoutingModule} from './man-routing.module';
 
+// import {CdkTableModule} from '@angular/cdk/table';
+import {MatTableDataSource} from '@angular/material';
+
+
 @NgModule({
   imports: [
     ManRoutingModule,
+    // CdkTableModule
   ],
   declarations: [
     ManEquipParaComponent,
