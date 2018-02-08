@@ -9,6 +9,7 @@
 .example-header {
   min-height: 64px;
   padding: 8px 24px 0;
+  /* color:rgba(0, 0, 0, 0.07); */
 }
 
 .mat-form-field {
@@ -19,4 +20,5 @@
 .mat-table {
   overflow: auto;
   max-height: 400px;
+  /* background-color:rgba(0,0,0,0); */
 }

@@ -1,1 +1,29 @@
 <h2>man-block</h2>
+
+<form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="模块名称" value="新模块1">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="字段标题" value="新字段1">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-select placeholder="数据来源">
+          <mat-option *ngFor="let ds of data_source" [value]="ds.value">
+            {{ ds.viewValue }}
+          </mat-option>
+        </mat-select>
+    </mat-form-field>
+    
+    <mat-checkbox>隐藏</mat-checkbox>
+    <mat-checkbox>不确定度</mat-checkbox>
+    <button mat-raised-button>添加</button>
+
+      
+  
+    <!-- <mat-form-field class="example-full-width">
+      <textarea matInput placeholder="Leave a comment"></textarea>
+    </mat-form-field> -->
+</form>
