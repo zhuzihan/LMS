@@ -1,5 +1,5 @@
 import { NgModule }       from '@angular/core';
-// import { FormsModule }    from '@angular/forms';
+import { FormsModule }    from '@angular/forms';
 import { CommonModule }   from '@angular/common';
 
 import { ManEquipParaComponent }      from './man-equip-para.component';
@@ -19,6 +19,7 @@ import { MaterialModule } from '../../material.module'
     ManRoutingModule,
     // CdkTableModule
     MaterialModule,
+    FormsModule,
     CommonModule
   ],
   declarations: [

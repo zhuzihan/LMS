@@ -1,9 +1,14 @@
-.example-form {
-    min-width: 150px;
-    max-width: 500px;
-    width: 100%;
-  }
-  
-  .example-full-width {
-    width: 100%;
-  }
+.field-form {
+  min-width: 150px;
+  max-width: 600px;
+  width: 100%;
+}
+.block-quarter-width { 
+  width: 24%;
+}
+.block-half-width { 
+  width: 49%;
+}
+.block-full-width {
+  width: 100%;
+}

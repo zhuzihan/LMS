@@ -1,15 +1,33 @@
 <h2>man-block</h2>
 
-<form class="example-form">
-    <mat-form-field class="example-full-width">
-      <input matInput placeholder="模块名称" value="新模块1">
+<form class="field-form">
+    <!-- <mat-form-field class="block-half-width">
+    <input matInput placeholder="模块名称" value="新模块1">
     </mat-form-field>
 
-    <mat-form-field class="example-full-width">
-        <input matInput placeholder="字段标题" value="新字段1">
-    </mat-form-field>
+    <mat-form-field class="block-half-width">
+      <input matInput placeholder="模块说明" value="备注信息">
+    </mat-form-field> -->
 
     <mat-form-field>
+        <mat-select placeholder="字段数" [(ngModel)]="selectedValue" name="fn">
+          <mat-option *ngFor="let fn of field_num" [value]="fn.value">
+            {{ fn.viewValue }}
+          </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <p> selected: {{selectedValue}}</p>
+
+    <br/>
+    <div *ngFor="let num of field_num">
+      <mat-form-field class="block-quarter-width">
+        <input matInput placeholder="字段标题" value="新字段1">
+      </mat-form-field>
+    </div>
+
+
+    <!-- <mat-form-field>
         <mat-select placeholder="数据来源">
           <mat-option *ngFor="let ds of data_source" [value]="ds.value">
             {{ ds.viewValue }}
@@ -18,7 +36,8 @@
     </mat-form-field>
     
     <mat-checkbox>隐藏</mat-checkbox>
-    <mat-checkbox>不确定度</mat-checkbox>
+    <mat-checkbox>不确定度</mat-checkbox> -->
+    <br/>
     <button mat-raised-button>添加</button>
 
       

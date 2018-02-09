@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 
 import { NgModule } from '@angular/core';
+// import { FormsModule } from '@angular/forms';
+
 import { AppComponent } from './app.component';
 import { Router } from '@angular/router';
 
@@ -19,6 +21,7 @@ import './polyfill';
 @NgModule({
   imports: [
     BrowserModule,
+    // FormsModule,
 
     ManModule,
     IndexModule,
