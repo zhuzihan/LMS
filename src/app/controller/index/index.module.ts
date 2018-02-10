@@ -8,10 +8,12 @@ import { CalculateComponent }  from './calculate.component';
 import { SysManagementComponent }  from './sys-management.component';
 
 import {IndexRoutingModule} from './index-routing.module';
+import { MaterialModule } from '../../material.module'
 
 @NgModule({
   imports: [
-    IndexRoutingModule
+    IndexRoutingModule,
+    MaterialModule
   ],
   declarations: [
     PreviewComponent,

@@ -7,8 +7,37 @@
     </label>
   </div> 
 -->
-<form [formGroup]="blockForm" novalidate>
-  <div>
+<!-- <form class="field-form" novalidate>
+  <mat-form-field class="block-half-width">
+      <input matInput placeholder="模块名称" >
+  </mat-form-field>
+
+</form> -->
+<form [formGroup]="blockForm" class="field-form" novalidate>
+  <mat-form-field class="block-half-width">
+        <input formControlName = "name" matInput placeholder="模块名称">
+  </mat-form-field>
+  <mat-form-field class="block-half-width">
+        <input formControlName = "description" matInput placeholder="模块描述">
+  </mat-form-field>
+  <h4>记录</h4>
+  <div formGroupName = "fields_form">
+      <div *ngFor = "let field of fields_form.controls; let i=index" [formGroupName]="i" >
+        <h4>记录 #{{i + 1}}</h4>
+        <div style="margin-left: 1em;">
+            <mat-form-field class="block-quarter-width">
+              <input formControlName="name" matInput placeholder="记录名">
+            </mat-form-field>
+            <mat-form-field class="block-quarter-width">
+              <mat-select placeholder="数据来源" formControlName = "source">
+                <mat-option *ngFor = "let s of source" [value]= "s">{{s}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+        </div>
+      </div>
+      <button (click)="addField()" type="button">添加记录</button>
+  </div>
+  <!-- <div>
     <label>Name:
       <input formControlName = "name">
     </label>
@@ -18,10 +47,11 @@
       <input formControlName = "description">
     </label>
   </div>
+
   <h4>记录</h4>
   <div formGroupName = "fields_form">
     <div *ngFor = "let field of fields_form.controls; let i=index" [formGroupName]="i" >
-      <h4>Field #{{i + 1}}</h4>
+      <h4>记录 #{{i + 1}}</h4>
       <div style="margin-left: 1em;">
         <div>
           <label>Field Name:
@@ -39,7 +69,7 @@
     </div>
     <button (click)="addField()" type="button">Add Field</button>
   </div>
-
+   -->
   <div>
     <label>
         <input type="checkbox" formControlName="sidekick">I have a sidekick.
@@ -49,16 +79,13 @@
 <p>Form value: {{ blockForm.value | json }}</p>
 <p>Form status: {{ blockForm.status | json }}</p>
 <p>Name value: {{ blockForm.get('name').value }}</p>
-<p>index value: {{i}}</p>
+<!-- <p>index value: {{i}}</p>
 <p>i value: {{i}}</p>
 <p>s value: {{s}}</p>
-<p *ngIf = "i == 0">Field_Name value: {{ blockForm.get('fields_form[0]').value }}</p>
+<p *ngIf = "i == 0">Field_Name value: {{ blockForm.get('fields_form[0]').value }}</p> -->
 <!-- Angular Material -->
 <!--
-<form class="field-form">
-     <mat-form-field class="block-half-width">
-    <input matInput placeholder="模块名称" value="新模块1">
-    </mat-form-field>
+<form>
 
     <mat-form-field class="block-half-width">
       <input matInput placeholder="模块说明" value="备注信息">

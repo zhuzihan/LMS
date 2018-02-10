@@ -1,13 +1,26 @@
-<h1>{{title}}</h1>
+<mat-toolbar class="topbar">
+  <div class="topbar_font">
+    <h1>{{title}}</h1>
+  </div>
+  <nav>
+      <a routerLink="/preview" routerLinkActive="active"><button mat-button class="topbar_font">预览</button></a>
+      <a routerLink="/registration" routerLinkActive="active"><button mat-button class="topbar_font">登记</button></a>
+      <a routerLink="/analysis" routerLinkActive="active"><button mat-button class="topbar_font">检测</button></a>
+      <a routerLink="/calculate" routerLinkActive="active"><button mat-button class="topbar_font">计算</button></a>
+      <a routerLink="/sysManagement" routerLinkActive="active"><button mat-button class="topbar_font">管理</button></a>
+  </nav>
+</mat-toolbar>
 <!-- <link rel = "stylesheet"
       href="https://fonts.googleapis.com/css?family=Inconsolata&effect=anaglyph"
 >
 <div class ="font-effect-anaglyph">{{title}}<div></div> -->
-<nav>
+
+<!-- <nav>
+  <a routerLink="/preview" routerLinkActive="active"><button mat-button>预览</button></a>
   <a routerLink="/preview" routerLinkActive="active">预览</a>
   <a routerLink="/registration" routerLinkActive="active">登记</a>
   <a routerLink="/analysis" routerLinkActive="active">检测</a>
   <a routerLink="/calculate" routerLinkActive="active">计算</a>
   <a routerLink="/sysManagement" routerLinkActive="active">管理</a>
-</nav>
+</nav> -->
 <router-outlet></router-outlet>
