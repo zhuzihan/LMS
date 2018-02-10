@@ -2,6 +2,7 @@ import { NgModule }       from '@angular/core';
 import { FormsModule }    from '@angular/forms';
 import { CommonModule }   from '@angular/common';
 
+import { ReactiveFormsModule } from '@angular/forms';
 import { ManEquipParaComponent }      from './man-equip-para.component';
 import { ManBlockComponent }  from './man-block.component';
 import { ManTemplateComponent }  from './man-template.component';
@@ -18,6 +19,7 @@ import { MaterialModule } from '../../material.module'
   imports: [
     ManRoutingModule,
     // CdkTableModule
+    ReactiveFormsModule,
     MaterialModule,
     FormsModule,
     CommonModule

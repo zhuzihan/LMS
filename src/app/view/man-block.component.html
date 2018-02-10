@@ -1,14 +1,70 @@
-<h2>man-block</h2>
+<h2>添加模块</h2>
+<!-- 
+  <div>
+    <h1>Reactive Forms</h1>
+    <label>Name:
+        <input [formControl] = "name">
+    </label>
+  </div> 
+-->
+<form [formGroup]="blockForm" novalidate>
+  <div>
+    <label>Name:
+      <input formControlName = "name">
+    </label>
+  </div>
+  <div>
+    <label>Description:
+      <input formControlName = "description">
+    </label>
+  </div>
+  <h4>记录</h4>
+  <div formGroupName = "fields_form">
+    <div *ngFor = "let field of fields_form.controls; let i=index" [formGroupName]="i" >
+      <h4>Field #{{i + 1}}</h4>
+      <div style="margin-left: 1em;">
+        <div>
+          <label>Field Name:
+            <input formControlName="name">
+          </label>
+        </div>
+        <div>
+          <label>Source:
+            <select formControlName = "source">
+              <option *ngFor = "let s of source" [value]= "s">{{s}}</option>
+            </select>
+          </label>
+        </div>
+      </div>
+    </div>
+    <button (click)="addField()" type="button">Add Field</button>
+  </div>
 
+  <div>
+    <label>
+        <input type="checkbox" formControlName="sidekick">I have a sidekick.
+    </label>
+  </div>
+</form>
+<p>Form value: {{ blockForm.value | json }}</p>
+<p>Form status: {{ blockForm.status | json }}</p>
+<p>Name value: {{ blockForm.get('name').value }}</p>
+<p>index value: {{i}}</p>
+<p>i value: {{i}}</p>
+<p>s value: {{s}}</p>
+<p *ngIf = "i == 0">Field_Name value: {{ blockForm.get('fields_form[0]').value }}</p>
+<!-- Angular Material -->
+<!--
 <form class="field-form">
-    <!-- <mat-form-field class="block-half-width">
+     <mat-form-field class="block-half-width">
     <input matInput placeholder="模块名称" value="新模块1">
     </mat-form-field>
 
     <mat-form-field class="block-half-width">
       <input matInput placeholder="模块说明" value="备注信息">
-    </mat-form-field> -->
+    </mat-form-field>
 
+    
     <mat-form-field>
         <mat-select placeholder="字段数" [(ngModel)]="selectedValue" name="fn">
           <mat-option *ngFor="let fn of field_num" [value]="fn.value">
@@ -25,9 +81,9 @@
         <input matInput placeholder="字段标题" value="新字段1">
       </mat-form-field>
     </div>
+  
 
-
-    <!-- <mat-form-field>
+    <mat-form-field>
         <mat-select placeholder="数据来源">
           <mat-option *ngFor="let ds of data_source" [value]="ds.value">
             {{ ds.viewValue }}
@@ -36,13 +92,14 @@
     </mat-form-field>
     
     <mat-checkbox>隐藏</mat-checkbox>
-    <mat-checkbox>不确定度</mat-checkbox> -->
+    <mat-checkbox>不确定度</mat-checkbox>
     <br/>
     <button mat-raised-button>添加</button>
 
       
   
-    <!-- <mat-form-field class="example-full-width">
+    <mat-form-field class="example-full-width">
       <textarea matInput placeholder="Leave a comment"></textarea>
-    </mat-form-field> -->
+    </mat-form-field>
 </form>
+-->
