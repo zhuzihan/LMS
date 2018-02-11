@@ -24,14 +24,18 @@ export class ManBlockComponent implements OnChanges{
     // name = new FormControl();
     //nameChangeLog: string[] = [];
 
-    constructor(private fb: FormBuilder) {
+    constructor(
+        private fb: FormBuilder,
+        private blockDataService: BlockDataService) {
+
         this.createForm();
     }
     ngOnChanges() {
         this.blockForm.reset({
-            name:    this.block.name,
-            field: this.block.field[0] || new Field()
+            name: this.block.name
+            // field: this.block.field[0] || new Field()
         });
+        this.setFields(this.block.field);
     }
     // ngOnInit(): void {
     //     this.getBlock();
@@ -56,6 +60,47 @@ export class ManBlockComponent implements OnChanges{
     addField() {
         this.fields_form.push(this.fb.group(new Field()));
     }
+    //删除记录
+    removeField(i : number) {
+        this.fields_form.removeAt(i);
+    }
+    //提交表单
+    onSubmit() {
+        console.log("onsubmit1");
+        this.block = this.prepareSaveBlock();
+        //debug
+        console.log(this.block);
+        this.blockDataService.updateBlockData(this.block).subscribe(/* error handing */);
+        this.ngOnChanges();
+    }
+    prepareSaveBlock(): Block {
+        const formModel = this.blockForm.value;
+
+        //deep copy of fields_form
+        const fieldFormDeepCopy: Field[] = formModel.fields_form.map(
+            (field: Field) => Object.assign({}, field)
+        );
+
+        //return new 'Field' object containing a combination of original block value
+        //and deep copies of changed form model values
+        const saveBlock: Block = {
+            id: this.block.id,
+            name: formModel.name as string,
+            description: formModel.description as string,
+            field: fieldFormDeepCopy
+        };
+        return saveBlock;
+    }
+    //监视更改
+    revert() { this.ngOnChanges(); }
+
+    // logNameChange() {
+    //   const nameControl = this.heroForm.get('name');
+    //   nameControl.valueChanges.forEach(
+    //     (value: string) => this.nameChangeLog.push(value)
+    //   );
+    // }
+
 
     // constructor(private blockDataService:BlockDataService) {}
     // getBlock(): void {

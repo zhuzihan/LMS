@@ -18,11 +18,9 @@ export class BlockDataService {
     }
 
     // Fake server update; assume nothing can go wrong
-    /*
     updateBlockData(block: Block): Observable<Block>  {
         const oldBlockData = block_test.find(b => b.id === block.id);
         const newBlockData = Object.assign(oldBlockData, block); // Demo: mutate cached hero
         return of(newBlockData).delay(this.delayMs); // simulate latency with delay
     }
-    */
 }

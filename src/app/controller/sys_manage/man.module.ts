@@ -5,6 +5,7 @@ import { CommonModule }   from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ManEquipParaComponent }      from './man-equip-para.component';
 import { ManBlockComponent }  from './man-block.component';
+import { ManBlockListComponent }  from './man-block-list.component';
 import { ManTemplateComponent }  from './man-template.component';
 import { ManJobModuleComponent }  from './man-job-module.component';
 
@@ -27,6 +28,7 @@ import { MaterialModule } from '../../material.module'
   declarations: [
     ManEquipParaComponent,
     ManBlockComponent,
+    ManBlockListComponent,
     ManTemplateComponent,
     ManJobModuleComponent,
   ],

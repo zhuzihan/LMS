@@ -1,0 +1,14 @@
+<h3 *ngIf="isLoading"><i>Loading Blocks ... </i></h3>
+<h3 *ngIf="!isLoading">Select a Block:</h3>
+
+<nav>
+  <button mat-raised-button color="primary" (click)="getBlocks()">Refresh</button>
+  <button mat-raised-button *ngFor="let block of blocks | async" (click)="select(block)">{{block.name}}</button>
+</nav>
+
+<div *ngIf="selectedBlock">
+  <hr>
+  <h2>Block Detail</h2>
+  <h3>Editing: {{selectedBlock.name}}</h3>
+  <man-block [block]="selectedBlock"></man-block>
+</div>
