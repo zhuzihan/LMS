@@ -1,17 +1,22 @@
-<mat-toolbar class="toolbar">
-    <p class="toolbar_font">系统管理</p>
-</mat-toolbar>
+<div class="content">
+    <mat-toolbar class="toolbar">
+        <div class="toolbar-content">
+            <p class="toolbar_title">系统管理</p>
+            <div  class="nav">
+                <nav>
+                    <button mat-raised-button routerLink="./manEquip">实验器材参数</button>
+                    <button mat-raised-button routerLink="./manBlock">检测标准模块</button>
+                    <button mat-raised-button routerLink="./manTemplate">原始记录模板</button>
+                    <button mat-raised-button routerLink="./manJobModule">作业指导模块</button>
+                </nav>
+            </div>
+        </div>
+    </mat-toolbar>
 
-<!-- <nav>
-    <a routerLink="./man-equip-para" routerLinkActive="active">man-equip-para</a>
-    <a routerLink="./mb" routerLinkActive="active">man-block</a>
-</nav> -->
-<div  class="nav">
-    <nav>
-        <button mat-raised-button routerLink="./manEquip">实验器材参数</button>
-        <button mat-raised-button routerLink="./manBlock">检测标准模块</button>
-        <button mat-raised-button routerLink="./manTemplate">原始记录模板</button>
-        <button mat-raised-button routerLink="./manJobModule">作业指导模块</button>
-    </nav>
+    <!-- <nav>
+        <a routerLink="./man-equip-para" routerLinkActive="active">man-equip-para</a>
+        <a routerLink="./mb" routerLinkActive="active">man-block</a>
+    </nav> -->
+
+    <router-outlet></router-outlet>
 </div>
-<router-outlet></router-outlet>

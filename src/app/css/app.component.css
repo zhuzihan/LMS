@@ -1,24 +1,26 @@
-/* body {
-    font-family: 'Tangerine', serif;
-    font-size: 24px;
-  } */
-
 .topbar{
   background :#3f51b5;
+  display: block;
   -webkit-box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
   box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
   color:white;
-  position:relative;
+  position:fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 2;
   height: 56px;
+  padding: 8px 16px;
 }
-.topbar_font{
+.topbar-content{
+  display: flex;
+}
+.topbar-title{
+  padding: 0 16px;
   color:white;
 }
-/* button{
-  color:white;
-} */
-
+.topbar-logo{
+  height: 26px;
+  margin: 0 4px 3px 0;
+  vertical-align: middle;
+}

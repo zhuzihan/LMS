@@ -1,14 +1,23 @@
+.content{
+    display: flex;
+}
 .toolbar {
     background :#3f51b5;
-    height: 80px;
+    height: 60px;
 }
-.toolbar_font {
+.toolbar-content{
+    padding-left: 24px;
+    display: flex;
+}
+.toolbar_title {
     color:white;
     font-size: 16px;
+    padding: 28px 8px;
 }
 .nav {
-    padding: 5px;
+    padding: 5px 30px;
 }
+
 /* button{
     color:white;
 } */

@@ -7,7 +7,8 @@ import { BlockDataService } from './block-data.service'
 
 @Component({
     selector: 'man-block-list',
-    templateUrl: '../../view/man-block-list.component.html'
+    templateUrl: '../../view/man-block-list.component.html',
+    styleUrls: ['../../css/man-block-list.component.css']
 })
 export class ManBlockListComponent implements OnInit {
     blocks: Observable<Block[]>;
