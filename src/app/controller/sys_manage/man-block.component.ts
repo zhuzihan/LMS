@@ -35,7 +35,7 @@ export class ManBlockComponent implements OnChanges{
             name: this.block.name
             // field: this.block.field[0] || new Field()
         });
-        this.setFields(this.block.field);
+        this.setFields(this.block.fields);
     }
     // ngOnInit(): void {
     //     this.getBlock();
@@ -49,7 +49,7 @@ export class ManBlockComponent implements OnChanges{
         });
     }
     setFields(fields: Field[]) {
-        const fieldFGs = fields.map(field => this.fb.group(field));
+        const fieldFGs = fields.map(fields => this.fb.group(fields));
         const fieldFormArray = this.fb.array(fieldFGs);
         this.blockForm.setControl('fields_form', fieldFormArray);
     }
@@ -87,7 +87,7 @@ export class ManBlockComponent implements OnChanges{
             id: this.block.id,
             name: formModel.name as string,
             description: formModel.description as string,
-            field: fieldFormDeepCopy
+            fields: fieldFormDeepCopy
         };
         return saveBlock;
     }
