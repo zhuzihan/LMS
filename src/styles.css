@@ -11,8 +11,16 @@ body {
     padding: 20px 50px 50px 20px;
 } */
 .content {
-    padding: 20px;
+    display: flex;
+    /* align-items: center; */
+    flex-direction: column;
+    padding: 0 16px;
 }
+/* man-equip-para {
+    display: flex;
+    flex-direction: column;
+    padding: 0 16px;
+} */
 app-root {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -26,6 +34,9 @@ app-root {
     bottom: 0;
     left: 0;
     right: 0;
+}
+mat-spinner {
+    float: left;
 }
   /* body {
     font-family: 'Tangerine', serif;

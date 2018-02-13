@@ -1,14 +1,18 @@
-<div *ngIf="isLoading"><mat-spinner [diameter]="24"></mat-spinner><i>Loading Blocks ... </i></div>
-<h3 *ngIf="!isLoading">Select a Block:</h3>
+<div class="content">
+  <div>
+    <div *ngIf="isLoading"><mat-spinner [diameter]="24"></mat-spinner><p>Loading Blocks ... </p></div>
+    <h3 *ngIf="!isLoading">Select a Block:</h3>
 
-<nav>
-  <button mat-raised-button color="primary" (click)="getBlocks()">Refresh</button>
-  <button mat-raised-button *ngFor="let block of blocks | async" (click)="select(block)">{{block.name}}</button>
-</nav>
+    <nav>
+      <button mat-raised-button color="primary" (click)="getBlocks()">Refresh</button>
+      <button mat-raised-button *ngFor="let block of blocks | async" (click)="select(block)">{{block.name}}</button>
+    </nav>
+  </div>
 
-<div *ngIf="selectedBlock">
-  <hr>
-  <h2>Block Detail</h2>
-  <h3>Editing: {{selectedBlock.name}}</h3>
-  <man-block [block]="selectedBlock"></man-block>
+  <div *ngIf="selectedBlock">
+    <hr>
+    <h2>Block Detail</h2>
+    <h3>Editing: {{selectedBlock.name}}</h3>
+    <man-block [block]="selectedBlock"></man-block>
+  </div>
 </div>
