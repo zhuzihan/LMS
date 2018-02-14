@@ -9,7 +9,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { ModelDataService } from './model-data.service';
 // import { Model, Field, source } from '../../model/data-model'
-import { Model, Table, source, model_test} from '../../model/data-model'
+import { Model, Table, source } from '../../model/data-model'
 
 @Component({
     selector: 'man-model',
@@ -48,7 +48,7 @@ export class ManModelComponent implements OnChanges{
             // fields_form: this.fb.array([]),
             has_table : 1,
             has_array : 1,
-            tablesForm: this.fb.array([]),
+            tables_form: this.fb.array([]),
             // tablesForm: this.fb.group({
             //     cell_list_form: this.fb.array([]),
             //     rows_form: this.fb.array([]),
@@ -67,7 +67,10 @@ export class ManModelComponent implements OnChanges{
     }
     ngOnChanges() {
         this.modelForm.reset({
-            name: this.model.model_name
+            model_id: this.model.model_id,
+            model_name: this.model.model_name,
+            has_table: this.model.has_table,
+            has_array: this.model.has_array,
             // field: this.model.field[0] || new Field()
         });
         // this.setFields(this.model.fields);
@@ -195,25 +198,25 @@ export class ManModelComponent implements OnChanges{
     //     this.models = this.modelDataService.getModelData();
     // }
 
-    field_num = [
-        {value: '1', viewValue: '1'},
-        {value: '2', viewValue: '2'},
-        {value: '3', viewValue: '3'},
-        {value: '4', viewValue: '4'},
-        {value: '5', viewValue: '5'},
-        {value: '6', viewValue: '6'},
-        {value: '7', viewValue: '7'},
-        {value: '8', viewValue: '8'},
-        {value: '9', viewValue: '9'},
-        {value: '10', viewValue: '10'},
-        {value: '11', viewValue: '11'},
-        {value: '12', viewValue: '12'},
-    ];
-    data_source = [
-        {value: 'record', viewValue: '录入'},
-        {value: 'date', viewValue: '日期'},
-        {value: 'parameters_table', viewValue: '参数表'},
-        {value: 'formula', viewValue: '创建公式'}
-    ];
+    // field_num = [
+    //     {value: '1', viewValue: '1'},
+    //     {value: '2', viewValue: '2'},
+    //     {value: '3', viewValue: '3'},
+    //     {value: '4', viewValue: '4'},
+    //     {value: '5', viewValue: '5'},
+    //     {value: '6', viewValue: '6'},
+    //     {value: '7', viewValue: '7'},
+    //     {value: '8', viewValue: '8'},
+    //     {value: '9', viewValue: '9'},
+    //     {value: '10', viewValue: '10'},
+    //     {value: '11', viewValue: '11'},
+    //     {value: '12', viewValue: '12'},
+    // ];
+    // data_source = [
+    //     {value: 'record', viewValue: '录入'},
+    //     {value: 'date', viewValue: '日期'},
+    //     {value: 'parameters_table', viewValue: '参数表'},
+    //     {value: 'formula', viewValue: '创建公式'}
+    // ];
 
 }

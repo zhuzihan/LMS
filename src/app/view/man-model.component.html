@@ -1,13 +1,16 @@
 <div>
-
   <h2>添加模块</h2>
 
   <form [formGroup]="modelForm" (ngSubmit)="onSubmit()" class="field-form" novalidate>
+    
     <div style="margin-bottom: 1em">
       <button type="submit" [disabled]="modelForm.pristine" mat-raised-button>Save</button> &nbsp;
       <button type="reset" (click)="revert()" [disabled]="modelForm.pristine" mat-raised-button>Revert</button>
     </div>
-
+    <!-- <p>Model value: {{ model | json }}</p> -->
+    <span>ID: {{modelForm.get('model_id').value|json}}</span>
+    <span *ngIf="!modelForm.get('has_table').value">无记录</span>
+    <span *ngIf="!modelForm.get('has_array').value">无数据表</span>
     <mat-form-field class="model-half-width">
       <input formControlName = "model_name" matInput placeholder="模块名称">
     </mat-form-field>
@@ -15,16 +18,17 @@
       <input formControlName = "description" matInput placeholder="模块描述">
     </mat-form-field> -->
     <h4>单元记录</h4>
-    <div formGroupName = "tables_form">
+    <div formArrayName = "tables_form">
       <div *ngFor = "let table of tables_form.controls; let i=index" [formGroupName]="i" >
         <h4>单元记录 #{{i + 1}}</h4>
+        <!-- <p>行号{{row}}</p> -->
         <button (click)="removeField(i)" type="button" mat-raised-button>删除</button>
         <div style="margin-left: 1em;">
             <mat-form-field class="model-quarter-width">
               <input formControlName="name" matInput placeholder="记录名">
             </mat-form-field>
             <mat-form-field class="model-quarter-width">
-              <mat-select placeholder="数据来源" formControlName = "source">
+              <mat-select formControlName = "source" placeholder="数据来源">
                 <mat-option *ngFor = "let s of source" [value]= "s">{{s}}</mat-option>
               </mat-select>
             </mat-form-field>

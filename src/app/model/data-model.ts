@@ -223,22 +223,18 @@ export const model_test: Model[] = [
         has_table : 1,
         has_array : 1,
         tables: [
-            {row: "1", col: "A", name: "A1", sn: "001", source_type: 1,source: "录入",value: "录入的值"},
+            {row: "1", col: "A", name: "A1", sn: "001", source_type: 1,source: "录入",value: "录入的值2"},
             {row: "1", col: "B", name: "B1", sn: "002", source_type: 1,source: "日期",value: "18-2-15"},
-            {row: "2", col: "A", name: "A2", sn: "003", source_type: 1,source: "参数表",value: "参数1"},
-            {row: "2", col: "B", name: "B2", sn: "004", source_type: 1,source: "公式",value: "公式1"},
+            {row: "2", col: "A", name: "A2", sn: "003", source_type: 1,source: "参数表",value: "参数2"},
+            {row: "2", col: "B", name: "B2", sn: "004", source_type: 1,source: "公式",value: "公式2"},
         ],
     },
     {
         model_id : 3,
         model_name : "model3",
-        has_table : 1,
-        has_array : 1,
+        has_table : 0,
+        has_array : 0,
         tables: [
-            {row: "1", col: "A", name: "A1", sn: "001", source_type: 1,source: "录入",value: "录入的值"},
-            {row: "1", col: "B", name: "B1", sn: "002", source_type: 1,source: "日期",value: "18-2-15"},
-            {row: "2", col: "A", name: "A2", sn: "003", source_type: 1,source: "参数表",value: "参数1"},
-            {row: "2", col: "B", name: "B2", sn: "004", source_type: 1,source: "公式",value: "公式1"},
         ],
     },
 ]
