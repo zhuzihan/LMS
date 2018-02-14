@@ -44,10 +44,11 @@ export const block_test: Block[] = [
 // export const source = ['录入', '日期', '参数表', '公式', '数组'];
 
 export class Model {
+    model_id = 0;
     model_name = '';    //模块名称
     has_table = -1;     //该模块是否拥有列表,"1"是，"-1"否
     has_array = -1;     //该模块是否拥有数组,"1"是,且代表有一张数据表，"-1"否
-    table: Table[];     //列表内容
+    tables: Table[];     //列表内容
     array_list = [];    //数组索引
     arrays: _Array[];   //数组内容
     // a = new Object();
@@ -56,10 +57,11 @@ export class Model {
 }
 export const model_test: Model[] = [
     {
+        model_id : 1,
         model_name : "model1",
         has_table : 1,
         has_array : 1,
-        table: [
+        tables: [
             {
                 cell_list : [
                     {
@@ -232,6 +234,13 @@ export class source {
     source_sn = '';
     sourcedate = {};
 }
+export const _source = [
+    ['录入','1',""],
+    ['日期','2',""],
+    ['参数表','3',""],
+    ['公式','4',""],
+    ['数组','5',""]
+];
 export class _Array {
     array_col = 1;
     array_row = 1;

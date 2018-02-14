@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 
 import { ManModule } from './controller/sys_manage/man.module'
 import { IndexModule } from './controller/index/index.module';
-import { BlockDataService } from './controller/sys_manage/block-data.service'
+import { ModelDataService } from './controller/sys_manage/model-data.service'
 import { AppRoutingModule } from './app-routing.module';
 
 import { PageNotFoundComponent} from './not-found.component'
@@ -37,7 +37,7 @@ import './polyfill';
     AppComponent,
     PageNotFoundComponent,
   ],
-  providers: [BlockDataService],
+  providers: [ModelDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

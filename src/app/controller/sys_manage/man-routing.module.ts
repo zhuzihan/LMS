@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { SysManagementComponent }      from '../index/sys-management.component';
 import { ManEquipParaComponent }      from './man-equip-para.component';
-import { ManBlockListComponent }  from './man-block-list.component';
+import { ManModelListComponent }  from './man-model-list.component';
 import { ManTemplateComponent }  from './man-template.component';
 import { ManJobModuleComponent }  from './man-job-module.component';
 
@@ -15,13 +15,13 @@ const ManRoutes: Routes = [
       { 
         path: '', component: ManEquipParaComponent ,
         // children:[
-        //   { path: 'manBlock',     component: ManBlockComponent }
+        //   { path: 'manModel',     component: ManModelComponent }
         // ]
       },
       //实验器材参数
       { path: 'manEquip',  component: ManEquipParaComponent },
       //检测标准模块
-      { path: 'manBlock',     component: ManBlockListComponent },
+      { path: 'manModel',     component: ManModelListComponent },
       //原始记录模板
       { path: 'manTemplate', component: ManTemplateComponent },
       //作业指导模块

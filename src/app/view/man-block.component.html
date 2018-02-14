@@ -10,21 +10,21 @@
     </div> 
   -->
   <!-- <form class="field-form" novalidate>
-    <mat-form-field class="block-half-width">
+    <mat-form-field class="model-half-width">
         <input matInput placeholder="模块名称" >
     </mat-form-field>
 
   </form> -->
-  <form [formGroup]="blockForm" (ngSubmit)="onSubmit()" class="field-form" novalidate>
+  <form [formGroup]="modelForm" (ngSubmit)="onSubmit()" class="field-form" novalidate>
     <div style="margin-bottom: 1em">
-      <button type="submit" [disabled]="blockForm.pristine" mat-raised-button>Save</button> &nbsp;
-      <button type="reset" (click)="revert()" [disabled]="blockForm.pristine" mat-raised-button>Revert</button>
+      <button type="submit" [disabled]="modelForm.pristine" mat-raised-button>Save</button> &nbsp;
+      <button type="reset" (click)="revert()" [disabled]="modelForm.pristine" mat-raised-button>Revert</button>
     </div>
 
-    <mat-form-field class="block-half-width">
+    <mat-form-field class="model-half-width">
       <input formControlName = "name" matInput placeholder="模块名称">
     </mat-form-field>
-    <mat-form-field class="block-half-width">
+    <mat-form-field class="model-half-width">
       <input formControlName = "description" matInput placeholder="模块描述">
     </mat-form-field>
     <h4>记录</h4>
@@ -33,10 +33,10 @@
           <h4>记录 #{{i + 1}}</h4>
           <button (click)="removeField(i)" type="button" mat-raised-button>删除</button>
           <div style="margin-left: 1em;">
-              <mat-form-field class="block-quarter-width">
+              <mat-form-field class="model-quarter-width">
                 <input formControlName="name" matInput placeholder="记录名">
               </mat-form-field>
-              <mat-form-field class="block-quarter-width">
+              <mat-form-field class="model-quarter-width">
                 <mat-select placeholder="数据来源" formControlName = "source">
                   <mat-option *ngFor = "let s of source" [value]= "s">{{s}}</mat-option>
                 </mat-select>
@@ -85,18 +85,18 @@
       </label>
     </div> -->
   </form>
-  <p>Form value: {{ blockForm.value | json }}</p>
-  <p>Form status: {{ blockForm.status | json }}</p>
-  <p>Name value: {{ blockForm.get('name').value }}</p>
+  <p>Form value: {{ modelForm.value | json }}</p>
+  <p>Form status: {{ modelForm.status | json }}</p>
+  <p>Name value: {{ modelForm.get('name').value }}</p>
   <!-- <p>index value: {{i}}</p>
   <p>i value: {{i}}</p>
   <p>s value: {{s}}</p>
-  <p *ngIf = "i == 0">Field_Name value: {{ blockForm.get('fields_form[0]').value }}</p> -->
+  <p *ngIf = "i == 0">Field_Name value: {{ modelForm.get('fields_form[0]').value }}</p> -->
   <!-- Angular Material -->
   <!--
   <form>
 
-      <mat-form-field class="block-half-width">
+      <mat-form-field class="model-half-width">
         <input matInput placeholder="模块说明" value="备注信息">
       </mat-form-field>
 
@@ -113,7 +113,7 @@
 
       <br/>
       <div *ngFor="let num of field_num">
-        <mat-form-field class="block-quarter-width">
+        <mat-form-field class="model-quarter-width">
           <input matInput placeholder="字段标题" value="新字段1">
         </mat-form-field>
       </div>

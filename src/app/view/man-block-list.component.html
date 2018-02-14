@@ -5,7 +5,7 @@
 
     <nav>
       <button mat-raised-button color="primary" (click)="getBlocks()">Refresh</button>
-      <button mat-raised-button *ngFor="let block of blocks | async" (click)="select(block)">{{block.name}}</button>
+      <button mat-raised-button *ngFor="let model of models | async" (click)="select(model)">{{model.name}}</button>
     </nav>
   </div>
 
@@ -13,6 +13,6 @@
     <hr>
     <h2>Block Detail</h2>
     <h3>Editing: {{selectedBlock.name}}</h3>
-    <man-block [block]="selectedBlock"></man-block>
+    <man-model [model]="selectedBlock"></man-model>
   </div>
 </div>

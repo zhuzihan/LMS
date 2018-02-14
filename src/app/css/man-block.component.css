@@ -3,12 +3,12 @@
   max-width: 600px;
   width: 100%;
 }
-.block-quarter-width { 
+.model-quarter-width { 
   width: 24%;
 }
-.block-half-width { 
+.model-half-width { 
   width: 49%;
 }
-.block-full-width {
+.model-full-width {
   width: 100%;
 }
