@@ -1,0 +1,19 @@
+<div class="content">
+  <div>
+    <div *ngIf="isLoading"><mat-spinner [diameter]="24"></mat-spinner><p>加载模块数据... </p></div>
+    <h3 *ngIf="!isLoading">选择模块</h3>
+
+    <nav>
+      <button mat-raised-button color="primary" (click)="getModels()">Refresh</button>
+      <button mat-raised-button *ngFor="let model of models | async" (click)="select(model)">{{model.model_name}}</button>
+    </nav>
+    <!-- <p>Form value: {{ models | json }}</p> -->
+  </div>
+
+  <div *ngIf="selectedModel">
+    <hr>
+    <h2>模块详情</h2>
+    <h3>编辑的模块: {{selectedModel.model_name}}</h3>
+    <man-model [model]="selectedModel"></man-model>
+  </div>
+</div>

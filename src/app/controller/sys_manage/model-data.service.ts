@@ -2,13 +2,11 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { of }         from 'rxjs/observable/of';
 import 'rxjs/add/operator/delay'
-
-
-import { Model, Table, _Array, model_test, source } from '../../model/data-model'
+import { Model, Table, model_test, source } from '../../model/data-model'
 
 @Injectable()
 export class ModelDataService {
-    delayMs = 1000;
+    delayMs = 500;
 
     // getModelData():Model[] {
     //     return block_test;

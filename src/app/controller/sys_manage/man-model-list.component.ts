@@ -28,6 +28,7 @@ export class ManModelListComponent implements OnInit {
                         // Todo: error handling
                         .finally(() => this.isLoading = false);
       this.selectedModel = undefined;
+    //   console.log(this.modelDataService.getModelData());
     }
   
     select(model: Model) { this.selectedModel = model; }
