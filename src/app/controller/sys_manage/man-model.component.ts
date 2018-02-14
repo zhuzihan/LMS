@@ -147,7 +147,7 @@ export class ManModelComponent implements OnChanges{
         //     (field: Field) => Object.assign({}, field)
         // );
         //deep copy of tables_form
-        const tableFormDeepCopy: Table[] = formModel.fields_form.map(
+        const tableFormDeepCopy: Table[] = formModel.tables_form.map(
             (table: Table) => Object.assign({}, table)
         );
         //deep copy of arrays_form
@@ -168,9 +168,9 @@ export class ManModelComponent implements OnChanges{
         //and deep copies of changed form model values
         const saveModel: Model = {
             model_id: this.model.model_id,
-            model_name: this.model.model_name,
-            has_table: this.model.has_table,
-            has_array: this.model.has_array,
+            model_name: formModel.model_name as string,
+            has_table: formModel.has_table,
+            has_array: formModel.has_array,
             tables: tableFormDeepCopy,
             
             // array_list: this.model.array_list,
@@ -218,5 +218,4 @@ export class ManModelComponent implements OnChanges{
     //     {value: 'parameters_table', viewValue: '参数表'},
     //     {value: 'formula', viewValue: '创建公式'}
     // ];
-
 }
