@@ -66,6 +66,10 @@ export class Table {
     source_type = 1;
     source= '';
     value = '';
+    constructor(row,col){
+        this.row = row;
+        this.col = col;
+    }
 }
 export const model_test: Model[] = [
     {

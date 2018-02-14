@@ -111,8 +111,8 @@ export class ManModelComponent implements OnChanges{
     // addField() {
     //     this.fields_form.push(this.fb.group(new Field()));
     // }
-    addTable() {
-        this.tables_form.push(this.fb.group(new Table()));
+    addTable(row : string,col :string) {
+        this.tables_form.push(this.fb.group(new Table(row,col)));
     }
     // addArray() {
     //     this.arrays_form.push(this.fb.group(new _Array()));
