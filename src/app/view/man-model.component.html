@@ -7,7 +7,7 @@
       <button type="submit" [disabled]="modelForm.pristine" mat-raised-button>Save</button> &nbsp;
       <button type="reset" (click)="revert()" [disabled]="modelForm.pristine" mat-raised-button>Revert</button>
     </div>
-    <!-- <p>Model value: {{ model | json }}</p> -->
+    <p>Model value: {{ model | json }}</p>
     <span>ID: {{modelForm.get('model_id').value|json}}</span>
     <span *ngIf="!modelForm.get('has_table').value">无记录</span>
     <span *ngIf="!modelForm.get('has_array').value">无数据表</span>
