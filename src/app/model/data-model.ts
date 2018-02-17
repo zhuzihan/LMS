@@ -41,7 +41,7 @@
 //     },
 // ];
 //数据来源
- export const source = ['录入', '日期', '参数表', '公式', '数组'];
+export const source = ['录入', '日期', '参数表', '公式', '数组'];
 
 export class Model {
     model_id = 0;
@@ -50,7 +50,7 @@ export class Model {
     has_array = -1;     //该模块是否拥有数组,"1"是,且代表有一张数据表，"-1"否
     tables: Table[];     //列表内容
     // array_list = [];    //数组索引
-    // arrays: _Array[];   //数组内容
+    arrays: _Array[];   //数组内容
     // a = new Object();
     // a : _Array ;
     // a['array1'] = _Array[];
@@ -71,6 +71,70 @@ export class Table {
         this.col = col;
     }
 }
+export class _Array {
+    col = 1;
+    row = 1;
+    name = '';
+    sn = '';
+    source_type = 1;
+    source=  '';
+    value = '';
+    // col_list : cell[];
+    // rows: row[];
+    constructor(row,col){
+        this.row = row;
+        this.col = col;
+    }
+}
+// {name: '无水碳酸钠', weight: 1.0079, symbol: 'H'},
+// {name: '邻苯二甲酸氢钾', weight: 4.0026, symbol: 'He'},
+// {name: '氢氧化钠', weight: 6.941, symbol: 'Li'},
+// {name: '重铬酸钾', weight: 9.0122, symbol: 'Be'},
+// {name: '硫代硫酸钠', weight: 10.811, symbol: 'B'},
+// {name: '无水硫代硫酸钠', weight: 12.0107, symbol: 'C'},
+// {name: '硫酸亚铁', weight: 14.0067, symbol: 'N'},
+// {name: '硼砂', weight: 15.9994, symbol: 'O'},
+// {name: '磷酸二氢钾', weight: 18.9984, symbol: 'F'},
+// {name: '氯化钾', weight: 20.1797, symbol: 'Ne'},
+// {name: '氯化钾', weight: 22.9897, symbol: 'Na'},
+//记录
+// export class cell {
+//     row = '';
+//     col = '';
+//     name = '';
+//     sn = '';
+// }
+
+//行内容
+//行,在索引中指明了行列名称，能够快速定位单元格
+// export class row {
+//     row = 0;
+//     cols: col[];
+// }
+//列,在索引中指明了行列名称，能够快速定位单元格
+// export class col {
+//     sn = '';
+//     name = '';
+//     source_type = 1;
+//     source: source;
+//     value = '';
+//     row = '';
+//     col = '';
+// }
+
+// export class source {
+//     source_name = '';
+//     source_sn = '';
+//     sourcedate = {};
+// }
+
+// export const _source = [
+//     ['录入','1',""],
+//     ['日期','2',""],
+//     ['参数表','3',""],
+//     ['公式','4',""],
+//     ['数组','5',""]
+// ];
 export const model_test: Model[] = [
     {
         model_id : 1,
@@ -129,7 +193,16 @@ export const model_test: Model[] = [
         // array_list : [
         //     "array1",
         // ],
-        // arrays : [
+        arrays : [{
+            col : 1,
+            row : 1,
+            name : '',
+            sn : '',
+            source_type : 1,
+            source :  '',
+            value : '',
+        }]
+
         //     {
         //         array_col : 2,
         //         array_row : 2,
@@ -219,7 +292,7 @@ export const model_test: Model[] = [
         //             }
         //         ]
         //     }
-        // ]
+        
     },
     {
         model_id : 2,
@@ -232,6 +305,15 @@ export const model_test: Model[] = [
             {row: "2", col: "A", name: "A2", sn: "003", source_type: 1,source: "参数表",value: "参数2"},
             {row: "2", col: "B", name: "B2", sn: "004", source_type: 1,source: "公式",value: "公式2"},
         ],
+        arrays : [{
+            col : 1,
+            row : 1,
+            name : '',
+            sn : '',
+            source_type : 1,
+            source :  '',
+            value : '',
+        }],
     },
     {
         model_id : 3,
@@ -240,51 +322,14 @@ export const model_test: Model[] = [
         has_array : 0,
         tables: [
         ],
+        arrays : [{
+            col : 1,
+            row : 1,
+            name : '',
+            sn : '',
+            source_type : 1,
+            source :  '',
+            value : '',
+        }],
     },
 ]
-
-//记录
-// export class cell {
-//     row = '';
-//     col = '';
-//     name = '';
-//     sn = '';
-// }
-
-//行内容
-//行,在索引中指明了行列名称，能够快速定位单元格
-// export class row {
-//     row = 0;
-//     cols: col[];
-// }
-//列,在索引中指明了行列名称，能够快速定位单元格
-// export class col {
-//     sn = '';
-//     name = '';
-//     source_type = 1;
-//     source: source;
-//     value = '';
-//     row = '';
-//     col = '';
-// }
-
-// export class source {
-//     source_name = '';
-//     source_sn = '';
-//     sourcedate = {};
-// }
-
-// export const _source = [
-//     ['录入','1',""],
-//     ['日期','2',""],
-//     ['参数表','3',""],
-//     ['公式','4',""],
-//     ['数组','5',""]
-// ];
-
-// export class _Array {
-//     array_col = 1;
-//     array_row = 1;
-//     col_list : cell[];
-//     rows: row[];
-// }
