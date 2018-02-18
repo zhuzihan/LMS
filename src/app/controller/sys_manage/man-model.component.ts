@@ -30,6 +30,12 @@ export class ManModelComponent implements OnChanges{
 
     // name = new FormControl();
     //nameChangeLog: string[] = [];
+    tiles = [
+        {text: 'One', cols: 3, rows: 1, color: 'lightblue'},
+        {text: 'Two', cols: 1, rows: 2, color: 'lightgreen'},
+        {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
+        {text: 'Four', cols: 2, rows: 1, color: '#DDBDF1'},
+      ];
     
     constructor(
         private fb: FormBuilder,
