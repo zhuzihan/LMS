@@ -71,9 +71,10 @@ export class Table {
         this.col = col;
     }
 }
+//数组
 export class _Array {
-    col = 1;
-    row = 1;
+    col = '';
+    row = '';
     name = '';
     sn = '';
     source_type = 1;
@@ -193,16 +194,26 @@ export const model_test: Model[] = [
         // array_list : [
         //     "array1",
         // ],
-        arrays : [{
-            col : 1,
-            row : 1,
-            name : '',
-            sn : '',
-            source_type : 1,
-            source :  '',
-            value : '',
-        }]
-
+        arrays : [
+            {row: "1", col: "A", name: "A1", sn: "001", source_type: 1,source: "引用",value: "无水碳酸钠"},
+            {row: "1", col: "B", name: "B1", sn: "002", source_type: 1,source: "引用",value: "H"},
+            {row: "2", col: "A", name: "A2", sn: "003", source_type: 1,source: "引用",value: "邻苯二甲酸氢钾"},
+            {row: "2", col: "B", name: "B2", sn: "004", source_type: 1,source: "引用",value: "He"},
+            {row : "3",col : "A",name : 'A3',sn : '005',source_type : 1,source :  '引用',value : '氢氧化钠',},
+            {row : "3",col : "B",name : 'B3',sn : '006',source_type : 1,source :  '引用',value : 'Li',},
+            {row : "4",col : "A",name : 'A4',sn : '007',source_type : 1,source :  '引用',value : '重铬酸钾',},
+        ]
+        // {name: '无水碳酸钠', weight: 1.0079, symbol: 'H'},
+        // {name: '邻苯二甲酸氢钾', weight: 4.0026, symbol: 'He'},
+        // {name: '氢氧化钠', weight: 6.941, symbol: 'Li'},
+        // {name: '重铬酸钾', weight: 9.0122, symbol: 'Be'},
+        // {name: '硫代硫酸钠', weight: 10.811, symbol: 'B'},
+        // {name: '无水硫代硫酸钠', weight: 12.0107, symbol: 'C'},
+        // {name: '硫酸亚铁', weight: 14.0067, symbol: 'N'},
+        // {name: '硼砂', weight: 15.9994, symbol: 'O'},
+        // {name: '磷酸二氢钾', weight: 18.9984, symbol: 'F'},
+        // {name: '氯化钾', weight: 20.1797, symbol: 'Ne'},
+        // {name: '氯化钾', weight: 22.9897, symbol: 'Na'},
         //     {
         //         array_col : 2,
         //         array_row : 2,
@@ -306,8 +317,8 @@ export const model_test: Model[] = [
             {row: "2", col: "B", name: "B2", sn: "004", source_type: 1,source: "公式",value: "公式2"},
         ],
         arrays : [{
-            col : 1,
-            row : 1,
+            col : "",
+            row : "",
             name : '',
             sn : '',
             source_type : 1,
@@ -323,8 +334,8 @@ export const model_test: Model[] = [
         tables: [
         ],
         arrays : [{
-            col : 1,
-            row : 1,
+            col : "",
+            row : "",
             name : '',
             sn : '',
             source_type : 1,

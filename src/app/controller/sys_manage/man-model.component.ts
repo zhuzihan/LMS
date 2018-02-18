@@ -9,7 +9,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { ModelDataService } from './model-data.service';
 // import { Model, Field, source } from '../../model/data-model'
-import { Model, Table, source } from '../../model/data-model'
+import { Model, Table, source, _Array } from '../../model/data-model'
 
 @Component({
     selector: 'man-model',
@@ -30,7 +30,7 @@ export class ManModelComponent implements OnChanges{
 
     // name = new FormControl();
     //nameChangeLog: string[] = [];
-
+    
     constructor(
         private fb: FormBuilder,
         private modelDataService: ModelDataService) {
@@ -49,6 +49,7 @@ export class ManModelComponent implements OnChanges{
             has_table : 1,
             has_array : 1,
             tables_form: this.fb.array([]),
+            arrays_form: this.fb.array([]),
             // tablesForm: this.fb.group({
             //     cell_list_form: this.fb.array([]),
             //     rows_form: this.fb.array([]),
@@ -75,7 +76,7 @@ export class ManModelComponent implements OnChanges{
         });
         // this.setFields(this.model.fields);
         this.setTables(this.model.tables);
-        // this.setArrays(this.model.arrays);
+        this.setArrays(this.model.arrays);
     }
     // setFields(fields: Field[]) {
     //     const fieldFGs = fields.map(fields => this.fb.group(fields));
@@ -93,20 +94,20 @@ export class ManModelComponent implements OnChanges{
     //     this.tablesForm.setControl('cell_form', cellFormArray);  
     //     this.modelForm.
     // }
-    // setArrays(arrays: _Array[]) {
-    //     const arrayFGs = arrays.map(arrays => this.fb.group(arrays));
-    //     const arrayFormArray = this.fb.array(arrayFGs);
-    //     this.modelForm.setControl('arrays_form', arrayFormArray);
-    // }
+    setArrays(arrays: _Array[]) {
+        const arrayFGs = arrays.map(arrays => this.fb.group(arrays));
+        const arrayFormArray = this.fb.array(arrayFGs);
+        this.modelForm.setControl('arrays_form', arrayFormArray);
+    }
     // get fields_form(): FormArray {
     //     return this.modelForm.get('fields_form') as FormArray;
     // }
     get tables_form(): FormArray {
         return this.modelForm.get('tables_form') as FormArray;
     }
-    // get arrays_form(): FormArray {
-    //     return this.modelForm.get('arrays_form') as FormArray;
-    // }
+    get arrays_form(): FormArray {
+        return this.modelForm.get('arrays_form') as FormArray;
+    }
     //添加记录
     // addField() {
     //     this.fields_form.push(this.fb.group(new Field()));
@@ -114,9 +115,9 @@ export class ManModelComponent implements OnChanges{
     addTable(row : string,col :string) {
         this.tables_form.push(this.fb.group(new Table(row,col)));
     }
-    // addArray() {
-    //     this.arrays_form.push(this.fb.group(new _Array()));
-    // }
+    addArray(row : string,col :string) {
+        this.arrays_form.push(this.fb.group(new _Array(row,col)));
+    }
 
     //删除记录
     // removeField(i : number) {
@@ -126,10 +127,10 @@ export class ManModelComponent implements OnChanges{
     removeTable(i : number) {
         this.tables_form.removeAt(i);
     }
-    //删除数组
-    // removeArray(i : number) {
-    //     this.arrays_form.removeAt(i);
-    // }
+    删除数组
+    removeArray(i : number) {
+        this.arrays_form.removeAt(i);
+    }
     //提交表单
     onSubmit() {
         // console.log("onsubmit1");
@@ -149,6 +150,9 @@ export class ManModelComponent implements OnChanges{
         //deep copy of tables_form
         const tableFormDeepCopy: Table[] = formModel.tables_form.map(
             (table: Table) => Object.assign({}, table)
+        );
+        const arrayFormDeepCopy: _Array[] = formModel.array_form.map(
+            (array: _Array) => Object.assign({}, array)
         );
         //deep copy of arrays_form
         // const arrayFormDeepCopy: _Array[] = formModel.fields_form.map(
@@ -172,9 +176,8 @@ export class ManModelComponent implements OnChanges{
             has_table: formModel.has_table,
             has_array: formModel.has_array,
             tables: tableFormDeepCopy,
-            
             // array_list: this.model.array_list,
-            // arrays: arrayFormDeepCopy,
+            arrays: arrayFormDeepCopy,
 
             // name: formModel.name as string,
             // description: formModel.description as string,
@@ -192,30 +195,8 @@ export class ManModelComponent implements OnChanges{
     //   );
     // }
 
-
     // constructor(private modelDataService:ModelDataService) {}
     // getModel(): void {
     //     this.models = this.modelDataService.getModelData();
     // }
-
-    // field_num = [
-    //     {value: '1', viewValue: '1'},
-    //     {value: '2', viewValue: '2'},
-    //     {value: '3', viewValue: '3'},
-    //     {value: '4', viewValue: '4'},
-    //     {value: '5', viewValue: '5'},
-    //     {value: '6', viewValue: '6'},
-    //     {value: '7', viewValue: '7'},
-    //     {value: '8', viewValue: '8'},
-    //     {value: '9', viewValue: '9'},
-    //     {value: '10', viewValue: '10'},
-    //     {value: '11', viewValue: '11'},
-    //     {value: '12', viewValue: '12'},
-    // ];
-    // data_source = [
-    //     {value: 'record', viewValue: '录入'},
-    //     {value: 'date', viewValue: '日期'},
-    //     {value: 'parameters_table', viewValue: '参数表'},
-    //     {value: 'formula', viewValue: '创建公式'}
-    // ];
 }

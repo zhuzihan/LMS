@@ -17,12 +17,59 @@
     <!-- <mat-form-field class="model-half-width">
       <input formControlName = "description" matInput placeholder="模块描述">
     </mat-form-field> -->
+
+    
+    <hr>
     <h4>单元记录</h4>
+
     <div formArrayName = "tables_form">
-      <div *ngFor = "let table of tables_form.controls; let i=index" [formGroupName]="i" >
-        <h4>单元记录 #{{i + 1}}</h4>
+      <mat-accordion>
+        <mat-expansion-panel *ngFor = "let table of tables_form.controls; let i=index" [formGroupName]="i" class="model-half-width">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              单元记录 #{{i + 1}}
+            </mat-panel-title>
+            <mat-panel-description>
+              单元记录内容
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+      
+          <mat-form-field>
+            <input formControlName="name" matInput placeholder="记录名">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select formControlName = "source" placeholder="数据来源">
+              <mat-option *ngFor = "let s of source" [value]= "s">{{s}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <input formControlName="value" matInput placeholder="数据值">
+          </mat-form-field>
+          <button (click)="removeTable(i)" type="button" mat-raised-button>删除</button>
+        </mat-expansion-panel>
+        <!-- <mat-expansion-panel (opened)="panelOpenState = true"
+                              (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Self aware panel
+            </mat-panel-title>
+            <mat-panel-description>
+              Currently I am {{panelOpenState ? 'open' : 'closed'}}
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <p>I'm visible because I am open</p>
+        </mat-expansion-panel> -->
+      </mat-accordion>
         <!-- <p>行号{{row}}</p> -->
-        <button (click)="removeTable(i)" type="button" mat-raised-button>删除</button>
+      <button (click)="addTable(1,1)" type="button" mat-raised-button>添加记录</button>
+    </div>
+    <hr>
+    <h4>数组</h4>
+    <div formArrayName = "arrays_form">
+      <div *ngFor = "let table of arrays_form.controls; let i=index" [formGroupName]="i" >
+        <h4>列 #{{i + 1}}</h4>
+        <!-- <p>行号{{row}}</p> -->
+        <button (click)="removeArray(i)" type="button" mat-raised-button>删除</button>
         <div style="margin-left: 1em;">
             <mat-form-field class="model-quarter-width">
               <input formControlName="name" matInput placeholder="记录名">
@@ -37,7 +84,7 @@
             </mat-form-field>
         </div>
       </div>
-      <button (click)="addTable(1,1)" type="button" mat-raised-button>添加记录</button>
+      <button (click)="addArray(1,1)" type="button" mat-raised-button>添加记录</button>
     </div>
     <!-- <div formGroupName = "fields_form">
         <div *ngFor = "let field of fields_form.controls; let i=index" [formGroupName]="i" >

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { of }         from 'rxjs/observable/of';
 import 'rxjs/add/operator/delay'
-import { Model, Table, model_test, source } from '../../model/data-model'
+import { Model, model_test, source } from '../../model/data-model'
 
 @Injectable()
 export class ModelDataService {
