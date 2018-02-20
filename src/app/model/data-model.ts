@@ -22,7 +22,7 @@ export class Model {
 export class Table {
     // cell_list: cell[];
     //rows: row[]; //行内容
-    row = '';
+    row = ''; 
     col = '';
     rowspan = 1;
     colspan = 10;

@@ -6,6 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ManEquipParaComponent }      from './man-equip-para.component';
 import { ManModelComponent }  from './man-model.component';
 import { ManModelListComponent }  from './man-model-list.component';
+import { ManModelPreviewComponent } from './man-model-preview.component'
 import { ManTemplateListComponent }  from './man-template-list.component';
 import { ManTemplateComponent }  from './man-template.component';
 import { ManJobModuleComponent }  from './man-job-module.component';
@@ -32,6 +33,7 @@ import { MaterialModule } from '../../material.module'
     ManEquipParaComponent,
     ManModelComponent,
     ManModelListComponent,
+    ManModelPreviewComponent,
     ManTemplateComponent,
     ManTemplateListComponent,
     ManJobModuleComponent,
