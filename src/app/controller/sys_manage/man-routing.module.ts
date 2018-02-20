@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { SysManagementComponent }      from '../index/sys-management.component';
 import { ManEquipParaComponent }      from './man-equip-para.component';
 import { ManModelListComponent }  from './man-model-list.component';
-import { ManTemplateComponent }  from './man-template.component';
+import { ManTemplateListComponent }  from './man-template-list.component';
 import { ManJobModuleComponent }  from './man-job-module.component';
 
 const ManRoutes: Routes = [
@@ -23,7 +23,7 @@ const ManRoutes: Routes = [
       //检测标准模块
       { path: 'manModel',     component: ManModelListComponent },
       //原始记录模板
-      { path: 'manTemplate', component: ManTemplateComponent },
+      { path: 'manTemplate', component: ManTemplateListComponent },
       //作业指导模块
       { path: 'manJobModule', component: ManJobModuleComponent },
     ]

@@ -17,7 +17,6 @@ export class ManModelListComponent implements OnInit {
     isLoading = false;
     selectedModel: Model;
 
-
     constructor(private modelDataService: ModelDataService) { }
   
     ngOnInit() { this.getModels(); }
@@ -33,4 +32,3 @@ export class ManModelListComponent implements OnInit {
   
     select(model: Model) { this.selectedModel = model; }
 }
-  

@@ -1,0 +1,19 @@
+<div class="content">
+    <div>
+        <div *ngIf="isLoading"><mat-spinner [diameter]="24"></mat-spinner><p>加载模板数据... </p></div>
+        <h3 *ngIf="!isLoading">选择模板</h3>
+    
+        <nav>
+        <button mat-raised-button color="primary" (click)="getTemplates()">Refresh</button>
+        <button mat-raised-button *ngFor="let template of templates | async" (click)="select(template)">{{template.whole_name}}</button>
+        </nav>
+        <!-- <p>Form value: {{ models | json }}</p> -->
+    </div>
+    
+    <div *ngIf="selectedTemplate">
+        <hr>
+        <h2>模版详情</h2>
+        <h3>编辑的模板: {{selectedTemplate.whole_name}}</h3>
+        <man-template [template]="selectedTemplate"></man-template>
+    </div>
+</div>

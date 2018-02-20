@@ -1,0 +1,26 @@
+.field-form {
+    min-width: 150px;
+    max-width: 600px;
+    width: 100%;
+  }
+  .model-quarter-width { 
+    width: 24%;
+  }
+  .model-half-width { 
+    width: 49%;
+  }
+  .model-full-width {
+    width: 100%;
+  }
+  mat-grid-tile {
+    /* background: lightgray; */
+    border: 1px solid black;
+    /* min-width: 200px; */
+  }
+ .mat-figure {
+    justify-content: flex-start;
+    left:20px;
+  }
+  mat-grid-list {
+    min-width: 800px;
+  }
