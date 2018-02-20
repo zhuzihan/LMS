@@ -38,6 +38,9 @@ app-root {
 mat-spinner {
     float: left;
 }
+figure {
+    justify-content: unset!important;
+}
   /* body {
     font-family: 'Tangerine', serif;
     font-size: 24px;

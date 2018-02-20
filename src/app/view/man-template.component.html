@@ -1,16 +1,27 @@
 <div>
-    <h3>模板预览</h3>
+    <h3>模板预览(按模块渲染)</h3>
     <!-- <p>tables: {{ template.models[0].tables|json }}</p> -->
-    <!-- <div *ngFor="let table of template.models[0].tables">
-        {{table.value}}
-    </div> -->
+
+    <mat-grid-list cols="10" rowHeight="25px" *ngFor="let model of template.models">
+            <mat-grid-tile
+                *ngFor="let table of model.tables"
+                [colspan]="table.colspan"
+                [rowspan]="table.rowspan">
+                {{table.name}}
+                {{table.value}}
+            </mat-grid-tile>
+    </mat-grid-list>
+
+    <h3>模板预览(整体渲染)</h3>
     <mat-grid-list cols="10" rowHeight="25px">
-        <mat-grid-tile
-            *ngFor="let table of template.models[0].tables"
-            [colspan]="table.colspan"
-            [rowspan]="table.rowspan">
-            {{table.name}}
-            {{table.value}}
-        </mat-grid-tile>
+        <div *ngFor="let model of template.models">
+            <mat-grid-tile
+                *ngFor="let table of model.tables"
+                [colspan]="table.colspan"
+                [rowspan]="table.rowspan">
+                {{table.name}}
+                {{table.value}}
+            </mat-grid-tile>
+        </div>
     </mat-grid-list>
 </div>

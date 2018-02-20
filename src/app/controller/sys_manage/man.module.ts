@@ -9,6 +9,7 @@ import { ManModelListComponent }  from './man-model-list.component';
 import { ManTemplateListComponent }  from './man-template-list.component';
 import { ManTemplateComponent }  from './man-template.component';
 import { ManJobModuleComponent }  from './man-job-module.component';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 import {ManRoutingModule} from './man-routing.module';
 
@@ -24,7 +25,8 @@ import { MaterialModule } from '../../material.module'
     ReactiveFormsModule,
     MaterialModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    MatGridListModule
   ],
   declarations: [
     ManEquipParaComponent,
