@@ -6,3 +6,6 @@ border: 1px solid black;
 mat-grid-list {
 min-width: 800px;
 }
+.preview-content{
+    padding: 10px;
+}
