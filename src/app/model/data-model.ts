@@ -60,12 +60,12 @@ export const model_test: Model[] = [
         has_table : 1,
         has_array : 1,
         tables: [
-            {sn: "001", row: "1", col: "A", colspan: 10, rowspan: 1, name: "配置日期：", value: '硫酸：（H2SO4，密度1.84g/ml，分析纯）。', source_type: 1,source: "录入"},
-            {sn: "001", row: "1", col: "A", colspan: 10, rowspan: 1, name: "配置日期：", value: '高氯酸：（HClO4,70%,分析纯）。', source_type: 1,source: "录入"},
-            {sn: "001", row: "1", col: "A", colspan: 10, rowspan: 1, name: "配置日期：", value: '6mol/L盐酸：浓盐酸（HCl,分析纯）与水按1：1体积混合。', source_type: 1,source: "录入"},
-            {sn: "001", row: "1", col: "A", colspan: 4, rowspan: 1, name: "配置日期：", value: '配置日期：', source_type: 1,source: "录入"},
-            {sn: "001", row: "1", col: "A", colspan: 3, rowspan: 1, name: "配置日期：", value: '配置日期：', source_type: 1,source: "录入"},
-            {sn: "001", row: "1", col: "A", colspan: 3, rowspan: 1, name: "配置日期：", value: '配置人：', source_type: 1,source: "录入"},
+            {sn: "001", row: "1", col: "A", colspan: 10, rowspan: 1, name: "硫酸：", value: '（H2SO4，密度1.84g/ml，分析纯）。', source_type: 1,source: "录入"},
+            {sn: "001", row: "1", col: "A", colspan: 10, rowspan: 1, name: "高氯酸：", value: '（HClO4,70%,分析纯）。', source_type: 1,source: "录入"},
+            {sn: "001", row: "1", col: "A", colspan: 10, rowspan: 1, name: "6mol/L盐酸：", value: '浓盐酸（HCl,分析纯）与水按1：1体积混合。', source_type: 1,source: "录入"},
+            {sn: "001", row: "1", col: "A", colspan: 4, rowspan: 1, name: "配置日期：", value: '', source_type: 1,source: "录入"},
+            {sn: "001", row: "1", col: "A", colspan: 3, rowspan: 1, name: "有效期限：", value: '', source_type: 1,source: "录入"},
+            {sn: "001", row: "1", col: "A", colspan: 3, rowspan: 1, name: "配置人：", value: '', source_type: 1,source: "录入"},
 
         ],
         // array_list : [
@@ -126,17 +126,17 @@ export const model_test: Model[] = [
 export const template_test: Template[] =[
     {
         whole_name: "模板1",
-        model_list : ["","",""],
+        model_list : ["model_test"],
         models : model_test,
     },
     {
         whole_name: "模版2",
-        model_list : ["","",""],
+        model_list : ["model_test"],
         models : [],
     },
     {
         whole_name: "模板3",
-        model_list : ["","",""],
+        model_list : [""],
         models : [],
     }
 ]

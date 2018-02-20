@@ -28,4 +28,7 @@ export class ManTemplateComponent {
     //     {text: '配置日期：', cols: 3, rows: 1},
     //     {text: '配置人：', cols: 3, rows: 1},
     //   ];
+    getTable() {
+        this.template.models[0].tables
+    }
 }
