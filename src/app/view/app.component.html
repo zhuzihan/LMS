@@ -1,18 +1,16 @@
 <mat-toolbar class="topbar">
-  <div class="topbar-content">
-    <span class="topbar-title">
-      <!-- <img alt="angular" class="logo" src="../../../assets/img/homepage/angular-white-transparent.svg"> -->
-      <img alt="angular" class="topbar-logo" src="../../../assets/img/homepage/lab.png">
-      <span>{{title}}</span>
-    </span>
-    <nav>
-        <button mat-button class="topbar_font" routerLink="/preview">预览</button>
-        <button mat-button class="topbar_font" routerLink="/registration">登记</button>
-        <button mat-button class="topbar_font" routerLink="/analysis">检测</button>
-        <button mat-button class="topbar_font" routerLink="/calculate">计算</button>
-        <button mat-button class="topbar_font" routerLink="/sysManagement">管理</button>
+
+    <nav class="topbar-nav">
+        <button mat-button routerLink="/preview">
+          <img alt="angular" class="topbar-logo" src="../../../assets/img/homepage/lab.png">
+          实验室管理系统
+        </button>
+        <button mat-button routerLink="/registration">登记</button>
+        <button mat-button routerLink="/analysis">检测</button>
+        <button mat-button routerLink="/calculate">计算</button>
+        <button mat-button routerLink="/sysManagement">管理</button>
     </nav>
-  </div>
+
 </mat-toolbar>
 <!-- <link rel = "stylesheet"
       href="https://fonts.googleapis.com/css?family=Inconsolata&effect=anaglyph"

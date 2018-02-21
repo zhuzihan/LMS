@@ -1,24 +1,3 @@
-.content{
+/* .content{
     display: flex;
-}
-.toolbar {
-    background :#3f51b5;
-    height: 60px;
-}
-.toolbar-content{
-    padding-left: 10px;
-    display: flex;
-    /* display: -webkit-flex;  Safari */
-    align-items:center;/*指定垂直居中*/
-}
-.toolbar_title {
-    color:white;
-    font-size: 16px;
-    padding: 8px 8px;
-}
-.nav {
-    padding: 5px 30px;
-}
-/* button{
-    color:white;
 } */

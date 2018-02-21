@@ -4,6 +4,7 @@
 
 body {
     margin: 0;
+    /* font-family: Roboto,Helvetica Neue Light,Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif; */
     /* font-family: 'Tangerine', serif;
     font-size: 36px; */
 }
@@ -30,10 +31,29 @@ app-root {
     -ms-flex-direction: column;
     flex-direction: column;
     position: absolute;
-    top: 56px;
+    top: 48px;
     bottom: 0;
     left: 0;
     right: 0;
+}
+.toolbar {
+    background :#3f51b5;
+    height: 60px;
+}
+.toolbar-content{
+    padding-left: 10px;
+    display: flex;
+    /* display: -webkit-flex;  Safari */
+    align-items:center;/*指定垂直居中*/
+}
+.toolbar_title {
+    color:white;
+    font-size: 20px;
+    font-family: microsoft yahei light,Roboto, "Helvetica Neue", sans-serif;
+    padding: 8px 8px;
+}
+.nav {
+    padding: 5px 30px;
 }
 mat-spinner {
     float: left;
