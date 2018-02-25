@@ -6,6 +6,8 @@ import { baseUrl } from '../globals';
 
 import 'rxjs/add/operator/toPromise';
 
+// 获取模板数据
+
 @Injectable()
 export class DataManageService {
     private getDataUrl = baseUrl + '/operationFlowById'; // 服务器地址
