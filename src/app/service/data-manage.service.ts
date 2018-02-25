@@ -6,7 +6,7 @@ import { baseUrl } from '../globals';
 
 import 'rxjs/add/operator/toPromise';
 
-// 从服务器获取模板数据
+// 从服务器获取模板数据, 采用Promise异步
 
 @Injectable()
 export class DataManageService {
