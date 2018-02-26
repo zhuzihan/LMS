@@ -1,3 +1,5 @@
-2018-02-26
+2018-02-26 (yuchen)
 1. format code style
 2. add data manage service
+3. change data form
+4. remove several unuseful functions
