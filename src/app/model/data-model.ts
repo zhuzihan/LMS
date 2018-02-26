@@ -251,25 +251,25 @@ cell_8_3.source_data = '';
 cell_8_3.source_sn = '';
 
 export const row_1 = new DataRow();
-row_1.cells = { 'col1': cell_1_1, 'col2': cell_1_2, 'col3': cell_1_3 };
+row_1.cells = { 'c.1.1': cell_1_1, 'c.1.2': cell_1_2, 'c.1.3': cell_1_3 };
 export const row_2 = new DataRow();
-row_2.cells = { 'col1': cell_2_1 };
+row_2.cells = { 'c.2.1': cell_2_1 };
 export const row_3 = new DataRow();
-row_3.cells = { 'col1': cell_3_1, 'col2': cell_3_2, 'col3': cell_3_3 };
+row_3.cells = { 'c.3.1': cell_3_1, 'c.3.2': cell_3_2, 'c.3.3': cell_3_3 };
 export const row_4 = new DataRow();
-row_4.cells = { 'col1': cell_4_1, 'col2': cell_4_2 };
+row_4.cells = { 'c.4.1': cell_4_1, 'c.4.2': cell_4_2 };
 export const row_5 = new DataRow();
-row_5.cells = { 'col1': cell_5_1, 'col2': cell_5_2 };
+row_5.cells = { 'c.5.1': cell_5_1, 'c.5.2': cell_5_2 };
 export const row_6 = new DataRow();
-row_6.cells = { 'col1': cell_6_1, 'col2': cell_6_2 };
+row_6.cells = { 'c.6.1': cell_6_1, 'c.6.2': cell_6_2 };
 export const row_7 = new DataRow();
-row_7.cells = { 'col1': cell_7_1};
+row_7.cells = { 'c.7.1': cell_7_1};
 export const row_8 = new DataRow();
-row_8.cells = { 'col1': cell_8_1, 'col2': cell_8_2, 'col3': cell_8_3 };
+row_8.cells = { 'c.8.1': cell_8_1, 'c.8.2': cell_8_2, 'c.8.3': cell_8_3 };
 
 export const table_1 = new DataTable();
 table_1.cell_list = {'c.1.1': '标准溶液名称'};
-table_1.rows = {'row1': row_1, 'row2': row_2, 'row3': row_3, 'row4': row_4, 'row5': row_5, 'row6': row_6, 'row7': row_7, 'row8': row_8};
+table_1.rows = {'row.1': row_1, 'row.2': row_2, 'row.3': row_3, 'row.4': row_4, 'row.5': row_5, 'row.6': row_6, 'row.7': row_7, 'row.8': row_8};
 
 
 // 模块中的列表
