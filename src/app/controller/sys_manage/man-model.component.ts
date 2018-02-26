@@ -144,7 +144,7 @@ export class ManModelComponent implements OnChanges {
     // 提交表单
     onSubmit() {
         // console.log("onsubmit1");
-        //this.model = this.prepareSaveModel();
+        // this.model = this.prepareSaveModel();
         // debug
         // console.log(this.model);
         this.modelDataService.updateModelData(this.model).subscribe(/* error handing */);
