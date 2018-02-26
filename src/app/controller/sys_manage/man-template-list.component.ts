@@ -3,6 +3,8 @@ import { Template } from '../../model/data-model';
 import { ModelDataService } from './model-data.service';
 import { Observable } from 'rxjs/Observable';
 import { DataManageService } from '../../service/data-manage.service';
+import { model_test, template_test } from '../../model/data-model';
+
 
 @Component({
     // tslint:disable-next-line:component-selector
@@ -14,7 +16,8 @@ export class ManTemplateListComponent implements OnInit {
     templates: Observable<Template[]>;
     isLoading = false;
     selectedTemplate: Template;
-    dataJson: String;
+    dataJson: Template;
+    json_str: String;
 
     // constructor(private modelDataService: ModelDataService) { }
     constructor(private dataManageService: DataManageService) { }
@@ -23,10 +26,13 @@ export class ManTemplateListComponent implements OnInit {
 
     getTemplates() {
         // this.isLoading = true;
-        this.dataManageService.getOperationFlow(42).then(jsonData => this.dataJson = jsonData);
+        // this.dataManageService.getOperationFlow(42).then(jsonData => this.dataJson = jsonData);
         // console.log('Response Data: ', this.dataManageService.getOperationFlow(42));
         // console.log('Response Data: ', this.dataJson);
         // this.selectedTemplate = undefined;
+        this.dataJson = template_test;
+        this.json_str = JSON.stringify(this.dataJson);
+        console.log(this.json_str);
     }
 
     select(template: Template) { this.selectedTemplate = template; }
