@@ -9,7 +9,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { ModelDataService } from './model-data.service';
 // import { Model, Field, source } from '../../model/data-model'
-import { Template, Table, source, _Array } from '../../model/data-model';
+import { Template, DataTable, source, DataArray } from '../../model/data-model';
 import { DataManageService } from '../../service/data-manage.service';
 
 @Component({
@@ -33,8 +33,8 @@ export class ManTemplateComponent {
     //     {text: '配置日期：', cols: 3, rows: 1},
     //     {text: '配置人：', cols: 3, rows: 1},
     //   ];
-    getTable() {
-        // tslint:disable-next-line:no-unused-expression
-        this.template.models[0].tables;
-    }
+    // getTable() {
+    //     // tslint:disable-next-line:no-unused-expression
+    //     this.template.models[0].table;
+    // }
 }

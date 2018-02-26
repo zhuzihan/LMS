@@ -9,7 +9,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { ModelDataService } from './model-data.service';
 // import { Model, Field, source } from '../../model/data-model'
-import { Model, Table, source, _Array } from '../../model/data-model';
+import { Model, DataTable, source, DataArray } from '../../model/data-model';
 
 @Component({
     // tslint:disable-next-line:component-selector
@@ -93,7 +93,7 @@ export class ManModelComponent implements OnChanges {
     //     const fieldFormArray = this.fb.array(fieldFGs);
     //     this.modelForm.setControl('fields_form', fieldFormArray);
     // }
-    setTables(tables: Table[]) {
+    setTables(tables: DataTable[]) {
         const tableFGs = tables.map(tables => this.fb.group(tables));
         const tableFormArray = this.fb.array(tableFGs);
         this.modelForm.setControl('tables_form', tableFormArray);
@@ -104,7 +104,7 @@ export class ManModelComponent implements OnChanges {
     //     this.tablesForm.setControl('cell_form', cellFormArray);
     //     this.modelForm.
     // }
-    setArrays(arrays: _Array[]) {
+    setArrays(arrays: DataArray[]) {
         const arrayFGs = arrays.map(arrays => this.fb.group(arrays));
         const arrayFormArray = this.fb.array(arrayFGs);
         this.modelForm.setControl('arrays_form', arrayFormArray);
@@ -122,12 +122,12 @@ export class ManModelComponent implements OnChanges {
     // addField() {
     //     this.fields_form.push(this.fb.group(new Field()));
     // }
-    addTable(row: string, col: string) {
-        this.tables_form.push(this.fb.group(new Table(row, col)));
-    }
-    addArray(row: string, col: string) {
-        this.arrays_form.push(this.fb.group(new _Array(row, col)));
-    }
+    // addTable(row: string, col: string) {
+    //     this.tables_form.push(this.fb.group(new DataTable(row, col)));
+    // }
+    // addArray(row: string, col: string) {
+    //     this.arrays_form.push(this.fb.group(new DataArray(row, col)));
+    // }
 
     // 删除记录
     // removeField(i : number) {
@@ -144,59 +144,59 @@ export class ManModelComponent implements OnChanges {
     // 提交表单
     onSubmit() {
         // console.log("onsubmit1");
-        this.model = this.prepareSaveModel();
+        //this.model = this.prepareSaveModel();
         // debug
         // console.log(this.model);
         this.modelDataService.updateModelData(this.model).subscribe(/* error handing */);
         this.ngOnChanges();
     }
-    prepareSaveModel(): Model {
-        const formModel = this.modelForm.value;
+    // prepareSaveModel(): Model {
+    //     const formModel = this.modelForm.value;
 
-        // deep copy of fields_form
-        // const fieldFormDeepCopy: Field[] = formModel.fields_form.map(
-        //     (field: Field) => Object.assign({}, field)
-        // );
-        // deep copy of tables_form
-        const tableFormDeepCopy: Table[] = formModel.tables_form.map(
-            (table: Table) => Object.assign({}, table)
-        );
-        const arrayFormDeepCopy: _Array[] = formModel.arrays_form.map(
-            (array: _Array) => Object.assign({}, array)
-        );
-        // deep copy of arrays_form
-        // const arrayFormDeepCopy: _Array[] = formModel.fields_form.map(
-        //     (array: _Array) => Object.assign({}, array)
-        // );
+    //     // deep copy of fields_form
+    //     // const fieldFormDeepCopy: Field[] = formModel.fields_form.map(
+    //     //     (field: Field) => Object.assign({}, field)
+    //     // );
+    //     // deep copy of tables_form
+    //     // const tableFormDeepCopy: Table[] = formModel.tables_form.map(
+    //     //     (table: Table) => Object.assign({}, table)
+    //     // );
+    //     // const arrayFormDeepCopy: _Array[] = formModel.arrays_form.map(
+    //     //     (array: _Array) => Object.assign({}, array)
+    //     //);
+    //     // deep copy of arrays_form
+    //     // const arrayFormDeepCopy: _Array[] = formModel.fields_form.map(
+    //     //     (array: _Array) => Object.assign({}, array)
+    //     // );
 
-        // return new 'Field' object containing a combination of original model value
-        // and deep copies of changed form model values
-        // const saveModel: Model = {
-        //     id: this.model.id,
-        //     name: formModel.name as string,
-        //     description: formModel.description as string,
-        //     fields: fieldFormDeepCopy
-        // };
+    //     // return new 'Field' object containing a combination of original model value
+    //     // and deep copies of changed form model values
+    //     // const saveModel: Model = {
+    //     //     id: this.model.id,
+    //     //     name: formModel.name as string,
+    //     //     description: formModel.description as string,
+    //     //     fields: fieldFormDeepCopy
+    //     // };
 
-        // return new 'Field' object containing a combination of original model value
-        // and deep copies of changed form model values
-        const saveModel: Model = {
-            model_id: this.model.model_id,
-            model_name: formModel.model_name as string,
-            has_table: formModel.has_table,
-            has_array: formModel.has_array,
-            tables: tableFormDeepCopy,
-            // array_list: this.model.array_list,
-            arrays: arrayFormDeepCopy,
+    //     // return new 'Field' object containing a combination of original model value
+    //     // and deep copies of changed form model values
+    //     // const saveModel: Model = {
+    //     //     model_id: this.model.model_id,
+    //     //     model_name: formModel.model_name as string,
+    //     //     has_table: formModel.has_table,
+    //     //     has_array: formModel.has_array,
+    //     //     tables: tableFormDeepCopy,
+    //     //     // array_list: this.model.array_list,
+    //     //     arrays: arrayFormDeepCopy,
 
-            // name: formModel.name as string,
-            // description: formModel.description as string,
-            // fields: fieldFormDeepCopy
-        };
-        return saveModel;
-    }
+    //         // name: formModel.name as string,
+    //         // description: formModel.description as string,
+    //         // fields: fieldFormDeepCopy
+    //     };
+    //     return saveModel;
+    // }
     // 监视更改
-    revert() { this.ngOnChanges(); }
+    // revert() { this.ngOnChanges(); }
 
     // logNameChange() {
     //   const nameControl = this.heroForm.get('name');
@@ -210,3 +210,4 @@ export class ManModelComponent implements OnChanges {
     //     this.models = this.modelDataService.getModelData();
     // }
 }
+
