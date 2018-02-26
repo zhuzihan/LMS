@@ -9,7 +9,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { ModelDataService } from './model-data.service';
 // import { Model, Field, source } from '../../model/data-model'
-import { Model, Table, source, _Array } from '../../model/data-model';
+import { Model, DataTable, source, DataArray } from '../../model/data-model';
 
 @Component({
     // tslint:disable-next-line:component-selector
