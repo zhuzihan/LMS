@@ -10,6 +10,7 @@ import { Observable } from 'rxjs/Observable';
 import { ModelDataService } from './model-data.service';
 // import { Model, Field, source } from '../../model/data-model'
 import { Template, Table, source, _Array } from '../../model/data-model';
+import { DataManageService } from '../../service/data-manage.service';
 
 @Component({
     // tslint:disable-next-line:component-selector
@@ -19,6 +20,9 @@ import { Template, Table, source, _Array } from '../../model/data-model';
 })
 export class ManTemplateComponent {
     @Input() template: Template;
+
+    constructor(private dataManageService: DataManageService) { }
+
     previewTemplate() { }
 
     // tiles = [

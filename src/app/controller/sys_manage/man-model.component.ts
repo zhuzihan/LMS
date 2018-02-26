@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core'
+import { Component, Input, OnChanges } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { NgForOf } from '@angular/common';
 import { OnInit } from '@angular/core';
@@ -9,15 +9,16 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { ModelDataService } from './model-data.service';
 // import { Model, Field, source } from '../../model/data-model'
-import { Model, Table, source, _Array } from '../../model/data-model'
+import { Model, Table, source, _Array } from '../../model/data-model';
 
 @Component({
+    // tslint:disable-next-line:component-selector
     selector: 'man-model',
     templateUrl: '../../view/man-model.component.html',
     styleUrls: ['../../css/man-model.component.css']
 })
-export class ManModelComponent implements OnChanges{
-    @Input() model : Model;
+export class ManModelComponent implements OnChanges {
+    @Input() model: Model;
     modelForm: FormGroup;
     source = source;
     // models : Model[];
@@ -29,7 +30,7 @@ export class ManModelComponent implements OnChanges{
     // rows: row[];
 
     // name = new FormControl();
-    //nameChangeLog: string[] = [];
+    // nameChangeLog: string[] = [];
 
     // tiles = [
     //     {text: '硫酸：（H2SO4，密度1.84g/ml，分析纯）。', cols: 10, rows: 1},
@@ -39,7 +40,7 @@ export class ManModelComponent implements OnChanges{
     //     {text: '配置日期：', cols: 3, rows: 1},
     //     {text: '配置人：', cols: 3, rows: 1},
     //   ];
-    
+
     constructor(
         private fb: FormBuilder,
         private modelDataService: ModelDataService) {
@@ -52,11 +53,11 @@ export class ManModelComponent implements OnChanges{
     createForm() {
         this.modelForm = this.fb.group({
             model_id: 0,
-            model_name: ['', Validators.required ],
+            model_name: ['', Validators.required],
             // description: '',
             // fields_form: this.fb.array([]),
-            has_table : 1,
-            has_array : 1,
+            has_table: 1,
+            has_array: 1,
             tables_form: this.fb.array([]),
             arrays_form: this.fb.array([]),
             // tablesForm: this.fb.group({
@@ -66,12 +67,12 @@ export class ManModelComponent implements OnChanges{
             // array_list : [],
             // arrays_form: this.fb.group({
             //     array_form: this.fb.array([]),
-                // array_col: 1,
-                // array_row: 1,
-                // col_list_form: this.fb.group({
-                //     cell_list_form: this.fb.array([]),
-                //     rows_form : this.fb.array([]),
-                // })
+            // array_col: 1,
+            // array_row: 1,
+            // col_list_form: this.fb.group({
+            //     cell_list_form: this.fb.array([]),
+            //     rows_form : this.fb.array([]),
+            // })
             // }),
         });
     }
@@ -100,7 +101,7 @@ export class ManModelComponent implements OnChanges{
     // setCellList(cell: cell[]) {
     //     const cellFGs = cell.map(cell => this.fb.group(cell));
     //     const cellFormArray = this.fb.array(cellFGs);
-    //     this.tablesForm.setControl('cell_form', cellFormArray);  
+    //     this.tablesForm.setControl('cell_form', cellFormArray);
     //     this.modelForm.
     // }
     setArrays(arrays: _Array[]) {
@@ -117,34 +118,34 @@ export class ManModelComponent implements OnChanges{
     get arrays_form(): FormArray {
         return this.modelForm.get('arrays_form') as FormArray;
     }
-    //添加记录
+    // 添加记录
     // addField() {
     //     this.fields_form.push(this.fb.group(new Field()));
     // }
-    addTable(row : string,col :string) {
-        this.tables_form.push(this.fb.group(new Table(row,col)));
+    addTable(row: string, col: string) {
+        this.tables_form.push(this.fb.group(new Table(row, col)));
     }
-    addArray(row : string,col :string) {
-        this.arrays_form.push(this.fb.group(new _Array(row,col)));
+    addArray(row: string, col: string) {
+        this.arrays_form.push(this.fb.group(new _Array(row, col)));
     }
 
-    //删除记录
+    // 删除记录
     // removeField(i : number) {
     //     this.fields_form.removeAt(i);
     // }
-    //删除列表
-    removeTable(i : number) {
+    // 删除列表
+    removeTable(i: number) {
         this.tables_form.removeAt(i);
     }
-    删除数组
-    removeArray(i : number) {
+    // 删除数组
+    removeArray(i: number) {
         this.arrays_form.removeAt(i);
     }
-    //提交表单
+    // 提交表单
     onSubmit() {
         // console.log("onsubmit1");
         this.model = this.prepareSaveModel();
-        //debug
+        // debug
         // console.log(this.model);
         this.modelDataService.updateModelData(this.model).subscribe(/* error handing */);
         this.ngOnChanges();
@@ -152,24 +153,24 @@ export class ManModelComponent implements OnChanges{
     prepareSaveModel(): Model {
         const formModel = this.modelForm.value;
 
-        //deep copy of fields_form
+        // deep copy of fields_form
         // const fieldFormDeepCopy: Field[] = formModel.fields_form.map(
         //     (field: Field) => Object.assign({}, field)
         // );
-        //deep copy of tables_form
+        // deep copy of tables_form
         const tableFormDeepCopy: Table[] = formModel.tables_form.map(
             (table: Table) => Object.assign({}, table)
         );
         const arrayFormDeepCopy: _Array[] = formModel.arrays_form.map(
             (array: _Array) => Object.assign({}, array)
         );
-        //deep copy of arrays_form
+        // deep copy of arrays_form
         // const arrayFormDeepCopy: _Array[] = formModel.fields_form.map(
         //     (array: _Array) => Object.assign({}, array)
         // );
 
-        //return new 'Field' object containing a combination of original model value
-        //and deep copies of changed form model values
+        // return new 'Field' object containing a combination of original model value
+        // and deep copies of changed form model values
         // const saveModel: Model = {
         //     id: this.model.id,
         //     name: formModel.name as string,
@@ -177,8 +178,8 @@ export class ManModelComponent implements OnChanges{
         //     fields: fieldFormDeepCopy
         // };
 
-        //return new 'Field' object containing a combination of original model value
-        //and deep copies of changed form model values
+        // return new 'Field' object containing a combination of original model value
+        // and deep copies of changed form model values
         const saveModel: Model = {
             model_id: this.model.model_id,
             model_name: formModel.model_name as string,
@@ -194,7 +195,7 @@ export class ManModelComponent implements OnChanges{
         };
         return saveModel;
     }
-    //监视更改
+    // 监视更改
     revert() { this.ngOnChanges(); }
 
     // logNameChange() {
