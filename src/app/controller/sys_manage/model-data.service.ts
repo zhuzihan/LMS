@@ -11,6 +11,11 @@ export class ModelDataService {
     // getModelData():Model[] {
     //     return block_test;
     // }
+    //获取 key-value 中的 key
+    getKeys(item){
+        return Object.keys(item);
+    }
+
     getModelData(): Observable<Model> {
         return of(model_test).delay(this.delayMs);
     }
