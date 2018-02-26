@@ -280,7 +280,9 @@ model_test.has_array = 1;
 model_test.has_table = 1;
 model_test.tables = [table_1];
 
-
+export const models_test : Model[] = [
+    model_test,
+]
 
 // export const model_test: Model[] = [
 //     {

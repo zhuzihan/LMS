@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import 'rxjs/add/operator/delay';
-import { Template, Model, model_test, template_test, source } from '../../model/data-model';
+import { Template, Model, model_test, models_test, template_test, source } from '../../model/data-model';
 
 @Injectable()
 export class ModelDataService {
@@ -13,6 +13,10 @@ export class ModelDataService {
     // }
     getModelData(): Observable<Model> {
         return of(model_test).delay(this.delayMs);
+    }
+    //返回模块数组
+    getModelsData(): Observable<Model[]> {
+        return of(models_test).delay(this.delayMs);
     }
 
     getTemplateData(): Observable<Template> {

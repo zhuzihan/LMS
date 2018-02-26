@@ -24,4 +24,7 @@ export class ManModelPreviewComponent {
     // getTable() {
     //     this.template.models[0].tables
     // }
+    getKeys(item){
+        return Object.keys(item);
+    }
 }
