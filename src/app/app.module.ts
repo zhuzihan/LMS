@@ -22,6 +22,7 @@ import './polyfill';
 // Import Service
 import { DataManageService } from './service/data-manage.service';
 import { ModelDataService } from './controller/sys_manage/model-data.service';
+import { FormModelDataService } from './controller/sys_manage/form-model-data.service';
 
 @NgModule({
   imports: [
@@ -41,7 +42,7 @@ import { ModelDataService } from './controller/sys_manage/model-data.service';
     AppComponent,
     PageNotFoundComponent,
   ],
-  providers: [ModelDataService, DataManageService],
+  providers: [ModelDataService, FormModelDataService, DataManageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

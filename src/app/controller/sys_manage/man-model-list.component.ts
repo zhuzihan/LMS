@@ -17,6 +17,7 @@ export class ManModelListComponent implements OnInit {
     models: Observable<Model[]>;
     isLoading = false;
     selectedModel: Model;
+    showAdd: false;
 
     constructor(private modelDataService: ModelDataService) { }
 

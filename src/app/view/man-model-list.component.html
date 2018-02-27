@@ -1,27 +1,32 @@
 <div class="content">
   <div>
-    <div *ngIf="isLoading"><mat-spinner [diameter]="24"></mat-spinner><p>加载模块数据... </p></div>
+    <div *ngIf="isLoading">
+      <mat-spinner [diameter]="24"></mat-spinner>
+      <p>加载模块数据... </p>
+    </div>
     <h3 *ngIf="!isLoading">选择模块</h3>
 
     <nav>
-      <button mat-raised-button color="primary" (click)="getModels()">Refresh</button>
-      <button mat-raised-button *ngFor="let model of models | async" (click)="select(model)">{{model.model_name}}</button>
+      <button mat-raised-button color="primary" (click)="getModels()">刷新</button>
+      <button mat-raised-button *ngFor="let model of models | async" (click)="select(model);showAdd=false">{{model.model_name}}</button>
+      <button mat-raised-button (click)="showAdd = !showAdd;selectedModel = false">{{showAdd ? '取消添加' : '添加模块'}}</button>
     </nav>
     <!-- <p>Form value: {{ models | json }}</p> -->
   </div>
-
+  <div *ngIf="showAdd">
+    <man-model-add></man-model-add>
+  </div>
   <div *ngIf="selectedModel">
     <br/>
     <mat-tab-group>
-        <mat-tab label="预览">
-          <h3>预览的模块: {{selectedModel.model_name}}</h3>
-          <man-model-preview [model]="selectedModel"></man-model-preview>
-        </mat-tab>
-        <mat-tab label="编辑">
-          <h3>编辑的模块: {{selectedModel.model_name}}</h3>
-          <!-- <man-model [model]="selectedModel"></man-model> -->
-        </mat-tab>
+      <mat-tab label="预览">
+        <h3>预览的模块: {{selectedModel.model_name}}</h3>
+        <man-model-preview [model]="selectedModel"></man-model-preview>
+      </mat-tab>
+      <mat-tab label="编辑">
+        <h3>编辑的模块: {{selectedModel.model_name}}</h3>
+        <!-- <man-model [model]="selectedModel"></man-model> -->
+      </mat-tab>
     </mat-tab-group>
-
   </div>
 </div>
