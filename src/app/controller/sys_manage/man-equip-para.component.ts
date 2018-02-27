@@ -38,8 +38,34 @@ export class ManEquipParaComponent implements OnInit {
       expParaJsonArray.shift();
       new_para_data['tableData'] = expParaJsonArray;
       this.expParameterList.push(new_para_data);
+      // console.log(this.convertNewFormat2OldFormat(new_para_data));
+      // console.log(new_para_data);
+      // if (one_para['id'] === 17) {
+      //   new_para_data['tableData'][0]['column1'] = 'Angular update';
+      //   new_para_data['tableName'] = 'Angular Insert';
+      //   // tslint:disable-next-line:max-line-length
+      //   this.expParameterSerivce.insertExpParameter(this.convertNewFormat2OldFormat(new_para_data)).then(responseData => console.log(responseData));
+      // }
     }
     console.log(this.expParameterList);
+  }
+
+  // 参数表新旧数据格式转换
+  convertNewFormat2OldFormat(newFormatData: Object) {
+    const old_format_data: Object = new Object();
+    // old_format_data['id'] = newFormatData['tableId'];
+    old_format_data['name'] = newFormatData['tableName'];
+    old_format_data['registrant'] = newFormatData['tableRegistrant'];
+    old_format_data['remark'] = newFormatData['tableRemark'];
+    old_format_data['state'] = newFormatData['tableState'];
+    const temp_array: Array<Object> = new Array();
+    for (const one_data of newFormatData['tableData']){
+      temp_array.push(one_data);
+    }
+    temp_array.reverse().push(newFormatData['tableHead']);
+    temp_array.reverse();
+    old_format_data['json'] = JSON.stringify(temp_array);
+    return old_format_data;
   }
 
   applyFilter(filterValue: string) {
