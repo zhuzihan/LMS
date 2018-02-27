@@ -15,6 +15,7 @@ export class ManEquipParaComponent implements OnInit {
   dataSource = new MatTableDataSource(ELEMENT_DATA);
   expParameterData: Object;
   expParameterList: Array<Object> = [];
+  isLoading = false;
 
   constructor(private expParameterSerivce: ExpParameterService) { }
 
@@ -39,6 +40,7 @@ export class ManEquipParaComponent implements OnInit {
       new_para_data['tableData'] = expParaJsonArray;
       this.expParameterList.push(new_para_data);
     }
+    this.isLoading = true;
     console.log(this.expParameterList);
   }
 
