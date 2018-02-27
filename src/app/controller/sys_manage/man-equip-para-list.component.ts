@@ -11,17 +11,18 @@ import { ExpParameterService } from '../../service/exp-parameter.service';
   providers: [ExpParameterService]
 })
 export class ManEquipParaListComponent implements OnInit {
-  displayedColumns = ['name', 'weight', 'symbol'];
+  displayedColumns = ['tableName', 'tableRegistrant', 'tableRemark','tableState'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
   expParameterData: Object;
   expParameterList: Array<Object> = [];
+  isLoading = true;
 
   constructor(private expParameterSerivce: ExpParameterService) { }
 
   ngOnInit(): void {
     this.expParameterSerivce.getExpParameter().then(responseData => {
       this.expParameterData = responseData;
-      this.getParameterList(this.expParameterData);
+      this.getParameterList(this.expParameterData)
     });
   }
 
@@ -39,6 +40,7 @@ export class ManEquipParaListComponent implements OnInit {
       new_para_data['tableData'] = expParaJsonArray;
       this.expParameterList.push(new_para_data);
     }
+    this.isLoading = false;
     console.log(this.expParameterList);
   }
 

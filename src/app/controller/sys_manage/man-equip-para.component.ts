@@ -11,10 +11,11 @@ import { ExpParameterService } from '../../service/exp-parameter.service';
   providers: [ExpParameterService]
 })
 export class ManEquipParaComponent {
-//   displayedColumns = ['name', 'weight', 'symbol'];
-//   dataSource = new MatTableDataSource(ELEMENT_DATA);
-//   expParameterData: Object;
-//   expParameterList: Array<Object> = [];
+  // displayedColumns = ['name', 'weight', 'symbol'];
+  // dataSource = new MatTableDataSource(ELEMENT_DATA);
+  // expParameterData: Object;
+  // expParameterList: Array<Object> = [];
+  // isLoading = false;
 
 //   constructor(private expParameterSerivce: ExpParameterService) { }
 
@@ -41,6 +42,24 @@ export class ManEquipParaComponent {
 //     }
 //     console.log(this.expParameterList);
 //   }
+
+  // getParameterList(expParaData: Object) {
+  //   for (const one_para of Object.values(expParaData)) {
+  //     const expParaJsonArray: Array<Object> = JSON.parse(one_para['json']);
+  //     const new_para_data: Object = new Object();
+  //     new_para_data['tableId'] = one_para['id'];
+  //     new_para_data['tableName'] = one_para['name'];
+  //     new_para_data['tableRegistrant'] = one_para['registrant'];
+  //     new_para_data['tableRemark'] = one_para['remark'];
+  //     new_para_data['tableState'] = one_para['state'];
+  //     new_para_data['tableHead'] = expParaJsonArray[0];
+  //     expParaJsonArray.shift();
+  //     new_para_data['tableData'] = expParaJsonArray;
+  //     this.expParameterList.push(new_para_data);
+  //   }
+  //   this.isLoading = true;
+  //   console.log(this.expParameterList);
+  // }
 
 //   // 参数表新旧数据格式转换
 //   convertNewFormat2OldFormat(newFormatData: Object) {
