@@ -17,7 +17,8 @@ export class ManTemplateListComponent implements OnInit {
     isLoading = false;
     selectedTemplate: Template;
     dataJson: Template;
-    json_str: String;
+    json_str: string;
+    json_data: Object;
 
     // constructor(private modelDataService: ModelDataService) { }
     constructor(private dataManageService: DataManageService) { }
@@ -31,8 +32,13 @@ export class ManTemplateListComponent implements OnInit {
         // console.log('Response Data: ', this.dataJson);
         // this.selectedTemplate = undefined;
         this.dataJson = template_test;
+        console.log(this.dataJson['models']);
+        for (const keys of Object.keys(template_test)) {
+            console.log(keys);
+        }
         this.json_str = JSON.stringify(this.dataJson);
-        console.log(this.json_str);
+        this.json_data = JSON.parse(this.json_str);
+        console.log(this.json_data['models']['model.1']['tables'][0]['rows']['row.1']['cells']['c.1.1']);
     }
 
     select(template: Template) { this.selectedTemplate = template; }

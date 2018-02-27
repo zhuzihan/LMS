@@ -1,16 +1,46 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
+import { ExpParameterService } from '../../service/exp-parameter.service';
 // import {MatTableModule} from '@angular/material'
 
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'man-equip-para',
   templateUrl: '../../view/man-equip-para.component.html',
-  styleUrls: ['../../css/man-equip-para.component.css']
+  styleUrls: ['../../css/man-equip-para.component.css'],
+  providers: [ExpParameterService]
 })
-export class ManEquipParaComponent {
+export class ManEquipParaComponent implements OnInit {
   displayedColumns = ['name', 'weight', 'symbol'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
+  expParameterData: Object;
+  expParameterList: Array<Object> = [];
+
+  constructor(private expParameterSerivce: ExpParameterService) { }
+
+  ngOnInit(): void {
+    this.expParameterSerivce.getExpParameter().then(responseData => {
+      this.expParameterData = responseData;
+      this.getParameterList(this.expParameterData);
+    });
+  }
+
+  getParameterList(expParaData: Object) {
+    for (const one_para of Object.values(expParaData)) {
+      const expParaJsonArray: Array<Object> = JSON.parse(one_para['json']);
+      const new_para_data: Object = new Object();
+      new_para_data['tableId'] = one_para['id'];
+      new_para_data['tableName'] = one_para['name'];
+      new_para_data['tableRegistrant'] = one_para['registrant'];
+      new_para_data['tableRemark'] = one_para['remark'];
+      new_para_data['tableState'] = one_para['state'];
+      new_para_data['tableHead'] = expParaJsonArray[0];
+      expParaJsonArray.shift();
+      new_para_data['tableData'] = expParaJsonArray;
+      this.expParameterList.push(new_para_data);
+    }
+    console.log(this.expParameterList);
+  }
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
@@ -18,6 +48,8 @@ export class ManEquipParaComponent {
     this.dataSource.filter = filterValue;
   }
 }
+
+
 
 export interface Element {
   name: string;
