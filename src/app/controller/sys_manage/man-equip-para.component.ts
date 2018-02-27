@@ -38,14 +38,6 @@ export class ManEquipParaComponent implements OnInit {
       expParaJsonArray.shift();
       new_para_data['tableData'] = expParaJsonArray;
       this.expParameterList.push(new_para_data);
-      // console.log(this.convertNewFormat2OldFormat(new_para_data));
-      // console.log(new_para_data);
-      // if (one_para['id'] === 17) {
-      //   new_para_data['tableData'][0]['column1'] = 'Angular update';
-      //   new_para_data['tableName'] = 'Angular Insert';
-      //   // tslint:disable-next-line:max-line-length
-      //   this.expParameterSerivce.insertExpParameter(this.convertNewFormat2OldFormat(new_para_data)).then(responseData => console.log(responseData));
-      // }
     }
     console.log(this.expParameterList);
   }
@@ -59,7 +51,7 @@ export class ManEquipParaComponent implements OnInit {
     old_format_data['remark'] = newFormatData['tableRemark'];
     old_format_data['state'] = newFormatData['tableState'];
     const temp_array: Array<Object> = new Array();
-    for (const one_data of newFormatData['tableData']){
+    for (const one_data of newFormatData['tableData']) {
       temp_array.push(one_data);
     }
     temp_array.reverse().push(newFormatData['tableHead']);
