@@ -40,6 +40,8 @@ export class DataCell {
     value: String;
     row: number;
     col: number;
+    rowspan: number;
+    colspan: number;
 }
 
 
@@ -73,6 +75,8 @@ cell_1_1.source_type = '1';
 cell_1_1.source_name = '录入';
 cell_1_1.source_data = '';
 cell_1_1.source_sn = '';
+cell_1_1.rowspan = 5;
+cell_1_1.colspan = 1;
 
 export const cell_1_2 = new DataCell();
 cell_1_2.sn = 'c.1.2';
@@ -84,6 +88,8 @@ cell_1_2.source_type = '2';
 cell_1_2.source_name = '引用';
 cell_1_2.source_data = '';
 cell_1_2.source_sn = '';
+cell_1_2.rowspan = 3;
+cell_1_2.colspan = 1;
 
 export const cell_1_3 = new DataCell();
 cell_1_3.sn = 'c.1.3';
@@ -95,6 +101,8 @@ cell_1_3.source_type = '1';
 cell_1_3.source_name = '录入';
 cell_1_3.source_data = '';
 cell_1_3.source_sn = '';
+cell_1_3.rowspan = 2;
+cell_1_3.colspan = 1;
 
 export const cell_2_1 = new DataCell();
 cell_2_1.sn = 'c.2.1';
@@ -106,6 +114,8 @@ cell_2_1.source_type = '1';
 cell_2_1.source_name = '录入';
 cell_2_1.source_data = '';
 cell_2_1.source_sn = '';
+cell_2_1.rowspan = 10;
+cell_2_1.colspan = 1;
 
 export const cell_3_1 = new DataCell();
 cell_3_1.sn = 'c.3.1';
@@ -117,6 +127,8 @@ cell_3_1.source_type = '1';
 cell_3_1.source_name = '录入';
 cell_3_1.source_data = '';
 cell_3_1.source_sn = '';
+cell_3_1.rowspan = 3;
+cell_3_1.colspan = 1;
 
 export const cell_3_2 = new DataCell();
 cell_3_2.sn = 'c.3.2';
@@ -128,6 +140,8 @@ cell_3_2.source_type = '3';
 cell_3_2.source_name = '参数表';
 cell_3_2.source_data = ['PL2002', 'JA5003', 'BS210S', 'AL204'];
 cell_3_2.source_sn = '{电子天平#型号}';
+cell_3_2.rowspan = 3;
+cell_3_2.colspan = 1;
 
 export const cell_3_3 = new DataCell();
 cell_3_3.sn = 'c.3.3';
@@ -139,6 +153,8 @@ cell_3_3.source_type = '1';
 cell_3_3.source_name = '录入';
 cell_3_3.source_data = '';
 cell_3_3.source_sn = '';
+cell_3_3.rowspan = 4;
+cell_3_2.colspan = 1;
 
 export const cell_4_1 = new DataCell();
 cell_4_1.sn = 'c.4.1';
@@ -150,6 +166,8 @@ cell_4_1.source_type = '3';
 cell_4_1.source_name = '参数表';
 cell_4_1.source_data = ['无水碳酸钠', '邻苯二甲酸氢钾', '氢氧化钠', '重铬酸钾', '氯化钾'];
 cell_4_1.source_sn = '{标准化学物质#名称}';
+cell_4_1.rowspan = 5;
+cell_4_1.colspan = 1;
 
 export const cell_4_2 = new DataCell();
 cell_4_2.sn = 'c.4.2';
@@ -157,10 +175,12 @@ cell_4_2.row = 4;
 cell_4_2.col = 2;
 cell_4_2.name = '分子式';
 cell_4_2.value = 'KCl';
-cell_4_1.source_type = '3';
-cell_4_1.source_name = '参数表';
-cell_4_1.source_data = ['KCl'];
-cell_4_1.source_sn = '{标准化学物质#名称.氯化钾#分子式}';
+cell_4_2.source_type = '3';
+cell_4_2.source_name = '参数表';
+cell_4_2.source_data = ['KCl'];
+cell_4_2.source_sn = '{标准化学物质#名称.氯化钾#分子式}';
+cell_4_2.rowspan = 5;
+cell_4_2.colspan = 1;
 
 export const cell_5_1 = new DataCell();
 cell_5_1.sn = 'c.5.1';
@@ -172,6 +192,8 @@ cell_5_1.source_type = '3';
 cell_5_1.source_name = '参数表';
 cell_5_1.source_data = ['≥99.95%'];
 cell_5_1.source_sn = '{标准化学物质#名称.氯化钾#纯度}';
+cell_5_1.rowspan = 5;
+cell_5_1.colspan = 1;
 
 export const cell_5_2 = new DataCell();
 cell_5_2.sn = 'c.5.2';
@@ -183,6 +205,8 @@ cell_5_2.source_type = '1';
 cell_5_2.source_name = '录入';
 cell_5_2.source_data = '';
 cell_5_2.source_sn = '';
+cell_5_2.rowspan = 5;
+cell_5_2.colspan = 1;
 
 export const cell_6_1 = new DataCell();
 cell_6_1.sn = 'c.6.1';
@@ -190,10 +214,12 @@ cell_6_1.row = 6;
 cell_6_1.col = 1;
 cell_6_1.name = '定容容器(ml)';
 cell_6_1.value = '1000';
-cell_5_1.source_type = '3';
-cell_5_1.source_name = '参数表';
-cell_5_1.source_data = ['1', '2', '5', '10', '25', '50', '100', '250', '1000'];
-cell_5_1.source_sn = '{容量瓶#标称容量}';
+cell_6_1.source_type = '3';
+cell_6_1.source_name = '参数表';
+cell_6_1.source_data = ['1', '2', '5', '10', '25', '50', '100', '250', '1000'];
+cell_6_1.source_sn = '{容量瓶#标称容量}';
+cell_6_1.rowspan = 5;
+cell_6_1.colspan = 1;
 
 export const cell_6_2 = new DataCell();
 cell_6_2.sn = 'c.6.2';
@@ -201,10 +227,12 @@ cell_6_2.row = 6;
 cell_6_2.col = 2;
 cell_6_2.name = '标准物质';
 cell_6_2.value = 'K';
-cell_5_1.source_type = '3';
-cell_5_1.source_name = '参数表';
-cell_5_1.source_data = ['H', 'He', 'Li', 'Be', 'B', 'C', 'N', 'O', 'Fe'];
-cell_5_1.source_sn = '{Book1#符号}';
+cell_6_2.source_type = '3';
+cell_6_2.source_name = '参数表';
+cell_6_2.source_data = ['H', 'He', 'Li', 'Be', 'B', 'C', 'N', 'O', 'Fe'];
+cell_6_2.source_sn = '{Book1#符号}';
+cell_6_2.rowspan = 5;
+cell_6_2.colspan = 1;
 
 export const cell_7_1 = new DataCell();
 cell_7_1.sn = 'c.7.1';
@@ -216,6 +244,8 @@ cell_7_1.source_type = '4';
 cell_7_1.source_name = '公式';
 cell_7_1.source_data = '';
 cell_7_1.source_sn = '';
+cell_7_1.rowspan = 5;
+cell_7_1.colspan = 1;
 
 export const cell_8_1 = new DataCell();
 cell_8_1.sn = 'c.8.1';
@@ -227,6 +257,8 @@ cell_8_1.source_type = '1';
 cell_8_1.source_name = '录入';
 cell_8_1.source_data = '';
 cell_8_1.source_sn = '';
+cell_8_1.rowspan = 4;
+cell_8_1.colspan = 1;
 
 export const cell_8_2 = new DataCell();
 cell_8_2.sn = 'c.8.2';
@@ -238,6 +270,8 @@ cell_8_2.source_type = '1';
 cell_8_2.source_name = '录入';
 cell_8_2.source_data = '';
 cell_8_2.source_sn = '';
+cell_8_2.rowspan = 4;
+cell_8_2.colspan = 1;
 
 export const cell_8_3 = new DataCell();
 cell_8_3.sn = 'c.8.3';
@@ -249,6 +283,8 @@ cell_8_3.source_type = '1';
 cell_8_3.source_name = '录入';
 cell_8_3.source_data = '';
 cell_8_3.source_sn = '';
+cell_8_3.rowspan = 2;
+cell_8_3.colspan = 1;
 
 export const row_1 = new DataRow();
 row_1.cells = { 'c.1.1': cell_1_1, 'c.1.2': cell_1_2, 'c.1.3': cell_1_3 };
@@ -263,13 +299,14 @@ row_5.cells = { 'c.5.1': cell_5_1, 'c.5.2': cell_5_2 };
 export const row_6 = new DataRow();
 row_6.cells = { 'c.6.1': cell_6_1, 'c.6.2': cell_6_2 };
 export const row_7 = new DataRow();
-row_7.cells = { 'c.7.1': cell_7_1};
+row_7.cells = { 'c.7.1': cell_7_1 };
 export const row_8 = new DataRow();
 row_8.cells = { 'c.8.1': cell_8_1, 'c.8.2': cell_8_2, 'c.8.3': cell_8_3 };
 
 export const table_1 = new DataTable();
-table_1.cell_list = {'c.1.1': '标准溶液名称'};
-table_1.rows = {'row.1': row_1, 'row.2': row_2, 'row.3': row_3, 'row.4': row_4, 'row.5': row_5, 'row.6': row_6, 'row.7': row_7, 'row.8': row_8};
+table_1.cell_list = { 'c.1.1': '标准溶液名称' };
+// tslint:disable-next-line:max-line-length
+table_1.rows = { 'row.1': row_1, 'row.2': row_2, 'row.3': row_3, 'row.4': row_4, 'row.5': row_5, 'row.6': row_6, 'row.7': row_7, 'row.8': row_8 };
 
 
 // 模块中的列表
@@ -280,9 +317,9 @@ model_test.has_array = 1;
 model_test.has_table = 1;
 model_test.tables = [table_1];
 
-export const models_test : Model[] = [
+export const models_test: Model[] = [
     model_test,
-]
+];
 
 // export const model_test: Model[] = [
 //     {
