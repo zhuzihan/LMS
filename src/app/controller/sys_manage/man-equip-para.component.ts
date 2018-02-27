@@ -34,12 +34,12 @@ export class ManEquipParaComponent implements OnInit {
       new_para_data['tableRegistrant'] = one_para['registrant'];
       new_para_data['tableRemark'] = one_para['remark'];
       new_para_data['tableState'] = one_para['state'];
-      new_para_data['tableHead'] = expParaData[0];
+      new_para_data['tableHead'] = expParaJsonArray[0];
       expParaJsonArray.shift();
       new_para_data['tableData'] = expParaJsonArray;
       this.expParameterList.push(new_para_data);
-      console.log(this.expParameterList);
     }
+    console.log(this.expParameterList);
   }
 
   applyFilter(filterValue: string) {
