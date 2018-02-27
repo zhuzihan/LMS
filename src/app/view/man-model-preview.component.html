@@ -5,8 +5,8 @@
             <div *ngFor="let row_key of getKeys(table.rows)">
                 <div *ngFor="let cell_key of getKeys(table.rows[row_key].cells)">
                     <mat-grid-tile
-                        [colspan]="table.rows[row_key].cells[cell_key].col"
-                        [rowspan]="table.rows[row_key].cells[cell_key].row">
+                        [colspan]="table.rows[row_key].cells[cell_key].colspan"
+                        [rowspan]="table.rows[row_key].cells[cell_key].rowspan">
                             {{table.rows[row_key].cells[cell_key].name}}
                             {{table.rows[row_key].cells[cell_key].value}}
                     </mat-grid-tile>
