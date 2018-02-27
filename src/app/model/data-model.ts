@@ -329,10 +329,10 @@ export const models_test: Model[] = [
 //         has_array: 1,
 //         tables: [
 //             { sn: '001', row: '1', col: 'A', colspan: 10, rowspan: 1, name: '一、试剂准备', value: '', source_type: 1, source: '录入' },
-//             // tslint:disable-next-line:max-line-length
+// tslint:disable-next-line:max-line-length
 //             { sn: '001', row: '1', col: 'A', colspan: 10, rowspan: 1, name: '硫酸：', value: '（H2SO4，密度1.84g/ml，分析纯）。', source_type: 1, source: '录入' },
 //             { sn: '001', row: '1', col: 'A', colspan: 10, rowspan: 1, name: '高氯酸：', value: '（HClO4,70%,分析纯）。', source_type: 1, source: '录入' },
-//             // tslint:disable-next-line:max-line-length
+// tslint:disable-next-line:max-line-length
 //             { sn: '001', row: '1', col: 'A', colspan: 10, rowspan: 1, name: '6mol/L盐酸：', value: '浓盐酸（HCl,分析纯）与水按1：1体积混合。', source_type: 1, source: '录入' },
 //             { sn: '001', row: '1', col: 'A', colspan: 4, rowspan: 1, name: '配置日期：', value: '', source_type: 1, source: '录入' },
 //             { sn: '001', row: '1', col: 'A', colspan: 3, rowspan: 1, name: '有效期限：', value: '', source_type: 1, source: '录入' },
@@ -359,7 +359,7 @@ export const models_test: Model[] = [
 //         has_table: 1,
 //         has_array: 1,
 //         tables: [
-//             // tslint:disable-next-line:max-line-length
+// tslint:disable-next-line:max-line-length
 //             { sn: '001', row: '1', col: 'A', colspan: 10, rowspan: 1, name: '2,4-二硝基酚或（2,6-二硝基酚）指示剂：', value: '溶解0.20g2,4-二硝基酚于100mL水中。', source_type: 1, source: '录入' },
 //             { sn: '001', row: '1', col: 'A', colspan: 4, rowspan: 1, name: '配置日期：', value: '', source_type: 1, source: '录入' },
 //             { sn: '001', row: '1', col: 'A', colspan: 3, rowspan: 1, name: '有效期限：', value: '', source_type: 1, source: '录入' },
@@ -381,7 +381,7 @@ export const models_test: Model[] = [
 //         has_table: 0,
 //         has_array: 0,
 //         tables: [
-//             // tslint:disable-next-line:max-line-length
+// tslint:disable-next-line:max-line-length
 //             { sn: '001', row: '1', col: 'A', colspan: 10, rowspan: 3, name: '钼锑储存液：', value: '153ml浓硫酸（H2SO4，密度1.84g/ml，分析纯），缓缓的倒入400ml水中，搅拌，冷却另取10g钼酸铵溶液[(NH4)6Mo7O24•4H2O,分析纯]，溶解于约60℃的300ml水中，冷却。然后将硫酸溶液缓缓倒入钼酸铵溶液中，再加入100ml 0.5%酒石酸锑钾（KSbOC4H4O6•1/2H2O,分析纯）溶液，最后用水稀释至1L,避光储存。此储存液含10mg/L钼酸铵与2.75mol/L硫酸。', source_type: 1, source: '录入' },
 //             { sn: '001', row: '1', col: 'A', colspan: 4, rowspan: 1, name: '配置日期：', value: '', source_type: 1, source: '录入' },
 //             { sn: '001', row: '1', col: 'A', colspan: 3, rowspan: 1, name: '有效期限：', value: '', source_type: 1, source: '录入' },
@@ -403,7 +403,7 @@ export const models_test: Model[] = [
 //         has_table: 0,
 //         has_array: 0,
 //         tables: [
-//             // tslint:disable-next-line:max-line-length
+// tslint:disable-next-line:max-line-length
 //             { sn: '001', row: '1', col: 'A', colspan: 10, rowspan: 1, name: '钼锑抗显色剂：', value: '1.50g抗坏血酸( C6H8O6，左旋， 旋光度+210 - +220，分析纯)溶于100ml钼锑储存液中。此液需现用现配。', source_type: 1, source: '录入' },
 //             { sn: '001', row: '1', col: 'A', colspan: 4, rowspan: 1, name: '配置日期：', value: '', source_type: 1, source: '录入' },
 //             { sn: '001', row: '1', col: 'A', colspan: 3, rowspan: 1, name: '有效期限：', value: '', source_type: 1, source: '录入' },
@@ -428,7 +428,7 @@ export const models_test: Model[] = [
 //         has_table: 1,
 //         has_array: 1,
 //         tables: [
-//             // tslint:disable-next-line:max-line-length
+// tslint:disable-next-line:max-line-length
 //             { sn: '001', row: '1', col: 'A', colspan: 10, rowspan: 1, name: '10%碳酸钠：', value: '10g碳酸钠（Na2CO3 分析纯）溶于10ml水中。', source_type: 1, source: '录入' },
 //             { sn: '001', row: '1', col: 'A', colspan: 4, rowspan: 1, name: '配置日期：', value: '', source_type: 1, source: '录入' },
 //             { sn: '001', row: '1', col: 'A', colspan: 3, rowspan: 1, name: '有效期限：', value: '', source_type: 1, source: '录入' },
@@ -456,6 +456,7 @@ export const models_test: Model[] = [
 //         has_array: 1,
 //         tables: [
 //             // tslint:disable-next-line:max-line-length
+// tslint:disable-next-line:max-line-length
 //             { sn: '001', row: '1', col: 'A', colspan: 10, rowspan: 1, name: '1mol/L硫酸溶液：', value: '吸取27.8ml浓硫酸（H2SO4，密度1.84g/ml，分析纯）溶于水中，定容1000ml 。', source_type: 1, source: '录入' },
 //             { sn: '001', row: '1', col: 'A', colspan: 4, rowspan: 1, name: '配置日期：', value: '', source_type: 1, source: '录入' },
 //             { sn: '001', row: '1', col: 'A', colspan: 3, rowspan: 1, name: '有效期限：', value: '', source_type: 1, source: '录入' },
