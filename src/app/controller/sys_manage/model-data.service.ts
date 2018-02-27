@@ -14,7 +14,7 @@ export class ModelDataService {
     getModelData(): Observable<Model> {
         return of(model_test).delay(this.delayMs);
     }
-    //返回模块数组
+    // 返回模块数组
     getModelsData(): Observable<Model[]> {
         return of(models_test).delay(this.delayMs);
     }
