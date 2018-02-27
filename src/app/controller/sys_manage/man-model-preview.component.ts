@@ -9,7 +9,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { ModelDataService } from './model-data.service';
 // import { Model, Field, source } from '../../model/data-model'
-import { Model, DataTable, source, DataArray } from '../../model/data-model';
+import { Model } from '../../model/data-model';
 
 @Component({
     // tslint:disable-next-line:component-selector
@@ -20,11 +20,11 @@ import { Model, DataTable, source, DataArray } from '../../model/data-model';
 export class ManModelPreviewComponent {
     @Input() model: Model;
     previewTemplate() { }
-
+    constructor(private modelDataService: ModelDataService) { }
     // getTable() {
     //     this.template.models[0].tables
     // }
-    getKeys(item){
-        return Object.keys(item);
+    getKeys(item) {
+        return this.modelDataService.getKeys(item);
     }
 }

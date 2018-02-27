@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import 'rxjs/add/operator/delay';
-import { Template, Model, DataCell, model_test, models_test, template_test, source } from '../../model/data-model';
-
+// import { Template, Model, model_test, models_test, template_test, source } from '../../model/data-model';
+import { Template, Model, model_test } from '../../model/form-data-model';
 @Injectable()
 export class ModelDataService {
     delayMs = 500;
@@ -12,33 +12,22 @@ export class ModelDataService {
     //     return block_test;
     // }
     //获取 key-value 中的 key
-    getKeys(item) {
+    getKeys(item){
         return Object.keys(item);
     }
-    //提取 cells 中的 Datacell 组合为数组
-    getCells(model: Model) {
-        var cells: DataCell[];
-        for (var table of model.tables) {
-            for (var row_key of this.getKeys(table.rows)) {
-                for (var cell_key of this.getKeys(table.rows[row_key].cells)) {
-                    cells.push(table.rows[row_key].cells[cell_key]);
-                }
-            }
-        }
-        return cells;
-    }
 
-    getModelData(): Observable<Model> {
+    getModelsData(): Observable<Model[]> {
         return of(model_test).delay(this.delayMs);
     }
     // 返回模块数组
-    getModelsData(): Observable<Model[]> {
-        return of(models_test).delay(this.delayMs);
-    }
+    // getModelsData(): Observable<Model[]> {
+    //     return of(models_test).delay(this.delayMs);
+    // }
 
-    getTemplateData(): Observable<Template> {
-        return of(template_test).delay(this.delayMs);
-    }
+    // getTemplateData(): Observable<Template> {
+    //     return of(template_test).delay(this.delayMs);
+    // }
+
     // Fake server update; assume nothing can go wrong
     // updateModelData(block: Model): Observable<Model>  {
     //     const oldModelData = block_test.find(b => b.id === block.id);
