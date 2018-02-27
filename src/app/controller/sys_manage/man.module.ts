@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { ManEquipParaComponent } from './man-equip-para.component';
+import { ManEquipParaListComponent } from './man-equip-para-list.component';
 import { ManModelComponent } from './man-model.component';
 import { ManModelListComponent } from './man-model-list.component';
 import { ManModelPreviewComponent } from './man-model-preview.component';
@@ -31,6 +32,7 @@ import { MaterialModule } from '../../material.module';
     MatGridListModule
   ],
   declarations: [
+    ManEquipParaListComponent,
     ManEquipParaComponent,
     ManModelComponent,
     ManModelListComponent,
