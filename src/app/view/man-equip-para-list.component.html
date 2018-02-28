@@ -1,0 +1,45 @@
+<div class="content">
+    <div *ngIf="isLoading">
+        <mat-spinner [diameter]="24"></mat-spinner>
+        <p>加载数据... </p>
+    </div>
+    <div *ngIf="!isLoading">
+        <!-- <h2>{{expParameterList[0]?.tableName}}</h2> -->
+        <mat-table #table [dataSource]="expParameterList">
+            <ng-container matColumnDef="tableName">
+                <mat-header-cell *matHeaderCellDef> 表名 </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.tableName}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="tableRegistrant">
+                <mat-header-cell *matHeaderCellDef> 登记人 </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.tableRegistrant}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="tableRemark">
+                <mat-header-cell *matHeaderCellDef> 备注 </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.tableRemark}} </mat-cell>
+            </ng-container>
+
+
+            <ng-container matColumnDef="tableState">
+                <mat-header-cell *matHeaderCellDef> 状态 </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.tableState}} </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+        <!-- <div mat-raised-button *ngFor="let expParameter of expParameterList">
+            <mat-list>
+                    <mat-list-item>
+                        {{expParameter.tableName}}
+                        {{expParameter.tableRegistrant}}
+                        {{expParameter.tableRemark}}
+                        {{expParameter.tableState}}
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
+            </mat-list>
+        </div> -->
+    </div>
+</div>

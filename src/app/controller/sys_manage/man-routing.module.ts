@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { SysManagementComponent } from '../index/sys-management.component';
-import { ManEquipParaComponent } from './man-equip-para.component';
+import { ManEquipParaListComponent } from './man-equip-para-list.component';
 import { ManModelListComponent } from './man-model-list.component';
 import { ManTemplateListComponent } from './man-template-list.component';
 import { ManJobModuleComponent } from './man-job-module.component';
@@ -13,13 +13,13 @@ const ManRoutes: Routes = [
     component: SysManagementComponent,
     children: [
       {
-        path: '', component: ManEquipParaComponent,
+        path: '', component: ManEquipParaListComponent,
         // children:[
         //   { path: 'manModel',     component: ManModelComponent }
         // ]
       },
       // 实验器材参数
-      { path: 'manEquip', component: ManEquipParaComponent },
+      { path: 'manEquip', component: ManEquipParaListComponent },
       // 检测标准模块
       { path: 'manModel', component: ManModelListComponent },
       // 原始记录模板
