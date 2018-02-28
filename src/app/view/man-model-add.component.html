@@ -35,9 +35,16 @@
                     </mat-form-field>
                     <mat-form-field>
                         <mat-select formControlName="source_name" placeholder="数据来源">
-                            <mat-option *ngFor="let s of source" [value]="s">{{s.source_name}}</mat-option>
+                            <mat-option *ngFor="let s of source" [value]="s.source_name">{{s.source_name}}</mat-option>
                         </mat-select>
+                        <!-- <mat-hint>{{source_name.value?.source_type}}</mat-hint> -->
                     </mat-form-field>
+                    <!-- <mat-form-field>
+                        <input formControlName="source_type" matInput placeholder="source_type" [value]="name">
+                    </mat-form-field> -->
+                    <!-- <mat-form-field> -->
+                    <!-- <input formControlName="source_type" matInput placeholder="source_type" [value]="source_name.value?.source_type"> -->
+                    <!-- </mat-form-field> -->
 
                     <!-- <mat-form-field>
                         <mat-select placeholder="Favorite animal" [formControl]="animalControl" required>
@@ -96,6 +103,7 @@
           </div> -->
     </form>
     <p>Form value: {{ modelForm.value | json }}</p>
+    <!-- <p>source_name:{{source_name | json}}</p> -->
     <!-- <p>Form status: {{ modelForm.status | json }}</p> -->
     <!-- <p>Name value: {{ modelForm.get('model_name').value }}</p> -->
 </div>

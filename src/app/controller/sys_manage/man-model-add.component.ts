@@ -43,9 +43,9 @@ export class ManModelAddComponent implements OnChanges {
             has_array: -1,
             // tables_form: this.fb.array([]),
             cells_form: this.fb.array([
-                // {
-                //     name: new FormControl(),
-                // }
+                {
+                    name: new FormControl(),
+                }
             ]),
             // arrays_form: this.fb.array([]),
         });
@@ -63,8 +63,11 @@ export class ManModelAddComponent implements OnChanges {
             has_array: this.model.has_array,
         });
         this.setCells(this.model.cells);
-
+        console.log(this.modelForm);
     }
+    //重置内容
+    revert() { this.ngOnChanges(); }
+
     setCells(cells: DataCell[]) {
         const cellFGs = cells.map(cells => this.fb.group(cells));
         const cellFormArray = this.fb.array(cellFGs);
