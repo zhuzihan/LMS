@@ -22,3 +22,13 @@
   max-height: 400px;
   /* background-color:rgba(0,0,0,0); */
 }
+
+.button_inside_table {
+  padding: 0px 16px 0px 0px;
+  display: flex;
+  align-items: left;
+  justify-content: flex-start;
+}
+.preview-content{
+  padding: 10px;
+}
