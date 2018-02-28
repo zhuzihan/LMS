@@ -24,7 +24,14 @@ export class ManTemplateListComponent implements OnInit {
     // constructor(private modelDataService: ModelDataService) { }
     constructor(private dataManageService: DataManageService, private expParameterService: ExpParameterService) { }
 
-    ngOnInit() { this.getTemplates(); }
+    ngOnInit() {
+        this.expParameterService.getExpParameter().then(responseData => {
+            if (responseData.length !== this.expParameterList.length) {
+                this.getParameterList(responseData);
+            }
+            this.getTemplates();
+        });
+    }
 
     getTemplates() {
         // this.isLoading = true;
@@ -82,7 +89,7 @@ export class ManTemplateListComponent implements OnInit {
             }
             if (modelTable.cells[cell_key].source_type === '3') {
                 const source_sn = modelTable.cells[cell_key].source_sn;
-                const source_value = this.fillQuoteParameterCell(source_sn, cell_key, modelTable);
+                const source_value = this.fillQuoteParameterCell(source_sn);
                 if (source_value != null) {
                     console.log(source_value);
                     modelTable.cells[cell_key].source_data = source_value;
@@ -106,46 +113,23 @@ export class ManTemplateListComponent implements OnInit {
         }
     }
 
-    fillQuoteParameterCell(quoteSource: String, cell_key: string, modelTable: DataTable) {
+    fillQuoteParameterCell(quoteSource: String) {
         let quoteSource_str = quoteSource.toString();
         quoteSource_str = quoteSource_str.replace('}', '');
         quoteSource_str = quoteSource_str.replace('{', '');
         const source_list = quoteSource_str.split('#');
-        const source_list_inline = source_list[1].split('.');
+        const source_list_inline = source_list[2].split('.');
         // 解析模块内引用的数据
         if (source_list.length === 3 && source_list[0].includes('expParameter') === true) {
-            if (this.expParameterList.length === 0) {
-                this.expParameterService.getExpParameter().then(responseData => {
-                    if (responseData.length !== this.expParameterList.length) {
-                        this.getParameterList(responseData);
-                    }
-                    this.expParaLoading = true;
-                    for (const one_parameter of this.expParameterList) {
-                        if (one_parameter['tableName'] === source_list_inline[0]) {
-                            for (const head_key of Object.keys(one_parameter['tableHead'])) {
-                                if (one_parameter['tableHead'][head_key] === source_list[2]) {
-                                    const source_data: Array<string> = [];
-                                    for (const para_dict of one_parameter['tableData']) {
-                                        source_data.push(para_dict[head_key]);
-                                    }
-                                    modelTable.cells[cell_key].source_data = source_data;
-                                    return;
-                                }
+            for (const one_parameter of this.expParameterList) {
+                if (one_parameter['tableName'] === source_list_inline[0]) {
+                    for (const head_key of Object.keys(one_parameter['tableHead'])) {
+                        if (one_parameter['tableHead'][head_key] === source_list[2]) {
+                            const source_data: Array<string> = [];
+                            for (const para_dict of one_parameter['tableData']) {
+                                source_data.push(para_dict[head_key]);
                             }
-                        }
-                    }
-                });
-            } else {
-                for (const one_parameter of this.expParameterList) {
-                    if (one_parameter['tableName'] === source_list[1]) {
-                        for (const head_key of Object.keys(one_parameter['tableHead'])) {
-                            if (one_parameter['tableHead'][head_key] === source_list[2]) {
-                                const source_data: Array<string> = [];
-                                for (const para_dict of one_parameter['tableData']) {
-                                    source_data.push(para_dict[head_key]);
-                                }
-                                return source_data;
-                            }
+                            return source_data;
                         }
                     }
                 }
