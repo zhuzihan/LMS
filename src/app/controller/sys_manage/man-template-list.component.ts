@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Template, Model, model_test, template_test } from '../../model/data-model';
+import { Template, Model, model_test, template_test, DataTable } from '../../model/data-model';
 import { ModelDataService } from '../../service/model-data.service';
 import { Observable } from 'rxjs/Observable';
 import { DataManageService } from '../../service/data-manage.service';
+import { ExpParameterService } from '../../service/exp-parameter.service';
 
 @Component({
     // tslint:disable-next-line:component-selector
@@ -17,9 +18,11 @@ export class ManTemplateListComponent implements OnInit {
     testTemplate: Template;
     json_str: string;
     json_data: Template;
+    expParameterList: Array<Object> = [];
+    expParaLoading = false;
 
     // constructor(private modelDataService: ModelDataService) { }
-    constructor(private dataManageService: DataManageService) { }
+    constructor(private dataManageService: DataManageService, private expParameterService: ExpParameterService) { }
 
     ngOnInit() { this.getTemplates(); }
 
@@ -42,6 +45,24 @@ export class ManTemplateListComponent implements OnInit {
         console.log(this.json_data['models']['model.1']['table']['cells']);
     }
 
+    getParameterList(expParaData: Object) {
+        for (const one_para of Object.values(expParaData)) {
+            const expParaJsonArray: Array<Object> = JSON.parse(one_para['json']);
+            const new_para_data: Object = new Object();
+            new_para_data['tableId'] = one_para['id'];
+            new_para_data['tableName'] = one_para['name'];
+            new_para_data['tableRegistrant'] = one_para['registrant'];
+            new_para_data['tableRemark'] = one_para['remark'];
+            new_para_data['tableState'] = one_para['state'];
+            new_para_data['tableHead'] = expParaJsonArray[0];
+            expParaJsonArray.shift();
+            new_para_data['tableData'] = expParaJsonArray;
+            this.expParameterList.push(new_para_data);
+        }
+        this.isLoading = false;
+        console.log(this.expParameterList);
+    }
+
     select(template: Template) { this.selectedTemplate = template; }
     previewTemplate() { }
 
@@ -59,6 +80,14 @@ export class ManTemplateListComponent implements OnInit {
                     modelTable.cells[cell_key].value = source_value;
                 }
             }
+            if (modelTable.cells[cell_key].source_type === '3') {
+                const source_sn = modelTable.cells[cell_key].source_sn;
+                const source_value = this.fillQuoteParameterCell(source_sn, cell_key, modelTable);
+                if (source_value != null) {
+                    console.log(source_value);
+                    modelTable.cells[cell_key].source_data = source_value;
+                }
+            }
         }
     }
 
@@ -72,6 +101,55 @@ export class ManTemplateListComponent implements OnInit {
         if (source_list.length === 2 && source_list[0].includes('model') === true) {
             console.log('find');
             return this.json_data.models[source_list[0]].table.cells[source_list[1]].value;
+        } else {
+            return null;
+        }
+    }
+
+    fillQuoteParameterCell(quoteSource: String, cell_key: string, modelTable: DataTable) {
+        let quoteSource_str = quoteSource.toString();
+        quoteSource_str = quoteSource_str.replace('}', '');
+        quoteSource_str = quoteSource_str.replace('{', '');
+        const source_list = quoteSource_str.split('#');
+        const source_list_inline = source_list[1].split('.');
+        // 解析模块内引用的数据
+        if (source_list.length === 3 && source_list[0].includes('expParameter') === true) {
+            if (this.expParameterList.length === 0) {
+                this.expParameterService.getExpParameter().then(responseData => {
+                    if (responseData.length !== this.expParameterList.length) {
+                        this.getParameterList(responseData);
+                    }
+                    this.expParaLoading = true;
+                    for (const one_parameter of this.expParameterList) {
+                        if (one_parameter['tableName'] === source_list_inline[0]) {
+                            for (const head_key of Object.keys(one_parameter['tableHead'])) {
+                                if (one_parameter['tableHead'][head_key] === source_list[2]) {
+                                    const source_data: Array<string> = [];
+                                    for (const para_dict of one_parameter['tableData']) {
+                                        source_data.push(para_dict[head_key]);
+                                    }
+                                    modelTable.cells[cell_key].source_data = source_data;
+                                    return;
+                                }
+                            }
+                        }
+                    }
+                });
+            } else {
+                for (const one_parameter of this.expParameterList) {
+                    if (one_parameter['tableName'] === source_list[1]) {
+                        for (const head_key of Object.keys(one_parameter['tableHead'])) {
+                            if (one_parameter['tableHead'][head_key] === source_list[2]) {
+                                const source_data: Array<string> = [];
+                                for (const para_dict of one_parameter['tableData']) {
+                                    source_data.push(para_dict[head_key]);
+                                }
+                                return source_data;
+                            }
+                        }
+                    }
+                }
+            }
         } else {
             return null;
         }

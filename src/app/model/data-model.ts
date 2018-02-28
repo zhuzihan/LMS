@@ -151,7 +151,7 @@ cell_3_2.value = 'BS210S';
 cell_3_2.source_type = '3';
 cell_3_2.source_name = '参数表';
 cell_3_2.source_data = ['PL2002', 'JA5003', 'BS210S', 'AL204'];
-cell_3_2.source_sn = '{电子天平#型号}';
+cell_3_2.source_sn = '{expParameter#电子天平#型号}';
 cell_3_2.rowspan = 1;
 cell_3_2.colspan = 3;
 
@@ -177,7 +177,7 @@ cell_4_1.value = '氯化钾';
 cell_4_1.source_type = '3';
 cell_4_1.source_name = '参数表';
 cell_4_1.source_data = ['无水碳酸钠', '邻苯二甲酸氢钾', '氢氧化钠', '重铬酸钾', '氯化钾'];
-cell_4_1.source_sn = '{标准化学物质#名称}';
+cell_4_1.source_sn = '{expParameter#标准化学物质#名称}';
 cell_4_1.rowspan = 1;
 cell_4_1.colspan = 5;
 
@@ -190,7 +190,7 @@ cell_4_2.value = 'KCl';
 cell_4_2.source_type = '3';
 cell_4_2.source_name = '参数表';
 cell_4_2.source_data = ['KCl'];
-cell_4_2.source_sn = '{标准化学物质#名称.氯化钾#分子式}';
+cell_4_2.source_sn = '{expParameter#标准化学物质#名称.氯化钾#分子式}';
 cell_4_2.rowspan = 1;
 cell_4_2.colspan = 5;
 
@@ -203,7 +203,7 @@ cell_5_1.value = '二次称重';
 cell_5_1.source_type = '3';
 cell_5_1.source_name = '参数表';
 cell_5_1.source_data = ['≥99.95%'];
-cell_5_1.source_sn = '{标准化学物质#名称.氯化钾#纯度}';
+cell_5_1.source_sn = '{expParameter#标准化学物质#名称.氯化钾#纯度}';
 cell_5_1.rowspan = 1;
 cell_5_1.colspan = 5;
 
@@ -229,7 +229,7 @@ cell_6_1.value = '1000';
 cell_6_1.source_type = '3';
 cell_6_1.source_name = '参数表';
 cell_6_1.source_data = ['1', '2', '5', '10', '25', '50', '100', '250', '1000'];
-cell_6_1.source_sn = '{容量瓶#标称容量}';
+cell_6_1.source_sn = '{expParameter#容量瓶#标称容量}';
 cell_6_1.rowspan = 1;
 cell_6_1.colspan = 5;
 
@@ -242,7 +242,7 @@ cell_6_2.value = 'K';
 cell_6_2.source_type = '3';
 cell_6_2.source_name = '参数表';
 cell_6_2.source_data = ['H', 'He', 'Li', 'Be', 'B', 'C', 'N', 'O', 'Fe'];
-cell_6_2.source_sn = '{Book1#符号}';
+cell_6_2.source_sn = '{expParameter#Book1#符号}';
 cell_6_2.rowspan = 1;
 cell_6_2.colspan = 5;
 
