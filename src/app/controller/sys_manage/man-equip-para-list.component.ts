@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
 import { ExpParameterService } from '../../service/exp-parameter.service';
 // import {MatTableModule} from '@angular/material'
@@ -10,7 +10,7 @@ import { ExpParameterService } from '../../service/exp-parameter.service';
   styleUrls: ['../../css/man-equip-para.component.css'],
   providers: [ExpParameterService]
 })
-export class ManEquipParaListComponent implements OnInit {
+export class ManEquipParaListComponent implements OnInit,OnChanges {
   displayedColumns = ['tableName', 'tableRegistrant', 'tableRemark', 'tableState'];
   dataSource = new MatTableDataSource;
   expParameterData: Object;
@@ -26,7 +26,9 @@ export class ManEquipParaListComponent implements OnInit {
       this.getParameterList(this.expParameterData);
     });
   }
-
+  ngOnChanges(){
+    console.log(this.selectedExpParameter);
+  }
   getParameterList(expParaData: Object) {
     for (const one_para of Object.values(expParaData)) {
       const expParaJsonArray: Array<Object> = JSON.parse(one_para['json']);

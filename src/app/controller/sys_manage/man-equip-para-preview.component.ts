@@ -21,7 +21,7 @@ export class ManEquipParaPreviewComponent implements OnChanges {
   tableKeys: Array<Object> = [];
 
   constructor(private expParameterSerivce: ExpParameterService) { }
-  
+
   ngOnChanges() {
     this.tableData = this.expParameter['tableData'];
     this.displayedColumns = this.expParameterSerivce.getValues(this.expParameter['tableHead']);
@@ -31,4 +31,6 @@ export class ManEquipParaPreviewComponent implements OnChanges {
     // console.log(this.displayedColumns);
     // console.log(this.tableKeys);
   }
+
 }
+
