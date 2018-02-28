@@ -24,6 +24,7 @@ export class ManModelAddComponent implements OnChanges {
     model = form_model_test[0];
     modelForm: FormGroup;
     source = source;
+    sourceControl = new FormControl('');
 
     constructor(
         private fb: FormBuilder,
@@ -42,9 +43,9 @@ export class ManModelAddComponent implements OnChanges {
             has_array: -1,
             // tables_form: this.fb.array([]),
             cells_form: this.fb.array([
-                {
-                    name: new FormControl()
-                }
+                // {
+                //     name: new FormControl(),
+                // }
             ]),
             // arrays_form: this.fb.array([]),
         });
