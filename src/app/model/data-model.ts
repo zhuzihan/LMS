@@ -15,8 +15,9 @@ export class Model {
     model_standard_name = ''; // 模块标准名称
     has_table = -1;     // 该模块是否拥有列表,'1'是，'-1'否
     has_array = -1;     // 该模块是否拥有数组,'1'是,且代表有一张数据表，'-1'否
-    tables: DataTable[];     // 列表内容
-    arrays: DataArray[];   // 数组内容
+    table: DataTable;     // 列表内容
+    array_list: Array<String> = [];
+    arrays: { [key: string]: DataArray; };   // 数组内容
 }
 
 // 数据表
@@ -40,22 +41,37 @@ export class DataCell {
     colspan: number;
 }
 
-
+export class ArrayCell {
+    sn = '';
+    name = '';
+    source_type = '';
+    source_name = '';
+    source_sn = '';
+    source_data: any;
+    row = '';
+    col = '';
+    colspan = 0;
+    rowspan = 0;
+}
 
 // 数组
 export class DataArray {
-    col = '';
-    row = '';
-    name = '';
-    sn = '';
-    source_type = 1;
-    source = '';
-    value = '';
-    // col_list : cell[];
-    // rows: row[];
+    col_count = 0;
+    row_count = 0;
+    rowspan = 0;
+    colspan = 0;
+    cell_list: Array<ArrayCell>;
     constructor(row, col) {
-        this.row = row;
-        this.col = col;
+        this.row_count = row;
+        this.col_count = col;
+        this.rowspan = 1;
+        this.colspan = 10 / this.col_count;
+        this.cell_list = new Array();
+    }
+    pushWithSpan(cell: ArrayCell) {
+        cell.colspan = this.colspan;
+        cell.rowspan = this.rowspan;
+        this.cell_list.push(cell);
     }
 }
 
@@ -298,6 +314,54 @@ table_1.cells = {
     'c.8.1': cell_8_1, 'c.8.2': cell_8_2, 'c.8.3': cell_8_3
 };
 
+export const array_cell_1_1 = new ArrayCell();
+array_cell_1_1.sn = 'A1';
+array_cell_1_1.name = '名称';
+array_cell_1_1.source_type = '1';
+array_cell_1_1.source_name = '录入';
+array_cell_1_1.source_data = '';
+array_cell_1_1.source_sn = '';
+array_cell_1_1.row = '1';
+array_cell_1_1.col = 'A';
+
+export const array_cell_1_2 = new ArrayCell();
+array_cell_1_2.sn = 'B1';
+array_cell_1_2.name = '化学式';
+array_cell_1_2.source_type = '1';
+array_cell_1_2.source_name = '录入';
+array_cell_1_2.source_data = '';
+array_cell_1_2.source_sn = '';
+array_cell_1_2.row = '1';
+array_cell_1_2.col = 'B';
+
+export const array_cell_2_1 = new ArrayCell();
+array_cell_2_1.sn = 'A2';
+array_cell_2_1.name = '氯化钾';
+array_cell_2_1.source_type = '1';
+array_cell_2_1.source_name = '录入';
+array_cell_2_1.source_data = '';
+array_cell_2_1.source_sn = '';
+array_cell_2_1.row = '2';
+array_cell_2_1.col = 'A';
+
+
+export const array_cell_2_2 = new ArrayCell();
+array_cell_2_2.sn = 'B1';
+array_cell_2_2.name = 'KCl';
+array_cell_2_2.source_type = '1';
+array_cell_2_2.source_name = '录入';
+array_cell_2_2.source_data = '';
+array_cell_2_2.source_sn = '';
+array_cell_2_2.row = '2';
+array_cell_2_2.col = 'B';
+
+export const data_array = new DataArray(2, 2);
+
+data_array.pushWithSpan(array_cell_1_1);
+data_array.pushWithSpan(array_cell_1_2);
+data_array.pushWithSpan(array_cell_2_1);
+data_array.pushWithSpan(array_cell_2_2);
+
 
 // 模块中的列表
 export const model_test = new Model();
@@ -305,7 +369,9 @@ model_test.model_id = 1;
 model_test.model_name = 'model.1';
 model_test.has_array = 1;
 model_test.has_table = 1;
-model_test.tables = [table_1];
+model_test.table = table_1;
+model_test.array_list = ['test_array'];
+model_test.arrays = { 'test_array': data_array };
 
 export const models_test: Model[] = [
     model_test,
