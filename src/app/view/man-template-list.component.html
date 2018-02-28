@@ -2,7 +2,7 @@
     <div>
         <div *ngIf="isLoading"><mat-spinner [diameter]="24"></mat-spinner><p>加载模板数据... </p></div>
         <h3 *ngIf="!isLoading">选择模板</h3>
-        <p> Form Data : {{dataJson | json}}</p>
+        <p> Form Data : {{json_data | json}}</p>
         <nav>
         <button mat-raised-button color="primary" (click)="getTemplates()">Refresh</button>
         <button mat-raised-button *ngFor="let template of templates | async" (click)="select(template)">{{template.whole_name}}</button>
