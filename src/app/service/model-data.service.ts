@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import 'rxjs/add/operator/delay';
-import { Template, Model, DataCell, model_test, models_test, template_test, source } from '../../model/data-model';
+import { Template, Model, DataCell, model_test, models_test, template_test, source } from '../model/data-model';
 
 @Injectable()
 export class ModelDataService {
@@ -18,10 +18,8 @@ export class ModelDataService {
     // 提取 cells 中的 Datacell 组合为数组
     getCells(model: Model) {
         const cells: DataCell[] = [];
-        for (const table of model.tables) {
-            for (const cell_key of this.getKeys(table.cells)) {
-                cells.push(table.cells[cell_key]);
-            }
+        for (const cell_key of this.getKeys(model.table.cells)) {
+            cells.push(model.table.cells[cell_key]);
         }
         return cells;
     }

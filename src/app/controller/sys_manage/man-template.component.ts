@@ -7,7 +7,7 @@ import 'rxjs/add/operator/finally';
 import { DataSource } from '@angular/cdk/collections';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
-import { ModelDataService } from './model-data.service';
+import { ModelDataService } from '../../service/model-data.service';
 // import { Model, Field, source } from '../../model/data-model'
 import { Template, DataTable, source, DataArray } from '../../model/data-model';
 import { DataManageService } from '../../service/data-manage.service';

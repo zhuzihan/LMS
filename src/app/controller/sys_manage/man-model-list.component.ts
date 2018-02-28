@@ -5,7 +5,7 @@ import 'rxjs/add/operator/finally';
 // import { Model } from '../../model/data-model'
 // import { ModelDataService } from './model-data.service'
 import { Model } from '../../model/data-model';
-import { ModelDataService } from './model-data.service';
+import { ModelDataService } from '../../service/model-data.service';
 
 @Component({
     // tslint:disable-next-line:component-selector

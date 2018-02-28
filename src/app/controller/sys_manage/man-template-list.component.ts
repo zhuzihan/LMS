@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Template } from '../../model/data-model';
-import { ModelDataService } from './model-data.service';
+import { ModelDataService } from '../../service/model-data.service';
 import { Observable } from 'rxjs/Observable';
 import { DataManageService } from '../../service/data-manage.service';
 import { model_test, template_test } from '../../model/data-model';
@@ -38,7 +38,7 @@ export class ManTemplateListComponent implements OnInit {
         }
         this.json_str = JSON.stringify(this.dataJson);
         this.json_data = JSON.parse(this.json_str);
-        console.log(this.json_data['models']['model.1']['tables'][0]['rows']['row.1']['cells']['c.1.1']);
+        console.log(this.json_data['models']['model.1']['table']['cells']['c.1.1']);
     }
 
     select(template: Template) { this.selectedTemplate = template; }

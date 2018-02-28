@@ -21,7 +21,7 @@ import './polyfill';
 
 // Import Service
 import { DataManageService } from './service/data-manage.service';
-import { ModelDataService } from './controller/sys_manage/model-data.service';
+import { ModelDataService } from './service/model-data.service';
 import { FormModelDataService } from './controller/sys_manage/form-model-data.service';
 
 @NgModule({
