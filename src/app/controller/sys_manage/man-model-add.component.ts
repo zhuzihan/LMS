@@ -37,7 +37,7 @@ export class ManModelAddComponent implements OnChanges {
         this.modelForm = this.fb.group({
             // model_id: 0,
             // model_name: ['', Validators.required],
-            model_standard_name: "",
+            model_standard_name: '',
             has_table: 1,
             has_array: -1,
             // tables_form: this.fb.array([]),
@@ -69,7 +69,7 @@ export class ManModelAddComponent implements OnChanges {
         const cellFormArray = this.fb.array(cellFGs);
         this.modelForm.setControl('cells_form', cellFormArray);
     }
-    //获取数组
+    // 获取数组
     get cells_form(): FormArray {
         return this.modelForm.get('cells_form') as FormArray;
     }
@@ -92,7 +92,7 @@ export class ManModelAddComponent implements OnChanges {
     }
     prepareSaveModel(): Model {
         const formModel = this.modelForm.value;
-        //deep copy of cells_form
+        // deep copy of cells_form
         const cellFormDeepCopy: DataCell[] = formModel.cells_form.map(
             (cell: DataCell) => Object.assign({}, cell)
         );

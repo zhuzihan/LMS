@@ -7,7 +7,7 @@ import 'rxjs/add/operator/finally';
 import { DataSource } from '@angular/cdk/collections';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
-import { ModelDataService } from './model-data.service';
+import { ModelDataService } from '../../service/model-data.service';
 // import { Model, DataCell } from '../../model/form-data-model';
 import { Model, DataTable, DataCell, source, DataArray } from '../../model/data-model';
 
@@ -35,7 +35,7 @@ export class ManModelComponent implements OnChanges {
         this.modelForm = this.fb.group({
             // model_id: 0,
             // model_name: ['', Validators.required],
-            model_standard_name: "",
+            model_standard_name: '',
             has_table: 1,
             has_array: -1,
             // tables_form: this.fb.array([]),
@@ -57,7 +57,7 @@ export class ManModelComponent implements OnChanges {
         // this.setArrays(this.model.arrays);
     }
     setCells(model: Model) {
-        var cells = this.modelDataService.getCells(model);
+        const cells = this.modelDataService.getCells(model);
         const cellFGs = cells.map(cells => this.fb.group(cells));
         const cellFormArray = this.fb.array(cellFGs);
         this.modelForm.setControl('cells_form', cellFormArray);
@@ -73,7 +73,7 @@ export class ManModelComponent implements OnChanges {
     //     const arrayFormArray = this.fb.array(arrayFGs);
     //     this.modelForm.setControl('arrays_form', arrayFormArray);
     // }
-    //获取数组
+    // 获取数组
     get cells_form(): FormArray {
         return this.modelForm.get('cells_form') as FormArray;
     }
