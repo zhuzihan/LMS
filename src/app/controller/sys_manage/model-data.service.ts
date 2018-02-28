@@ -11,18 +11,16 @@ export class ModelDataService {
     // getModelData():Model[] {
     //     return block_test;
     // }
-    //获取 key-value 中的 key
+    // 获取 key-value 中的 key
     getKeys(item) {
         return Object.keys(item);
     }
-    //提取 cells 中的 Datacell 组合为数组
+    // 提取 cells 中的 Datacell 组合为数组
     getCells(model: Model) {
-        var cells: DataCell[];
-        for (var table of model.tables) {
-            for (var row_key of this.getKeys(table.rows)) {
-                for (var cell_key of this.getKeys(table.rows[row_key].cells)) {
-                    cells.push(table.rows[row_key].cells[cell_key]);
-                }
+        const cells: DataCell[] = [];
+        for (const table of model.tables) {
+            for (const cell_key of this.getKeys(table.cells)) {
+                cells.push(table.cells[cell_key]);
             }
         }
         return cells;

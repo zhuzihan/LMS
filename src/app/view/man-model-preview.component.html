@@ -2,15 +2,13 @@
     <h3>模块{{model.model_name}}预览</h3>
     <mat-grid-list cols="10" rowHeight="25px">
         <div *ngFor="let table of model.tables">
-            <div *ngFor="let row_key of getKeys(table.rows)">
-                <div *ngFor="let cell_key of getKeys(table.rows[row_key].cells)">
-                    <mat-grid-tile
-                        [colspan]="table.rows[row_key].cells[cell_key].colspan"
-                        [rowspan]="table.rows[row_key].cells[cell_key].rowspan">
-                            {{table.rows[row_key].cells[cell_key].name}}
-                            {{table.rows[row_key].cells[cell_key].value}}
-                    </mat-grid-tile>
-                </div>
+            <div *ngFor="let cell_key of getKeys(table.cells)">
+                <mat-grid-tile
+                    [colspan]="table.cells[cell_key].colspan"
+                    [rowspan]="table.cells[cell_key].rowspan">
+                        {{table.cells[cell_key].name}}
+                        {{table.cells[cell_key].value}}
+                </mat-grid-tile>
             </div>
         </div>
     </mat-grid-list>

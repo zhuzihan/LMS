@@ -22,11 +22,6 @@ export class Model {
 // 数据表
 export class DataTable {
     cell_list: { [key: string]: String; };
-    rows: { [key: string]: DataRow; };
-}
-
-// 表的每一行
-export class DataRow {
     cells: { [key: string]: DataCell; };
 }
 
@@ -168,7 +163,7 @@ cell_4_1.source_name = '参数表';
 cell_4_1.source_data = ['无水碳酸钠', '邻苯二甲酸氢钾', '氢氧化钠', '重铬酸钾', '氯化钾'];
 cell_4_1.source_sn = '{标准化学物质#名称}';
 cell_4_1.rowspan = 1;
-cell_4_1.colspan = 2;
+cell_4_1.colspan = 5;
 
 export const cell_4_2 = new DataCell();
 cell_4_2.sn = 'c.4.2';
@@ -181,7 +176,7 @@ cell_4_2.source_name = '参数表';
 cell_4_2.source_data = ['KCl'];
 cell_4_2.source_sn = '{标准化学物质#名称.氯化钾#分子式}';
 cell_4_2.rowspan = 1;
-cell_4_2.colspan = 2;
+cell_4_2.colspan = 5;
 
 export const cell_5_1 = new DataCell();
 cell_5_1.sn = 'c.5.1';
@@ -194,7 +189,7 @@ cell_5_1.source_name = '参数表';
 cell_5_1.source_data = ['≥99.95%'];
 cell_5_1.source_sn = '{标准化学物质#名称.氯化钾#纯度}';
 cell_5_1.rowspan = 1;
-cell_5_1.colspan = 3;
+cell_5_1.colspan = 5;
 
 export const cell_5_2 = new DataCell();
 cell_5_2.sn = 'c.5.2';
@@ -207,7 +202,7 @@ cell_5_2.source_name = '录入';
 cell_5_2.source_data = '';
 cell_5_2.source_sn = '';
 cell_5_2.rowspan = 1;
-cell_5_2.colspan = 3;
+cell_5_2.colspan = 5;
 
 export const cell_6_1 = new DataCell();
 cell_6_1.sn = 'c.6.1';
@@ -220,7 +215,7 @@ cell_6_1.source_name = '参数表';
 cell_6_1.source_data = ['1', '2', '5', '10', '25', '50', '100', '250', '1000'];
 cell_6_1.source_sn = '{容量瓶#标称容量}';
 cell_6_1.rowspan = 1;
-cell_6_1.colspan = 4;
+cell_6_1.colspan = 5;
 
 export const cell_6_2 = new DataCell();
 cell_6_2.sn = 'c.6.2';
@@ -233,7 +228,7 @@ cell_6_2.source_name = '参数表';
 cell_6_2.source_data = ['H', 'He', 'Li', 'Be', 'B', 'C', 'N', 'O', 'Fe'];
 cell_6_2.source_sn = '{Book1#符号}';
 cell_6_2.rowspan = 1;
-cell_6_2.colspan = 3;
+cell_6_2.colspan = 5;
 
 export const cell_7_1 = new DataCell();
 cell_7_1.sn = 'c.7.1';
@@ -246,7 +241,7 @@ cell_7_1.source_name = '公式';
 cell_7_1.source_data = '';
 cell_7_1.source_sn = '';
 cell_7_1.rowspan = 1;
-cell_7_1.colspan = 3;
+cell_7_1.colspan = 10;
 
 export const cell_8_1 = new DataCell();
 cell_8_1.sn = 'c.8.1';
@@ -287,27 +282,21 @@ cell_8_3.source_sn = '';
 cell_8_3.rowspan = 1;
 cell_8_3.colspan = 3;
 
-export const row_1 = new DataRow();
-row_1.cells = { 'c.1.1': cell_1_1, 'c.1.2': cell_1_2, 'c.1.3': cell_1_3 };
-export const row_2 = new DataRow();
-row_2.cells = { 'c.2.1': cell_2_1 };
-export const row_3 = new DataRow();
-row_3.cells = { 'c.3.1': cell_3_1, 'c.3.2': cell_3_2, 'c.3.3': cell_3_3 };
-export const row_4 = new DataRow();
-row_4.cells = { 'c.4.1': cell_4_1, 'c.4.2': cell_4_2 };
-export const row_5 = new DataRow();
-row_5.cells = { 'c.5.1': cell_5_1, 'c.5.2': cell_5_2 };
-export const row_6 = new DataRow();
-row_6.cells = { 'c.6.1': cell_6_1, 'c.6.2': cell_6_2 };
-export const row_7 = new DataRow();
-row_7.cells = { 'c.7.1': cell_7_1 };
-export const row_8 = new DataRow();
-row_8.cells = { 'c.8.1': cell_8_1, 'c.8.2': cell_8_2, 'c.8.3': cell_8_3 };
 
 export const table_1 = new DataTable();
 table_1.cell_list = { 'c.1.1': '标准溶液名称' };
 // tslint:disable-next-line:max-line-length
-table_1.rows = { 'row.1': row_1, 'row.2': row_2, 'row.3': row_3, 'row.4': row_4, 'row.5': row_5, 'row.6': row_6, 'row.7': row_7, 'row.8': row_8 };
+table_1.cells = {
+    'c.1.1': cell_1_1,
+    'c.1.2': cell_1_2, 'c.1.3': cell_1_3,
+    'c.2.1': cell_2_1, 'c.3.1': cell_3_1, 'c.3.2': cell_3_2,
+    'c.3.3': cell_3_3,
+    'c.4.1': cell_4_1, 'c.4.2': cell_4_2,
+    'c.5.1': cell_5_1, 'c.5.2': cell_5_2,
+    'c.6.1': cell_6_1, 'c.6.2': cell_6_2,
+    'c.7.1': cell_7_1,
+    'c.8.1': cell_8_1, 'c.8.2': cell_8_2, 'c.8.3': cell_8_3
+};
 
 
 // 模块中的列表
