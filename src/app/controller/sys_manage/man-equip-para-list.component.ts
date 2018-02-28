@@ -9,17 +9,11 @@ import { ExpParameterService } from '../../service/exp-parameter.service';
   templateUrl: '../../view/man-equip-para-list.component.html',
   styleUrls: ['../../css/man-equip-para.component.css']
 })
-<<<<<<< HEAD
-export class ManEquipParaListComponent implements OnInit {
-  displayedColumns = ['tableName', 'tableRegistrant', 'tableRemark', 'tableState'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
-  expParameterData: Array<Object>;
-=======
-export class ManEquipParaListComponent implements OnInit,OnChanges {
+
+export class ManEquipParaListComponent implements OnInit, OnChanges {
   displayedColumns = ['tableName', 'tableRegistrant', 'tableRemark', 'tableState'];
   dataSource = new MatTableDataSource;
-  expParameterData: Object;
->>>>>>> fb3e1112614a509f5cc55750078428521f997d02
+  expParameterData: Array<Object>;
   expParameterList: Array<Object> = [];
   selectedExpParameter: Object;
   isLoading = true;
@@ -32,17 +26,12 @@ export class ManEquipParaListComponent implements OnInit,OnChanges {
       this.getParameterList(this.expParameterData);
     });
   }
-<<<<<<< HEAD
 
-  getParameterList(expParaData: Array<Object>) {
-    for (const one_para of expParaData) {
-=======
-  ngOnChanges(){
+  ngOnChanges() {
     console.log(this.selectedExpParameter);
   }
-  getParameterList(expParaData: Object) {
-    for (const one_para of Object.values(expParaData)) {
->>>>>>> fb3e1112614a509f5cc55750078428521f997d02
+  getParameterList(expParaData: Array<Object>) {
+    for (const one_para of expParaData) {
       const expParaJsonArray: Array<Object> = JSON.parse(one_para['json']);
       const new_para_data: Object = new Object();
       new_para_data['tableId'] = one_para['id'];
