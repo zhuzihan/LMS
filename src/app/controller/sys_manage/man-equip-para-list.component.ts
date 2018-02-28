@@ -7,13 +7,12 @@ import { ExpParameterService } from '../../service/exp-parameter.service';
   // tslint:disable-next-line:component-selector
   selector: 'man-equip-para',
   templateUrl: '../../view/man-equip-para-list.component.html',
-  styleUrls: ['../../css/man-equip-para.component.css'],
-  providers: [ExpParameterService]
+  styleUrls: ['../../css/man-equip-para.component.css']
 })
 export class ManEquipParaListComponent implements OnInit {
-  displayedColumns = ['tableName', 'tableRegistrant', 'tableRemark','tableState'];
+  displayedColumns = ['tableName', 'tableRegistrant', 'tableRemark', 'tableState'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
-  expParameterData: Object;
+  expParameterData: Array<Object>;
   expParameterList: Array<Object> = [];
   isLoading = true;
 
@@ -22,12 +21,12 @@ export class ManEquipParaListComponent implements OnInit {
   ngOnInit(): void {
     this.expParameterSerivce.getExpParameter().then(responseData => {
       this.expParameterData = responseData;
-      this.getParameterList(this.expParameterData)
+      this.getParameterList(this.expParameterData);
     });
   }
 
-  getParameterList(expParaData: Object) {
-    for (const one_para of Object.values(expParaData)) {
+  getParameterList(expParaData: Array<Object>) {
+    for (const one_para of expParaData) {
       const expParaJsonArray: Array<Object> = JSON.parse(one_para['json']);
       const new_para_data: Object = new Object();
       new_para_data['tableId'] = one_para['id'];

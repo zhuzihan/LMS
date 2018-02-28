@@ -20,11 +20,11 @@ export class ExpParameterService {
      * HTTP Url : /experimentParameter
      * Return : Json
      */
-    getExpParameter(): Promise<Object> {
+    getExpParameter(): Promise<Array<Object>> {
         const url = `${this.getDataUrl}`;
         return this.http.get(url)
                         .toPromise()
-                        .then(response => response.json() as Object)
+                        .then(response => response.json() as Array<Object>)
                         .catch(this.handleError);
     }
 
