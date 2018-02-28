@@ -19,11 +19,9 @@ import { Model } from '../../model/data-model';
 })
 export class ManModelPreviewComponent {
     @Input() model: Model;
-    previewTemplate() { }
+    // previewTemplate() { }
     constructor(private modelDataService: ModelDataService) { }
-    // getTable() {
-    //     this.template.models[0].tables
-    // }
+
     getKeys(item) {
         return this.modelDataService.getKeys(item);
     }

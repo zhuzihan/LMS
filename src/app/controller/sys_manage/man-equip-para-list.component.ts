@@ -11,10 +11,11 @@ import { ExpParameterService } from '../../service/exp-parameter.service';
   providers: [ExpParameterService]
 })
 export class ManEquipParaListComponent implements OnInit {
-  displayedColumns = ['tableName', 'tableRegistrant', 'tableRemark','tableState'];
+  displayedColumns = ['tableName', 'tableRegistrant', 'tableRemark', 'tableState'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
   expParameterData: Object;
   expParameterList: Array<Object> = [];
+  selectedExpParameter: Object;
   isLoading = true;
 
   constructor(private expParameterSerivce: ExpParameterService) { }
@@ -22,7 +23,7 @@ export class ManEquipParaListComponent implements OnInit {
   ngOnInit(): void {
     this.expParameterSerivce.getExpParameter().then(responseData => {
       this.expParameterData = responseData;
-      this.getParameterList(this.expParameterData)
+      this.getParameterList(this.expParameterData);
     });
   }
 
@@ -44,6 +45,7 @@ export class ManEquipParaListComponent implements OnInit {
     console.log(this.expParameterList);
   }
 
+  select(expParameter: Object) { this.selectedExpParameter = expParameter; }
   // 参数表新旧数据格式转换
   convertNewFormat2OldFormat(newFormatData: Object) {
     const old_format_data: Object = new Object();
