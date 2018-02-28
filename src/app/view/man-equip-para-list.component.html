@@ -4,7 +4,7 @@
         <p>加载数据... </p>
     </div>
     <div *ngIf="!isLoading">
-        <!-- <h2>{{expParameterList[0]?.tableName}}</h2> -->
+        <h2>参数表</h2>
         <mat-table #table [dataSource]="expParameterList">
             <ng-container matColumnDef="tableName">
                 <mat-header-cell *matHeaderCellDef> 表名 </mat-header-cell>
@@ -34,7 +34,7 @@
         </mat-table>
 
         <div *ngIf="selectedExpParameter">
-            <p>预览的表: {{selectedExpParameter.tableName}}</p>
+            <man-equip-para-preview [expParameter]="selectedExpParameter"></man-equip-para-preview>
         </div>
     </div>
 </div>

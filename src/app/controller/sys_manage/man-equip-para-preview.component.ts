@@ -1,6 +1,7 @@
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
 import { ExpParameterService } from '../../service/exp-parameter.service';
+import { ArrayType } from '@angular/compiler/src/output/output_ast';
 // import {MatTableModule} from '@angular/material'
 
 @Component({
@@ -10,7 +11,28 @@ import { ExpParameterService } from '../../service/exp-parameter.service';
   styleUrls: ['../../css/man-equip-para.component.css'],
   providers: [ExpParameterService]
 })
-export class ManEquipParaPreviewComponent {
-    // expParameterData: Object;
-    @Input() expParameter: Array<Object> = [];
+export class ManEquipParaPreviewComponent implements OnInit {
+
+  // expParameterData: Object;
+  @Input() expParameter: Object;
+  displayedColumns: Array<Object> = [];
+
+  tableData: Array<Object> = [];
+  tableKeys: Array<Object> = [];
+
+  constructor(private expParameterSerivce: ExpParameterService) { }
+  ngOnInit(): void {
+    this.tableData = this.expParameter['tableData'];
+    this.displayedColumns = this.expParameterSerivce.getValues(this.expParameter['tableHead']);
+    this.tableKeys = this.expParameterSerivce.getKeys(this.expParameter['tableHead']);
+    // console.log(this.expParameter['tableData']);
+    // console.log(this.tableData);
+    // console.log(this.displayedColumns);
+    // console.log(this.tableKeys);
+  }
+  ngChanges(){
+    this.tableData = this.expParameter['tableData'];
+    this.displayedColumns = this.expParameterSerivce.getValues(this.expParameter['tableHead']);
+    this.tableKeys = this.expParameterSerivce.getKeys(this.expParameter['tableHead']);
+  }
 }

@@ -71,5 +71,8 @@ export class ExpParameterService {
         }
         return array;
     }
+    getKeys(item) {
+        return Object.keys(item);
+    }
 
 }

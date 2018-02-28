@@ -29,3 +29,6 @@
   align-items: left;
   justify-content: flex-start;
 }
+.preview-content{
+  padding: 10px;
+}
