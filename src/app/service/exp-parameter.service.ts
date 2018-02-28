@@ -64,4 +64,12 @@ export class ExpParameterService {
         return Promise.reject(error.message || error);
     }
 
+    getValues(data: any) {
+        const array: Array<any> = new Array();
+        for (const data_key of Object.keys(data)){
+            array.push(data[data_key]);
+        }
+        return array;
+    }
+
 }
