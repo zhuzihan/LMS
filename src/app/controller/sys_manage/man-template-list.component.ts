@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Template } from '../../model/data-model';
+import { Template, Model, model_test, template_test } from '../../model/data-model';
 import { ModelDataService } from '../../service/model-data.service';
 import { Observable } from 'rxjs/Observable';
 import { DataManageService } from '../../service/data-manage.service';
-import { model_test, template_test } from '../../model/data-model';
-
 
 @Component({
     // tslint:disable-next-line:component-selector
@@ -16,9 +14,9 @@ export class ManTemplateListComponent implements OnInit {
     templates: Observable<Template[]>;
     isLoading = false;
     selectedTemplate: Template;
-    dataJson: Template;
+    testTemplate: Template;
     json_str: string;
-    json_data: Object;
+    json_data: Template;
 
     // constructor(private modelDataService: ModelDataService) { }
     constructor(private dataManageService: DataManageService) { }
@@ -31,18 +29,53 @@ export class ManTemplateListComponent implements OnInit {
         // console.log('Response Data: ', this.dataManageService.getOperationFlow(42));
         // console.log('Response Data: ', this.dataJson);
         // this.selectedTemplate = undefined;
-        this.dataJson = template_test;
-        console.log(this.dataJson['models']);
+        this.testTemplate = template_test;
+        console.log(this.testTemplate['models']);
         for (const keys of Object.keys(template_test)) {
             console.log(keys);
         }
-        this.json_str = JSON.stringify(this.dataJson);
+        this.json_str = JSON.stringify(this.testTemplate);
         this.json_data = JSON.parse(this.json_str);
-        console.log(this.json_data['models']['model.1']['table']['cells']['c.1.1']);
+        for (const model_key of Object.keys(this.json_data.models)) {
+            this.fillCellValue(this.json_data.models[model_key]);
+        }
+        console.log(this.json_data['models']['model.1']['table']['cells']);
     }
 
     select(template: Template) { this.selectedTemplate = template; }
     previewTemplate() { }
+
+    /*
+     * 解析模板中的引用来源，并返回引用值
+     */
+    fillCellValue(model: Model) {
+        const modelTable = model.table;
+        for (const cell_key of Object.keys(modelTable.cells)) {
+            // 数据源格式为引用
+            if (modelTable.cells[cell_key].source_type === '2') {
+                const source_sn = modelTable.cells[cell_key].source_sn;
+                const source_value = this.fillQuoteCell(source_sn);
+                if (source_value != null) {
+                    modelTable.cells[cell_key].value = source_value;
+                }
+            }
+        }
+    }
+
+    // 填充引用的数组
+    fillQuoteCell(quoteSource: String) {
+        let quoteSource_str = quoteSource.toString();
+        quoteSource_str = quoteSource_str.replace('}', '');
+        quoteSource_str = quoteSource_str.replace('{', '');
+        const source_list = quoteSource_str.split('#');
+        // 解析模块内引用的数据
+        if (source_list.length === 2 && source_list[0].includes('model') === true) {
+            console.log('find');
+            return this.json_data.models[source_list[0]].table.cells[source_list[1]].value;
+        } else {
+            return null;
+        }
+    }
 
     // tiles = [
     //     {text: '硫酸：（H2SO4，密度1.84g/ml，分析纯）。', cols: 10, rows: 1},

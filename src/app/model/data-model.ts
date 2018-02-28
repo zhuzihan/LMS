@@ -95,11 +95,11 @@ cell_1_2.sn = 'c.1.2';
 cell_1_2.row = 1;
 cell_1_2.col = 2;
 cell_1_2.name = '浓度';
-cell_1_2.value = '1000';
+cell_1_2.value = '0';
 cell_1_2.source_type = '2';
 cell_1_2.source_name = '引用';
 cell_1_2.source_data = '';
-cell_1_2.source_sn = '';
+cell_1_2.source_sn = '{model.1#c.7.1}';
 cell_1_2.rowspan = 1;
 cell_1_2.colspan = 3;
 

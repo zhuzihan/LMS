@@ -9,3 +9,8 @@
 2. delete unuseful code
 2. fix preview display
 4. add form-add webpage
+
+2018-02-28 (yuchen)
+1. 将model-data.service.ts文件由原路径移入service文件夹中，并修复了因修改路径而引起的引用出错的问题
+2. 在data-model.ts中添加了数组的定义
+3. 重构数据结构，减少数组层数，看起来更为简洁，使用更加方便
