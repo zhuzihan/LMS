@@ -29,3 +29,4 @@
 4. 参数表列表拉取参数表数据 (man-model-add.component.html)
 5. 参数表来源数据添加至表单 (格式：expParameter#表名#表头) (man-model-add.component.html)
 6. 模块预览界面增加数组显示 (man-model.component.html)
+7. 数组数据调整模拟真实

@@ -14,9 +14,7 @@
                 <mat-grid-tile *ngIf="array_cell.row == 1; else space"
                     [colspan]="array_cell.colspan"
                     [rowspan]="array_cell.rowspan">
-                        {{array_cell.name}}
-                        {{array_cell.rowspan}}
-                        {{array_cell.colspan}}
+                        |{{array_cell.name}}|
                 </mat-grid-tile>
                 <ng-template #space>
                     <mat-grid-tile  [ngSwitch]="array_cell.source_type" [colspan]="array_cell.colspan" [rowspan]="array_cell.rowspan">
@@ -32,7 +30,7 @@
                         </div>
                         <div *ngSwitchCase="3">
                             <mat-form-field>
-                                <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+                                <input matInput [matDatepicker]="picker" placeholder="输入或点击图标选择日期">
                                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                 <mat-datepicker #picker></mat-datepicker>
                             </mat-form-field>
