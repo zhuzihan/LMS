@@ -62,6 +62,7 @@ export class ManModelAddComponent implements OnChanges {
     getTableHeads(expPara: Object) {
         this.Columns = this.expParameterSerivce.getValues(expPara['tableHead']);
         let temp_count = 0;
+        this.colDataArray = [];
         for (const dataHead of this.expParameterSerivce.getKeys(expPara['tableHead'])) {
             this.colDataArray.push(this.expParameterSerivce.getFrontValue(expPara['tableData'], dataHead, 3));
             // console.log(this.expParameterSerivce.getFrontValue(expPara['tableData'], dataHead[temp_count], 3));
