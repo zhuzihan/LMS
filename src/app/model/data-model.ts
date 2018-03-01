@@ -1,5 +1,12 @@
 // 数据来源
-export const source = ['录入', '日期', '参数表', '公式', '数组'];
+export const source = [
+    { source_name: '录入', source_type: 1 },
+    { source_name: '引用', source_type: 2 },
+    { source_name: '日期', source_type: 3 },
+    { source_name: '参数表', source_type: 4 },
+    { source_name: '公式', source_type: 5 },
+    { source_name: '数组', source_type: 6 },
+];
 
 // 模板
 export class Template {

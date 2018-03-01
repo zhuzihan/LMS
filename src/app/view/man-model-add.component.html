@@ -33,11 +33,23 @@
                     <mat-form-field>
                         <input formControlName="name" matInput placeholder="单元名">
                     </mat-form-field>
+                    <!-- <mat-form-field>
+                        <mat-select formControlName="source_type" placeholder="数据来源" [(value)]="selected_source_name">
+                            <mat-option *ngFor="let s of source" [value]="s.source_type">{{s.source_name}}</mat-option>
+                        </mat-select>
+                    </mat-form-field> -->
                     <mat-form-field>
-                        <mat-select formControlName="source_name" placeholder="数据来源">
-                            <mat-option *ngFor="let s of source" [value]="s">{{s}}</mat-option>
+                        <mat-select placeholder="数据来源" [(value)]="sourceControl">
+                            <mat-option *ngFor="let s of source;" [value]="s" (click)="patchSourceData(i,s)">{{s.source_name}}</mat-option>
                         </mat-select>
                     </mat-form-field>
+                    <!-- <mat-form-field>
+                        <input formControlName="source_name" matInput placeholder="source_name" [readonly]="true">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input formControlName="source_type" matInput placeholder="source_type" [readonly]="true">
+                    </mat-form-field> -->
+
                     <mat-form-field>
                         <input formControlName="value" matInput placeholder="数据值">
                     </mat-form-field>
@@ -84,7 +96,10 @@
             <button (click)="addArray(1,1)" type="button" mat-raised-button>添加记录</button>
           </div> -->
     </form>
+
     <p>Form value: {{ modelForm.value | json }}</p>
+
+    <!-- <p>source_name:{{source_name | json}}</p> -->
     <!-- <p>Form status: {{ modelForm.status | json }}</p> -->
     <!-- <p>Name value: {{ modelForm.get('model_name').value }}</p> -->
 </div>

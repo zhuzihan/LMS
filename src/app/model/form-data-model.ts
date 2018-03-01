@@ -2,7 +2,14 @@ import {
     cell_1_1, cell_1_2, cell_1_3, cell_2_1, cell_3_1, cell_3_2, cell_3_3, cell_4_1, cell_4_2, cell_5_1, cell_5_2, cell_6_1, cell_6_2, cell_7_1, cell_8_1, cell_8_2, cell_8_3
 } from './data-model'
 // 数据来源
-export const source = ['录入', '日期', '参数表', '公式', '数组'];
+export const source = [
+    { source_name: '录入', source_type: 1 },
+    { source_name: '引用', source_type: 2 },
+    { source_name: '日期', source_type: 3 },
+    { source_name: '参数表', source_type: 4 },
+    { source_name: '公式', source_type: 5 },
+    { source_name: '数组', source_type: 6 },
+];
 
 // 模板
 export class Template {

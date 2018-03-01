@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators, FormControl, FormGroupName } from '@angular/forms';
 import { NgForOf } from '@angular/common';
 import { OnInit } from '@angular/core';
 import 'rxjs/add/operator/finally';
@@ -24,6 +24,8 @@ export class ManModelAddComponent implements OnChanges {
     model = form_model_test[0];
     modelForm: FormGroup;
     source = source;
+    sourceControl: Object;
+    // selected_source_name: '';
 
     constructor(
         private fb: FormBuilder,
@@ -33,6 +35,13 @@ export class ManModelAddComponent implements OnChanges {
     }
     // ngOnInit(): void {
     // }
+    patchSourceData(i: string, source: object) {
+        // i.control.patchValue({ source_name: 'cipchk' });
+        this.cells_form.controls[i].patchValue({
+            source_name: source['source_name'],
+            source_type: source['source_type'],
+        });
+    }
     createForm() {
         this.modelForm = this.fb.group({
             // model_id: 0,
@@ -43,7 +52,7 @@ export class ManModelAddComponent implements OnChanges {
             // tables_form: this.fb.array([]),
             cells_form: this.fb.array([
                 {
-                    name: new FormControl()
+                    name: new FormControl(),
                 }
             ]),
             // arrays_form: this.fb.array([]),
@@ -62,8 +71,11 @@ export class ManModelAddComponent implements OnChanges {
             has_array: this.model.has_array,
         });
         this.setCells(this.model.cells);
-
+        console.log(this.modelForm);
     }
+    //重置内容
+    revert() { this.ngOnChanges(); }
+
     setCells(cells: DataCell[]) {
         const cellFGs = cells.map(cells => this.fb.group(cells));
         const cellFormArray = this.fb.array(cellFGs);
