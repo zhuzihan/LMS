@@ -33,33 +33,28 @@
                     <mat-form-field>
                         <input formControlName="name" matInput placeholder="单元名">
                     </mat-form-field>
+                    <!-- <mat-form-field>
+                        <mat-select formControlName="source_type" placeholder="数据来源" [(value)]="selected_source_name">
+                            <mat-option *ngFor="let s of source" [value]="s.source_type">{{s.source_name}}</mat-option>
+                        </mat-select>
+                    </mat-form-field> -->
                     <mat-form-field>
-                        <mat-select formControlName="source_name" placeholder="数据来源">
-                            <mat-option *ngFor="let s of source" [value]="s.source_name">{{s.source_name}}</mat-option>
+                        <mat-select placeholder="数据来源" [(value)]="sourceControl">
+                            <mat-option *ngFor="let s of source;" [value]="s" (click)="patchSourceData(i,s)">{{s.source_name}}</mat-option>
                         </mat-select>
-                        <!-- <mat-hint>{{source_name.value?.source_type}}</mat-hint> -->
                     </mat-form-field>
-                    <!-- <mat-form-field>
-                        <input formControlName="source_type" matInput placeholder="source_type" [value]="name">
-                    </mat-form-field> -->
-                    <!-- <mat-form-field> -->
-                    <!-- <input formControlName="source_type" matInput placeholder="source_type" [value]="source_name.value?.source_type"> -->
-                    <!-- </mat-form-field> -->
-
-                    <!-- <mat-form-field>
-                        <mat-select placeholder="Favorite animal" [formControl]="animalControl" required>
-                            <mat-option *ngFor="let animal of animals" [value]="animal">
-                                {{animal.name}}
-                            </mat-option>
-                        </mat-select>
-                        <mat-error *ngIf="animalControl.hasError('required')">Please choose an animal</mat-error>
-                        <mat-hint>{{animalControl.value?.sound}}</mat-hint>
-                    </mat-form-field> -->
+                    <mat-form-field>
+                        <input formControlName="source_name" matInput placeholder="source_name" [readonly]="true" [value]="sourceControl?.source_name">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input formControlName="source_type" matInput placeholder="source_type" [readonly]="true" [value]="sourceControl?.source_type">
+                    </mat-form-field>
 
                     <mat-form-field>
                         <input formControlName="value" matInput placeholder="数据值">
                     </mat-form-field>
                     <button (click)="removeCell(i)" type="button" mat-raised-button>删除</button>
+                    <!-- <button (click)="patchSourceData(i)" type="button" mat-raised-button>patch</button> -->
                 </mat-expansion-panel>
 
                 <!-- <mat-expansion-panel (opened)="panelOpenState = true"
@@ -102,7 +97,9 @@
             <button (click)="addArray(1,1)" type="button" mat-raised-button>添加记录</button>
           </div> -->
     </form>
+
     <p>Form value: {{ modelForm.value | json }}</p>
+
     <!-- <p>source_name:{{source_name | json}}</p> -->
     <!-- <p>Form status: {{ modelForm.status | json }}</p> -->
     <!-- <p>Name value: {{ modelForm.get('model_name').value }}</p> -->
