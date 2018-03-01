@@ -8,6 +8,7 @@ import { DataSource } from '@angular/cdk/collections';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { FormModelDataService } from './form-model-data.service';
+import { ExpParameterService } from '../../service/exp-parameter.service';
 // import { Model, DataCell } from '../../model/form-data-model';
 import { Model, DataCell, source, form_model_test } from '../../model/form-data-model';
 
@@ -27,14 +28,32 @@ export class ManModelAddComponent implements OnChanges {
     sourceControl: Object;
     // selected_source_name: '';
 
+    //new for test
+    Columns: Array<Object> = [];
+    tableData: Array<Object> = [];
+    tableKeys: Array<Object> = [];
+    colData: Array<Object> = [];
+    expParameterData: Array<Object>;
+    expParameterList: Array<Object> = [];
+    isLoading = true;
+
     constructor(
         private fb: FormBuilder,
-        private modelDataService: FormModelDataService) {
+        private modelDataService: FormModelDataService,
+        private expParameterSerivce: ExpParameterService) {
         this.createForm();
         this.setCells(this.model.cells);
     }
-    // ngOnInit(): void {
-    // }
+    ngOnInit(): void {
+        this.expParameterSerivce.getExpParameter().then(responseData => {
+            this.expParameterData = responseData;
+            this.expParameterList = this.expParameterSerivce.convertParameterList(this.expParameterData);
+            this.isLoading = false;
+        });
+    }
+    getTableHeads(expPara: Object) {
+        this.Columns = this.expParameterSerivce.getValues(expPara['tableHead']);
+    }
     patchSourceData(i: string, source: object) {
         // i.control.patchValue({ source_name: 'cipchk' });
         this.cells_form.controls[i].patchValue({
