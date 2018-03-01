@@ -351,24 +351,66 @@ array_cell_2_1.source_sn = '';
 array_cell_2_1.row = '2';
 array_cell_2_1.col = 'A';
 
-
 export const array_cell_2_2 = new ArrayCell();
 array_cell_2_2.sn = 'B1';
 array_cell_2_2.name = 'KCl';
-array_cell_2_2.source_type = '1';
-array_cell_2_2.source_name = '录入';
+array_cell_2_2.source_type = '2';
+array_cell_2_2.source_name = '引用';
 array_cell_2_2.source_data = '';
 array_cell_2_2.source_sn = '';
 array_cell_2_2.row = '2';
 array_cell_2_2.col = 'B';
 
-export const data_array = new DataArray(2, 2);
+export const array_cell_3_1 = new ArrayCell();
+array_cell_3_1.sn = 'B1';
+array_cell_3_1.name = 'KCl';
+array_cell_3_1.source_type = '3';
+array_cell_3_1.source_name = '参数表';
+array_cell_3_1.source_data = '';
+array_cell_3_1.source_sn = '';
+array_cell_3_1.row = '3';
+array_cell_3_1.col = 'A';
+
+export const array_cell_3_2 = new ArrayCell();
+array_cell_3_2.sn = 'B1';
+array_cell_3_2.name = 'KCl';
+array_cell_3_2.source_type = '4';
+array_cell_3_2.source_name = '公式';
+array_cell_3_2.source_data = '';
+array_cell_3_2.source_sn = '';
+array_cell_3_2.row = '3';
+array_cell_3_2.col = 'B';
+
+export const array_cell_4_1 = new ArrayCell();
+array_cell_4_1.sn = 'B1';
+array_cell_4_1.name = 'KCl';
+array_cell_4_1.source_type = '5';
+array_cell_4_1.source_name = '录入';
+array_cell_4_1.source_data = '';
+array_cell_4_1.source_sn = '';
+array_cell_4_1.row = '4';
+array_cell_4_1.col = 'A';
+
+export const array_cell_4_2 = new ArrayCell();
+array_cell_4_2.sn = 'B1';
+array_cell_4_2.name = 'KCl';
+array_cell_4_2.source_type = '1';
+array_cell_4_2.source_name = '录入';
+array_cell_4_2.source_data = '';
+array_cell_4_2.source_sn = '';
+array_cell_4_2.row = '4';
+array_cell_4_2.col = 'B';
+
+export const data_array = new DataArray(4, 2);
 
 data_array.pushWithSpan(array_cell_1_1);
 data_array.pushWithSpan(array_cell_1_2);
 data_array.pushWithSpan(array_cell_2_1);
 data_array.pushWithSpan(array_cell_2_2);
-
+data_array.pushWithSpan(array_cell_3_1);
+data_array.pushWithSpan(array_cell_3_2);
+data_array.pushWithSpan(array_cell_4_1);
+data_array.pushWithSpan(array_cell_4_2);
 
 // 模块中的列表
 export const model_test = new Model();

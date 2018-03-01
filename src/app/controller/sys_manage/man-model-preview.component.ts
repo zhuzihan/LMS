@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import { NgForOf } from '@angular/common';
+import { NgForOf, NgSwitch } from '@angular/common';
 import { OnInit } from '@angular/core';
 import 'rxjs/add/operator/finally';
 

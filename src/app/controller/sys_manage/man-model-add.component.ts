@@ -26,9 +26,12 @@ export class ManModelAddComponent implements OnChanges {
     modelForm: FormGroup;
     source = source;
     sourceControl: Object;
+    isLoading = true;
     // selected_source_name: '';
 
-    //new for test
+    /**
+     * 设置数据来源为参数表时使用
+     */
     Columns: Array<Object> = [];
     tableData: Array<Object> = [];
     tableKeys: Array<Object> = [];
@@ -42,7 +45,6 @@ export class ManModelAddComponent implements OnChanges {
     expParameterList: Array<Object> = [];
     //设置来源数据为参数表时保存的表头信息
     savedTableName: string;
-    isLoading = true;
 
     constructor(
         private fb: FormBuilder,
