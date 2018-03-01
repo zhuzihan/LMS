@@ -40,6 +40,8 @@ export class ManModelAddComponent implements OnChanges {
     expParameterData: Array<Object>;
     //转换后数据
     expParameterList: Array<Object> = [];
+    //设置来源数据为参数表时保存的表头信息
+    savedTableName: string;
     isLoading = true;
 
     constructor(
@@ -59,6 +61,13 @@ export class ManModelAddComponent implements OnChanges {
     // getFrontValue(parameterList: Array<Object>, headKey: string, count: number) {
     //     return this.expParameterSerivce.getFrontValue(parameterList,headKey,count);
     // }
+    //来源数据为参数表时，将数据添加至表单 (格式：expParameter#表名#表头)
+    addEquipParaToForm(i: string, tableHead: string){
+        this.cells_form.controls[i].patchValue({
+            source_data: "expParameter#"+this.savedTableName+"#"+tableHead,
+        });
+        // console.log("#"+this.savedTableName+"#"+tableHead);
+    }
     getTableHeads(expPara: Object) {
         this.Columns = this.expParameterSerivce.getValues(expPara['tableHead']);
         let temp_count = 0;
@@ -68,7 +77,11 @@ export class ManModelAddComponent implements OnChanges {
             // console.log(this.expParameterSerivce.getFrontValue(expPara['tableData'], dataHead[temp_count], 3));
             temp_count++;
         }
-        console.log(this.colDataArray);
+        // console.log(this.colDataArray);
+    }
+    saveTableName(expPara: Object){
+        this.savedTableName = expPara['tableName'];
+        // console.log(this.savedTableName);
     }
     patchSourceData(i: string, source: object) {
         // i.control.patchValue({ source_name: 'cipchk' });
@@ -107,7 +120,9 @@ export class ManModelAddComponent implements OnChanges {
             has_array: this.model.has_array,
         });
         this.setCells(this.model.cells);
-        console.log(this.modelForm);
+        //临时保存数据置空
+        this.savedTableName = '';
+        // console.log(this.modelForm);
     }
     //重置内容
     revert() { this.ngOnChanges(); }
