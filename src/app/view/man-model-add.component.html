@@ -43,18 +43,17 @@
                             <mat-option *ngFor="let s of source;" [value]="s" (click)="patchSourceData(i,s)">{{s.source_name}}</mat-option>
                         </mat-select>
                     </mat-form-field>
-                    <mat-form-field>
-                        <input formControlName="source_name" matInput placeholder="source_name" [readonly]="true" [value]="sourceControl?.source_name">
+                    <!-- <mat-form-field>
+                        <input formControlName="source_name" matInput placeholder="source_name" [readonly]="true">
                     </mat-form-field>
                     <mat-form-field>
-                        <input formControlName="source_type" matInput placeholder="source_type" [readonly]="true" [value]="sourceControl?.source_type">
-                    </mat-form-field>
+                        <input formControlName="source_type" matInput placeholder="source_type" [readonly]="true">
+                    </mat-form-field> -->
 
                     <mat-form-field>
                         <input formControlName="value" matInput placeholder="数据值">
                     </mat-form-field>
                     <button (click)="removeCell(i)" type="button" mat-raised-button>删除</button>
-                    <!-- <button (click)="patchSourceData(i)" type="button" mat-raised-button>patch</button> -->
                 </mat-expansion-panel>
 
                 <!-- <mat-expansion-panel (opened)="panelOpenState = true"
