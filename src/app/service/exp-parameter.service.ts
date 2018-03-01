@@ -109,12 +109,15 @@ export class ExpParameterService {
         const return_value: Array<string> = [];
         let temp_count = 0;
         for (const one_row of parameterList) {
+            // console.log(one_row);
+            // console.log(headKey);
             return_value.push(one_row[headKey]);
             temp_count++;
             if (temp_count === count) {
                 break;
             }
         }
+        // console.log(return_value);
         return return_value;
     }
 

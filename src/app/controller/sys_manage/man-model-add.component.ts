@@ -28,17 +28,17 @@ export class ManModelAddComponent implements OnChanges {
     sourceControl: Object;
     // selected_source_name: '';
 
-    //new for test
+    // new for test
     Columns: Array<Object> = [];
     tableData: Array<Object> = [];
     tableKeys: Array<Object> = [];
-    //拉取列表每列的数据
+    // 拉取列表每列的数据
     // colData: Array<Object> = [];
-    //列数据的集合
+    // 列数据的集合
     colDataArray: Array<Object> = [];
-    //原始数据
+    // 原始数据
     expParameterData: Array<Object>;
-    //转换后数据
+    // 转换后数据
     expParameterList: Array<Object> = [];
     isLoading = true;
 
@@ -62,9 +62,9 @@ export class ManModelAddComponent implements OnChanges {
     getTableHeads(expPara: Object) {
         this.Columns = this.expParameterSerivce.getValues(expPara['tableHead']);
         let temp_count = 0;
-        for (const dataHead of this.expParameterSerivce.getKeys(expPara['tableData'])) {
-            this.colDataArray.push(this.expParameterSerivce.getFrontValue(expPara['tableData'], dataHead[temp_count], 3));
-            console.log(this.expParameterSerivce.getFrontValue(expPara['tableData'], dataHead[temp_count], 3));
+        for (const dataHead of this.expParameterSerivce.getKeys(expPara['tableHead'])) {
+            this.colDataArray.push(this.expParameterSerivce.getFrontValue(expPara['tableData'], dataHead, 3));
+            // console.log(this.expParameterSerivce.getFrontValue(expPara['tableData'], dataHead[temp_count], 3));
             temp_count++;
         }
         console.log(this.colDataArray);
@@ -108,7 +108,7 @@ export class ManModelAddComponent implements OnChanges {
         this.setCells(this.model.cells);
         console.log(this.modelForm);
     }
-    //重置内容
+    // 重置内容
     revert() { this.ngOnChanges(); }
 
     setCells(cells: DataCell[]) {
