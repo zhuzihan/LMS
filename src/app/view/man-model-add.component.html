@@ -54,8 +54,8 @@
 
                         <mat-form-field>
                             <mat-select placeholder="参数表列">
-                                <mat-option *ngFor="let expPara of Columns;">
-                                    {{expPara}}
+                                <mat-option *ngFor="let col of Columns;">
+                                    {{col}},({{colDataArray[0][0]}},{{colDataArray[0][1]}},{{colDataArray[0][2]}}...)
                                 </mat-option>
                             </mat-select>
                         </mat-form-field>

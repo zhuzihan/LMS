@@ -32,8 +32,13 @@ export class ManModelAddComponent implements OnChanges {
     Columns: Array<Object> = [];
     tableData: Array<Object> = [];
     tableKeys: Array<Object> = [];
-    colData: Array<Object> = [];
+    //拉取列表每列的数据
+    // colData: Array<Object> = [];
+    //列数据的集合
+    colDataArray: Array<Object> = [];
+    //原始数据
     expParameterData: Array<Object>;
+    //转换后数据
     expParameterList: Array<Object> = [];
     isLoading = true;
 
@@ -51,8 +56,18 @@ export class ManModelAddComponent implements OnChanges {
             this.isLoading = false;
         });
     }
+    // getFrontValue(parameterList: Array<Object>, headKey: string, count: number) {
+    //     return this.expParameterSerivce.getFrontValue(parameterList,headKey,count);
+    // }
     getTableHeads(expPara: Object) {
         this.Columns = this.expParameterSerivce.getValues(expPara['tableHead']);
+        let temp_count = 0;
+        for (const dataHead of this.expParameterSerivce.getKeys(expPara['tableData'])) {
+            this.colDataArray.push(this.expParameterSerivce.getFrontValue(expPara['tableData'], dataHead[temp_count], 3));
+            console.log(this.expParameterSerivce.getFrontValue(expPara['tableData'], dataHead[temp_count], 3));
+            temp_count++;
+        }
+        console.log(this.colDataArray);
     }
     patchSourceData(i: string, source: object) {
         // i.control.patchValue({ source_name: 'cipchk' });
