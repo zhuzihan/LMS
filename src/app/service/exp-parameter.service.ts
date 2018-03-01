@@ -23,9 +23,9 @@ export class ExpParameterService {
     getExpParameter(): Promise<Array<Object>> {
         const url = `${this.getDataUrl}`;
         return this.http.get(url)
-                        .toPromise()
-                        .then(response => response.json() as Array<Object>)
-                        .catch(this.handleError);
+            .toPromise()
+            .then(response => response.json() as Array<Object>)
+            .catch(this.handleError);
     }
 
     /*
@@ -39,9 +39,9 @@ export class ExpParameterService {
     updateExpParameter(id: number, data: any): Promise<string> {
         const url = `${this.getDataUrl}/${id}`;
         return this.http.put(url, data)
-                        .toPromise()
-                        .then(response => response.text() as string)
-                        .catch(this.handleError);
+            .toPromise()
+            .then(response => response.text() as string)
+            .catch(this.handleError);
     }
 
     /*
@@ -54,9 +54,9 @@ export class ExpParameterService {
     insertExpParameter(data: any): Promise<string> {
         const url = `${this.getDataUrl}`;
         return this.http.post(url, data)
-                        .toPromise()
-                        .then(response => response.text() as string)
-                        .catch(this.handleError);
+            .toPromise()
+            .then(response => response.text() as string)
+            .catch(this.handleError);
     }
 
     private handleError(error: any): Promise<any> {
@@ -66,7 +66,7 @@ export class ExpParameterService {
 
     getValues(data: any) {
         const array: Array<any> = new Array();
-        for (const data_key of Object.keys(data)){
+        for (const data_key of Object.keys(data)) {
             array.push(data[data_key]);
         }
         return array;
@@ -74,6 +74,25 @@ export class ExpParameterService {
 
     getKeys(item) {
         return Object.keys(item);
+    }
+
+    convertParameterList(expParaData: Array<Object>) {
+        const expParameterList: Array<Object> = [];
+        for (const one_para of expParaData) {
+            const expParaJsonArray: Array<Object> = JSON.parse(one_para['json']);
+            const new_para_data: Object = new Object();
+            new_para_data['tableId'] = one_para['id'];
+            new_para_data['tableName'] = one_para['name'];
+            new_para_data['tableRegistrant'] = one_para['registrant'];
+            new_para_data['tableRemark'] = one_para['remark'];
+            new_para_data['tableState'] = one_para['state'];
+            new_para_data['tableHead'] = expParaJsonArray[0];
+            expParaJsonArray.shift();
+            new_para_data['tableData'] = expParaJsonArray;
+            expParameterList.push(new_para_data);
+        }
+        console.log(expParameterList);
+        return expParameterList;
     }
 
 }
