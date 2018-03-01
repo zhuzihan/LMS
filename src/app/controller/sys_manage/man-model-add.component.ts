@@ -64,7 +64,7 @@ export class ManModelAddComponent implements OnChanges {
     //来源数据为参数表时，将数据添加至表单 (格式：expParameter#表名#表头)
     addEquipParaToForm(i: string, tableHead: string){
         this.cells_form.controls[i].patchValue({
-            source_data: "expParameter#"+this.savedTableName+"#"+tableHead,
+            source_data: "{expParameter#"+this.savedTableName+"#"+tableHead+"}",
         });
         // console.log("#"+this.savedTableName+"#"+tableHead);
     }
