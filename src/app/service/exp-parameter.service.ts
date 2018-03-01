@@ -76,6 +76,11 @@ export class ExpParameterService {
         return Object.keys(item);
     }
 
+    /*
+     * 转换服务器数据表的数据格式，使之更加合理
+     * Parms : expParaData : Array<Object> 原始数据列表
+     * Return : 转换完成后的数据列表
+     */
     convertParameterList(expParaData: Array<Object>) {
         const expParameterList: Array<Object> = [];
         for (const one_para of expParaData) {
@@ -93,6 +98,24 @@ export class ExpParameterService {
         }
         console.log(expParameterList);
         return expParameterList;
+    }
+
+    /*
+     * 获取列表前几个数据
+     * Param : parameterList: Array<Object> - 列表, headKey - 列key, count - 获取数量
+     * Retrun : value List
+     */
+    getFrontValue(parameterList: Array<Object>, headKey: string, count: number) {
+        const return_value: Array<string> = [];
+        let temp_count = 0;
+        for (const one_row of parameterList) {
+            return_value.push(one_row[headKey]);
+            temp_count++;
+            if (temp_count === count) {
+                break;
+            }
+        }
+        return return_value;
     }
 
 }
