@@ -40,36 +40,5 @@
             <button mat-raised-button color="primary" (click)="selectedExpParameter = !selectedExpParameter;">返回</button>
         </div>
 
-        <div>
-
-            <form>
-
-                <!-- <mat-form-field>
-                <mat-select placeholder="数据来源" [(value)]="sourceControl">
-                    <mat-option *ngFor="let s of source;" [value]="s" (click)="patchSourceData(i,s)">{{s.source_name}}</mat-option>
-                </mat-select>
-            </mat-form-field> -->
-                <mat-form-field>
-                    <mat-select placeholder="参数表列表">
-                        <mat-option *ngFor="let expPara of expParameterList;" (click)="getTableHeads(expPara)">
-                            表《{{expPara.tableName}}》
-                            【备注：{{expPara.tableRemark}}】
-                            【登记人：{{expPara.tableName}}】
-                            【状态：{{expPara.tableState}}】
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-
-                <mat-form-field>
-                        <mat-select placeholder="参数表列">
-                            <mat-option *ngFor="let expPara of Columns;">
-                                {{expPara}}
-                            </mat-option>
-                        </mat-select>
-                </mat-form-field>
-
-            </form>
-        </div>
-
     </div>
 </div>
