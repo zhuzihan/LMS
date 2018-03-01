@@ -40,6 +40,7 @@ export class ManModelAddComponent implements OnChanges {
         this.cells_form.controls[i].patchValue({
             source_name: source['source_name'],
             source_type: source['source_type'],
+            value: '',
         });
     }
     createForm() {

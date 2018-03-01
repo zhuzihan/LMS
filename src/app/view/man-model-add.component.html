@@ -43,12 +43,11 @@
                             <mat-option *ngFor="let s of source;" [value]="s" (click)="patchSourceData(i,s)">{{s.source_name}}</mat-option>
                         </mat-select>
                     </mat-form-field>
-                    <!-- <mat-form-field>
-                        <input formControlName="source_name" matInput placeholder="source_name" [readonly]="true">
+                    <mat-form-field *ngIf="sourceControl?.source_type==4">
+                        <mat-select placeholder="参数表列表">
+                            <mat-option *ngFor="let s of source;">{{s.source_name}}</mat-option>
+                        </mat-select>
                     </mat-form-field>
-                    <mat-form-field>
-                        <input formControlName="source_type" matInput placeholder="source_type" [readonly]="true">
-                    </mat-form-field> -->
 
                     <mat-form-field>
                         <input formControlName="value" matInput placeholder="数据值">
