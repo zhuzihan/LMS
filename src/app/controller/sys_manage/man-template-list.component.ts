@@ -27,7 +27,7 @@ export class ManTemplateListComponent implements OnInit {
     ngOnInit() {
         this.expParameterService.getExpParameter().then(responseData => {
             if (responseData.length !== this.expParameterList.length) {
-                this.getParameterList(responseData);
+                this.expParameterList = this.expParameterService.convertParameterList(responseData);
             }
             this.getTemplates();
         });
@@ -50,24 +50,6 @@ export class ManTemplateListComponent implements OnInit {
             this.fillCellValue(this.json_data.models[model_key]);
         }
         console.log(this.json_data['models']['model.1']['table']['cells']);
-    }
-
-    getParameterList(expParaData: Object) {
-        for (const one_para of Object.values(expParaData)) {
-            const expParaJsonArray: Array<Object> = JSON.parse(one_para['json']);
-            const new_para_data: Object = new Object();
-            new_para_data['tableId'] = one_para['id'];
-            new_para_data['tableName'] = one_para['name'];
-            new_para_data['tableRegistrant'] = one_para['registrant'];
-            new_para_data['tableRemark'] = one_para['remark'];
-            new_para_data['tableState'] = one_para['state'];
-            new_para_data['tableHead'] = expParaJsonArray[0];
-            expParaJsonArray.shift();
-            new_para_data['tableData'] = expParaJsonArray;
-            this.expParameterList.push(new_para_data);
-        }
-        this.isLoading = false;
-        console.log(this.expParameterList);
     }
 
     select(template: Template) { this.selectedTemplate = template; }
