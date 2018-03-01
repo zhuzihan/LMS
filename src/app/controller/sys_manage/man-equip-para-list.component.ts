@@ -18,6 +18,12 @@ export class ManEquipParaListComponent implements OnInit, OnChanges {
   selectedExpParameter: Object;
   isLoading = true;
 
+  //new for test
+  Columns: Array<Object> = [];
+  tableData: Array<Object> = [];
+  tableKeys: Array<Object> = [];
+  colData: Array<Object> = [];
+
   constructor(private expParameterSerivce: ExpParameterService) { }
 
   ngOnInit(): void {
@@ -46,6 +52,22 @@ export class ManEquipParaListComponent implements OnInit, OnChanges {
     }
     this.isLoading = false;
     console.log(this.expParameterList);
+    // console.log(this.expParameterData);
+
+    //for test
+    // this.tableData = this.expParameterList["0"]["tableData"];
+    
+    // this.tableKeys = this.expParameterSerivce.getKeys(this.expParameterList[0]['tableHead']);
+    // console.log(this.tableData);
+    // console.log(this.Columns);
+    console.log("list");
+    // console.log(this.expParameterList[0]['tableHead']);
+  }
+  getTableHeads(obj: Object){
+    this.Columns = this.expParameterSerivce.getValues(obj['tableHead']);
+    this.colData = this.expParameterSerivce.getValues(obj['tableData']['0']['column1']);
+    console.log("coldata");
+    console.log(this.colData);
   }
 
   select(expParameter: Object) { this.selectedExpParameter = expParameter; }
