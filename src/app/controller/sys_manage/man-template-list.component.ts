@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Template, Model, model_test, template_test, DataTable } from '../../model/data-model';
+import { Template, Model, model_test, template_test, DataTable, source } from '../../model/data-model';
 import { ModelDataService } from '../../service/model-data.service';
 import { Observable } from 'rxjs/Observable';
 import { DataManageService } from '../../service/data-manage.service';
@@ -122,9 +122,9 @@ export class ManTemplateListComponent implements OnInit {
         // 解析模块内引用的数据
         if (source_list.length === 3 && source_list[0].includes('expParameter') === true) {
             for (const one_parameter of this.expParameterList) {
-                if (one_parameter['tableName'] === source_list_inline[0]) {
+                if (one_parameter['tableName'] === source_list[1]) {
                     for (const head_key of Object.keys(one_parameter['tableHead'])) {
-                        if (one_parameter['tableHead'][head_key] === source_list[2]) {
+                        if (one_parameter['tableHead'][head_key] === source_list_inline[0]) {
                             const source_data: Array<string> = [];
                             for (const para_dict of one_parameter['tableData']) {
                                 source_data.push(para_dict[head_key]);
