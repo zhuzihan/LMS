@@ -23,7 +23,7 @@ export class ManModelAddComponent implements OnChanges {
     // cell: DataCell;
     // cells= [this.cells];
     // model = new Model(0, "", "", -1, -1,this.cells);
-    model = model_test;
+    @Input() model = model_test;
     modelForm: FormGroup;
     tableForm: FormGroup;
     arraysForm: FormArray;

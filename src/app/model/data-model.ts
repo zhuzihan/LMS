@@ -436,6 +436,7 @@ data_array.pushWithSpan(array_cell_2_5);
 
 // 模块中的列表
 export const model_test = new Model();
+model_test.model_standard_name = "test_name";
 model_test.model_id = 1;
 model_test.model_name = 'model.1';
 model_test.has_array = 1;
