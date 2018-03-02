@@ -35,3 +35,4 @@
 1. 已有模块编辑 (man-model.component)
 2. 整合模块编辑和新建入口 （man-model-add）
 3. 显示基于 key-value 结构的表单页面 （man-model-add）
+4. 优化模板预览-数组显示效果 (man-model-preview)

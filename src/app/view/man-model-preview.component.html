@@ -14,23 +14,37 @@
                 <mat-grid-tile *ngIf="array_cell.row == 1; else space"
                     [colspan]="array_cell.colspan"
                     [rowspan]="array_cell.rowspan">
-                        |{{array_cell.name}}|
+                        -|{{array_cell.name}}|-
                 </mat-grid-tile>
                 <ng-template #space>
                     <mat-grid-tile  [ngSwitch]="array_cell.source_type" [colspan]="array_cell.colspan" [rowspan]="array_cell.rowspan">
                         <div *ngSwitchCase="1">
-                            <!-- <form>
-                                <mat-form-field> -->
-                                    <input placeholder="录入数据">
-                                <!-- </mat-form-field>                            
-                            </form> -->
+                            -(录入数据)-
+                        </div>
+                        <div *ngSwitchCase="2">
+                            -(引用数据源数据)-
+                        </div>
+                        <div *ngSwitchCase="3">
+                            -(日期数据)-
+                        </div>
+                        <div *ngSwitchCase="4">
+                            -(参数表数据)-
+                        </div>
+                        <div *ngSwitchCase="5">
+                            -(公式)-
+                        </div>
+                        <div *ngSwitchDefault>非法数据类型</div>
+                    </mat-grid-tile>
+                    <!-- <mat-grid-tile  [ngSwitch]="array_cell.source_type" [colspan]="array_cell.colspan" [rowspan]="array_cell.rowspan">
+                        <div *ngSwitchCase="1">
+                            <input placeholder="录入数据">
                         </div>
                         <div *ngSwitchCase="2">
                             <button>引用数据源</button>
                         </div>
                         <div *ngSwitchCase="3">
                             <mat-form-field>
-                                <input matInput [matDatepicker]="picker" placeholder="输入或点击图标选择日期">
+                                <input matInput [matDatepicker]="picker" placeholder="输入/选择日期">
                                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                 <mat-datepicker #picker></mat-datepicker>
                             </mat-form-field>
@@ -42,7 +56,7 @@
                             <button>创建公式</button>
                         </div>
                         <div *ngSwitchDefault>Null</div>
-                    </mat-grid-tile>
+                    </mat-grid-tile> -->
                 </ng-template>
             </div>
         </div>
