@@ -1,93 +1,100 @@
 <div>
-  <h2>添加模块</h2>
+    <h2>添加模块</h2>
+    <form [formGroup]="modelForm" (ngSubmit)="onSubmit()" class="field-form" novalidate>
 
-  <form [formGroup]="modelForm" (ngSubmit)="onSubmit()" class="field-form" novalidate>
-
-    <div style="margin-bottom: 1em">
-      <button type="submit" [disabled]="modelForm.pristine" mat-raised-button>Save</button> &nbsp;
-      <button type="reset" (click)="revert()" [disabled]="modelForm.pristine" mat-raised-button>Revert</button>
-    </div>
-    <!-- <p>Model value: {{ model | json }}</p> -->
-    <span>ID: {{modelForm.get('model_id').value|json}}</span>
-    <span *ngIf="!modelForm.get('has_table').value">无记录</span>
-    <span *ngIf="!modelForm.get('has_array').value">无数据表</span>
-    <mat-form-field class="model-half-width">
-      <input formControlName="model_name" matInput placeholder="模块名称">
-    </mat-form-field>
-
-    <hr>
-    <h4>单元记录</h4>
-
-    <div formArrayName="tables_form">
-      <mat-accordion>
-        <mat-expansion-panel *ngFor="let table of tables_form.controls; let i=index" [formGroupName]="i" class="model-half-width">
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              单元记录 #{{i + 1}}
-            </mat-panel-title>
-            <mat-panel-description>
-              单元记录内容
-            </mat-panel-description>
-          </mat-expansion-panel-header>
-
-          <mat-form-field>
-            <input formControlName="name" matInput placeholder="记录名">
-          </mat-form-field>
-          <mat-form-field>
-            <mat-select formControlName="source" placeholder="数据来源">
-              <mat-option *ngFor="let s of source" [value]="s">{{s}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field>
-            <input formControlName="value" matInput placeholder="数据值">
-          </mat-form-field>
-          <button (click)="removeTable(i)" type="button" mat-raised-button>删除</button>
-        </mat-expansion-panel>
-
-
-        <!-- <mat-expansion-panel (opened)="panelOpenState = true"
-                              (closed)="panelOpenState = false">
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              Self aware panel
-            </mat-panel-title>
-            <mat-panel-description>
-              Currently I am {{panelOpenState ? 'open' : 'closed'}}
-            </mat-panel-description>
-          </mat-expansion-panel-header>
-          <p>I'm visible because I am open</p>
-        </mat-expansion-panel> -->
-
-
-      </mat-accordion>
-      <!-- <p>行号{{row}}</p> -->
-      <button (click)="addTable(1,1)" type="button" mat-raised-button>添加记录</button>
-    </div>
-    <hr>
-    <h4>数组</h4>
-    <!-- <div formArrayName="arrays_form">
-      <div *ngFor="let table of arrays_form.controls; let i=index" [formGroupName]="i">
-        <h4>列 #{{i + 1}}</h4>
-        <button (click)="removeArray(i)" type="button" mat-raised-button>删除</button>
-        <div style="margin-left: 1em;">
-          <mat-form-field class="model-quarter-width">
-            <input formControlName="name" matInput placeholder="记录名">
-          </mat-form-field>
-          <mat-form-field class="model-quarter-width">
-            <mat-select formControlName="source" placeholder="数据来源">
-              <mat-option *ngFor="let s of source" [value]="s">{{s}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field class="model-quarter-width">
-            <input formControlName="value" matInput placeholder="数据值">
-          </mat-form-field>
+        <div style="margin-bottom: 1em">
+            <button type="submit" [disabled]="modelForm.pristine" mat-raised-button>保存</button> &nbsp;
+            <button type="reset" (click)="revert()" [disabled]="modelForm.pristine" mat-raised-button>重置</button>
         </div>
-      </div>
-      <button (click)="addArray(1,1)" type="button" mat-raised-button>添加记录</button>
-    </div> -->
-  </form>
-  <!-- <p>Form value: {{ model.tables | json }}</p> -->
-  <p>Form value: {{ modelForm.value | json }}</p>
-  <p>Form status: {{ modelForm.status | json }}</p>
-  <p>Name value: {{ modelForm.get('model_name').value }}</p>
+        <span>Name: {{modelForm.get('model_standard_name').value|json}}</span>
+        <span *ngIf="modelForm.get('has_table').value == -1">无列表</span>
+        <span *ngIf="modelForm.get('has_array').value == -1">无数据表</span>
+        <mat-form-field class="model-half-width">
+            <input formControlName="model_standard_name" matInput placeholder="模块名称">
+        </mat-form-field>
+
+        <!-- <hr> -->
+        <h4>单元</h4>
+        <div [formGroup]="tableForm" class="model-full-width">
+            <div formArrayName="cells_form">
+                <mat-accordion>
+                    <mat-expansion-panel *ngFor="let cell of cells_form.controls; let i=index" [formGroupName]="i" class="model-full-width">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                单元 #{{i + 1}}
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                单元内容
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+
+                        <mat-form-field class="field-half-width">
+                            <input formControlName="name" matInput placeholder="单元名">
+                        </mat-form-field>
+
+                        <mat-form-field class="field-half-width">
+                            <mat-select placeholder="数据来源" [(value)]="sourceControl">
+                                <mat-option *ngFor="let s of source;" [value]="s" (click)="patchSourceData(i,s)">{{s.source_name}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <div *ngIf="sourceControl?.source_type==4">
+                            <mat-form-field class="field-full-width">
+                                <mat-select placeholder="参数表列表">
+                                    <mat-option *ngFor="let expPara of expParameterList;" [value]="expPara.tableName" (click)="getTableHeads(expPara);saveTableName(expPara);">
+                                        表《{{expPara.tableName}}》 【备注：{{expPara.tableRemark}}】 【登记人：{{expPara.tableName}}】 【状态：{{expPara.tableState}}】
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+
+                            <mat-form-field class="field-full-width">
+                                <mat-select placeholder="参数表列">
+                                    <mat-option *ngFor="let col of Columns;let colId = index" [value]="col" (click)="addEquipParaToForm(i,col)">
+                                        (列{{i}})【{{col}}】|行1：{{colDataArray[colId][0]}}| |行2：{{colDataArray[colId][1]}}| |行3：{{colDataArray[colId][2]}}|...
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+
+                        <mat-form-field>
+                            <input formControlName="value" matInput placeholder="数据值">
+                        </mat-form-field>
+                        <button (click)="openDialog()" type="button" mat-raised-button>设置</button>
+                        <button (click)="removeCell(i)" type="button" mat-raised-button>删除</button>
+                    </mat-expansion-panel>
+
+                </mat-accordion>
+                <button (click)="addCell()" type="button" mat-raised-button>添加记录</button>
+            </div>
+        </div>
+
+
+        <!-- <hr> -->
+        <!-- <h4>数组</h4> -->
+        <!-- <div formArrayName="arrays_form">
+            <div *ngFor="let table of arrays_form.controls; let i=index" [formGroupName]="i">
+              <h4>列 #{{i + 1}}</h4>
+              <button (click)="removeArray(i)" type="button" mat-raised-button>删除</button>
+              <div style="margin-left: 1em;">
+                <mat-form-field class="model-quarter-width">
+                  <input formControlName="name" matInput placeholder="记录名">
+                </mat-form-field>
+                <mat-form-field class="model-quarter-width">
+                  <mat-select formControlName="source" placeholder="数据来源">
+                    <mat-option *ngFor="let s of source" [value]="s">{{s}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field class="model-quarter-width">
+                  <input formControlName="value" matInput placeholder="数据值">
+                </mat-form-field>
+              </div>
+            </div>
+            <button (click)="addArray(1,1)" type="button" mat-raised-button>添加记录</button>
+          </div> -->
+    </form>
+
+    <p>Form value: {{ modelForm.value | json }}</p>
+
+    <!-- <p>source_name:{{source_name | json}}</p> -->
+    <!-- <p>Form status: {{ modelForm.status | json }}</p> -->
+    <!-- <p>Name value: {{ modelForm.get('model_name').value }}</p> -->
 </div>

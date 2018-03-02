@@ -17,6 +17,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 
 import { ManRoutingModule } from './man-routing.module';
 
+import { DialogTableForm } from './man-model.component'
 // import {CdkTableModule} from '@angular/cdk/table';
 import { MatTableDataSource } from '@angular/material';
 
@@ -43,6 +44,10 @@ import { MaterialModule } from '../../material.module';
     ManTemplateComponent,
     ManTemplateListComponent,
     ManJobModuleComponent,
+    DialogTableForm
+  ],
+  entryComponents: [
+    DialogTableForm,
   ],
   providers: [
   ]

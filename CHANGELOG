@@ -36,3 +36,5 @@
 2. 整合模块编辑和新建入口 （man-model-add）
 3. 显示基于 key-value 结构的表单页面 （man-model-add）
 4. 优化模板预览-数组显示效果 (man-model-preview)
+5. 独立模块编辑和新建入口，便于设置不同的交互方式 (man-model)
+6. 试添加莫泰对话框设置表单列表属性 (man-model-add)
