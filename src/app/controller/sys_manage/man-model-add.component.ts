@@ -10,7 +10,7 @@ import { Observable } from 'rxjs/Observable';
 // import { FormModelDataService } from './form-model-data.service';
 import { ModelDataService } from '../../service/model-data.service';
 import { ExpParameterService } from '../../service/exp-parameter.service';
-import { Model, DataCell,DataArray, model_test, source, DataTable } from '../../model/data-model';
+import { Model, DataCell, DataArray, model_test, source, DataTable } from '../../model/data-model';
 // import { Model, DataCell, source, form_model_test } from '../../model/form-data-model';
 
 @Component({
@@ -39,15 +39,15 @@ export class ManModelAddComponent implements OnChanges {
     Columns: Array<Object> = [];
     tableData: Array<Object> = [];
     tableKeys: Array<Object> = [];
-    //拉取列表每列的数据
+    // 拉取列表每列的数据
     // colData: Array<Object> = [];
-    //列数据的集合
+    // 列数据的集合
     colDataArray: Array<Object> = [];
-    //原始数据
+    // 原始数据
     expParameterData: Array<Object>;
-    //转换后数据
+    // 转换后数据
     expParameterList: Array<Object> = [];
-    //设置来源数据为参数表时保存的表头信息
+    // 设置来源数据为参数表时保存的表头信息
     savedTableName: string;
 
     constructor(
@@ -67,10 +67,10 @@ export class ManModelAddComponent implements OnChanges {
     // getFrontValue(parameterList: Array<Object>, headKey: string, count: number) {
     //     return this.expParameterSerivce.getFrontValue(parameterList,headKey,count);
     // }
-    //来源数据为参数表时，将数据添加至表单 (格式：expParameter#表名#表头)
-    addEquipParaToForm(i: string, tableHead: string){
+    // 来源数据为参数表时，将数据添加至表单 (格式：expParameter#表名#表头)
+    addEquipParaToForm(i: string, tableHead: string) {
         this.cells_form.controls[i].patchValue({
-            source_data: "{expParameter#"+this.savedTableName+"#"+tableHead+"}",
+            source_data: "{expParameter#" + this.savedTableName + "#" + tableHead + "}",
         });
         // console.log("#"+this.savedTableName+"#"+tableHead);
     }
@@ -85,7 +85,7 @@ export class ManModelAddComponent implements OnChanges {
         }
         // console.log(this.colDataArray);
     }
-    saveTableName(expPara: Object){
+    saveTableName(expPara: Object) {
         this.savedTableName = expPara['tableName'];
         // console.log(this.savedTableName);
     }
@@ -119,8 +119,8 @@ export class ManModelAddComponent implements OnChanges {
         //     colspan = 0;
         //     rowspan = 0;
         // });
-        this.modelForm.setControl('table',this.tableForm);
-        this.modelForm.setControl('array',this.arraysForm);
+        this.modelForm.setControl('table', this.tableForm);
+        this.modelForm.setControl('array', this.arraysForm);
         this.setTableForm(this.model.table);
         this.setArraysForm(this.model.arrays);
         // this.setModel(this.model);
@@ -136,40 +136,48 @@ export class ManModelAddComponent implements OnChanges {
         // this.setCells(this.model.cells);
         this.setTableForm(this.model.table);
         this.setArraysForm(this.model.arrays);
-        //临时保存数据置空
+        // 临时保存数据置空
         this.savedTableName = '';
         // console.log(this.modelForm);
     }
-    //重置内容
+    // 重置内容
     revert() { this.ngOnChanges(); }
 
-    setTableForm(table: DataTable){
+    setTableForm(table: DataTable) {
         this.setCells(table.cells);
         this.setCellLists(table.cell_list);
     }
     setArraysForm(arrays: { [key: string]: DataArray; }) {
-        const cellFGs :FormGroup[]= [];
-        for(const cell_key of Object.keys(arrays)){
-            cellFGs.push( this.fb.group(arrays[cell_key]) );
+        const cellFGs: FormGroup[] = [];
+        for (const cell_key of Object.keys(arrays)) {
+            cellFGs.push(this.fb.group(arrays[cell_key]));
         }
         const arraysFormArray = this.fb.array(cellFGs);
         this.modelForm.setControl('arrarysForm', arraysFormArray);
     }
     // setModel(model: Model) {
-        // this.setCells(model.cells);
+    // this.setCells(model.cells);
     // }
     setCells(cells: { [key: string]: DataCell; }) {
-        const cellFGs :FormGroup[]= [];
-        for(const cell_key of Object.keys(cells)){
-            cellFGs.push( this.fb.group(cells[cell_key]) );
+        const cellFGs: FormGroup[] = [];
+        for (const cell_key of Object.keys(cells)) {
+            /*
+             * Angular 表单控件实现产生的错误
+             * https://stackoverflow.com/questions/37564574/angular-2-typescript-typeerror-this-validator-is-not-a-function
+             * 详见第二条回答
+             */
+            if (typeof cells[cell_key]['source_data'] === 'object') {
+                cells[cell_key]['source_data'] = [cells[cell_key]['source_data']];
+            }
+            cellFGs.push(this.fb.group(cells[cell_key]));
         }
         const cellFormArray = this.fb.array(cellFGs);
         this.tableForm.setControl('cells_form', cellFormArray);
     }
     setCellLists(cells: { [key: string]: String; }) {
-        const cellFGs :FormGroup[]= [];
-        for(const cell_key of Object.keys(cells)){
-            cellFGs.push( this.fb.group(cells[cell_key]) );
+        const cellFGs: FormGroup[] = [];
+        for (const cell_key of Object.keys(cells)) {
+            cellFGs.push(this.fb.group(cells[cell_key]));
         }
         const cellFormArray = this.fb.array(cellFGs);
         this.tableForm.setControl('cell_lists_form', cellFormArray);
@@ -222,7 +230,7 @@ export class ManModelAddComponent implements OnChanges {
         // const tableFormDeepCopy: DataCell[] = formModel.tableForm.map(
         //     (cell: DataCell) => Object.assign({}, cell)
         // );
-        
+
         // return new 'Field' object containing a combination of original model value
         // and deep copies of changed form model values
         const saveModel: Model = {
@@ -232,13 +240,13 @@ export class ManModelAddComponent implements OnChanges {
             has_table: formModel.has_table,
             has_array: formModel.has_array,
 
-            table : {
+            table: {
                 cells: cellFormDeepCopy,
                 cell_list: cellListFormDeepCopy,
             },
-            array_list : arrayListFormDeepCopy,
+            array_list: arrayListFormDeepCopy,
             arrays: arraysFormDeepCopy,
-            
+
             // cells_form: cellFormDeepCopy;
             // table: tableFormDeepCopy,
             // cells: cellFormDeepCopy,
