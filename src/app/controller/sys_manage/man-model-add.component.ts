@@ -119,8 +119,8 @@ export class ManModelAddComponent implements OnChanges {
         //     colspan = 0;
         //     rowspan = 0;
         // });
-        this.modelForm.setControl('table', this.tableForm);
-        this.modelForm.setControl('array', this.arraysForm);
+        this.modelForm.setControl('table_form', this.tableForm);
+        this.modelForm.setControl('arrays_form', this.arraysForm);
         this.setTableForm(this.model.table);
         this.setArraysForm(this.model.arrays);
         // this.setModel(this.model);
@@ -153,7 +153,7 @@ export class ManModelAddComponent implements OnChanges {
             cellFGs.push(this.fb.group(arrays[cell_key]));
         }
         const arraysFormArray = this.fb.array(cellFGs);
-        this.modelForm.setControl('arrarysForm', arraysFormArray);
+        this.modelForm.setControl('arrarys_form', arraysFormArray);
     }
     // setModel(model: Model) {
     // this.setCells(model.cells);
@@ -189,7 +189,10 @@ export class ManModelAddComponent implements OnChanges {
     // }
     // 获取数组
     get cells_form(): FormArray {
-        return this.modelForm.get('cells_form') as FormArray;
+        return this.tableForm.get('cells_form') as FormArray;
+    }
+    get cell_lists_form(): FormArray {
+        return this.tableForm.get('cell_lists_form') as FormArray;
     }
     // 添加记录
     addCell() {
