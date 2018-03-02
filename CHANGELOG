@@ -22,11 +22,14 @@
 2. 优化参数表标名对齐和显示效果 (man-equip-para-list)
 3. 修改数据来源模型 (form-data-model/source,data-model/source)
 
-2018-02-29 (hansien)
+2018-03-01 (hansien)
 1. 实现效果：选择数据来源时同时设置多个表单数据 (man-model-add.component.html)
 2. 隐藏非用户输入表单数据项 ((man-model-add.component.html))
 3. 数据来源为参数表时弹出参数表列表 (man-model-add.component.html)
 4. 参数表列表拉取参数表数据 (man-model-add.component.html)
 5. 参数表来源数据添加至表单 (格式：expParameter#表名#表头) (man-model-add.component.html)
 6. 模块预览界面增加数组显示 (man-model.component.html)
-7. 数组数据调整模拟真实
+7. 数组数据调整模拟真实 (man-model-add)
+
+2018-03-02 (hansien)
+1. 已有模块编辑 (man-model.component)

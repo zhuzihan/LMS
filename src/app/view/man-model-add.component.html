@@ -1,22 +1,21 @@
 <div>
     <h2>添加模块</h2>
 
-    <form [formGroup]="modelForm" (ngSubmit)="onSubmit()" class="field-form" novalidate>
+    <!-- <form [formGroup]="modelForm" (ngSubmit)="onSubmit()" class="field-form" novalidate> -->
 
-        <div style="margin-bottom: 1em">
+        <!-- <div style="margin-bottom: 1em">
             <button type="submit" [disabled]="modelForm.pristine" mat-raised-button>Save</button> &nbsp;
             <button type="reset" (click)="revert()" [disabled]="modelForm.pristine" mat-raised-button>Revert</button>
         </div>
-        <!-- <p>Model value: {{ model | json }}</p> -->
         <span>Name: {{modelForm.get('model_standard_name').value|json}}</span>
         <span *ngIf="!modelForm.get('has_table').value">无记录</span>
         <span *ngIf="!modelForm.get('has_array').value">无数据表</span>
         <mat-form-field class="model-half-width">
             <input formControlName="model_standard_name" matInput placeholder="模块名称">
-        </mat-form-field>
+        </mat-form-field> -->
 
         <!-- <hr> -->
-        <h4>单元</h4>
+        <!-- <h4>单元</h4>
 
         <div formArrayName="cells_form">
             <mat-accordion>
@@ -64,23 +63,11 @@
                     <button (click)="removeCell(i)" type="button" mat-raised-button>删除</button>
                 </mat-expansion-panel>
 
-                <!-- <mat-expansion-panel (opened)="panelOpenState = true"
-                                    (closed)="panelOpenState = false">
-                <mat-expansion-panel-header>
-                  <mat-panel-title>
-                    Self aware panel
-                  </mat-panel-title>
-                  <mat-panel-description>
-                    Currently I am {{panelOpenState ? 'open' : 'closed'}}
-                  </mat-panel-description>
-                </mat-expansion-panel-header>
-                <p>I'm visible because I am open</p>
-              </mat-expansion-panel> -->
-
             </mat-accordion>
-            <!-- <p>行号{{row}}</p> -->
             <button (click)="addCell()" type="button" mat-raised-button>添加记录</button>
-        </div>
+        </div> -->
+
+
         <!-- <hr> -->
         <!-- <h4>数组</h4> -->
         <!-- <div formArrayName="arrays_form">
@@ -103,7 +90,7 @@
             </div>
             <button (click)="addArray(1,1)" type="button" mat-raised-button>添加记录</button>
           </div> -->
-    </form>
+    <!-- </form> -->
 
     <p>Form value: {{ modelForm.value | json }}</p>
 
