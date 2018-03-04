@@ -12,7 +12,7 @@ export const source = [
 export class Template {
     whole_name = '';
     model_list = [];
-    models: { [key: string]: Model; };
+    models: { [key: string]: Model; } = {};
 }
 
 // 模块
@@ -24,13 +24,13 @@ export class Model {
     has_array = -1;     // 该模块是否拥有数组,'1'是,且代表有一张数据表，'-1'否
     table: DataTable;     // 列表内容
     array_list: Array<String> = [];
-    arrays: { [key: string]: DataArray; };   // 数组内容
+    arrays: { [key: string]: DataArray; } = {};   // 数组内容
 }
 
 // 数据表
 export class DataTable {
-    cell_list: { [key: string]: String; };
-    cells: { [key: string]: DataCell; };
+    cell_list: { [key: string]: String; } = {};
+    cells: { [key: string]: DataCell; } = {};
 }
 
 // 表的每一个单元格
@@ -561,7 +561,7 @@ template_test.models = { 'model_1': model_test };
 const space_cell: DataCell = new DataCell();
 space_cell.sn = 'c_1_1';
 const space_table: DataTable = new DataTable();
-space_table.cells['c_1_1'] = space_cell;
+space_table.cells['c.1.1'] = space_cell;
 export const space_array_cell: ArrayCell = new ArrayCell();
 space_array_cell.row = '1';
 space_array_cell.col = 'A';
