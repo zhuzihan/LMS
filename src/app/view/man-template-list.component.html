@@ -1,19 +1,28 @@
 <div class="content">
     <div>
-        <div *ngIf="isLoading"><mat-spinner [diameter]="24"></mat-spinner><p>加载模板数据... </p></div>
+        <div *ngIf="isLoading">
+            <mat-spinner [diameter]="24"></mat-spinner>
+            <p>加载模板数据... </p>
+        </div>
         <h3 *ngIf="!isLoading">选择模板</h3>
         <nav>
-        <button mat-raised-button color="primary" (click)="getTemplates()">Refresh</button>
-        <button mat-raised-button *ngFor="let template of templates | async" (click)="select(template)">{{template.whole_name}}</button>
+            <button mat-raised-button color="primary" (click)="getTemplates()">Refresh</button>
+            <button mat-raised-button *ngFor="let template of templates | async" (click)="select(template)">{{template.whole_name}}</button>
         </nav>
-        <p> Form Data : {{json_data | json}}</p>
-        <!-- <p>Form value: {{ models | json }}</p> -->
+        <!-- <p> Form Data : {{json_data | json}}</p> -->
     </div>
-    
+
     <div *ngIf="selectedTemplate">
-        <hr>
-        <h2>模版详情</h2>
-        <h3>编辑的模板: {{selectedTemplate.whole_name}}</h3>
-        <man-template [template]="selectedTemplate"></man-template>
+        <br>
+        <mat-tab-group>
+            <mat-tab label="预览">
+                <h3>预览的模板: {{selectedTemplate.whole_name}}</h3>
+                <man-template-preview [template]="selectedTemplate"></man-template-preview>
+            </mat-tab>
+            <mat-tab label="编辑">
+                <h3>编辑的模板: {{selectedTemplate.whole_name}}</h3>
+                <!-- <man-template [template]="selectedTemplate"></man-template> -->
+            </mat-tab>
+        </mat-tab-group>
     </div>
 </div>

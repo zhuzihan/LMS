@@ -12,6 +12,7 @@ import { ManModelPreviewComponent } from './man-model-preview.component';
 import { ManModelAddComponent } from './man-model-add.component';
 import { ManTemplateListComponent } from './man-template-list.component';
 import { ManTemplateComponent } from './man-template.component';
+import { ManTemplatePreviewComponent } from './man-template-preview.component';
 import { ManJobModuleComponent } from './man-job-module.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 
@@ -43,6 +44,7 @@ import { MaterialModule } from '../../material.module';
     ManModelAddComponent,
     ManTemplateComponent,
     ManTemplateListComponent,
+    ManTemplatePreviewComponent,
     ManJobModuleComponent,
     DialogTableForm
   ],

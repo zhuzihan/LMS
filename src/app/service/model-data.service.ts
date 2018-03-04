@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import 'rxjs/add/operator/delay';
-import { Template, Model, DataCell, model_test, models_test, template_test, source } from '../model/data-model';
+import { Template, Model, DataCell, model_test, models_test, template_test, templates_test, source } from '../model/data-model';
 
 @Injectable()
 export class ModelDataService {
@@ -34,6 +34,9 @@ export class ModelDataService {
 
     getTemplateData(): Observable<Template> {
         return of(template_test).delay(this.delayMs);
+    }
+    getTemplatesData(): Observable<Template[]> {
+        return of(templates_test).delay(this.delayMs);
     }
     // Fake server update; assume nothing can go wrong
     // updateModelData(block: Model): Observable<Model>  {
