@@ -10,8 +10,7 @@ import { Observable } from 'rxjs/Observable';
 // import { FormModelDataService } from './form-model-data.service';
 import { ModelDataService } from '../../service/model-data.service';
 import { ExpParameterService } from '../../service/exp-parameter.service';
-import { Model, DataCell, DataArray, model_test, source, DataTable } from '../../model/data-model';
-// import { Model, DataCell, source, form_model_test } from '../../model/form-data-model';
+import { Model, DataCell, DataArray, space_model, source, DataTable } from '../../model/data-model';
 
 @Component({
     // tslint:disable-next-line:component-selector
@@ -23,7 +22,7 @@ export class ManModelAddComponent implements OnChanges {
     // cell: DataCell;
     // cells= [this.cells];
     // model = new Model(0, "", "", -1, -1,this.cells);
-    @Input() model = model_test;
+    model = space_model;
     modelForm: FormGroup;
     tableForm: FormGroup;
     arraysForm: FormArray;
