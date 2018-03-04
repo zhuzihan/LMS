@@ -554,14 +554,14 @@ export const models_test: Model[] = [
 
 export const template_test: Template = new Template();
 template_test.whole_name = '测试模板';
-template_test.model_list = ['model.1'];
-template_test.models = { 'model.1': model_test };
+template_test.model_list = ['model_1'];
+template_test.models = { 'model_1': model_test };
 
 
 const space_cell: DataCell = new DataCell();
-space_cell.sn = 'c.1.1';
+space_cell.sn = 'c_1_1';
 const space_table: DataTable = new DataTable();
-space_table.cells['c.1.1'] = space_cell;
+space_table.cells['c_1_1'] = space_cell;
 export const space_array_cell: ArrayCell = new ArrayCell();
 space_array_cell.row = '1';
 space_array_cell.col = 'A';
@@ -572,9 +572,9 @@ space_array.pushWithSpan(space_array_cell);
 export const space_template: Template = new Template();
 export const space_model: Model = new Model();
 space_model.model_id = 1;
-space_model.model_name = 'model.1';
+space_model.model_name = 'model_1';
 space_model.table = space_table;
 space_model.arrays['space_array'] = space_array;
-space_template.models['model.1'] = space_model;
+space_template.models['model_1'] = space_model;
 
 
