@@ -577,4 +577,7 @@ space_model.table = space_table;
 space_model.arrays['space_array'] = space_array;
 space_template.models['model_1'] = space_model;
 
+export const templates_test: Template[] = [
+    template_test,
+];
 

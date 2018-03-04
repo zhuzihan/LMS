@@ -21,8 +21,10 @@ export class ManTemplateListComponent implements OnInit {
     expParameterList: Array<Object> = [];
     expParaLoading = false;
 
-    // constructor(private modelDataService: ModelDataService) { }
-    constructor(private dataManageService: DataManageService, private expParameterService: ExpParameterService) { }
+    constructor(private dataManageService: DataManageService, 
+                private expParameterService: ExpParameterService,
+                private modelDataService: ModelDataService,
+            ) { }
 
     ngOnInit() {
         this.expParameterService.getExpParameter().then(responseData => {
@@ -40,6 +42,7 @@ export class ManTemplateListComponent implements OnInit {
         // console.log('Response Data: ', this.dataJson);
         // this.selectedTemplate = undefined;
         this.testTemplate = template_test;
+        this.templates = this.modelDataService.getTemplatesData();
         console.log(this.testTemplate['models']);
         for (const keys of Object.keys(template_test)) {
             console.log(keys);
