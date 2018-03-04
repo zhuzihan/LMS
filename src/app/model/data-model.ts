@@ -554,8 +554,8 @@ export const models_test: Model[] = [
 
 export const template_test: Template = new Template();
 template_test.whole_name = '测试模板';
-template_test.model_list = ['model_1'];
-template_test.models = { 'model_1': model_test };
+template_test.model_list = ['model.1'];
+template_test.models = { 'model.1': model_test };
 
 
 const space_cell: DataCell = new DataCell();
