@@ -13,7 +13,7 @@ import { ExpParameterService } from '../../service/exp-parameter.service';
 })
 export class ManTemplateListComponent implements OnInit {
     templates: Observable<Template[]>;
-    isLoading = false;
+    isLoading = true;
     selectedTemplate: Template;
     testTemplate: Template;
     json_str: string;
@@ -36,23 +36,24 @@ export class ManTemplateListComponent implements OnInit {
     }
 
     getTemplates() {
-        // this.isLoading = true;
+        this.isLoading = true;
         // this.dataManageService.getOperationFlow(42).then(jsonData => this.dataJson = jsonData);
         // console.log('Response Data: ', this.dataManageService.getOperationFlow(42));
         // console.log('Response Data: ', this.dataJson);
         // this.selectedTemplate = undefined;
         this.testTemplate = template_test;
-        this.templates = this.modelDataService.getTemplatesData();
-        console.log(this.testTemplate['models']);
-        for (const keys of Object.keys(template_test)) {
-            console.log(keys);
-        }
+        this.templates = this.modelDataService.getTemplatesData()
+            .finally(() => this.isLoading = false);
+        // console.log(this.testTemplate['models']);
+        // for (const keys of Object.keys(template_test)) {
+        //     console.log(keys);
+        // }
         this.json_str = JSON.stringify(this.testTemplate);
         this.json_data = JSON.parse(this.json_str);
         for (const model_key of Object.keys(this.json_data.models)) {
             this.fillCellValue(this.json_data.models[model_key]);
         }
-        console.log(this.json_data['models']['model.1']['table']['cells']);
+        // console.log(this.json_data['models']['model.1']['table']['cells']);
     }
 
     select(template: Template) { this.selectedTemplate = template; }

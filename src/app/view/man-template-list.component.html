@@ -6,7 +6,7 @@
         <button mat-raised-button color="primary" (click)="getTemplates()">Refresh</button>
         <button mat-raised-button *ngFor="let template of templates | async" (click)="select(template)">{{template.whole_name}}</button>
         </nav>
-        <p> Form Data : {{json_data | json}}</p>
+        <!-- <p> Form Data : {{json_data | json}}</p> -->
         <!-- <p>Form value: {{ models | json }}</p> -->
     </div>
     
