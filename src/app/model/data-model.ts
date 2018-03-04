@@ -446,6 +446,16 @@ model_test.table = table_1;
 model_test.array_list = ['test_array'];
 model_test.arrays = { 'test_array': data_array };
 
+export const model_test_2 = new Model();
+model_test_2.model_standard_name = 'test_name';
+model_test_2.model_id = 1;
+model_test_2.model_name = 'model.2';
+model_test_2.has_array = 1;
+model_test_2.has_table = 1;
+model_test_2.table = table_1;
+model_test_2.array_list = ['test_array'];
+model_test_2.arrays = { 'test_array': data_array };
+
 export const models_test: Model[] = [
     model_test,
 ];
@@ -556,6 +566,8 @@ export const template_test: Template = new Template();
 template_test.whole_name = '测试模板';
 template_test.model_list = ['model.1'];
 template_test.models = { 'model.1': model_test };
+template_test.model_list.push('model.2');
+template_test.models['model.2'] = model_test_2;
 
 
 const space_cell: DataCell = new DataCell();
