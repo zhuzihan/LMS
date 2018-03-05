@@ -74,7 +74,7 @@ export class DataArray {
         this.row_count = row;
         this.col_count = col;
         this.rowspan = 1;
-        this.colspan = 10 / this.col_count;
+        this.colspan = 2;
         this.cell_list = new Array();
     }
     pushWithSpan(cell: ArrayCell) {
@@ -436,7 +436,22 @@ data_array.pushWithSpan(array_cell_2_3);
 data_array.pushWithSpan(array_cell_2_4);
 data_array.pushWithSpan(array_cell_2_5);
 
+<<<<<<< HEAD
 data_array.source_sn = 'model.1#A1:A3#A1:A3';
+=======
+export const data_array_2 = new DataArray(2, 3);
+data_array_2.array_name = 'test_array';
+data_array_2.pushWithSpan(array_cell_1_1);
+data_array_2.pushWithSpan(array_cell_1_2);
+data_array_2.pushWithSpan(array_cell_1_3);
+// data_array_2.pushWithSpan(array_cell_1_4);
+// data_array_2.pushWithSpan(array_cell_1_5);
+data_array_2.pushWithSpan(array_cell_2_1);
+data_array_2.pushWithSpan(array_cell_2_2);
+data_array_2.pushWithSpan(array_cell_2_3);
+// data_array_2.pushWithSpan(array_cell_2_4);
+// data_array_2.pushWithSpan(array_cell_2_5);
+>>>>>>> 48d64dd5eceb7ae2ff37e749ad5a9a9bf79b68ab
 
 // 模块中的列表
 export const model_test = new Model();
@@ -457,7 +472,7 @@ model_test_2.has_array = 1;
 model_test_2.has_table = 1;
 model_test_2.table = table_1;
 model_test_2.array_list = ['test_array'];
-model_test_2.arrays = { 'test_array': data_array };
+model_test_2.arrays = { 'test_array': data_array_2 };
 
 export const models_test: Model[] = [
     model_test,
