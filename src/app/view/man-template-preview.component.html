@@ -9,8 +9,8 @@
                         <mat-grid-tile
                             [colspan]="template.models[model_key].table.cells[cell_key].colspan"
                             [rowspan]="template.models[model_key].table.cells[cell_key].rowspan">
-                                {{template.models[model_key].table.cells[cell_key].name}} : 
-                                {{template.models[model_key].table.cells[cell_key].value}}
+                                &nbsp;{{template.models[model_key].table.cells[cell_key].name}} : &nbsp;
+                                <input placeholder="录入数据" value="{{template.models[model_key].table.cells[cell_key].value}}">
                         </mat-grid-tile>
                     </div>
                 </mat-grid-list>
@@ -23,12 +23,12 @@
                                 <mat-grid-tile *ngIf="array_cell.row == 1; else space"
                                     [colspan]="array_cell.colspan"
                                     [rowspan]="array_cell.rowspan">
-                                        -|{{array_cell.name}}|-
+                                        -|{{array_cell.value}}|-
                                 </mat-grid-tile>
                                 <ng-template #space>
                                     <mat-grid-tile  [ngSwitch]="array_cell.source_type" [colspan]="array_cell.colspan" [rowspan]="array_cell.rowspan">
                                         <div *ngSwitchCase="1">
-                                            <input placeholder="录入数据">
+                                            <input placeholder="录入数据" value="{{array_cell.value}}">
                                         </div>
                                         <div *ngSwitchCase="2">
                                             <button>引用数据源</button>

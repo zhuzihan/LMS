@@ -12,3 +12,9 @@ min-width: 800px;
 .preview-array{
     width: 500px;
 }
+
+
+input {
+    border: 0px;
+    width: 75%;
+}
