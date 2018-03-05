@@ -6,19 +6,20 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ManEquipParaComponent } from './man-equip-para.component';
 import { ManEquipParaListComponent } from './man-equip-para-list.component';
 import { ManEquipParaPreviewComponent } from './man-equip-para-preview.component';
-import { ManModelComponent } from './man-model.component';
+import { ManModelEditComponent } from './man-model-edit.component';
 import { ManModelListComponent } from './man-model-list.component';
 import { ManModelPreviewComponent } from './man-model-preview.component';
 import { ManModelAddComponent } from './man-model-add.component';
 import { ManTemplateListComponent } from './man-template-list.component';
-import { ManTemplateComponent } from './man-template.component';
+import { ManTemplateEditComponent } from './man-template-edit.component';
+import { ManTemplateCompositionComponent } from './man-template-composition.component';
 import { ManTemplatePreviewComponent } from './man-template-preview.component';
 import { ManJobModuleComponent } from './man-job-module.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 
 import { ManRoutingModule } from './man-routing.module';
 
-import { DialogTableForm } from './man-model.component'
+import { DialogTableForm } from './man-model-edit.component'
 // import {CdkTableModule} from '@angular/cdk/table';
 import { MatTableDataSource } from '@angular/material';
 
@@ -38,13 +39,14 @@ import { MaterialModule } from '../../material.module';
     ManEquipParaListComponent,
     ManEquipParaPreviewComponent,
     ManEquipParaComponent,
-    ManModelComponent,
+    ManModelEditComponent,
     ManModelListComponent,
     ManModelPreviewComponent,
     ManModelAddComponent,
-    ManTemplateComponent,
     ManTemplateListComponent,
     ManTemplatePreviewComponent,
+    ManTemplateCompositionComponent,
+    ManTemplateEditComponent,
     ManJobModuleComponent,
     DialogTableForm
   ],

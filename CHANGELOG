@@ -42,3 +42,8 @@
 2018-03-04 (hansien)
 1.添加模块初始化模版替换 (man-model-add)
 2.模版页面显示 (man-template)
+
+2018-03-05 (hansien)
+1. 模版结构调整 (预览-组成-编辑),模块编辑页面更名为 man-model-edit
+2. 编辑模版组成 (man-template-composition)
+3. 模版预览显示效果优化 (man-template-preview)

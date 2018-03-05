@@ -16,9 +16,9 @@ import { DataManageService } from '../../service/data-manage.service';
     // tslint:disable-next-line:component-selector
     selector: 'man-template',
     templateUrl: '../../view/man-template.component.html',
-    styleUrls: ['../../css/man-template.component.css']
+    styleUrls: ['../../css/sys-management.component.css']
 })
-export class ManTemplateComponent {
+export class ManTemplateEditComponent {
     @Input() template: Template;
 
     constructor(private dataManageService: DataManageService) { }

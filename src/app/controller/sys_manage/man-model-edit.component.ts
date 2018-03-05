@@ -17,10 +17,10 @@ import { Model, DataCell, DataArray, model_test, source, DataTable } from '../..
 @Component({
     // tslint:disable-next-line:component-selector
     selector: 'man-model',
-    templateUrl: '../../view/man-model.component.html',
-    styleUrls: ['../../css/man-model.component.css']
+    templateUrl: '../../view/man-model-edit.component.html',
+    styleUrls: ['../../css/sys-management.component.css']
 })
-export class ManModelComponent implements OnChanges {
+export class ManModelEditComponent implements OnChanges {
     // cell: DataCell;
     // cells= [this.cells];
     // model = new Model(0, "", "", -1, -1,this.cells);
