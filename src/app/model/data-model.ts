@@ -417,7 +417,7 @@ data_array.pushWithSpan(array_cell_4_1);
 data_array.pushWithSpan(array_cell_4_2);
 data_array.source_sn = 'model.1#A1:A3#A1:A3';
 
-export const data_array_2 = new DataArray(2, 3);
+export const data_array_2 = new DataArray(3, 2);
 data_array_2.array_name = 'test_array';
 data_array_2.pushWithSpan(array_cell_1_1);
 data_array_2.pushWithSpan(array_cell_1_2);
