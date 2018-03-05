@@ -50,7 +50,7 @@ export class DataCell {
 
 export class ArrayCell {
     sn = '';
-    name = '';
+    value = '';
     source_type = '';
     source_name = '';
     source_sn = '';
@@ -325,7 +325,7 @@ table_1.cells = {
 
 export const array_cell_1_1 = new ArrayCell();
 array_cell_1_1.sn = 'A1';
-array_cell_1_1.name = '录入';
+array_cell_1_1.value = '编号';
 array_cell_1_1.source_type = '1';
 array_cell_1_1.source_name = '录入';
 array_cell_1_1.source_data = '';
@@ -333,9 +333,19 @@ array_cell_1_1.source_sn = '';
 array_cell_1_1.row = '1';
 array_cell_1_1.col = 'A';
 
+export const array_cell_1_2 = new ArrayCell();
+array_cell_1_2.sn = 'B1';
+array_cell_1_2.value = '化学式';
+array_cell_1_2.source_type = '1';
+array_cell_1_2.source_name = '录入';
+array_cell_1_2.source_data = '';
+array_cell_1_2.source_sn = '';
+array_cell_1_2.row = '1';
+array_cell_1_2.col = 'B';
+
 export const array_cell_2_1 = new ArrayCell();
-array_cell_2_1.sn = 'B1';
-array_cell_2_1.name = '化学式';
+array_cell_2_1.sn = 'A2';
+array_cell_2_1.value = '1';
 array_cell_2_1.source_type = '1';
 array_cell_2_1.source_name = '录入';
 array_cell_2_1.source_data = '';
@@ -343,115 +353,83 @@ array_cell_2_1.source_sn = '';
 array_cell_2_1.row = '2';
 array_cell_2_1.col = 'A';
 
-export const array_cell_1_2 = new ArrayCell();
-array_cell_1_2.sn = 'A2';
-array_cell_1_2.name = '引用';
-array_cell_1_2.source_type = '1';
-array_cell_1_2.source_name = '引用';
-array_cell_1_2.source_data = '';
-array_cell_1_2.source_sn = '';
-array_cell_1_2.row = '1';
-array_cell_1_2.col = 'B';
-
 export const array_cell_2_2 = new ArrayCell();
 array_cell_2_2.sn = 'B2';
-array_cell_2_2.name = 'KCl';
-array_cell_2_2.source_type = '2';
-array_cell_2_2.source_name = '引用';
+array_cell_2_2.value = 'KCl';
+array_cell_2_2.source_type = '1';
+array_cell_2_2.source_name = '录入';
 array_cell_2_2.source_data = '';
 array_cell_2_2.source_sn = '';
 array_cell_2_2.row = '2';
 array_cell_2_2.col = 'B';
 
-export const array_cell_1_3 = new ArrayCell();
-array_cell_1_3.sn = 'C1';
-array_cell_1_3.name = '日期';
-array_cell_1_3.source_type = '1';
-array_cell_1_3.source_name = '日期';
-array_cell_1_3.source_data = '';
-array_cell_1_3.source_sn = '';
-array_cell_1_3.row = '1';
-array_cell_1_3.col = 'C';
+export const array_cell_3_1 = new ArrayCell();
+array_cell_3_1.sn = 'A3';
+array_cell_3_1.value = '2';
+array_cell_3_1.source_type = '1';
+array_cell_3_1.source_name = '录入';
+array_cell_3_1.source_data = '';
+array_cell_3_1.source_sn = '';
+array_cell_3_1.row = '3';
+array_cell_3_1.col = 'A';
 
-export const array_cell_2_3 = new ArrayCell();
-array_cell_2_3.sn = 'C2';
-array_cell_2_3.name = 'KCl';
-array_cell_2_3.source_type = '3';
-array_cell_2_3.source_name = '日期';
-array_cell_2_3.source_data = '';
-array_cell_2_3.source_sn = '';
-array_cell_2_3.row = '2';
-array_cell_2_3.col = 'C';
+export const array_cell_3_2 = new ArrayCell();
+array_cell_3_2.sn = 'B3';
+array_cell_3_2.value = 'Na2CO3';
+array_cell_3_2.source_type = '1';
+array_cell_3_2.source_name = '录入';
+array_cell_3_2.source_data = '';
+array_cell_3_2.source_sn = '';
+array_cell_3_2.row = '3';
+array_cell_3_2.col = 'B';
 
-export const array_cell_1_4 = new ArrayCell();
-array_cell_1_4.sn = 'D1';
-array_cell_1_4.name = '参数表';
-array_cell_1_4.source_type = '1';
-array_cell_1_4.source_name = '参数表';
-array_cell_1_4.source_data = '';
-array_cell_1_4.source_sn = '';
-array_cell_1_4.row = '1';
-array_cell_1_4.col = 'D';
 
-export const array_cell_2_4 = new ArrayCell();
-array_cell_2_4.sn = 'D2';
-array_cell_2_4.name = 'KCl';
-array_cell_2_4.source_type = '4';
-array_cell_2_4.source_name = '参数表';
-array_cell_2_4.source_data = '';
-array_cell_2_4.source_sn = '';
-array_cell_2_4.row = '2';
-array_cell_2_4.col = 'D';
+export const array_cell_4_1 = new ArrayCell();
+array_cell_4_1.sn = 'A4';
+array_cell_4_1.value = '3';
+array_cell_4_1.source_type = '1';
+array_cell_4_1.source_name = '录入';
+array_cell_4_1.source_data = '';
+array_cell_4_1.source_sn = '';
+array_cell_4_1.row = '4';
+array_cell_4_1.col = 'A';
 
-export const array_cell_1_5 = new ArrayCell();
-array_cell_1_5.sn = 'E1';
-array_cell_1_5.name = '公式';
-array_cell_1_5.source_type = '1';
-array_cell_1_5.source_name = '公式';
-array_cell_1_5.source_data = '';
-array_cell_1_5.source_sn = '';
-array_cell_1_5.row = '1';
-array_cell_1_5.col = 'E';
+export const array_cell_4_2 = new ArrayCell();
+array_cell_4_2.sn = 'B4';
+array_cell_4_2.value = 'CO3';
+array_cell_4_2.source_type = '1';
+array_cell_4_2.source_name = '录入';
+array_cell_4_2.source_data = '';
+array_cell_4_2.source_sn = '';
+array_cell_4_2.row = '4';
+array_cell_4_2.col = 'B';
 
-export const array_cell_2_5 = new ArrayCell();
-array_cell_2_5.sn = 'E2';
-array_cell_2_5.name = 'KCl';
-array_cell_2_5.source_type = '5';
-array_cell_2_5.source_name = '公式';
-array_cell_2_5.source_data = '';
-array_cell_2_5.source_sn = '';
-array_cell_2_5.row = '2';
-array_cell_2_5.col = 'E';
 
-export const data_array = new DataArray(2, 5);
+export const data_array = new DataArray(4, 2);
 data_array.array_name = 'test_array';
 data_array.pushWithSpan(array_cell_1_1);
 data_array.pushWithSpan(array_cell_1_2);
-data_array.pushWithSpan(array_cell_1_3);
-data_array.pushWithSpan(array_cell_1_4);
-data_array.pushWithSpan(array_cell_1_5);
 data_array.pushWithSpan(array_cell_2_1);
 data_array.pushWithSpan(array_cell_2_2);
-data_array.pushWithSpan(array_cell_2_3);
-data_array.pushWithSpan(array_cell_2_4);
-data_array.pushWithSpan(array_cell_2_5);
-
-<<<<<<< HEAD
+data_array.pushWithSpan(array_cell_3_1);
+data_array.pushWithSpan(array_cell_3_2);
+data_array.pushWithSpan(array_cell_4_1);
+data_array.pushWithSpan(array_cell_4_2);
 data_array.source_sn = 'model.1#A1:A3#A1:A3';
-=======
+
 export const data_array_2 = new DataArray(2, 3);
 data_array_2.array_name = 'test_array';
 data_array_2.pushWithSpan(array_cell_1_1);
 data_array_2.pushWithSpan(array_cell_1_2);
-data_array_2.pushWithSpan(array_cell_1_3);
+data_array_2.pushWithSpan(array_cell_2_1);
 // data_array_2.pushWithSpan(array_cell_1_4);
 // data_array_2.pushWithSpan(array_cell_1_5);
-data_array_2.pushWithSpan(array_cell_2_1);
 data_array_2.pushWithSpan(array_cell_2_2);
-data_array_2.pushWithSpan(array_cell_2_3);
+data_array_2.pushWithSpan(array_cell_3_1);
+data_array_2.pushWithSpan(array_cell_3_2);
 // data_array_2.pushWithSpan(array_cell_2_4);
 // data_array_2.pushWithSpan(array_cell_2_5);
->>>>>>> 48d64dd5eceb7ae2ff37e749ad5a9a9bf79b68ab
+
 
 // 模块中的列表
 export const model_test = new Model();

@@ -21,7 +21,7 @@ export class ManTemplateListComponent implements OnInit {
     expParameterList: Array<Object> = [];
     expParaLoading = false;
 
-    constructor(private dataManageService: DataManageService, 
+    constructor(private dataManageService: DataManageService,
                 private expParameterService: ExpParameterService,
                 private modelDataService: ModelDataService,
             ) { }
