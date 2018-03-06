@@ -32,6 +32,7 @@
   }
   mat-grid-list {
     min-width: 800px;
+    max-width: 1000px;;
   }
 
  .mat-figure {
@@ -45,10 +46,14 @@
 .preview-array{
     width: 500px;
 }
-
+.inline-table {
+    display: inline-table;
+}
 
 input {
     border: 0px;
-    width: 75%;
+    width: 90%;
+    min-width: 50px;
+    /* max-width: 0; */
 }
 

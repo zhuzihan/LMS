@@ -9,8 +9,12 @@
                         <mat-grid-tile
                             [colspan]="template.models[model_key].table.cells[cell_key].colspan"
                             [rowspan]="template.models[model_key].table.cells[cell_key].rowspan">
-                                &nbsp;{{template.models[model_key].table.cells[cell_key].name}} : &nbsp;
-                                <input placeholder="录入数据" value="{{template.models[model_key].table.cells[cell_key].value}}">
+                                <div class="inline-table">
+                                    <span>{{template.models[model_key].table.cells[cell_key].name}} : </span>
+                                </div>
+                                <div class="model-full-width">
+                                    <input placeholder="录入数据" value="{{template.models[model_key].table.cells[cell_key].value}}">
+                                </div>
                         </mat-grid-tile>
                     </div>
                 </mat-grid-list>
