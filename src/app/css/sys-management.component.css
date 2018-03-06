@@ -61,6 +61,7 @@
 .inline-table {
     display: flex;
     width: max-content;
+    align-self: center;
 }
 
 input {
