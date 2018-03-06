@@ -25,6 +25,18 @@
   .model-full-width {
     width: 100%;
   }
+  .grid-span {
+    width: max-content;
+  }
+  .grid-input-div {
+    width: 100%;
+    display: flex;
+  }
+  .grid-tile-div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+  }
   mat-grid-tile {
     /* background: lightgray; */
     border: 1px solid black;
@@ -47,14 +59,15 @@
     width: 500px;
 }
 .inline-table {
-    display: inline-table;
-    padding: 3px;
+    display: flex;
+    width: max-content;
 }
 
 input {
     border: 0px;
-    width: 90%;
+    width: inherit;
     min-width: 50px;
+    margin: 2px;
     /* max-width: 0; */
 }
 
