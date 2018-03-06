@@ -9,7 +9,7 @@ import { ExpParameterService } from '../../service/exp-parameter.service';
     // tslint:disable-next-line:component-selector
     selector: 'man-template-list',
     templateUrl: '../../view/man-template-list.component.html',
-    styleUrls: ['../../css/man-template-list.component.css']
+    styleUrls: ['../../css/sys-management.component.css']
 })
 export class ManTemplateListComponent implements OnInit {
     templates: Observable<Template[]>;

@@ -16,7 +16,7 @@ import { Model, DataCell, DataArray, space_model, source, DataTable } from '../.
     // tslint:disable-next-line:component-selector
     selector: 'man-model-add',
     templateUrl: '../../view/man-model-add.component.html',
-    styleUrls: ['../../css/man-model.component.css']
+    styleUrls: ['../../css/sys-management.component.css']
 })
 export class ManModelAddComponent implements OnChanges {
     // cell: DataCell;

@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges } from '@angular/core';
-// import { FormArray, FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import { NgForOf, NgSwitch } from '@angular/common';
+import { FormArray, FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { NgForOf } from '@angular/common';
 import { OnInit } from '@angular/core';
 import 'rxjs/add/operator/finally';
 
@@ -9,20 +9,19 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { ModelDataService } from '../../service/model-data.service';
 // import { Model, Field, source } from '../../model/data-model'
-import { Model } from '../../model/data-model';
+import { Template, DataTable, source, DataArray } from '../../model/data-model';
+import { DataManageService } from '../../service/data-manage.service';
 
 @Component({
     // tslint:disable-next-line:component-selector
-    selector: 'man-model-preview',
-    templateUrl: '../../view/man-model-preview.component.html',
+    selector: 'man-template',
+    templateUrl: '../../view/man-template.component.html',
     styleUrls: ['../../css/sys-management.component.css']
 })
-export class ManModelPreviewComponent {
-    @Input() model: Model;
-    // previewTemplate() { }
-    constructor(private modelDataService: ModelDataService) { }
+export class ManTemplateCompositionComponent {
+    @Input() template: Template;
 
-    getKeys(item) {
-        return this.modelDataService.getKeys(item);
-    }
+    constructor(private dataManageService: DataManageService) { }
+
+    previewTemplate() { }
 }
