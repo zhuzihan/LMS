@@ -17,4 +17,5 @@ min-width: 800px;
 input {
     border: 0px;
     width: 75%;
+    text-indent: 3px;
 }
