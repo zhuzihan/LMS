@@ -48,6 +48,7 @@
 }
 .inline-table {
     display: inline-table;
+    padding: 3px;
 }
 
 input {
