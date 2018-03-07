@@ -14,11 +14,14 @@ import { DataManageService } from '../../service/data-manage.service';
 
 @Component({
     // tslint:disable-next-line:component-selector
-    selector: 'man-template',
-    templateUrl: '../../view/man-template.component.html',
+    selector: 'man-template-edit',
+    templateUrl: '../../view/man-template-edit.component.html',
     styleUrls: ['../../css/sys-management.component.css']
 })
-export class ManTemplateEditComponent {
+export class ManTemplateEditComponent implements OnChanges{
+    ngOnChanges(): void {
+        
+    }
     @Input() template: Template;
 
     constructor(private dataManageService: DataManageService) { }

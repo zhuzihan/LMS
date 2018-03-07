@@ -8,16 +8,23 @@
         <nav>
             <button mat-raised-button color="primary" (click)="getTemplates()">Refresh</button>
             <button mat-raised-button *ngFor="let template of templates | async" (click)="select(template)">{{template.whole_name}}</button>
+            <button mat-raised-button (click)="showAdd = !showAdd; selectedTemplate = false">{{showAdd ? '取消添加' : '添加模版'}}</button>
         </nav>
         <!-- <p> Form Data : {{json_data | json}}</p> -->
     </div>
-
+    <div *ngIf="showAdd">
+        <man-model-add></man-model-add>
+    </div>
     <div *ngIf="selectedTemplate">
         <br>
         <mat-tab-group>
             <mat-tab label="预览">
                 <h3>预览的模板: {{selectedTemplate.whole_name}}</h3>
                 <man-template-preview [template]="selectedTemplate"></man-template-preview>
+            </mat-tab>
+            <mat-tab label="组成">
+                <h3>编辑的模板: {{selectedTemplate.whole_name}}</h3>
+                <man-template-composition [template]="selectedTemplate"></man-template-composition>
             </mat-tab>
             <mat-tab label="编辑">
                 <h3>编辑的模板: {{selectedTemplate.whole_name}}</h3>

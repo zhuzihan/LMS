@@ -47,3 +47,9 @@
 1. 模版结构调整 (预览-组成-编辑),模块编辑页面更名为 man-model-edit
 2. 编辑模版组成 (man-template-composition)
 3. 模版预览显示效果优化 (man-template-preview)
+
+2018-03-06 (hansien)
+1. 表格样式微调
+
+2018-03-07 (hansien)
+1. 实现模版组成页面

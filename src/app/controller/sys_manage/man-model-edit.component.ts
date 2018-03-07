@@ -16,11 +16,11 @@ import { Model, DataCell, DataArray, model_test, source, DataTable } from '../..
 
 @Component({
     // tslint:disable-next-line:component-selector
-    selector: 'man-model',
+    selector: 'man-model-edit',
     templateUrl: '../../view/man-model-edit.component.html',
     styleUrls: ['../../css/sys-management.component.css']
 })
-export class ManModelEditComponent implements OnChanges {
+export class ManModelEditComponent implements OnChanges, OnInit {
     // cell: DataCell;
     // cells= [this.cells];
     // model = new Model(0, "", "", -1, -1,this.cells);
@@ -58,6 +58,34 @@ export class ManModelEditComponent implements OnChanges {
         public dialog: MatDialog) {
         this.createForm();
         // this.setCells(this.model.cells);
+    }
+    createForm() {
+        this.modelForm = this.fb.group({
+            model_standard_name: '',
+            has_table: 1,
+            has_array: -1,
+        });
+        this.tableForm = this.fb.group({
+            cells: this.fb.array([]),
+        })
+        this.arraysForm = this.fb.array([]);
+        // const arrayCellForm = this.fb.group({
+        //     sn = '';
+        //     name = '';
+        //     source_type = '';
+        //     source_name = '';
+        //     source_sn = '';
+        //     source_data: any;
+        //     row = '';
+        //     col = '';
+        //     colspan = 0;
+        //     rowspan = 0;
+        // });
+        this.modelForm.setControl('table_form', this.tableForm);
+        this.modelForm.setControl('arrays_form', this.arraysForm);
+        this.setTableForm(this.model.table);
+        this.setArraysForm(this.model.arrays);
+        // this.setModel(this.model);
     }
     ngOnInit(): void {
         this.expParameterSerivce.getExpParameter().then(responseData => {
@@ -98,34 +126,6 @@ export class ManModelEditComponent implements OnChanges {
             source_type: source['source_type'],
             value: '',
         });
-    }
-    createForm() {
-        this.modelForm = this.fb.group({
-            model_standard_name: '',
-            has_table: 1,
-            has_array: -1,
-        });
-        this.tableForm = this.fb.group({
-            cells: this.fb.array([]),
-        })
-        this.arraysForm = this.fb.array([]);
-        // const arrayCellForm = this.fb.group({
-        //     sn = '';
-        //     name = '';
-        //     source_type = '';
-        //     source_name = '';
-        //     source_sn = '';
-        //     source_data: any;
-        //     row = '';
-        //     col = '';
-        //     colspan = 0;
-        //     rowspan = 0;
-        // });
-        this.modelForm.setControl('table_form', this.tableForm);
-        this.modelForm.setControl('arrays_form', this.arraysForm);
-        this.setTableForm(this.model.table);
-        this.setArraysForm(this.model.arrays);
-        // this.setModel(this.model);
     }
     ngOnChanges() {
         this.modelForm.reset({
