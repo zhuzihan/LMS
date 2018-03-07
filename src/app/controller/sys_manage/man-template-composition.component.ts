@@ -66,6 +66,11 @@ export class ManTemplateCompositionComponent implements OnChanges, OnInit {
         // this.modelDataService.updateModelData(this.model).subscribe(/* error handing */);
         // this.ngOnChanges();
     }
+    // 重置内容
+    revert() { 
+        // this.model_list.reset();
+        this.ngOnChanges(); 
+    }
 
     get model_list(): FormArray {
         return this.tempForm.get('model_list') as FormArray;
@@ -78,6 +83,15 @@ export class ManTemplateCompositionComponent implements OnChanges, OnInit {
     addListItem() { this.model_list.push(new FormControl()); }
 
     setComposition(composition: Array<String>) {
+        // this.model_list.reset([]);
+        // this.model_list
+        const len = this.model_list.length;
+        let temp_count = 0;
+        do{
+            this.model_list.removeAt(temp_count);
+            temp_count ++;
+        }while(temp_count<temp_count);
+        this.model_list.removeAt(0);
         for (const item of composition) {
             this.model_list.push(this.fb.control(item));
         }
