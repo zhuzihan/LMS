@@ -45,8 +45,13 @@ export class ModelDataService {
     //     return of(newModelData).delay(this.delayMs); // simulate latency with delay
     // }
     updateModelData(model: Model): Observable<Model> {
-        const oldModelData = model_test; // .find(m => m.model_id === model.model_id);
+        const oldModelData = models_test.find(m => m.model_id === model.model_id);
         const newModelData = Object.assign(oldModelData, model); // Demo: mutate cached hero
         return of(newModelData).delay(this.delayMs); // simulate latency with delay
+    }
+    updateTemplateData(temp: Template): Observable<Template> {
+        const oldTemplateData = templates_test.find(t => t.template_id === temp.template_id);
+        const newTemplateData = Object.assign(oldTemplateData, temp); // Demo: mutate cached hero
+        return of(newTemplateData).delay(this.delayMs); // simulate latency with delay
     }
 }

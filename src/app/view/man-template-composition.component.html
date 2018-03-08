@@ -15,69 +15,67 @@
 
         <!-- <hr> -->
         <h4>步骤</h4>
-        <!-- <div [formGroup]="tableForm" class="model-full-width"> -->
-            <div formArrayName="model_list">
-                <div *ngFor="let list_item of model_list.controls; let i=index" class="model-full-width">
-                    <mat-form-field class="field-quarter-width">
-                        <mat-select [formControlName]="i" placeholder="选择模块">
-                            <!-- <mat-option *ngFor="let model_item of model_list_local;" [value]="model_item" (click)="getTableHeads(expPara);saveTableName(expPara);"> -->
-                                <mat-option *ngFor="let model_item of model_list_local;" [value]="model_item"> 
-                                    {{model_item}}
-                            </mat-option>
+        <div formArrayName="model_list">
+            <div *ngFor="let list_item of model_list.controls; let i=index" class="model-full-width">
+                <mat-form-field class="field-quarter-width">
+                    <mat-select  placeholder="选择模块" [formControlName]="i">
+                        <!-- <mat-option *ngFor="let model_item of model_list_local;" [value]="model_item" (click)="getTableHeads(expPara);saveTableName(expPara);"> -->
+                        <mat-option *ngFor="let model_item of model_list_local;" [value]="model_item"> 
+                            {{model_item}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <button (click)="deleteListItem(i)" mat-raised-button>删除</button>
+            </div> 
+            <button (click)="addListItem()" mat-raised-button>添加步骤</button>
+            <!-- <mat-accordion>
+                <mat-expansion-panel *ngFor="let cell of cells_form.controls; let i=index" [formGroupName]="i" class="model-full-width">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            单元 #{{i + 1}}
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            单元内容
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+
+                    <mat-form-field class="field-half-width">
+                        <input formControlName="name" matInput placeholder="单元名">
+                    </mat-form-field>
+
+                    <mat-form-field class="field-half-width">
+                        <mat-select placeholder="数据来源" [(value)]="sourceControl">
+                            <mat-option *ngFor="let s of source;" [value]="s" (click)="patchSourceData(i,s)">{{s.source_name}}</mat-option>
                         </mat-select>
                     </mat-form-field>
-                    <button (click)="deleteListItem(i)" mat-raised-button>删除</button>
-                </div> 
-                <button (click)="addListItem()" mat-raised-button>添加步骤</button>
-                <!-- <mat-accordion>
-                    <mat-expansion-panel *ngFor="let cell of cells_form.controls; let i=index" [formGroupName]="i" class="model-full-width">
-                        <mat-expansion-panel-header>
-                            <mat-panel-title>
-                                单元 #{{i + 1}}
-                            </mat-panel-title>
-                            <mat-panel-description>
-                                单元内容
-                            </mat-panel-description>
-                        </mat-expansion-panel-header>
-
-                        <mat-form-field class="field-half-width">
-                            <input formControlName="name" matInput placeholder="单元名">
-                        </mat-form-field>
-
-                        <mat-form-field class="field-half-width">
-                            <mat-select placeholder="数据来源" [(value)]="sourceControl">
-                                <mat-option *ngFor="let s of source;" [value]="s" (click)="patchSourceData(i,s)">{{s.source_name}}</mat-option>
+                    <div *ngIf="sourceControl?.source_type==4">
+                        <mat-form-field class="field-full-width">
+                            <mat-select placeholder="参数表列表">
+                                <mat-option *ngFor="let expPara of expParameterList;" [value]="expPara.tableName" (click)="getTableHeads(expPara);saveTableName(expPara);">
+                                    表《{{expPara.tableName}}》 【备注：{{expPara.tableRemark}}】 【登记人：{{expPara.tableName}}】 【状态：{{expPara.tableState}}】
+                                </mat-option>
                             </mat-select>
                         </mat-form-field>
-                        <div *ngIf="sourceControl?.source_type==4">
-                            <mat-form-field class="field-full-width">
-                                <mat-select placeholder="参数表列表">
-                                    <mat-option *ngFor="let expPara of expParameterList;" [value]="expPara.tableName" (click)="getTableHeads(expPara);saveTableName(expPara);">
-                                        表《{{expPara.tableName}}》 【备注：{{expPara.tableRemark}}】 【登记人：{{expPara.tableName}}】 【状态：{{expPara.tableState}}】
-                                    </mat-option>
-                                </mat-select>
-                            </mat-form-field>
 
-                            <mat-form-field class="field-full-width">
-                                <mat-select placeholder="参数表列">
-                                    <mat-option *ngFor="let col of Columns;let colId = index" [value]="col" (click)="addEquipParaToForm(i,col)">
-                                        (列{{i}})【{{col}}】|行1：{{colDataArray[colId][0]}}| |行2：{{colDataArray[colId][1]}}| |行3：{{colDataArray[colId][2]}}|...
-                                    </mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </div>
-
-                        <mat-form-field>
-                            <input formControlName="value" matInput placeholder="数据值">
+                        <mat-form-field class="field-full-width">
+                            <mat-select placeholder="参数表列">
+                                <mat-option *ngFor="let col of Columns;let colId = index" [value]="col" (click)="addEquipParaToForm(i,col)">
+                                    (列{{i}})【{{col}}】|行1：{{colDataArray[colId][0]}}| |行2：{{colDataArray[colId][1]}}| |行3：{{colDataArray[colId][2]}}|...
+                                </mat-option>
+                            </mat-select>
                         </mat-form-field>
-                        <button (click)="openDialog()" type="button" mat-raised-button>设置</button>
-                        <button (click)="removeCell(i)" type="button" mat-raised-button>删除</button>
-                    </mat-expansion-panel>
+                    </div>
 
-                </mat-accordion>
-                <button (click)="addCell()" type="button" mat-raised-button>添加记录</button> -->
-            </div>
-        <!-- </div> -->
+                    <mat-form-field>
+                        <input formControlName="value" matInput placeholder="数据值">
+                    </mat-form-field>
+                    <button (click)="openDialog()" type="button" mat-raised-button>设置</button>
+                    <button (click)="removeCell(i)" type="button" mat-raised-button>删除</button>
+                </mat-expansion-panel>
+
+            </mat-accordion>
+            <button (click)="addCell()" type="button" mat-raised-button>添加记录</button> -->
+        </div>
     </form>
 
     <p>Form value: {{ tempForm.value | json }}</p>

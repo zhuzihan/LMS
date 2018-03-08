@@ -29,6 +29,7 @@ export class ManTemplateCompositionComponent implements OnChanges, OnInit {
     @Input() template: Template;
     tempForm: FormGroup;
     model_list_local = model_list_local;
+    selected='试剂准备';
 
 
     constructor(
@@ -60,16 +61,12 @@ export class ManTemplateCompositionComponent implements OnChanges, OnInit {
 
     // 提交表单
     onSubmit() {
-        // console.log("onsubmit1");
-        // this.model = this.prepareSaveModel();
-        // debug
-        // console.log(this.model);
-        // this.modelDataService.updateModelData(this.model).subscribe(/* error handing */);
-        // this.ngOnChanges();
+        this.template = this.prepareSaveTemplateList();
+        this.modelDataService.updateTemplateData(this.template).subscribe(/* error handing */);
+        this.ngOnChanges();
     }
     // 重置内容
     revert() { 
-        // this.model_list.reset();
         this.ngOnChanges(); 
     }
 
@@ -95,5 +92,17 @@ export class ManTemplateCompositionComponent implements OnChanges, OnInit {
             this.model_list.push(this.fb.control(item));
         }
     }
-    previewTemplate() { }
+    // previewTemplate() { }
+
+    prepareSaveTemplateList(): Template {
+        const formTemp = this.tempForm.value;
+        const saveTemplate: Template = {
+            template_id: this.template.template_id,
+            whole_name: formTemp.whole_name,
+            model_list: formTemp.model_list as string[],
+            models: this.template.models,
+        }
+        // console.log(saveTemplate);
+        return saveTemplate;
+    }
 }
