@@ -10,12 +10,11 @@
                             [colspan]="template.models[model_key].table.cells[cell_key].colspan"
                             [rowspan]="template.models[model_key].table.cells[cell_key].rowspan">
                             <div class="grid-tile-div">
-                                <div class="inline-table">
-                                    <span class="grid-span">{{template.models[model_key].table.cells[cell_key].name}} : </span>
-                                </div>
-                                <div class="grid-input-div">
-                                    <input placeholder="录入数据" value="{{template.models[model_key].table.cells[cell_key].value}}">
-                                </div>
+                                <!-- <div class="inline-table"> -->
+                                    <span class="grid-span">
+                                        {{template.models[model_key].table.cells[cell_key].name}} : 
+                                        {{template.models[model_key].table.cells[cell_key].value}}
+                                    </span>
                             </div>
                         </mat-grid-tile>
                     </div>
@@ -34,25 +33,21 @@
                                 <ng-template #space>
                                     <mat-grid-tile  [ngSwitch]="array_cell.source_type" [colspan]="array_cell.colspan" [rowspan]="array_cell.rowspan">
                                         <div *ngSwitchCase="1">
-                                            <input placeholder="录入数据" value="{{array_cell.value}}">
+                                            {{array_cell.value}}
                                         </div>
                                         <div *ngSwitchCase="2">
-                                            <button>引用数据源</button>
+                                            -(引用数据源数据)-
                                         </div>
                                         <div *ngSwitchCase="3">
-                                            <mat-form-field>
-                                                <input matInput [matDatepicker]="picker" placeholder="输入/选择日期">
-                                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                                                <mat-datepicker #picker></mat-datepicker>
-                                            </mat-form-field>
+                                            -(日期数据)-
                                         </div>
                                         <div *ngSwitchCase="4">
-                                            <button>选择参数表</button>
+                                            -(参数表数据)-
                                         </div>
                                         <div *ngSwitchCase="5">
-                                            <button>创建公式</button>
+                                            -(公式)-
                                         </div>
-                                        <div *ngSwitchDefault>Null</div>
+                                        <div *ngSwitchDefault>非法数据类型</div>
                                     </mat-grid-tile>
                                 </ng-template>
                             </div>
