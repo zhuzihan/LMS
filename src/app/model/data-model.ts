@@ -7,6 +7,13 @@ export const source = [
     { source_name: '公式', source_type: 5 },
     { source_name: '数组', source_type: 6 },
 ];
+// 模块列表
+export const model_list_local = [
+    "试剂准备",
+    "标准溶液配制",
+    "工作母液配制",
+    "标准样品称样",
+]
 
 // 模板
 export class Template {

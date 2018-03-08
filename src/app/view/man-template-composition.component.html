@@ -18,8 +18,13 @@
         <!-- <div [formGroup]="tableForm" class="model-full-width"> -->
             <div formArrayName="model_list">
                 <div *ngFor="let list_item of model_list.controls; let i=index" class="model-full-width">
-                    <mat-form-field class="field-half-width">
-                        <input [formControlName]="i" matInput placeholder="步骤">
+                    <mat-form-field class="field-quarter-width">
+                        <mat-select [formControlName]="i" placeholder="选择模块">
+                            <!-- <mat-option *ngFor="let model_item of model_list_local;" [value]="model_item" (click)="getTableHeads(expPara);saveTableName(expPara);"> -->
+                                <mat-option *ngFor="let model_item of model_list_local;" [value]="model_item"> 
+                                    {{model_item}}
+                            </mat-option>
+                        </mat-select>
                     </mat-form-field>
                     <button (click)="deleteListItem(i)" mat-raised-button>删除</button>
                 </div> 

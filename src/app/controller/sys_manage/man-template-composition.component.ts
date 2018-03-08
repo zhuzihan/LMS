@@ -9,7 +9,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { ModelDataService } from '../../service/model-data.service';
 // import { Model, Field, source } from '../../model/data-model'
-import { Template, DataTable, source, DataArray } from '../../model/data-model';
+import { Template, DataTable, DataArray, model_list_local } from '../../model/data-model';
 import { DataManageService } from '../../service/data-manage.service';
 
 @Component({
@@ -28,6 +28,7 @@ export class ManTemplateCompositionComponent implements OnChanges, OnInit {
     }
     @Input() template: Template;
     tempForm: FormGroup;
+    model_list_local = model_list_local;
 
 
     constructor(
@@ -83,8 +84,6 @@ export class ManTemplateCompositionComponent implements OnChanges, OnInit {
     addListItem() { this.model_list.push(new FormControl()); }
 
     setComposition(composition: Array<String>) {
-        // this.model_list.reset([]);
-        // this.model_list
         const len = this.model_list.length;
         let temp_count = 0;
         do{
