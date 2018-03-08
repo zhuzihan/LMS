@@ -28,7 +28,10 @@ export class ManModelAddComponent implements OnChanges {
     arraysForm: FormArray;
 
     source = source;
+    // 暂存数据来源类型的临时变量
     sourceControl: Object;
+    // 设置的单元格编号
+    clickedCellIndex: number;
     isLoading = true;
     // selected_source_name: '';
 
@@ -88,8 +91,10 @@ export class ManModelAddComponent implements OnChanges {
         this.savedTableName = expPara['tableName'];
         // console.log(this.savedTableName);
     }
-    patchSourceData(i: string, source: object) {
-        // i.control.patchValue({ source_name: 'cipchk' });
+    patchSourceData(i:number, s: object) {
+        this.sourceControl = s;
+        this.clickedCellIndex = i;
+        console.log(this.clickedCellIndex);
         this.cells_form.controls[i].patchValue({
             source_name: source['source_name'],
             source_type: source['source_type'],

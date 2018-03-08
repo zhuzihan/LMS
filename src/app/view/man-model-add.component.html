@@ -34,11 +34,11 @@
                         </mat-form-field>
 
                         <mat-form-field class="field-half-width">
-                            <mat-select placeholder="数据来源" [(value)]="sourceControl">
+                            <mat-select placeholder="数据来源" >
                                 <mat-option *ngFor="let s of source;" [value]="s" (click)="patchSourceData(i,s)">{{s.source_name}}</mat-option>
                             </mat-select>
                         </mat-form-field>
-                        <div *ngIf="sourceControl?.source_type==4">
+                        <div *ngIf="sourceControl?.source_type==4 && clickedCellIndex == i">
                             <mat-form-field class="field-full-width">
                                 <mat-select placeholder="参数表列表">
                                     <mat-option *ngFor="let expPara of expParameterList;" [value]="expPara.tableName" (click)="getTableHeads(expPara);saveTableName(expPara);">
