@@ -18,14 +18,19 @@ import { Template, DataTable, source, DataArray } from '../../model/data-model';
     templateUrl: '../../view/man-template-edit.component.html',
     styleUrls: ['../../css/sys-management.component.css']
 })
-export class ManTemplateEditComponent {
+export class ManTemplateEditComponent implements OnChanges{
     @Input() template: Template;
 
-    constructor(private modelDataService: ModelDataService,) { }
+    constructor(private modelDataService: ModelDataService,) {
+    }
 
     previewTemplate() { }
 
     getKeys(item) {
         return this.modelDataService.getKeys(item);
+    }
+
+    ngOnChanges(): void{
+        console.log(this.template);
     }
 }
