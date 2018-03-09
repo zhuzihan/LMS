@@ -6,7 +6,7 @@
             <button type="submit" [disabled]="modelForm.pristine" mat-raised-button>保存</button> &nbsp;
             <button type="reset" (click)="revert()" [disabled]="modelForm.pristine" mat-raised-button>重置</button>
         </div>
-        <span>Name: {{modelForm.get('model_standard_name').value|json}}</span>
+        <!-- <span>Name: {{modelForm.get('model_standard_name').value|json}}</span> -->
         <span *ngIf="modelForm.get('has_table').value == -1">无列表</span>
         <span *ngIf="modelForm.get('has_array').value == -1">无数据表</span>
         <mat-form-field class="model-half-width">
@@ -15,21 +15,25 @@
 
         <!-- <hr> -->
         <h4>单元</h4>
-        <div [formGroup]="tableForm" class="model-full-width">
+        <div *ngIf="isLoading">
+            <mat-spinner [diameter]="24"></mat-spinner>
+            <p>数据加载中... </p>
+        </div>
+        <div  *ngIf="!isLoading" [formGroup]="tableForm" class="model-full-width">
             <div formArrayName="cells_form">
-                <mat-accordion>
-                    <mat-expansion-panel *ngFor="let cell of cells_form.controls; let i=index" [formGroupName]="i" class="model-full-width">
+                <mat-accordion multi="true">
+                    <mat-expansion-panel *ngFor="let cell of cells_form.controls; let i=index" [expanded]="cellStep === 1" [formGroupName]="i" class="model-full-width">
                         <mat-expansion-panel-header>
                             <mat-panel-title>
                                 单元 #{{i + 1}}
                             </mat-panel-title>
                             <mat-panel-description>
-                                单元内容
+                                {{cellName.value}}:{{cellValue.value}}
                             </mat-panel-description>
                         </mat-expansion-panel-header>
 
                         <mat-form-field class="field-half-width">
-                            <input formControlName="name" matInput placeholder="单元名">
+                            <input formControlName="name" #cellName matInput placeholder="单元名">
                         </mat-form-field>
 
                         <mat-form-field class="field-half-width">
@@ -56,7 +60,7 @@
                         </div>
 
                         <mat-form-field>
-                            <input formControlName="value" matInput placeholder="数据值">
+                            <input formControlName="value" #cellValue matInput placeholder="数据值">
                         </mat-form-field>
                         <button (click)="openDialog()" type="button" mat-raised-button>设置</button>
                         <button (click)="removeCell(i)" type="button" mat-raised-button>删除</button>
@@ -92,7 +96,7 @@
           </div> -->
     </form>
 
-    <p>Form value: {{ modelForm.value | json }}</p>
+    <!-- <p>Form value: {{ modelForm.value | json }}</p> -->
 
     <!-- <p>source_name:{{source_name | json}}</p> -->
     <!-- <p>Form status: {{ modelForm.status | json }}</p> -->

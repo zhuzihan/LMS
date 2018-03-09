@@ -77,7 +77,7 @@ export class ManTemplateListComponent implements OnInit {
                 const source_sn = modelTable.cells[cell_key].source_sn;
                 const source_value = this.fillQuoteParameterCell(source_sn);
                 if (source_value != null) {
-                    console.log(source_value);
+                    // console.log(source_value);
                     modelTable.cells[cell_key].source_data = source_value;
                 }
             }
@@ -92,7 +92,7 @@ export class ManTemplateListComponent implements OnInit {
         const source_list = quoteSource_str.split('#');
         // 解析模块内引用的数据
         if (source_list.length === 2 && source_list[0].includes('model') === true) {
-            console.log('find');
+            // console.log('find');
             return this.json_data.models[source_list[0]].table.cells[source_list[1]].value;
         } else {
             return null;
