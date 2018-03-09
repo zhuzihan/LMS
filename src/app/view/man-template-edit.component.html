@@ -21,6 +21,16 @@
                             <div class="grid-input-div">
                                 <input placeholder="数据值" [(ngModel)]="template.models[model_key].table.cells[cell_key].value">
                             </div>
+                            <!-- <div class="grid-input-div" [ngSwitch]="template.models[model_key].table.cells[cell_key].source_type">
+                                <input *ngSwitchCase="1" placeholder="数据值" [(ngModel)]="template.models[model_key].table.cells[cell_key].value">
+                                <input *ngSwitchCase="1" placeholder="数据值" [(ngModel)]="template.models[model_key].table.cells[cell_key].value">
+                                <div *ngSwitchCase="2">2</div>
+                                <span *ngSwitchCase="3">3</span>
+                                <span *ngSwitchCase="4">4</span>
+                                <span *ngSwitchCase="5">5</span>
+                                <span *ngSwitchCase="6">6</span>
+                                <input *ngSwitchDefault placeholder="数据值" [(ngModel)]="template.models[model_key].table.cells[cell_key].value">
+                            </div> -->
                         </div>
                     </mat-grid-tile>
                 </div>

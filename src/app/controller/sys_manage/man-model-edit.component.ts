@@ -30,6 +30,8 @@ export class ManModelEditComponent implements OnChanges, OnInit {
     arraysForm: FormArray;
 
     source = source;
+    // 单元切换标记
+    cellStep = 0;
     // 暂存数据来源类型的临时变量
     sourceControl: Object;
     // 设置的单元格编号
