@@ -8,7 +8,7 @@ import { CalculateComponent } from './calculate.component';
 import { SysManagementComponent } from './sys-management.component';
 
 const IndexRoutes: Routes = [
-  { path: '', redirectTo: '/registration', pathMatch: 'full' },
+  { path: '', redirectTo: '/preview', pathMatch: 'full' },
   // 预览界面
   { path: 'preview', component: PreviewComponent },
   // 样品登记

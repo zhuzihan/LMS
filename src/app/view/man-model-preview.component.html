@@ -10,7 +10,7 @@
             </mat-grid-tile>
         </div>
         <div *ngFor="let array_key of getKeys(model.arrays)">
-            <div *ngFor="let array_cell of model.arrays[array_key].cell_list">
+            <div *ngFor="let array_cell of getKeys(model.arrays[array_key].cell_list)">
                 <mat-grid-tile *ngIf="array_cell.row == 1; else space"
                     [colspan]="array_cell.colspan"
                     [rowspan]="array_cell.rowspan">

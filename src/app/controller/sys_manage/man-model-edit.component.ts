@@ -71,7 +71,7 @@ export class ManModelEditComponent implements OnChanges, OnInit {
             has_array: -1,
         });
         this.tableForm = this.fb.group({
-            cells: this.fb.array([]),
+            // cells: this.fb.array([]),
         })
         this.arraysForm = this.fb.array([]);
         // const arrayCellForm = this.fb.group({
@@ -88,9 +88,8 @@ export class ManModelEditComponent implements OnChanges, OnInit {
         // });
         this.modelForm.setControl('table_form', this.tableForm);
         this.modelForm.setControl('arrays_form', this.arraysForm);
-        this.setTableForm(this.model.table);
-        this.setArraysForm(this.model.arrays);
-        // this.setModel(this.model);
+        // this.setTableForm(this.model.table);
+        // this.setArraysForm(this.model.arrays);
     }
     ngOnInit(): void {
         this.expParameterSerivce.getExpParameter().then(responseData => {
@@ -127,7 +126,7 @@ export class ManModelEditComponent implements OnChanges, OnInit {
     patchSourceData(i:number, s: object) {
         this.sourceControl = s;
         this.clickedCellIndex = i;
-        console.log(this.clickedCellIndex);
+        // console.log(this.clickedCellIndex);
         this.cells_form.controls[i].patchValue({
             source_name: source['source_name'],
             source_type: source['source_type'],
@@ -148,7 +147,8 @@ export class ManModelEditComponent implements OnChanges, OnInit {
         this.setArraysForm(this.model.arrays);
         // 临时保存数据置空
         this.savedTableName = '';
-        // console.log(this.modelForm);
+        console.log(this.modelForm);
+        // console.log(this.modelForm.controls.table_form['controls'].cell_lists_form);
     }
     // 重置内容
     revert() { this.ngOnChanges(); }
@@ -163,7 +163,7 @@ export class ManModelEditComponent implements OnChanges, OnInit {
             cellFGs.push(this.fb.group(arrays[cell_key]));
         }
         const arraysFormArray = this.fb.array(cellFGs);
-        this.modelForm.setControl('arrarys_form', arraysFormArray);
+        this.modelForm.setControl('arrays_form', arraysFormArray);
     }
     // setModel(model: Model) {
     // this.setCells(model.cells);
@@ -189,8 +189,8 @@ export class ManModelEditComponent implements OnChanges, OnInit {
         for (const cell_key of Object.keys(cells)) {
             cellFGs.push(this.fb.group(cells[cell_key]));
         }
-        const cellFormArray = this.fb.array(cellFGs);
-        this.tableForm.setControl('cell_lists_form', cellFormArray);
+        const cellsFormArray = this.fb.array(cellFGs);
+        this.tableForm.setControl('cell_lists_form', cellsFormArray);
     }
     // setCells(cells: DataCell[]) {
     //     const cellFGs = cells.map(cells => this.fb.group(cells));
@@ -224,21 +224,21 @@ export class ManModelEditComponent implements OnChanges, OnInit {
     prepareSaveModel(): Model {
         const formModel = this.modelForm.value;
         // deep copy of cell_lists_form
-        const cellListFormDeepCopy: { [key: string]: String; } = formModel.tableForm.cell_lists_form.map(
+        const cellListFormDeepCopy: { [key: string]: String; } = formModel.table_form.cell_lists_form.map(
             (cellList: { [key: string]: String; }) => Object.assign({}, cellList)
         );
         // deep copy of cells_form
-        const cellFormDeepCopy: { [key: string]: DataCell; } = formModel.tableForm.cells_form.map(
+        const cellFormDeepCopy: { [key: string]: DataCell; } = formModel.table_form.cells_form.map(
             (cell: { [key: string]: DataCell; }) => Object.assign({}, cell)
         );
         // deep copy of arraysForm
-        const arraysFormDeepCopy: { [key: string]: DataArray; } = formModel.tableForm.cells_form.map(
+        const arraysFormDeepCopy: { [key: string]: DataArray; } = formModel.arrays_form.map(
             (cell: { [key: string]: DataArray; }) => Object.assign({}, cell)
         );
         // deep copy of cells_form
-        const arrayListFormDeepCopy: Array<String> = formModel.tableForm.cells_form.map(
-            // (cell: { [key: string]: DataCell; }) => Object.assign({}, cell)
-        );
+        // const arrayListFormDeepCopy: Array<String> = formModel.table_form.cells_form.map(
+        //     (cell: { [key: string]: DataCell; }) => Object.assign({}, cell)
+        // );
         // deep copy of tableForm
         // const tableFormDeepCopy: DataCell[] = formModel.tableForm.map(
         //     (cell: DataCell) => Object.assign({}, cell)
@@ -257,7 +257,7 @@ export class ManModelEditComponent implements OnChanges, OnInit {
                 cells: cellFormDeepCopy,
                 cell_list: cellListFormDeepCopy,
             },
-            array_list: arrayListFormDeepCopy,
+            array_list: this.model.array_list,
             arrays: arraysFormDeepCopy,
 
             // cells_form: cellFormDeepCopy;
