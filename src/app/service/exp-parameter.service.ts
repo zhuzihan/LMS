@@ -96,7 +96,7 @@ export class ExpParameterService {
             new_para_data['tableData'] = expParaJsonArray;
             expParameterList.push(new_para_data);
         }
-        console.log(expParameterList);
+        // console.log(expParameterList);
         return expParameterList;
     }
 

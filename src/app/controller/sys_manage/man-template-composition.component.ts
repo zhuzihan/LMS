@@ -56,7 +56,7 @@ export class ManTemplateCompositionComponent implements OnChanges, OnInit {
             model_list: this.template.model_list,
         })
         this.setComposition(this.template.model_list);
-        console.log(this.tempForm);
+        // console.log(this.tempForm);
     }
 
     // 提交表单

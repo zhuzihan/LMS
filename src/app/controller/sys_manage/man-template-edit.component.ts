@@ -31,6 +31,6 @@ export class ManTemplateEditComponent implements OnChanges{
     }
 
     ngOnChanges(): void{
-        console.log(this.template);
+        // console.log(this.template);
     }
 }

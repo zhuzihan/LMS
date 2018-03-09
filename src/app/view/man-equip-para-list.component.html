@@ -5,7 +5,7 @@
     </div>
     <div *ngIf="!isLoading">
         <div *ngIf="!selectedExpParameter">
-            <h2>参数表</h2>
+            <h3>参数表</h3>
             <mat-table #table [dataSource]="expParameterList">
                 <ng-container matColumnDef="tableName">
                     <mat-header-cell *matHeaderCellDef> 表名 </mat-header-cell>
