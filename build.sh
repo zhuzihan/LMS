@@ -2,7 +2,7 @@
 cd ~/gitrepo/LMS
 isUpdate=$(git pull)
 echo $isUpdate
-if [ "$isUpdate" == "Already up-to-date."x ]; then
+if [ "$isUpdate" == "Already up-to-date." ]; then
     echo "up-to-date"
 else
     ng build
