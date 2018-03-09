@@ -443,7 +443,7 @@ data_array_2.pushWithSpan(array_cell_3_2);
 
 // 模块中的列表
 export const model_test = new Model();
-model_test.model_standard_name = 'test_name';
+model_test.model_standard_name = '模块1';
 model_test.model_id = 1;
 model_test.model_name = 'model.1';
 model_test.has_array = 1;
