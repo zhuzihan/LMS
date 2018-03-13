@@ -49,6 +49,11 @@ export class ModelDataService {
         const newModelData = Object.assign(oldModelData, model); // Demo: mutate cached hero
         return of(newModelData).delay(this.delayMs); // simulate latency with delay
     }
+    addModelData(model: Model): Observable<Model> {
+        model.model_id = models_test.length + 1;
+        models_test.push(model);
+        return of(model).delay(this.delayMs); // simulate latency with delay
+    }
     updateTemplateData(temp: Template): Observable<Template> {
         const oldTemplateData = templates_test.find(t => t.template_id === temp.template_id);
         const newTemplateData = Object.assign(oldTemplateData, temp); // Demo: mutate cached hero

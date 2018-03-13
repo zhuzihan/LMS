@@ -453,8 +453,8 @@ model_test.array_list = ['test_array'];
 model_test.arrays = { 'test_array': data_array };
 
 export const model_test_2 = new Model();
-model_test_2.model_standard_name = 'test_name';
-model_test_2.model_id = 1;
+model_test_2.model_standard_name = '模块2';
+model_test_2.model_id = 2;
 model_test_2.model_name = 'model.2';
 model_test_2.has_array = 1;
 model_test_2.has_table = 1;
@@ -464,6 +464,7 @@ model_test_2.arrays = { 'test_array': data_array_2 };
 
 export const models_test: Model[] = [
     model_test,
+    model_test_2,
 ];
 
 // export const model_test: Model[] = [

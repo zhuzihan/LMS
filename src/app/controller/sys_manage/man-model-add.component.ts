@@ -214,7 +214,7 @@ export class ManModelAddComponent implements OnChanges, OnInit {
         this.model = this.prepareSaveModel();
         // debug
         // console.log(this.model);
-        this.modelDataService.updateModelData(this.model).subscribe(/* error handing */);
+        this.modelDataService.addModelData(this.model).subscribe(/* error handing */);
         this.ngOnChanges();
     }
     prepareSaveModel(): Model {
