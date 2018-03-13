@@ -220,11 +220,11 @@ export class ManModelAddComponent implements OnChanges, OnInit {
     prepareSaveModel(): Model {
         const formModel = this.modelForm.value;
         // deep copy of cell_lists_form
-        const cellListFormDeepCopy: { [key: string]: String; } = formModel.table_Form.cell_lists_form.map(
+        const cellListFormDeepCopy: { [key: string]: String; } = formModel.table_form.cell_lists_form.map(
             (cellList: { [key: string]: String; }) => Object.assign({}, cellList)
         );
         // deep copy of cells_form
-        const cellFormDeepCopy: { [key: string]: DataCell; } = formModel.table_Form.cells_form.map(
+        const cellFormDeepCopy: { [key: string]: DataCell; } = formModel.table_form.cells_form.map(
             (cell: { [key: string]: DataCell; }) => Object.assign({}, cell)
         );
         // deep copy of arraysForm
