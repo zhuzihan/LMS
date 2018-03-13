@@ -54,6 +54,9 @@ export class ModelDataService {
         models_test.push(model);
         return of(model).delay(this.delayMs); // simulate latency with delay
     }
+    removeModelData(model: Model) {
+
+    }
     updateTemplateData(temp: Template): Observable<Template> {
         const oldTemplateData = templates_test.find(t => t.template_id === temp.template_id);
         const newTemplateData = Object.assign(oldTemplateData, temp); // Demo: mutate cached hero

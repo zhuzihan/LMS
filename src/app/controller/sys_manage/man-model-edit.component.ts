@@ -124,7 +124,7 @@ export class ManModelEditComponent implements OnChanges, OnInit {
         this.savedTableName = expPara['tableName'];
         // console.log(this.savedTableName);
     }
-    patchSourceData(i:number, s: object) {
+    patchSourceData(i: number, s: object) {
         this.sourceControl = s;
         this.clickedCellIndex = i;
         // console.log(this.clickedCellIndex);
@@ -212,6 +212,9 @@ export class ManModelEditComponent implements OnChanges, OnInit {
     // 删除单元
     removeCell(i: number) {
         this.cells_form.removeAt(i);
+    }
+    removeModel() {
+        this.modelDataService.removeModelData(this.model);
     }
     // 提交表单
     onSubmit() {
