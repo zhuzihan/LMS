@@ -8,7 +8,7 @@
 
     <nav>
       <button mat-raised-button color="primary" (click)="getModels()">刷新</button>
-      <button mat-raised-button *ngFor="let model of models | async" (click)="select(model);showAdd=false">{{model.model_name}}</button>
+      <button mat-raised-button *ngFor="let model of models | async" (click)="select(model);showAdd=false">{{model.model_standard_name}}</button>
       <button mat-raised-button (click)="showAdd = !showAdd; selectedModel = false">{{showAdd ? '取消添加' : '添加模块'}}</button>
     </nav>
     <!-- <p>Form value: {{ models | json }}</p> -->

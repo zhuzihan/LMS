@@ -27,9 +27,9 @@ export class Template {
 
 // 模块
 export class Model {
-    model_id = 0;
-    model_name = '';    // 模块名称
-    model_standard_name = ''; // 模块标准名称
+    model_id = 0; //数字
+    model_name = '';    // 模块名称，字符串的id
+    model_standard_name = ''; // 模块标准名称，用作model编辑
     has_table = -1;     // 该模块是否拥有列表,'1'是，'-1'否
     has_array = -1;     // 该模块是否拥有数组,'1'是,且代表有一张数据表，'-1'否
     table: DataTable;     // 列表内容
@@ -581,6 +581,7 @@ const space_cell: DataCell = new DataCell();
 space_cell.sn = 'c_1_1';
 const space_table: DataTable = new DataTable();
 space_table.cells['c.1.1'] = space_cell;
+space_table.cell_list = {};
 export const space_array_cell: ArrayCell = new ArrayCell();
 space_array_cell.row = '1';
 space_array_cell.col = 'A';

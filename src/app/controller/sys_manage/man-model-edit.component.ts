@@ -66,6 +66,7 @@ export class ManModelEditComponent implements OnChanges, OnInit {
     }
     createForm() {
         this.modelForm = this.fb.group({
+            model_name: '',
             model_standard_name: '',
             has_table: 1,
             has_array: -1,
@@ -147,7 +148,7 @@ export class ManModelEditComponent implements OnChanges, OnInit {
         this.setArraysForm(this.model.arrays);
         // 临时保存数据置空
         this.savedTableName = '';
-        console.log(this.modelForm);
+        // console.log(this.modelForm);
         // console.log(this.modelForm.controls.table_form['controls'].cell_lists_form);
     }
     // 重置内容
@@ -235,14 +236,6 @@ export class ManModelEditComponent implements OnChanges, OnInit {
         const arraysFormDeepCopy: { [key: string]: DataArray; } = formModel.arrays_form.map(
             (cell: { [key: string]: DataArray; }) => Object.assign({}, cell)
         );
-        // deep copy of cells_form
-        // const arrayListFormDeepCopy: Array<String> = formModel.table_form.cells_form.map(
-        //     (cell: { [key: string]: DataCell; }) => Object.assign({}, cell)
-        // );
-        // deep copy of tableForm
-        // const tableFormDeepCopy: DataCell[] = formModel.tableForm.map(
-        //     (cell: DataCell) => Object.assign({}, cell)
-        // );
 
         // return new 'Field' object containing a combination of original model value
         // and deep copies of changed form model values

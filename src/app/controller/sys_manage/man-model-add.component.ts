@@ -18,7 +18,7 @@ import { Model, DataCell, DataArray, space_model, source, DataTable } from '../.
     templateUrl: '../../view/man-model-add.component.html',
     styleUrls: ['../../css/sys-management.component.css']
 })
-export class ManModelAddComponent implements OnChanges {
+export class ManModelAddComponent implements OnChanges, OnInit {
     // cell: DataCell;
     // cells= [this.cells];
     // model = new Model(0, "", "", -1, -1,this.cells);
@@ -65,6 +65,7 @@ export class ManModelAddComponent implements OnChanges {
             this.expParameterList = this.expParameterSerivce.convertParameterList(this.expParameterData);
             this.isLoading = false;
         });
+        this.ngOnChanges();
     }
     // getFrontValue(parameterList: Array<Object>, headKey: string, count: number) {
     //     return this.expParameterSerivce.getFrontValue(parameterList,headKey,count);
@@ -94,7 +95,7 @@ export class ManModelAddComponent implements OnChanges {
     patchSourceData(i:number, s: object) {
         this.sourceControl = s;
         this.clickedCellIndex = i;
-        console.log(this.clickedCellIndex);
+        // console.log(this.clickedCellIndex);
         this.cells_form.controls[i].patchValue({
             source_name: source['source_name'],
             source_type: source['source_type'],
@@ -103,12 +104,13 @@ export class ManModelAddComponent implements OnChanges {
     }
     createForm() {
         this.modelForm = this.fb.group({
+            model_name: '',
             model_standard_name: '',
             has_table: 1,
             has_array: -1,
         });
         this.tableForm = this.fb.group({
-            cells: this.fb.array([]),
+            // cells: this.fb.array([]),
         })
         this.arraysForm = this.fb.array([]);
         // const arrayCellForm = this.fb.group({
@@ -125,8 +127,8 @@ export class ManModelAddComponent implements OnChanges {
         // });
         this.modelForm.setControl('table_form', this.tableForm);
         this.modelForm.setControl('arrays_form', this.arraysForm);
-        this.setTableForm(this.model.table);
-        this.setArraysForm(this.model.arrays);
+        // this.setTableForm(this.model.table);
+        // this.setArraysForm(this.model.arrays);
         // this.setModel(this.model);
     }
     ngOnChanges() {
@@ -142,7 +144,7 @@ export class ManModelAddComponent implements OnChanges {
         this.setArraysForm(this.model.arrays);
         // 临时保存数据置空
         this.savedTableName = '';
-        // console.log(this.modelForm);
+        console.log(this.modelForm);
     }
     // 重置内容
     revert() { this.ngOnChanges(); }
@@ -157,7 +159,7 @@ export class ManModelAddComponent implements OnChanges {
             cellFGs.push(this.fb.group(arrays[cell_key]));
         }
         const arraysFormArray = this.fb.array(cellFGs);
-        this.modelForm.setControl('arrarys_form', arraysFormArray);
+        this.modelForm.setControl('arrays_form', arraysFormArray);
     }
     // setModel(model: Model) {
     // this.setCells(model.cells);
@@ -183,8 +185,8 @@ export class ManModelAddComponent implements OnChanges {
         for (const cell_key of Object.keys(cells)) {
             cellFGs.push(this.fb.group(cells[cell_key]));
         }
-        const cellFormArray = this.fb.array(cellFGs);
-        this.tableForm.setControl('cell_lists_form', cellFormArray);
+        const cellsFormArray = this.fb.array(cellFGs);
+        this.tableForm.setControl('cell_lists_form', cellsFormArray);
     }
     // setCells(cells: DataCell[]) {
     //     const cellFGs = cells.map(cells => this.fb.group(cells));
@@ -218,21 +220,21 @@ export class ManModelAddComponent implements OnChanges {
     prepareSaveModel(): Model {
         const formModel = this.modelForm.value;
         // deep copy of cell_lists_form
-        const cellListFormDeepCopy: { [key: string]: String; } = formModel.tableForm.cell_lists_form.map(
+        const cellListFormDeepCopy: { [key: string]: String; } = formModel.table_Form.cell_lists_form.map(
             (cellList: { [key: string]: String; }) => Object.assign({}, cellList)
         );
         // deep copy of cells_form
-        const cellFormDeepCopy: { [key: string]: DataCell; } = formModel.tableForm.cells_form.map(
+        const cellFormDeepCopy: { [key: string]: DataCell; } = formModel.table_Form.cells_form.map(
             (cell: { [key: string]: DataCell; }) => Object.assign({}, cell)
         );
         // deep copy of arraysForm
-        const arraysFormDeepCopy: { [key: string]: DataArray; } = formModel.tableForm.cells_form.map(
+        const arraysFormDeepCopy: { [key: string]: DataArray; } = formModel.arrays_form.map(
             (cell: { [key: string]: DataArray; }) => Object.assign({}, cell)
         );
         // deep copy of cells_form
-        const arrayListFormDeepCopy: Array<String> = formModel.tableForm.cells_form.map(
+        // const arrayListFormDeepCopy: Array<String> = formModel.table_Form.cells_form.map(
             // (cell: { [key: string]: DataCell; }) => Object.assign({}, cell)
-        );
+        // );
         // deep copy of tableForm
         // const tableFormDeepCopy: DataCell[] = formModel.tableForm.map(
         //     (cell: DataCell) => Object.assign({}, cell)
@@ -251,7 +253,8 @@ export class ManModelAddComponent implements OnChanges {
                 cells: cellFormDeepCopy,
                 cell_list: cellListFormDeepCopy,
             },
-            array_list: arrayListFormDeepCopy,
+            array_list: this.model.array_list,
+            // array_list: arrayListFormDeepCopy,
             arrays: arraysFormDeepCopy,
 
             // cells_form: cellFormDeepCopy;
