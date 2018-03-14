@@ -25,12 +25,12 @@
                                 单元 #{{i + 1}}
                             </mat-panel-title>
                             <mat-panel-description>
-                                单元内容
+                                {{cellName.value?cellName.value:"点击输入单元名称"}}:{{cellValue.value?cellValue.value:"单元数据"}}
                             </mat-panel-description>
                         </mat-expansion-panel-header>
 
                         <mat-form-field class="field-half-width">
-                            <input formControlName="name" matInput placeholder="单元名">
+                            <input formControlName="name" #cellName matInput placeholder="单元名">
                         </mat-form-field>
 
                         <mat-form-field class="field-half-width">
@@ -57,7 +57,7 @@
                         </div>
 
                         <mat-form-field>
-                            <input formControlName="value" matInput placeholder="数据值">
+                            <input formControlName="value" #cellValue matInput placeholder="数据值">
                         </mat-form-field>
 
                         <button (click)="removeCell(i)" type="button" mat-raised-button>删除</button>

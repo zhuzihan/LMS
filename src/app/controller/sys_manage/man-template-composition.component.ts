@@ -30,7 +30,7 @@ export class ManTemplateCompositionComponent implements OnChanges, OnInit {
     tempForm: FormGroup;
     modelListForm: FormArray;
     model_list_local = model_list_local;
-    selected='试剂准备';
+    selected = '试剂准备';
 
 
     constructor(
@@ -46,7 +46,7 @@ export class ManTemplateCompositionComponent implements OnChanges, OnInit {
         this.tempForm = this.fb.group({
             whole_name: '',
             // model_list: this.fb.array([
-                // new FormControl('Drew'),
+            // new FormControl('Drew'),
             // ]),
         })
         this.modelListForm = this.fb.array([]);
@@ -69,9 +69,9 @@ export class ManTemplateCompositionComponent implements OnChanges, OnInit {
         console.log("submit");
     }
     // 重置内容
-    revert() { 
+    revert() {
         // console.log(this.template.model_list);
-        this.ngOnChanges(); 
+        this.ngOnChanges();
     }
 
     get model_list_form(): FormArray {
@@ -82,13 +82,13 @@ export class ManTemplateCompositionComponent implements OnChanges, OnInit {
         this.model_list_form.removeAt(i);
     }
 
-    addListItem() { 
+    addListItem() {
         this.model_list_form.push(this.fb.control(""));
     }
 
-    setComposition(composition: Array<String>) {            
+    setComposition(composition: Array<String>) {
         const modelListFormArray = this.fb.array(composition);
-        this.tempForm.setControl("model_list",modelListFormArray);
+        this.tempForm.setControl("model_list", modelListFormArray);
         // console.log(this.tempForm);
     }
     // previewTemplate() { }
