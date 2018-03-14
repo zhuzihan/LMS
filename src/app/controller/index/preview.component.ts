@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
     // tslint:disable-next-line:component-selector
     selector: 'preview',
     templateUrl: '../../view/preview.component.html',
-    // styleUrls: ['./preview.component.css']
+    styleUrls: ['../../css/preview.component.css']
 })
 export class PreviewComponent implements OnInit {
 
