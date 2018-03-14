@@ -15,7 +15,7 @@ export class ManEquipParaListComponent implements OnInit, OnChanges {
     displayedColumns = ['tableName', 'tableRegistrant', 'tableRemark', 'tableState'];
     expParameterData: Array<Object>;
     expParameterList: Array<Object> = [];
-    dataSource;
+    dataSource = new MatTableDataSource();
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -35,7 +35,7 @@ export class ManEquipParaListComponent implements OnInit, OnChanges {
         this.expParameterSerivce.getExpParameter().then(responseData => {
             this.expParameterData = responseData;
             this.expParameterList = this.expParameterSerivce.convertParameterList(this.expParameterData);
-            this.dataSource = new MatTableDataSource(this.expParameterList);
+            this.dataSource = new MatTableDataSource<Object>(this.expParameterList);
             this.dataSource.paginator = this.paginator;
             this.isLoading = false;
             // console.log("afterngInit");
