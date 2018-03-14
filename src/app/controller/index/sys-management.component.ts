@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['../../css/sys-management.component.css']
 })
 export class SysManagementComponent implements OnInit {
-    showFiller = false;
+    // showFiller = false;
 
     constructor() { }
 
