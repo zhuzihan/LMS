@@ -28,6 +28,7 @@ export class ManTemplateCompositionComponent implements OnChanges, OnInit {
     }
     @Input() template: Template;
     tempForm: FormGroup;
+    modelListForm: FormArray;
     model_list_local = model_list_local;
     selected='试剂准备';
 
@@ -44,16 +45,17 @@ export class ManTemplateCompositionComponent implements OnChanges, OnInit {
     createForm() {
         this.tempForm = this.fb.group({
             whole_name: '',
-            model_list: this.fb.array([
+            // model_list: this.fb.array([
                 // new FormControl('Drew'),
-            ]),
+            // ]),
         })
+        this.modelListForm = this.fb.array([]);
     }
 
     ngOnChanges(): void {
         this.tempForm.reset({
             whole_name: this.template.whole_name,
-            model_list: this.template.model_list,
+            // model_list: this.template.model_list,
         })
         this.setComposition(this.template.model_list);
         // console.log(this.tempForm);
@@ -64,36 +66,32 @@ export class ManTemplateCompositionComponent implements OnChanges, OnInit {
         this.template = this.prepareSaveTemplateList();
         this.modelDataService.updateTemplateData(this.template).subscribe(/* error handing */);
         this.ngOnChanges();
+        console.log("submit");
     }
     // 重置内容
     revert() { 
+        // console.log(this.template.model_list);
         this.ngOnChanges(); 
     }
 
-    get model_list(): FormArray {
+    get model_list_form(): FormArray {
         return this.tempForm.get('model_list') as FormArray;
     };
 
     deleteListItem(i: number) {
-        this.model_list.removeAt(i);
+        this.model_list_form.removeAt(i);
     }
 
-    addListItem() { this.model_list.push(new FormControl()); }
+    addListItem() { 
+        this.model_list_form.push(this.fb.control(""));
+    }
 
-    setComposition(composition: Array<String>) {
-        const len = this.model_list.length;
-        let temp_count = 0;
-        do{
-            this.model_list.removeAt(temp_count);
-            temp_count ++;
-        }while(temp_count<temp_count);
-        this.model_list.removeAt(0);
-        for (const item of composition) {
-            this.model_list.push(this.fb.control(item));
-        }
+    setComposition(composition: Array<String>) {            
+        const modelListFormArray = this.fb.array(composition);
+        this.tempForm.setControl("model_list",modelListFormArray);
+        // console.log(this.tempForm);
     }
     // previewTemplate() { }
-
     prepareSaveTemplateList(): Template {
         const formTemp = this.tempForm.value;
         const saveTemplate: Template = {

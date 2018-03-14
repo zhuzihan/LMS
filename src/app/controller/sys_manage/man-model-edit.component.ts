@@ -214,11 +214,12 @@ export class ManModelEditComponent implements OnChanges, OnInit {
         this.cells_form.removeAt(i);
     }
     removeModel() {
-        this.modelDataService.removeModelData(this.model);
+        // this.modelDataService.removeModelData(this.model);
+        // this.modelDataService.getModelsData();
     }
     // 提交表单
     onSubmit() {
-        // console.log("onsubmit1");
+        console.log("on_model_edit_submit");
         this.model = this.prepareSaveModel();
         // debug
         // console.log(this.model);
