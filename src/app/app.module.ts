@@ -31,7 +31,6 @@ import { ExpParameterService } from './service/exp-parameter.service';
     // ReactiveFormsModule,
     // FormsModule,
     HttpModule,
-
     ManModule,
     IndexModule,
     AppRoutingModule,

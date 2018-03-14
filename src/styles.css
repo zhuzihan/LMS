@@ -4,6 +4,7 @@
 
 body {
     margin: 0;
+    background-color: #fafafa;
     /* font-family: Roboto,Helvetica Neue Light,Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif; */
     /* font-family: 'Tangerine', serif;
     font-size: 36px; */
@@ -16,6 +17,12 @@ body {
     /* align-items: center; */
     flex-direction: column;
     padding: 0 16px;
+}
+.inline-content {
+    width: 85%;
+    max-width: 1000px;
+    min-width: 500px;
+    margin: 0 auto;
 }
 /* man-equip-para {
     display: flex;
@@ -38,7 +45,7 @@ app-root {
 }
 .toolbar {
     background :#3f51b5;
-    height: 60px;
+    /* height: 60px; */
 }
 .toolbar-content{
     padding-left: 10px;
@@ -46,17 +53,21 @@ app-root {
     /* display: -webkit-flex;  Safari */
     align-items:center;/*指定垂直居中*/
 }
-.toolbar_title {
-    color:white;
+.toolbar-title {
+    color:white!important;
     font-size: 20px;
     font-family: microsoft yahei light,Roboto, "Helvetica Neue", sans-serif;
-    padding: 8px 8px;
+    /* padding: 8px 8px!important; */
 }
 .nav {
     padding: 5px 30px;
 }
 mat-spinner {
     float: left;
+}
+sys-management {
+    height: 100%;
+    overflow: hidden;
 }
 figure {
     justify-content: unset!important;

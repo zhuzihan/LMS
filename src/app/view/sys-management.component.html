@@ -1,20 +1,64 @@
 <mat-toolbar class="toolbar">
     <div class="toolbar-content">
-        <p class="toolbar_title">系统管理</p>
-        <div  class="nav">
-            <nav>
-                <button mat-raised-button routerLink="./manEquip">实验器材参数</button>
-                <button mat-raised-button routerLink="./manModel">检测标准模块</button>
-                <button mat-raised-button routerLink="./manTemplate">原始记录模板</button>
-                <button mat-raised-button routerLink="./manJobModule">作业指导模块</button>
-            </nav>
-        </div>
+        <button type="button" class="toolbar-title" mat-button (click)="sidenav.toggle()">系统管理</button>
     </div>
 </mat-toolbar>
+
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav mode="side" opened class="sidenav-side">
+        <div>
+            <nav class="sidenav-side-nav">
+                <button class="sidenav-button" mat-button routerLink="./manEquip">
+                    <div class="sidenav-button-div">
+                        <mat-icon >book</mat-icon>
+                        <span>实验器材参数</span>
+                    </div>
+                </button>
+                <button class="sidenav-button" mat-button routerLink="./manModel">
+                    <div class="sidenav-button-div">
+                        <mat-icon>date_range</mat-icon>
+                        <span>检测标准模块</span>
+                    </div>
+                </button>
+                <button class="sidenav-button" mat-button routerLink="./manTemplate">
+                    <div class="sidenav-button-div">
+                        <mat-icon >note</mat-icon>
+                        <span>原始记录模板</span>
+                    </div>
+                </button>
+                <button class="sidenav-button" mat-button routerLink="./manJobModule">
+                    <div class="sidenav-button-div">
+                        <mat-icon>map</mat-icon>
+                        <span>作业指导模块</span>
+                    </div>
+                </button>
+            </nav>
+        </div>
+    </mat-sidenav>
+    <mat-sidenav-content class="sidenav-content">
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+
+<!-- <mat-drawer-container class="sidenav-container" autosize>
+    <mat-drawer #drawer class="sidenav-side" mode="side" opened="true">
+        <div>
+            <nav class="sidenav-side-nav">
+                <button class="sidenav-button" mat-raised-button routerLink="./manEquip">实验器材参数</button>
+                <button class="sidenav-button" mat-raised-button routerLink="./manModel">检测标准模块</button>
+                <button class="sidenav-button" mat-raised-button routerLink="./manTemplate">原始记录模板</button>
+                <button class="sidenav-button" mat-raised-button routerLink="./manJobModule">作业指导模块</button>
+            </nav>
+        </div>
+    </mat-drawer>
+    <div class="sidenav-content">
+      <router-outlet></router-outlet>
+    </div>
+</mat-drawer-container> -->
+
+
 
 <!-- <nav>
     <a routerLink="./man-equip-para" routerLinkActive="active">man-equip-para</a>
     <a routerLink="./mb" routerLinkActive="active">man-model</a>
 </nav> -->
-
-<router-outlet></router-outlet>

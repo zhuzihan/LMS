@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 // import { FormsModule }    from '@angular/forms';
-
+import { CommonModule } from '@angular/common';
 import { PreviewComponent } from './preview.component';
 import { RegistrationComponent } from './registration.component';
 import { AnalysisComponent } from './analysis.component';
@@ -13,7 +13,8 @@ import { MaterialModule } from '../../material.module';
 @NgModule({
   imports: [
     IndexRoutingModule,
-    MaterialModule
+    MaterialModule,
+    CommonModule
   ],
   declarations: [
     PreviewComponent,
