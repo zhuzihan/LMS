@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
     // tslint:disable-next-line:component-selector
     selector: 'registration',
     templateUrl: '../../view/registration.component.html',
-    // styleUrls: ['./registration.component.css']
+    styleUrls: ['../../css/registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
 

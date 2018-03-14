@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
     // tslint:disable-next-line:component-selector
     selector: 'analysis',
     templateUrl: '../../view/analysis.component.html',
-    // styleUrls: ['./analysis.component.css']
+    styleUrls: ['../../css/analysis.component.css']
 })
 export class AnalysisComponent implements OnInit {
 

@@ -1,0 +1,46 @@
+/*toolbar and sidebar*/
+.toolbar {
+    background :#3f51b5;
+    /* height: 60px; */
+}
+.toolbar-content{
+    padding-left: 10px;
+    display: flex;
+    /* display: -webkit-flex;  Safari */
+    align-items:center;/*指定垂直居中*/
+}
+.toolbar-title {
+    color:white!important;
+    font-size: 20px;
+    font-family: microsoft yahei light,Roboto, "Helvetica Neue", sans-serif;
+    /* padding: 8px 8px!important; */
+}
+.sidenav-container {
+    /* position: absolute;
+    top: 64px; */
+    display: flex;
+    height: 100%;
+    /* bottom: 0;
+    left: 0;
+    right: 0; */
+}
+.sidenav-side {
+    width: 250px;
+    background-color: #fafafa;
+    box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12), 0 1px 18px 0 rgba(0,0,0,.12);
+}
+.sidenav-side-nav {
+    display: flex;
+    flex-direction: column;
+}
+.sidenav-button {
+    margin: 10px 10px auto;
+}
+.sidenav-button-div {
+    display: block;
+    float: left;
+    margin-left: 4px;
+}
+.sidenav-content {
+    width: 100%;
+}
