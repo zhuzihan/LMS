@@ -17,7 +17,7 @@
         <!-- <hr> -->
         <h4>单元</h4>
         <div [formGroup]="tableForm" class="model-full-width">
-            <div formArrayName="cells_form">
+            <div formArrayName="cells">
                 <mat-accordion>
                     <mat-expansion-panel *ngFor="let cell of cells_form.controls; let i=index" [formGroupName]="i" class="model-full-width">
                         <mat-expansion-panel-header>
@@ -93,7 +93,7 @@
           </div> -->
     </form>
 
-    <p>Form value: {{ modelForm.value | json }}</p>
+    <!-- <p>Form value: {{ modelForm.value | json }}</p> -->
 
     <!-- <p>source_name:{{source_name | json}}</p> -->
     <!-- <p>Form status: {{ modelForm.status | json }}</p> -->

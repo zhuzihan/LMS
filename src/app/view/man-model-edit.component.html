@@ -21,7 +21,7 @@
             <p>数据加载中... </p>
         </div>
         <div  *ngIf="!isLoading" [formGroup]="tableForm" class="model-full-width">
-            <div formArrayName="cells_form">
+            <div formArrayName="cells">
                 <mat-accordion multi="true">
                     <mat-expansion-panel *ngFor="let cell of cells_form.controls; let i=index" [expanded]="cellStep === 1" [formGroupName]="i" class="model-full-width">
                         <mat-expansion-panel-header>
@@ -71,7 +71,6 @@
                 <button (click)="addCell()" type="button" mat-raised-button>添加记录</button>
             </div>
         </div>
-
 
         <!-- <hr> -->
         <!-- <h4>数组</h4> -->

@@ -87,8 +87,8 @@ export class ManModelEditComponent implements OnChanges, OnInit {
         //     colspan = 0;
         //     rowspan = 0;
         // });
-        this.modelForm.setControl('table_form', this.tableForm);
-        this.modelForm.setControl('arrays_form', this.arraysForm);
+        this.modelForm.setControl('table', this.tableForm);
+        this.modelForm.setControl('arrays', this.arraysForm);
         // this.setTableForm(this.model.table);
         // this.setArraysForm(this.model.arrays);
     }
@@ -143,13 +143,10 @@ export class ManModelEditComponent implements OnChanges, OnInit {
             has_table: this.model.has_table,
             has_array: this.model.has_array,
         });
-        // this.setCells(this.model.cells);
         this.setTableForm(this.model.table);
         this.setArraysForm(this.model.arrays);
         // 临时保存数据置空
         this.savedTableName = '';
-        // console.log(this.modelForm);
-        // console.log(this.modelForm.controls.table_form['controls'].cell_lists_form);
     }
     // 重置内容
     revert() { this.ngOnChanges(); }
@@ -164,7 +161,7 @@ export class ManModelEditComponent implements OnChanges, OnInit {
             cellFGs.push(this.fb.group(arrays[cell_key]));
         }
         const arraysFormArray = this.fb.array(cellFGs);
-        this.modelForm.setControl('arrays_form', arraysFormArray);
+        this.modelForm.setControl('arrays', arraysFormArray);
     }
     // setModel(model: Model) {
     // this.setCells(model.cells);
@@ -183,7 +180,7 @@ export class ManModelEditComponent implements OnChanges, OnInit {
             cellFGs.push(this.fb.group(cells[cell_key]));
         }
         const cellFormArray = this.fb.array(cellFGs);
-        this.tableForm.setControl('cells_form', cellFormArray);
+        this.tableForm.setControl('cells', cellFormArray);
     }
     setCellLists(cells: { [key: string]: String; }) {
         const cellFGs: FormGroup[] = [];
@@ -191,19 +188,14 @@ export class ManModelEditComponent implements OnChanges, OnInit {
             cellFGs.push(this.fb.group(cells[cell_key]));
         }
         const cellsFormArray = this.fb.array(cellFGs);
-        this.tableForm.setControl('cell_lists_form', cellsFormArray);
+        this.tableForm.setControl('cell_lists', cellsFormArray);
     }
-    // setCells(cells: DataCell[]) {
-    //     const cellFGs = cells.map(cells => this.fb.group(cells));
-    //     const cellFormArray = this.fb.array(cellFGs);
-    //     this.modelForm.setControl('cells_form', cellFormArray);
-    // }
     // 获取数组
     get cells_form(): FormArray {
-        return this.tableForm.get('cells_form') as FormArray;
+        return this.tableForm.get('cells') as FormArray;
     }
     get cell_lists_form(): FormArray {
-        return this.tableForm.get('cell_lists_form') as FormArray;
+        return this.tableForm.get('cell_lists') as FormArray;
     }
     // 添加记录
     addCell() {
@@ -229,15 +221,15 @@ export class ManModelEditComponent implements OnChanges, OnInit {
     prepareSaveModel(): Model {
         const formModel = this.modelForm.value;
         // deep copy of cell_lists_form
-        const cellListFormDeepCopy: { [key: string]: String; } = formModel.table_form.cell_lists_form.map(
+        const cellListFormDeepCopy: { [key: string]: String; } = formModel.table.cell_lists.map(
             (cellList: { [key: string]: String; }) => Object.assign({}, cellList)
         );
         // deep copy of cells_form
-        const cellFormDeepCopy: { [key: string]: DataCell; } = formModel.table_form.cells_form.map(
+        const cellFormDeepCopy: { [key: string]: DataCell; } = formModel.table.cells.map(
             (cell: { [key: string]: DataCell; }) => Object.assign({}, cell)
         );
         // deep copy of arraysForm
-        const arraysFormDeepCopy: { [key: string]: DataArray; } = formModel.arrays_form.map(
+        const arraysFormDeepCopy: { [key: string]: DataArray; } = formModel.arrays.map(
             (cell: { [key: string]: DataArray; }) => Object.assign({}, cell)
         );
 
@@ -256,13 +248,6 @@ export class ManModelEditComponent implements OnChanges, OnInit {
             },
             array_list: this.model.array_list,
             arrays: arraysFormDeepCopy,
-
-            // cells_form: cellFormDeepCopy;
-            // table: tableFormDeepCopy,
-            // cells: cellFormDeepCopy,
-
-            // array_list: this.model.array_list,
-            // arrays: arrayFormDeepCopy,
         };
         return saveModel;
     }
@@ -275,7 +260,6 @@ export class ManModelEditComponent implements OnChanges, OnInit {
 
         dialogRef.afterClosed().subscribe(result => {
             console.log('The dialog of tableForm was closed');
-            // this.
         })
     }
 }
