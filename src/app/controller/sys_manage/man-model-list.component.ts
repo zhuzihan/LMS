@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatPaginator } from '@angular/material';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/finally';
@@ -12,12 +12,15 @@ import { ModelDataService } from '../../service/model-data.service';
     // tslint:disable-next-line:component-selector
     selector: 'man-model-list',
     templateUrl: '../../view/man-model-list.component.html',
-    // styleUrls: ['../../css/sys-management.component.css']
+    styleUrls: ['../../css/sys-management.component.css']
 })
 export class ManModelListComponent implements OnInit {
     displayedColumns = ['model_standard_name', 'has_table', 'has_array'];
     models: Observable<Model[]>;
+    modelData: Array<Object> = [];
     dataSource = new MatTableDataSource();
+
+    @ViewChild(MatPaginator) paginator: MatPaginator;
 
     isLoading = false;
     selectedModel: Model;
@@ -26,21 +29,24 @@ export class ManModelListComponent implements OnInit {
     constructor(private modelDataService: ModelDataService) { }
 
     ngOnInit() { 
-        this.getModels(); 
+        this.getModels();
+        this.dataSource = new MatTableDataSource<Object>(this.modelData);
     }
-
     getModels() {
         this.isLoading = true;
         this.models = this.modelDataService.getModelsData()
             // Todo: error handling
             .finally(() => {
-                // this.dataSource = new MatTableDataSource<Object>(this.models);
                 this.isLoading = false;
                 this.selectedModel = undefined;
+                this.dataSource.paginator = this.paginator;
             });
-        //   console.log(this.modelDataService.getModelData());
-        // console.log(this.isLoading);
+        this.modelData = [];
+        this.models.forEach(models => {
+            models.forEach(model => {
+                this.modelData.push(model);
+            })
+        });
     }
-
     select(model: Model) { this.selectedModel = model; }
 }

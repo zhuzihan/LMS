@@ -72,3 +72,21 @@ input {
     /* max-width: 0; */
 }
 
+.button_inside_table {
+  padding: 0px 16px 0px 0px;
+  display: flex;
+  align-items: left;
+  justify-content: flex-start;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.float-button {
+  position: absolute;
+  z-index: 999;
+  right: 30px;
+  bottom: 30px;
+}

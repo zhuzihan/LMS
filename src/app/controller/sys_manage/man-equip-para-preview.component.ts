@@ -8,7 +8,7 @@ import { ArrayType } from '@angular/compiler/src/output/output_ast';
   // tslint:disable-next-line:component-selector
   selector: 'man-equip-para-preview',
   templateUrl: '../../view/man-equip-para-preview.component.html',
-  styleUrls: ['../../css/man-equip-para.component.css'],
+  styleUrls: ['../../css/sys-management.component.css'],
   providers: [ExpParameterService]
 })
 export class ManEquipParaPreviewComponent implements OnChanges {

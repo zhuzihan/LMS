@@ -1,61 +1,51 @@
 <div class="inline-content">
   <div *ngIf="!selectedModel">
-    <div *ngIf="isLoading">
-      <mat-spinner [diameter]="24"></mat-spinner>
-      <p>加载模块数据... </p>
+    <div *ngIf="isLoading" class="loading">
+      <mat-spinner [diameter]="30" class="loading"></mat-spinner>
     </div>
-    <h3 *ngIf="!isLoading">选择模块</h3>
 
+    <!-- <div [hidden]="isLoading">
       <button mat-raised-button color="primary" (click)="getModels()">刷新</button>
       <button mat-raised-button *ngFor="let model of models | async" (click)="select(model);showAdd=false">{{model.model_standard_name}}</button>
+    </div> -->
+    
       <!-- <button mat-raised-button (click)="showAdd = !showAdd; selectedModel = false">{{showAdd ? '取消添加' : '添加模块'}}</button> -->
     <!-- <p>Form value: {{ models | json }}</p> -->
 
-    <!-- <div *ngIf="!isLoading"> -->
-      <!-- <div *ngIf="!selectedExpParameter"> -->
-          <!-- <h3>模块列表</h3>
+    <div [hidden]="isLoading">
+      <div [hidden]="selectedExpParameter">
+          <h3>模块列表</h3>
+          <button mat-mini-fab color="primary" (click)="getModels()" class="float-button"><mat-icon>refresh</mat-icon></button>
           <mat-table #table [dataSource]="dataSource">
-              <ng-container matColumnDef="tableName">
+              <ng-container matColumnDef="model_standard_name">
                   <mat-header-cell *matHeaderCellDef> 模块名称 </mat-header-cell>
                   <mat-cell *matCellDef="let element">
-                      <button mat-button color="primary" (click)="select(element);" class="button_inside_table">{{element.tableName}} </button>
+                      <button mat-button color="primary" (click)="select(element);" class="button_inside_table">{{element.model_standard_name}} </button>
                   </mat-cell>
-              </ng-container> -->
-
-              <!-- <ng-container matColumnDef="tableRegistrant">
-                  <mat-header-cell *matHeaderCellDef> 登记人 </mat-header-cell>
-                  <mat-cell *matCellDef="let element"> {{element.tableRegistrant}} </mat-cell>
               </ng-container>
 
-              <ng-container matColumnDef="tableRemark">
-                  <mat-header-cell *matHeaderCellDef> 备注 </mat-header-cell>
-                  <mat-cell *matCellDef="let element"> {{element.tableRemark}} </mat-cell>
+              <ng-container matColumnDef="has_table">
+                  <mat-header-cell *matHeaderCellDef> 是否有列表 </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.has_table}} </mat-cell>
               </ng-container>
 
+              <ng-container matColumnDef="has_array">
+                  <mat-header-cell *matHeaderCellDef> 是否有数组 </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.has_array}} </mat-cell>
+              </ng-container>
 
-              <ng-container matColumnDef="tableState">
-                  <mat-header-cell *matHeaderCellDef> 状态 </mat-header-cell>
-                  <mat-cell *matCellDef="let element"> {{element.tableState}} </mat-cell>
-              </ng-container> -->
-
-              <!-- <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
               <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-          </mat-table> -->
-      <!-- </div> -->
-      <!-- <div *ngIf="selectedModel"> -->
-          <!-- <mat-tab-group>
-            <mat-tab label="预览">
-              <h3>预览的模块: {{selectedModel.model_standard_name}}</h3>
-              <man-model-preview [model]="selectedModel"></man-model-preview>
-            </mat-tab>
-            <mat-tab label="编辑">
-              <h3>编辑的模块: {{selectedModel.model_standard_name}}</h3>
-              <man-model-edit [model]="selectedModel"></man-model-edit>
-            </mat-tab>
-          </mat-tab-group> -->
-          <!-- <button mat-raised-button color="primary" (click)="selectedModel = !selectedModel;">返回</button>
-      </div> -->
-    <!-- </div> -->
+          </mat-table>
+      </div>
+    </div>
+    <div [hidden]="isLoading">
+        <mat-paginator #paginator
+            [pageSize]="10"
+            [pageSizeOptions]="[5, 10, 25, 100]"
+            [showFirstLastButtons]="true">
+        </mat-paginator>
+    </div>
   </div>
   <div *ngIf="selectedModel">
       <button mat-raised-button color="primary" (click)="selectedModel = !selectedModel;">返回</button>

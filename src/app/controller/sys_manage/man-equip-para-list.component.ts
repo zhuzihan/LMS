@@ -8,7 +8,7 @@ import { delay } from 'rxjs/operator/delay';
     // tslint:disable-next-line:component-selector
     selector: 'man-equip-para',
     templateUrl: '../../view/man-equip-para-list.component.html',
-    styleUrls: ['../../css/man-equip-para.component.css']
+    styleUrls: ['../../css/sys-management.component.css']
 })
 
 export class ManEquipParaListComponent implements OnInit {
@@ -36,13 +36,11 @@ export class ManEquipParaListComponent implements OnInit {
             this.expParameterData = responseData;
             this.expParameterList = this.expParameterSerivce.convertParameterList(this.expParameterData);
             this.dataSource = new MatTableDataSource<Object>(this.expParameterList);
-            // this.dataSource.paginator = this.paginator;
+            this.dataSource.paginator = this.paginator;
             this.isLoading = false;
             // console.log("afterngInit");
         });
-    }
-    ngAfterViewInit() {
-        this.dataSource.paginator = this.paginator;
+        // console.log(this.dataSource);
     }
     // ngOnChanges() {
         // console.log(this.selectedExpParameter);

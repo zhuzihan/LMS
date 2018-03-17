@@ -3,7 +3,6 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 import { ReactiveFormsModule } from '@angular/forms';
-import { ManEquipParaComponent } from './man-equip-para.component';
 import { ManEquipParaListComponent } from './man-equip-para-list.component';
 import { ManEquipParaPreviewComponent } from './man-equip-para-preview.component';
 import { ManModelEditComponent } from './man-model-edit.component';
@@ -39,7 +38,6 @@ import { MaterialModule } from '../../material.module';
   declarations: [
     ManEquipParaListComponent,
     ManEquipParaPreviewComponent,
-    ManEquipParaComponent,
     ManModelEditComponent,
     ManModelListComponent,
     ManModelDetailComponent,

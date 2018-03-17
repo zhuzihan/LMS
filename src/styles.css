@@ -50,7 +50,7 @@ app-root {
     padding: 5px 30px;
 }
 mat-spinner {
-    float: left;
+    /* float: left; */
 }
 sys-management,registration,analysis,calculate,preview {
     flex: 1;
@@ -78,4 +78,18 @@ figure {
 mat-icon {
     display: inline-block;
     vertical-align: middle;
+}
+
+.loading {
+    position: absolute;
+    z-index: 999;
+    /* margin: 0 auto; */
+    left: 50%;
+    /* right: 0%; */
+    top: 50%;
+    /* bottom: 0; */
+    transform: translate(-50%,-50%);
+    /* width: 200px; */
+    /* height: 200px; */
+    /* width: 500; */
 }

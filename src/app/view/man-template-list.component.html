@@ -1,11 +1,10 @@
 <div class="inline-content">
     <div>
-        <div *ngIf="isLoading">
-            <mat-spinner [diameter]="24"></mat-spinner>
-            <p>加载模板数据... </p>
+        <div *ngIf="isLoading" class="loading">
+            <mat-spinner [diameter]="30"></mat-spinner>
         </div>
         <h3 *ngIf="!isLoading">选择模板</h3>
-        <nav>
+        <nav [hidden]="isLoading">
             <button mat-raised-button color="primary" (click)="getTemplates()">Refresh</button>
             <button mat-raised-button *ngFor="let template of templates | async" (click)="select(template)">{{template.whole_name}}</button>
             <button mat-raised-button (click)="showAdd = !showAdd; selectedTemplate = false">{{showAdd ? '取消添加' : '添加模版'}}</button>
