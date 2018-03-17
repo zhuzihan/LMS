@@ -6,6 +6,66 @@
 
 <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #sidenav mode="side" opened class="sidenav-side">
+        <mat-accordion displayMode="flat">
+            <mat-expansion-panel class="sidenav-expansion-panel">
+                <mat-expansion-panel-header class="sidenav-expansion-panel-header">
+                <mat-panel-title>
+                    <div class="sidenav-button-div">
+                        <mat-icon >description</mat-icon>  
+                        <span>实验器材参数</span>
+                    </div>
+                </mat-panel-title>
+                </mat-expansion-panel-header>
+                <nav>
+                    <button class="sidenav-expansion-panel-button" mat-button routerLink="./manEquip">参数表列表</button>
+                    <button class="sidenav-expansion-panel-button" mat-button>新建参数表</button>
+                </nav>
+            </mat-expansion-panel>
+            <mat-expansion-panel class="sidenav-expansion-panel">
+                <mat-expansion-panel-header class="sidenav-expansion-panel-header">
+                <mat-panel-title>
+                    <div class="sidenav-button-div">
+                        <mat-icon>bookmark</mat-icon>
+                        <span>检测标准模块</span>
+                    </div>
+                </mat-panel-title>
+                </mat-expansion-panel-header>
+                <nav>
+                    <button class="sidenav-expansion-panel-button" mat-button routerLink="./manModel">标准模块列表</button>
+                    <button class="sidenav-expansion-panel-button" mat-button>新建标准模块</button>
+                </nav>
+            </mat-expansion-panel>
+            <mat-expansion-panel class="sidenav-expansion-panel">
+                <mat-expansion-panel-header class="sidenav-expansion-panel-header">
+                <mat-panel-title>
+                    <div class="sidenav-button-div">
+                        <mat-icon>book</mat-icon>
+                        <span>原始记录模版</span>
+                    </div>
+                </mat-panel-title>
+                </mat-expansion-panel-header>
+                <nav>
+                    <button class="sidenav-expansion-panel-button" mat-button routerLink="./manTemplate">原始记录模版列表</button>
+                    <button class="sidenav-expansion-panel-button" mat-button>新建原始记录模版</button>
+                </nav>
+            </mat-expansion-panel>
+            <mat-expansion-panel class="sidenav-expansion-panel">
+                <mat-expansion-panel-header class="sidenav-expansion-panel-header">
+                <mat-panel-title>
+                    <div class="sidenav-button-div">
+                        <mat-icon>map</mat-icon>
+                        <span>作业指导模块</span>
+                    </div>
+                </mat-panel-title>
+                </mat-expansion-panel-header>
+                <nav>
+                    <button class="sidenav-expansion-panel-button" mat-button routerLink="./manJobModule">作业指导模块列表</button>
+                    <button class="sidenav-expansion-panel-button" mat-button>新建作业指导模块</button>
+                </nav>
+            </mat-expansion-panel>
+        </mat-accordion>
+
+        <hr/>
         <div>
             <nav class="sidenav-side-nav">
                 <button class="sidenav-button" mat-button routerLink="./manEquip">

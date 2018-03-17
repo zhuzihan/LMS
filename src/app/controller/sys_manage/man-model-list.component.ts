@@ -30,7 +30,7 @@ export class ManModelListComponent implements OnInit {
             .finally(() => this.isLoading = false);
         this.selectedModel = undefined;
         //   console.log(this.modelDataService.getModelData());
-        // console.log(this.models);
+        console.log(this.isLoading);
     }
 
     select(model: Model) { this.selectedModel = model; }

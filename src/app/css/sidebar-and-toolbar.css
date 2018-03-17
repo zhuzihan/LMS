@@ -44,3 +44,15 @@
 .sidenav-content {
     width: 100%;
 }
+.sidenav-expansion-panel {
+    box-shadow: none!important;
+    background: #fafafa;
+}
+.sidenav-expansion-panel-header {
+    font-size: 14px;
+}
+.sidenav-expansion-panel-button {
+    width: 100%;
+    text-align: left;
+    left: 15px;
+}
