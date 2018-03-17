@@ -8,6 +8,7 @@ import { ManEquipParaListComponent } from './man-equip-para-list.component';
 import { ManEquipParaPreviewComponent } from './man-equip-para-preview.component';
 import { ManModelEditComponent } from './man-model-edit.component';
 import { ManModelListComponent } from './man-model-list.component';
+import { ManModelDetailComponent } from './man-model-detail.component';
 import { ManModelPreviewComponent } from './man-model-preview.component';
 import { ManModelAddComponent } from './man-model-add.component';
 import { ManTemplateListComponent } from './man-template-list.component';
@@ -41,6 +42,7 @@ import { MaterialModule } from '../../material.module';
     ManEquipParaComponent,
     ManModelEditComponent,
     ManModelListComponent,
+    ManModelDetailComponent,
     ManModelPreviewComponent,
     ManModelAddComponent,
     ManTemplateListComponent,

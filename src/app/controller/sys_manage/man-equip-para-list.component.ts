@@ -11,7 +11,7 @@ import { delay } from 'rxjs/operator/delay';
     styleUrls: ['../../css/man-equip-para.component.css']
 })
 
-export class ManEquipParaListComponent implements OnInit, OnChanges {
+export class ManEquipParaListComponent implements OnInit {
     displayedColumns = ['tableName', 'tableRegistrant', 'tableRemark', 'tableState'];
     expParameterData: Array<Object>;
     expParameterList: Array<Object> = [];
@@ -44,9 +44,9 @@ export class ManEquipParaListComponent implements OnInit, OnChanges {
     ngAfterViewInit() {
         this.dataSource.paginator = this.paginator;
     }
-    ngOnChanges() {
-        console.log(this.selectedExpParameter);
-    }
+    // ngOnChanges() {
+        // console.log(this.selectedExpParameter);
+    // }
 
     select(expParameter: Object) { this.selectedExpParameter = expParameter; }
     // 参数表新旧数据格式转换
