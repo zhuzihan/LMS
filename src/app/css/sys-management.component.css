@@ -43,8 +43,8 @@ mat-grid-tile {
   border: 1px solid grey;
   /* min-width: 200px; */
 }
-mat-grid-list {
-  min-width: 800px;
+.mat-grid-list-model-preview, .mat-card-model-preview{
+  min-width: 500px;
   max-width: 1000px;;
 }
 .mat-figure {

@@ -36,14 +36,14 @@ export class ManEquipParaListComponent implements OnInit, OnChanges {
             this.expParameterData = responseData;
             this.expParameterList = this.expParameterSerivce.convertParameterList(this.expParameterData);
             this.dataSource = new MatTableDataSource<Object>(this.expParameterList);
-            this.dataSource.paginator = this.paginator;
+            // this.dataSource.paginator = this.paginator;
             this.isLoading = false;
             // console.log("afterngInit");
         });
     }
-    // ngAfterViewInit() {
-    //     this.dataSource.paginator = this.paginator;
-    // }
+    ngAfterViewInit() {
+        this.dataSource.paginator = this.paginator;
+    }
     ngOnChanges() {
         console.log(this.selectedExpParameter);
     }
