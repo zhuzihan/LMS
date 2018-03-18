@@ -7,12 +7,15 @@ import 'rxjs/add/operator/finally';
 // import { ModelDataService } from './model-data.service'
 import { Model } from '../../model/data-model';
 import { ModelDataService } from '../../service/model-data.service';
+import { MatPaginatorIntl} from '@angular/material';
+import { MatPaginatorIntlCro } from '../../service/mat-paginator-intl'
 
 @Component({
     // tslint:disable-next-line:component-selector
     selector: 'man-model-list',
     templateUrl: '../../view/man-model-list.component.html',
-    styleUrls: ['../../css/sys-management.component.css']
+    styleUrls: ['../../css/sys-management.component.css'],
+    providers: [{ provide: MatPaginatorIntl, useClass: MatPaginatorIntlCro}]
 })
 export class ManModelListComponent implements OnInit {
     displayedColumns = ['model_standard_name', 'has_table', 'has_array'];
@@ -26,7 +29,9 @@ export class ManModelListComponent implements OnInit {
     selectedModel: Model;
     showAdd: false;
 
-    constructor(private modelDataService: ModelDataService) { }
+    constructor(
+        private modelDataService: ModelDataService,
+    ) { }
 
     ngOnInit() { 
         this.getModels();

@@ -24,6 +24,7 @@ import { DataManageService } from './service/data-manage.service';
 import { ModelDataService } from './service/model-data.service';
 import { FormModelDataService } from './controller/sys_manage/form-model-data.service';
 import { ExpParameterService } from './service/exp-parameter.service';
+import { MatPaginatorIntlCro } from './service/mat-paginator-intl'
 
 @NgModule({
   imports: [
@@ -42,7 +43,13 @@ import { ExpParameterService } from './service/exp-parameter.service';
     AppComponent,
     PageNotFoundComponent,
   ],
-  providers: [ModelDataService, FormModelDataService, DataManageService, ExpParameterService],
+  providers: [
+    ModelDataService,
+    FormModelDataService, 
+    DataManageService, 
+    ExpParameterService,
+    MatPaginatorIntlCro,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
