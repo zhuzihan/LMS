@@ -1,22 +1,39 @@
 <div class="inline-content">
-    <div>
+    <div *ngIf="!selectedTemplate">
         <div *ngIf="isLoading" class="loading">
-            <mat-spinner [diameter]="30"></mat-spinner>
+            <mat-spinner [diameter]="30" class="loading"></mat-spinner>
         </div>
-        <h3 *ngIf="!isLoading">选择模板</h3>
-        <nav [hidden]="isLoading">
-            <button mat-raised-button color="primary" (click)="getTemplates()">Refresh</button>
-            <button mat-raised-button *ngFor="let template of templates | async" (click)="select(template)">{{template.whole_name}}</button>
-            <button mat-raised-button (click)="showAdd = !showAdd; selectedTemplate = false">{{showAdd ? '取消添加' : '添加模版'}}</button>
-        </nav>
-        <!-- <p> Form Data : {{json_data | json}}</p> -->
+    
+        <div [hidden]="isLoading">
+            <h3>模板列表</h3>
+            <button mat-mini-fab color="primary" (click)="getTemplates()" class="float-button"><mat-icon>refresh</mat-icon></button>
+            <mat-table #table [dataSource]="dataSource">
+                <ng-container matColumnDef="whole_name">
+                    <mat-header-cell *matHeaderCellDef> 模板名称 </mat-header-cell>
+                    <mat-cell *matCellDef="let element">
+                        <button mat-button color="primary" (click)="select(element);" class="button_inside_table">{{element.whole_name}} </button>
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+        </div>
+        <div [hidden]="isLoading">
+            <mat-paginator #paginator
+                [pageSize]="10"
+                [pageSizeOptions]="[5, 10, 25, 100]"
+                [showFirstLastButtons]="true">
+            </mat-paginator>
+        </div>
     </div>
-    <div *ngIf="showAdd">
-        开发中..请点击添加模版按钮关闭此页面。
+
+    <!-- <div *ngIf="showAdd"> -->
+        <!-- 开发中..请点击添加模版按钮关闭此页面。 -->
         <!-- <man-model-add></man-model-add> -->
-    </div>
+    <!-- </div> -->
+
     <div *ngIf="selectedTemplate">
-        <br>
         <mat-tab-group>
             <mat-tab label="预览">
                 <h3>预览的模板: {{selectedTemplate.whole_name}}</h3>
@@ -31,5 +48,8 @@
                 <man-template-edit [template]="selectedTemplate"></man-template-edit>
             </mat-tab>
         </mat-tab-group>
+        <div>
+            <button mat-raised-button color="primary" (click)="selectedTemplate = !selectedTemplate;">返回</button>
+        </div>
     </div>
 </div>

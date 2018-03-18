@@ -32,7 +32,7 @@
                 </mat-expansion-panel-header>
                 <nav>
                     <button class="sidenav-expansion-panel-button" mat-button routerLink="./manModel">标准模块列表</button>
-                    <button class="sidenav-expansion-panel-button" mat-button>新建标准模块</button>
+                    <button class="sidenav-expansion-panel-button" mat-button routerLink="./manModelAdd">新建标准模块</button>
                 </nav>
             </mat-expansion-panel>
             <mat-expansion-panel class="sidenav-expansion-panel">
@@ -65,7 +65,7 @@
             </mat-expansion-panel>
         </mat-accordion>
 
-        <hr/>
+        <!-- <hr/>
         <div>
             <nav class="sidenav-side-nav">
                 <button class="sidenav-button" mat-button routerLink="./manEquip">
@@ -93,7 +93,7 @@
                     </div>
                 </button>
             </nav>
-        </div>
+        </div> -->
     </mat-sidenav>
     <mat-sidenav-content class="sidenav-content">
         <router-outlet></router-outlet>

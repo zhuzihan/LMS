@@ -1,17 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Template, Model, model_test, template_test, DataTable, source } from '../../model/data-model';
 import { ModelDataService } from '../../service/model-data.service';
 import { Observable } from 'rxjs/Observable';
 import { DataManageService } from '../../service/data-manage.service';
 import { ExpParameterService } from '../../service/exp-parameter.service';
+import { MatTableDataSource, MatPaginator } from '@angular/material';
+import { MatPaginatorIntl} from '@angular/material';
+import { MatPaginatorIntlCro } from '../../service/mat-paginator-intl'
 
 @Component({
     // tslint:disable-next-line:component-selector
     selector: 'man-template-list',
     templateUrl: '../../view/man-template-list.component.html',
-    styleUrls: ['../../css/sys-management.component.css']
+    styleUrls: ['../../css/sys-management.component.css'],
+    providers: [{ provide: MatPaginatorIntl, useClass: MatPaginatorIntlCro}]
 })
 export class ManTemplateListComponent implements OnInit {
+    displayedColumns = ['whole_name',];
     templates: Observable<Template[]>;
     isLoading = true;
     selectedTemplate: Template;
@@ -21,18 +26,27 @@ export class ManTemplateListComponent implements OnInit {
     expParameterList: Array<Object> = [];
     expParaLoading = false;
 
+    //table and paginator
+    templateData: Array<Object> = [];
+    dataSource = new MatTableDataSource();
+
+    @ViewChild(MatPaginator) paginator: MatPaginator;
+
     constructor(private dataManageService: DataManageService,
                 private expParameterService: ExpParameterService,
                 private modelDataService: ModelDataService,
             ) { }
 
     ngOnInit() {
-        this.expParameterService.getExpParameter().then(responseData => {
-            if (responseData.length !== this.expParameterList.length) {
-                this.expParameterList = this.expParameterService.convertParameterList(responseData);
-            }
-            this.getTemplates();
-        });
+        //服务器奔溃，临时屏蔽
+        // this.expParameterService.getExpParameter().then(responseData => {
+        //     if (responseData.length !== this.expParameterList.length) {
+        //         this.expParameterList = this.expParameterService.convertParameterList(responseData);
+        //     }
+        //     this.getTemplates();
+        // });
+        this.getTemplates();
+        this.dataSource = new MatTableDataSource<Object>(this.templateData);
     }
 
     getTemplates() {
@@ -43,17 +57,24 @@ export class ManTemplateListComponent implements OnInit {
         // this.selectedTemplate = undefined;
         this.testTemplate = template_test;
         this.templates = this.modelDataService.getTemplatesData()
-            .finally(() => this.isLoading = false);
-        // console.log(this.testTemplate['models']);
-        // for (const keys of Object.keys(template_test)) {
-        //     console.log(keys);
-        // }
+            .finally(() => {
+                this.isLoading = false;
+                this.selectedTemplate = undefined;
+                this.dataSource.paginator = this.paginator;
+            });
+
         this.json_str = JSON.stringify(this.testTemplate);
         this.json_data = JSON.parse(this.json_str);
         for (const model_key of Object.keys(this.json_data.models)) {
             this.fillCellValue(this.json_data.models[model_key]);
         }
-        // console.log(this.json_data['models']['model.1']['table']['cells']);
+        //转换用作表格数据
+        this.templateData = [];
+        this.templates.forEach(templates => {
+            templates.forEach(template => {
+                this.templateData.push(template);
+            })
+        })
     }
 
     select(template: Template) { this.selectedTemplate = template; }

@@ -1,8 +1,13 @@
-<div>
-    <h2>添加模块</h2>
+<div class="inline-content">
+    <div *ngIf="isLoading" class="loading">
+        <mat-spinner [diameter]="30" class="loading"></mat-spinner>
+    </div>
 
-    <form [formGroup]="modelForm" (ngSubmit)="onSubmit()" class="field-form" novalidate>
+    <div [hidden]="isLoading">
+        <h2>添加模块</h2>
 
+        <form [formGroup]="modelForm" (ngSubmit)="onSubmit()" class="field-form" novalidate>
+    
         <div style="margin-bottom: 1em">
             <button type="submit" [disabled]="modelForm.pristine" mat-raised-button>保存</button> &nbsp;
             <button type="reset" (click)="revert()" [disabled]="modelForm.pristine" mat-raised-button>重置</button>
@@ -67,35 +72,36 @@
                 <button (click)="addCell()" type="button" mat-raised-button>添加记录</button>
             </div>
         </div>
-
-
-        <!-- <hr> -->
-        <!-- <h4>数组</h4> -->
-        <!-- <div formArrayName="arrays_form">
-            <div *ngFor="let table of arrays_form.controls; let i=index" [formGroupName]="i">
-              <h4>列 #{{i + 1}}</h4>
-              <button (click)="removeArray(i)" type="button" mat-raised-button>删除</button>
-              <div style="margin-left: 1em;">
-                <mat-form-field class="model-quarter-width">
-                  <input formControlName="name" matInput placeholder="记录名">
-                </mat-form-field>
-                <mat-form-field class="model-quarter-width">
-                  <mat-select formControlName="source" placeholder="数据来源">
-                    <mat-option *ngFor="let s of source" [value]="s">{{s}}</mat-option>
-                  </mat-select>
-                </mat-form-field>
-                <mat-form-field class="model-quarter-width">
-                  <input formControlName="value" matInput placeholder="数据值">
-                </mat-form-field>
-              </div>
-            </div>
-            <button (click)="addArray(1,1)" type="button" mat-raised-button>添加记录</button>
-          </div> -->
-    </form>
+            <!-- <hr> -->
+            <!-- <h4>数组</h4> -->
+            <!-- <div formArrayName="arrays_form">
+                <div *ngFor="let table of arrays_form.controls; let i=index" [formGroupName]="i">
+                    <h4>列 #{{i + 1}}</h4>
+                    <button (click)="removeArray(i)" type="button" mat-raised-button>删除</button>
+                    <div style="margin-left: 1em;">
+                    <mat-form-field class="model-quarter-width">
+                        <input formControlName="name" matInput placeholder="记录名">
+                    </mat-form-field>
+                    <mat-form-field class="model-quarter-width">
+                        <mat-select formControlName="source" placeholder="数据来源">
+                        <mat-option *ngFor="let s of source" [value]="s">{{s}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="model-quarter-width">
+                        <input formControlName="value" matInput placeholder="数据值">
+                    </mat-form-field>
+                    </div>
+                </div>
+                <button (click)="addArray(1,1)" type="button" mat-raised-button>添加记录</button>
+                </div> -->
+        </form>
 
     <!-- <p>Form value: {{ modelForm.value | json }}</p> -->
 
     <!-- <p>source_name:{{source_name | json}}</p> -->
     <!-- <p>Form status: {{ modelForm.status | json }}</p> -->
     <!-- <p>Name value: {{ modelForm.get('model_name').value }}</p> -->
+
+    </div>
+    
 </div>

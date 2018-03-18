@@ -16,5 +16,3 @@ export class MatPaginatorIntlCro extends MatPaginatorIntl {
       return '第' + (startIndex + 1) + ' - ' + endIndex + ' 条，总共：' + length + '条';
     };
 }
-  
-  

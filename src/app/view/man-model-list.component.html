@@ -13,31 +13,29 @@
     <!-- <p>Form value: {{ models | json }}</p> -->
 
     <div [hidden]="isLoading">
-      <div [hidden]="selectedExpParameter">
-          <h3>模块列表</h3>
-          <button mat-mini-fab color="primary" (click)="getModels()" class="float-button"><mat-icon>refresh</mat-icon></button>
-          <mat-table #table [dataSource]="dataSource">
-              <ng-container matColumnDef="model_standard_name">
-                  <mat-header-cell *matHeaderCellDef> 模块名称 </mat-header-cell>
-                  <mat-cell *matCellDef="let element">
-                      <button mat-button color="primary" (click)="select(element);" class="button_inside_table">{{element.model_standard_name}} </button>
-                  </mat-cell>
-              </ng-container>
+      <h3>模块列表</h3>
+      <button mat-mini-fab color="primary" (click)="getModels()" class="float-button"><mat-icon>refresh</mat-icon></button>
+      <mat-table #table [dataSource]="dataSource">
+          <ng-container matColumnDef="model_standard_name">
+              <mat-header-cell *matHeaderCellDef> 模块名称 </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                  <button mat-button color="primary" (click)="select(element);" class="button_inside_table">{{element.model_standard_name}} </button>
+              </mat-cell>
+          </ng-container>
 
-              <ng-container matColumnDef="has_table">
-                  <mat-header-cell *matHeaderCellDef> 是否有列表 </mat-header-cell>
-                  <mat-cell *matCellDef="let element"> {{element.has_table}} </mat-cell>
-              </ng-container>
+          <ng-container matColumnDef="has_table">
+              <mat-header-cell *matHeaderCellDef> 是否有列表 </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.has_table}} </mat-cell>
+          </ng-container>
 
-              <ng-container matColumnDef="has_array">
-                  <mat-header-cell *matHeaderCellDef> 是否有数组 </mat-header-cell>
-                  <mat-cell *matCellDef="let element"> {{element.has_array}} </mat-cell>
-              </ng-container>
+          <ng-container matColumnDef="has_array">
+              <mat-header-cell *matHeaderCellDef> 是否有数组 </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.has_array}} </mat-cell>
+          </ng-container>
 
-              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-              <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-          </mat-table>
-      </div>
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
     </div>
     <div [hidden]="isLoading">
         <mat-paginator #paginator
@@ -47,15 +45,12 @@
         </mat-paginator>
     </div>
   </div>
-  <div *ngIf="selectedModel">
-      <button mat-raised-button color="primary" (click)="selectedModel = !selectedModel;">返回</button>
-  </div>
 
   <!-- <div *ngIf="showAdd">
     <man-model-add></man-model-add>
   </div> -->
 
-  <!-- <div *ngIf="selectedModel">
+  <div *ngIf="selectedModel">
     <br/>
     <mat-tab-group>
       <mat-tab label="预览">
@@ -67,6 +62,10 @@
         <man-model-edit [model]="selectedModel"></man-model-edit>
       </mat-tab>
     </mat-tab-group>
-  </div> -->
+
+    <div>
+      <button mat-raised-button color="primary" (click)="selectedModel = !selectedModel;">返回</button>
+    </div>
+  </div>
 
 </div>

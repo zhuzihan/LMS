@@ -93,3 +93,12 @@ mat-icon {
     /* height: 200px; */
     /* width: 500; */
 }
+
+input {
+    border: 0px;
+    width: inherit;
+    min-width: 50px;
+    margin: 2px;
+    background-color: #fafafa;
+    /* max-width: 0; */
+}

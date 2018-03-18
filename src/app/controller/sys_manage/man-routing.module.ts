@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { SysManagementComponent } from '../index/sys-management.component';
 import { ManEquipParaListComponent } from './man-equip-para-list.component';
 import { ManModelListComponent } from './man-model-list.component';
+import { ManModelAddComponent } from './man-model-add.component';
 import { ManTemplateListComponent } from './man-template-list.component';
 import { ManJobModuleComponent } from './man-job-module.component';
 
@@ -22,6 +23,8 @@ const ManRoutes: Routes = [
       { path: 'manEquip', component: ManEquipParaListComponent },
       // 检测标准模块
       { path: 'manModel', component: ManModelListComponent },
+      // 新建标准模块
+      { path: 'manModelAdd', component: ManModelAddComponent },
       // 原始记录模板
       { path: 'manTemplate', component: ManTemplateListComponent },
       // 作业指导模块

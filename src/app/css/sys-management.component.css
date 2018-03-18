@@ -64,14 +64,6 @@ mat-grid-tile {
     align-self: center;
 }
 
-input {
-    border: 0px;
-    width: inherit;
-    min-width: 50px;
-    margin: 2px;
-    /* max-width: 0; */
-}
-
 .button_inside_table {
   padding: 0px 16px 0px 0px;
   display: flex;
