@@ -25,6 +25,8 @@ export class ManTemplateAddComponent implements OnChanges, OnInit {
         //     this.expParameterList = this.expParameterSerivce.convertParameterList(this.expParameterData);
         //     this.isLoading = false;
         // });
+
+        this.ngOnChanges();
     }
     template = space_template;
     tempForm: FormGroup;
@@ -45,9 +47,6 @@ export class ManTemplateAddComponent implements OnChanges, OnInit {
     createForm() {
         this.tempForm = this.fb.group({
             whole_name: '',
-            // model_list: this.fb.array([
-            // new FormControl('Drew'),
-            // ]),
         })
         this.modelListForm = this.fb.array([]);
     }
