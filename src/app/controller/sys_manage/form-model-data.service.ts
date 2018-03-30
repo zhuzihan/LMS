@@ -7,8 +7,8 @@ import { Template, Model, form_model_test } from '../../model/form-data-model';
 @Injectable()
 export class FormModelDataService {
     delayMs = 500;
-    //获取 key-value 中的 key
-    
+    // 获取 key-value 中的 key
+
     getKeys(item) {
         return Object.keys(item);
     }

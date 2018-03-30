@@ -8,7 +8,7 @@ import 'rxjs/add/operator/finally';
 import { Model } from '../../model/data-model';
 import { ModelDataService } from '../../service/model-data.service';
 import { MatPaginatorIntl} from '@angular/material';
-import { MatPaginatorIntlCro } from '../../service/mat-paginator-intl'
+import { MatPaginatorIntlCro } from '../../service/mat-paginator-intl';
 
 @Component({
     // tslint:disable-next-line:component-selector
@@ -33,7 +33,7 @@ export class ManModelListComponent implements OnInit {
         private modelDataService: ModelDataService,
     ) { }
 
-    ngOnInit() { 
+    ngOnInit() {
         this.getModels();
         this.dataSource = new MatTableDataSource<Object>(this.modelData);
     }
@@ -50,7 +50,7 @@ export class ManModelListComponent implements OnInit {
         this.models.forEach(models => {
             models.forEach(model => {
                 this.modelData.push(model);
-            })
+            });
         });
     }
     select(model: Model) { this.selectedModel = model; }

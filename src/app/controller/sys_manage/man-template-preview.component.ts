@@ -21,7 +21,7 @@ import { Template, DataTable, source, DataArray } from '../../model/data-model';
 export class ManTemplatePreviewComponent {
     @Input() template: Template;
 
-    constructor(private modelDataService: ModelDataService,) { }
+    constructor(private modelDataService: ModelDataService, ) { }
 
     previewTemplate() { }
 

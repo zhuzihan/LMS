@@ -76,7 +76,7 @@ export class ManModelAddComponent implements OnChanges, OnInit {
     // 来源数据为参数表时，将数据添加至表单 (格式：expParameter#表名#表头)
     addEquipParaToForm(i: string, tableHead: string) {
         this.cells_form.controls[i].patchValue({
-            source_data: "{expParameter#" + this.savedTableName + "#" + tableHead + "}",
+            source_data: '{expParameter#' + this.savedTableName + '#' + tableHead + '}',
         });
         // console.log("#"+this.savedTableName+"#"+tableHead);
     }
@@ -95,7 +95,7 @@ export class ManModelAddComponent implements OnChanges, OnInit {
         this.savedTableName = expPara['tableName'];
         // console.log(this.savedTableName);
     }
-    patchSourceData(i:number, s: object) {
+    patchSourceData(i: number, s: object) {
         this.sourceControl = s;
         this.clickedCellIndex = i;
         // console.log(this.clickedCellIndex);
@@ -112,7 +112,7 @@ export class ManModelAddComponent implements OnChanges, OnInit {
             has_table: 1,
             has_array: -1,
         });
-        this.tableForm = this.fb.group({})
+        this.tableForm = this.fb.group({});
         this.arraysForm = this.fb.array([]);
         this.modelForm.setControl('table', this.tableForm);
         this.modelForm.setControl('arrays', this.arraysForm);

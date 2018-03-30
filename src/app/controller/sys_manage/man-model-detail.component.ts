@@ -21,8 +21,8 @@ export class ManModelDetailComponent implements OnInit {
 
     // constructor(private modelDataService: ModelDataService) { }
 
-    ngOnInit() { 
-        // this.getModels(); 
+    ngOnInit() {
+        // this.getModels();
     }
 
     // getModels() {
