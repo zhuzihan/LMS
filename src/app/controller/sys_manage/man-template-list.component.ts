@@ -6,7 +6,7 @@ import { DataManageService } from '../../service/data-manage.service';
 import { ExpParameterService } from '../../service/exp-parameter.service';
 import { MatTableDataSource, MatPaginator } from '@angular/material';
 import { MatPaginatorIntl} from '@angular/material';
-import { MatPaginatorIntlCro } from '../../service/mat-paginator-intl'
+import { MatPaginatorIntlCro } from '../../service/mat-paginator-intl';
 
 @Component({
     // tslint:disable-next-line:component-selector
@@ -16,7 +16,7 @@ import { MatPaginatorIntlCro } from '../../service/mat-paginator-intl'
     providers: [{ provide: MatPaginatorIntl, useClass: MatPaginatorIntlCro}]
 })
 export class ManTemplateListComponent implements OnInit {
-    displayedColumns = ['whole_name',];
+    displayedColumns = ['whole_name', ];
     templates: Observable<Template[]>;
     isLoading = true;
     selectedTemplate: Template;
@@ -26,7 +26,7 @@ export class ManTemplateListComponent implements OnInit {
     expParameterList: Array<Object> = [];
     expParaLoading = false;
 
-    //table and paginator
+    // table and paginator
     templateData: Array<Object> = [];
     dataSource = new MatTableDataSource();
 
@@ -38,7 +38,7 @@ export class ManTemplateListComponent implements OnInit {
             ) { }
 
     ngOnInit() {
-        //服务器奔溃，临时屏蔽
+        // 服务器奔溃，临时屏蔽
         // this.expParameterService.getExpParameter().then(responseData => {
         //     if (responseData.length !== this.expParameterList.length) {
         //         this.expParameterList = this.expParameterService.convertParameterList(responseData);
@@ -68,13 +68,13 @@ export class ManTemplateListComponent implements OnInit {
         for (const model_key of Object.keys(this.json_data.models)) {
             this.fillCellValue(this.json_data.models[model_key]);
         }
-        //转换用作表格数据
+        // 转换用作表格数据
         this.templateData = [];
         this.templates.forEach(templates => {
             templates.forEach(template => {
                 this.templateData.push(template);
-            })
-        })
+            });
+        });
     }
 
     select(template: Template) { this.selectedTemplate = template; }

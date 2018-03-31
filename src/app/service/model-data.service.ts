@@ -63,4 +63,9 @@ export class ModelDataService {
         const newTemplateData = Object.assign(oldTemplateData, temp); // Demo: mutate cached hero
         return of(newTemplateData).delay(this.delayMs); // simulate latency with delay
     }
+    addTemplateData(template: Template): Observable<Template> {
+        template.template_id = templates_test.length + 1;
+        templates_test.push(template);
+        return of(template).delay(this.delayMs);
+    }
 }

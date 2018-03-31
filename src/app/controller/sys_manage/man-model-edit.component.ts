@@ -73,7 +73,7 @@ export class ManModelEditComponent implements OnChanges, OnInit {
         });
         this.tableForm = this.fb.group({
             // cells: this.fb.array([]),
-        })
+        });
         this.arraysForm = this.fb.array([]);
         // const arrayCellForm = this.fb.group({
         //     sn = '';
@@ -105,7 +105,7 @@ export class ManModelEditComponent implements OnChanges, OnInit {
     // 来源数据为参数表时，将数据添加至表单 (格式：expParameter#表名#表头)
     addEquipParaToForm(i: string, tableHead: string) {
         this.cells_form.controls[i].patchValue({
-            source_data: "{expParameter#" + this.savedTableName + "#" + tableHead + "}",
+            source_data: '{expParameter#' + this.savedTableName + '#' + tableHead + '}',
         });
         // console.log("#"+this.savedTableName+"#"+tableHead);
     }
@@ -211,7 +211,7 @@ export class ManModelEditComponent implements OnChanges, OnInit {
     }
     // 提交表单
     onSubmit() {
-        console.log("on_model_edit_submit");
+        console.log('on_model_edit_submit');
         this.model = this.prepareSaveModel();
         // debug
         // console.log(this.model);
@@ -252,6 +252,7 @@ export class ManModelEditComponent implements OnChanges, OnInit {
         return saveModel;
     }
     openDialog(): void {
+        // tslint:disable-next-line:prefer-const
         let dialogRef = this.dialog.open(DialogTableForm, {
             width: '250px',
             // position: {top:"0",left:"0"},
@@ -260,14 +261,16 @@ export class ManModelEditComponent implements OnChanges, OnInit {
 
         dialogRef.afterClosed().subscribe(result => {
             console.log('The dialog of tableForm was closed');
-        })
+        });
     }
 }
 
 @Component({
+    // tslint:disable-next-line:component-selector
     selector: 'dialog-tableForm',
     templateUrl: 'dialog-tableForm.html',
 })
+// tslint:disable-next-line:component-class-suffix
 export class DialogTableForm {
     constructor(
         public dialogRef: MatDialogRef<DialogTableForm>,

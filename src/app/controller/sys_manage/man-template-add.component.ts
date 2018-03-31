@@ -19,6 +19,13 @@ import { DataManageService } from '../../service/data-manage.service';
     styleUrls: ['../../css/sys-management.component.css']
 })
 export class ManTemplateAddComponent implements OnChanges, OnInit {
+
+    template = space_template;
+    tempForm: FormGroup;
+    modelListForm: FormArray;
+    model_list_local = model_list_local;
+    selected = '试剂准备';
+
     ngOnInit(): void {
         // this.expParameterSerivce.getExpParameter().then(responseData => {
         //     this.expParameterData = responseData;
@@ -28,12 +35,6 @@ export class ManTemplateAddComponent implements OnChanges, OnInit {
 
         this.ngOnChanges();
     }
-    template = space_template;
-    tempForm: FormGroup;
-    modelListForm: FormArray;
-    model_list_local = model_list_local;
-    selected = '试剂准备';
-
 
     constructor(
         // private dataManageService: DataManageService,
@@ -47,7 +48,7 @@ export class ManTemplateAddComponent implements OnChanges, OnInit {
     createForm() {
         this.tempForm = this.fb.group({
             whole_name: '',
-        })
+        });
         this.modelListForm = this.fb.array([]);
     }
 
@@ -55,7 +56,7 @@ export class ManTemplateAddComponent implements OnChanges, OnInit {
         this.tempForm.reset({
             whole_name: this.template.whole_name,
             // model_list: this.template.model_list,
-        })
+        });
         this.setComposition(this.template.model_list);
         // console.log(this.tempForm);
     }
@@ -63,9 +64,9 @@ export class ManTemplateAddComponent implements OnChanges, OnInit {
     // 提交表单
     onSubmit() {
         this.template = this.prepareSaveTemplateList();
-        this.modelDataService.updateTemplateData(this.template).subscribe(/* error handing */);
+        this.modelDataService.addTemplateData(this.template).subscribe(/* error handing */);
         this.ngOnChanges();
-        console.log("submit");
+        console.log('submit');
     }
     // 重置内容
     revert() {
@@ -75,19 +76,19 @@ export class ManTemplateAddComponent implements OnChanges, OnInit {
 
     get model_list_form(): FormArray {
         return this.tempForm.get('model_list') as FormArray;
-    };
+    }
 
     deleteListItem(i: number) {
         this.model_list_form.removeAt(i);
     }
 
     addListItem() {
-        this.model_list_form.push(this.fb.control(""));
+        this.model_list_form.push(this.fb.control(''));
     }
 
     setComposition(composition: Array<String>) {
         const modelListFormArray = this.fb.array(composition);
-        this.tempForm.setControl("model_list", modelListFormArray);
+        this.tempForm.setControl('model_list', modelListFormArray);
         // console.log(this.tempForm);
     }
     // previewTemplate() { }
@@ -98,7 +99,7 @@ export class ManTemplateAddComponent implements OnChanges, OnInit {
             whole_name: formTemp.whole_name,
             model_list: formTemp.model_list as string[],
             models: this.template.models,
-        }
+        };
         // console.log(saveTemplate);
         return saveTemplate;
     }

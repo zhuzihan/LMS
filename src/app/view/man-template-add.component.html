@@ -1,9 +1,9 @@
 <div class="inline-content">
     <h2>添加模版</h2>
 
-<form [formGroup]="tempForm" class="field-form" novalidate>
+<form [formGroup]="tempForm" (ngSubmit)="onSubmit()" class="field-form" novalidate>
     <mat-horizontal-stepper linear #stepper="matHorizontalStepper">
-        <mat-step [stepControl]="tempForm">
+        <mat-step>
             <!-- <form [formGroup]="tempForm"> -->
                 <ng-template matStepLabel>命名</ng-template>
                 <mat-form-field class="model-half-width">
@@ -11,10 +11,10 @@
                 </mat-form-field>
                 <!-- </form> -->
                 <div>
-                <button mat-button matStepperNext>下一步</button>
+                <button mat-button matStepperNext type="button">下一步</button>
             </div>
         </mat-step>
-        <mat-step [stepControl]="tempForm">
+        <mat-step>
             <!-- <form [formGroup]="tempForm"> -->
                 <ng-template matStepLabel>选择模版组成</ng-template>
 
@@ -38,8 +38,8 @@
                     <button (click)="addListItem()" type="button" mat-raised-button>添加步骤</button>
                 </div>
                 <div>
-                    <button mat-button matStepperPrevious>上一步</button>
-                    <button mat-button matStepperNext>下一步</button>
+                    <button mat-button matStepperPrevious type="button">上一步</button>
+                    <button mat-button matStepperNext type="button">下一步</button>
                 </div>
             <!-- </form> -->
         </mat-step>
@@ -47,15 +47,15 @@
             <ng-template matStepLabel>编辑组成内容</ng-template>
             编辑组成模块
             <div>
-                <button mat-button matStepperPrevious>上一步</button>
-                <button mat-button matStepperNext>下一步</button>
+                <button mat-button matStepperPrevious type="button">上一步</button>
+                <button mat-button matStepperNext type="button">下一步</button>
             </div>
         </mat-step>
         <mat-step>
             <ng-template matStepLabel>完成</ng-template>
             新建模块成功
             <div>
-                <button mat-button matStepperPrevious>上一步</button>
+                <button mat-button matStepperPrevious type="button">上一步</button>
                 <button type="submit" [disabled]="tempForm.pristine" mat-button>保存</button>
                 <button mat-button (click)="stepper.reset()">重置</button>
             </div>
@@ -63,7 +63,7 @@
     </mat-horizontal-stepper>
 </form>
 
-    <!-- <p>Form value: {{ tempForm.value | json }}</p> -->
+    <p>Form value: {{ tempForm.value | json }}</p>
 
     <!-- <p>source_name:{{source_name | json}}</p> -->
     <!-- <p>Form status: {{ modelForm.status | json }}</p> -->
