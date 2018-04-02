@@ -9,7 +9,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { ModelDataService } from '../../service/model-data.service';
 // import { Model, Field, source } from '../../model/data-model'
-import { Model, Template, DataTable, model_list_local, DataArray, space_template } from '../../model/data-model';
+import { Model, Template, DataTable, DataArray, space_template } from '../../model/data-model';
 import { DataManageService } from '../../service/data-manage.service';
 
 @Component({
@@ -19,12 +19,13 @@ import { DataManageService } from '../../service/data-manage.service';
     styleUrls: ['../../css/sys-management.component.css']
 })
 export class ManTemplateAddComponent implements OnChanges, OnInit {
-
+    modelsData: Model[];
+    models: Observable<Model[]>;
     template = space_template;
     tempForm: FormGroup;
-    modelListForm: FormArray;
-    // modelsForm: {[key: string]: Model[]}
-    model_list_local : Observable<string[]>;
+    // modelsForm: FormArray;
+    // modelsName: Observable<string[]>;
+    model_list_local : string[];
     // model_list_local = model_list_local;
     selected = '试剂准备';
 
@@ -35,10 +36,30 @@ export class ManTemplateAddComponent implements OnChanges, OnInit {
         //     this.isLoading = false;
         // });
         this.ngOnChanges();
-        this.model_list_local = this.modelDataService.getModelsName()
+        // console.log("init");
+        this.models = this.modelDataService.getModelsData()
+            // Todo: error handling
             .finally(() => {
-                this.ngOnChanges();
+                // this.isLoading = false;
+                // this.selectedModel = undefined;
             });
+        this.modelsData = [];
+        this.models.forEach(models => {
+            models.forEach(model => {
+                this.modelsData.push(model);
+            });
+        });
+        // this.modelsName = this.modelDataService.getModelsName()
+        //     .finally(() => {
+        //         // console.log("finally");
+        //         // console.log(this.model_list_local);
+        //     });
+        // this.model_list_local = [];
+        // this.modelsName.forEach(modelsName => {
+        //     modelsName.forEach(modelName => {
+        //         this.model_list_local.push(modelName);
+        //     })
+        // });
     }
 
     constructor(
@@ -54,7 +75,11 @@ export class ManTemplateAddComponent implements OnChanges, OnInit {
         this.tempForm = this.fb.group({
             whole_name: '',
         });
-        this.modelListForm = this.fb.array([]);
+        // this.modelListForm = this.fb.array([]);
+        // this.modelsForm = this.fb.array([]);
+
+        // this.tempForm.setControl('model_list', this.modelListForm);
+        // this.tempForm.setControl('models', this.modelsForm);
     }
 
     ngOnChanges(): void {
@@ -79,36 +104,38 @@ export class ManTemplateAddComponent implements OnChanges, OnInit {
         this.ngOnChanges();
     }
 
-    get model_list_form(): FormArray {
+    get modelListForm(): FormArray {
         return this.tempForm.get('model_list') as FormArray;
     }
 
     deleteListItem(i: number) {
-        this.model_list_form.removeAt(i);
+        this.modelListForm.removeAt(i);
     }
 
     addListItem() {
-        this.model_list_form.push(this.fb.control(''));
+        this.modelListForm.push(this.fb.control(''));
     }
+
+    // addModel(model: Model) {
+    //     this.modelsForm.push(this.fb.group(model));
+    // }
 
     setComposition(composition: Array<String>) {
         const modelListFormArray = this.fb.array(composition);
         this.tempForm.setControl('model_list', modelListFormArray);
+        // console.log("setComposition");
         // console.log(this.tempForm);
     }
     //选择模块后，添加对应模块内容至表单
-    setModelsOfTemplate (model_list: any[]) {
-        // models: {[key: string]: Model[]}
-        
-        // const modelFGs: FormGroup[] = [];
-        // for (const model_name of model_list) {
-        //     this.modelDataService.getModelOfTemplate(model_name);
-        // }
-        // const modelsFormArray = this.fb.array(modelFGs);
-        // this.tempForm.setControl("models", modelsFormArray);
+    setModelsOfTemplate () {
+        const modelFGs: FormGroup[] = [];
+        for(const model_name of this.modelListForm.value){
+            modelFGs.push(this.fb.group(this.modelDataService.getModelOfTemplate(model_name)));
+        }
+        const modelsFormArray = this.fb.array(modelFGs);
+        console.log(modelsFormArray);
+        this.tempForm.setControl("models", modelsFormArray);
     }
-    // addModelToTemplateForm (model_list: any[]){
-    // }
     // previewTemplate() { }
     prepareSaveTemplateList(): Template {
         const formTemp = this.tempForm.value;
