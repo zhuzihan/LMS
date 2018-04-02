@@ -32,7 +32,16 @@ export class ModelDataService {
     getModelsData(): Observable<Model[]> {
         return of(models_test).delay(this.delayMs);
     }
-
+    getModelsName(): Observable<string[]> {
+        const modelsName : string[] = [];
+        for (const model of models_test) {
+            modelsName.push(model.model_name)
+        }
+        return of(modelsName).delay(this.delayMs);
+    }
+    // getModelsNameAndID() : Observable<Model[]> {
+    //     return 
+    // }
     getTemplateData(): Observable<Template> {
         return of(template_test).delay(this.delayMs);
     }
@@ -68,4 +77,9 @@ export class ModelDataService {
         templates_test.push(template);
         return of(template).delay(this.delayMs);
     }
+    // getModelOfTemplate(model_list: string) {
+    //     const modelData = models_test.find(m => m.model_id === model_name)
+    //     // 找到对应模块
+    //     return
+    // }
 }
