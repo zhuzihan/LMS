@@ -63,6 +63,11 @@ mat-grid-tile {
     width: max-content;
     align-self: center;
 }
+.inline-table-content {
+  display: contents;
+  width: max-content;
+  align-self: center;
+}
 
 .button_inside_table {
   padding: 0px 16px 0px 0px;

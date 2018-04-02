@@ -16,7 +16,7 @@
         </mat-step>
         <mat-step>
             <!-- <form [formGroup]="tempForm"> -->
-                <ng-template matStepLabel>选择模版组成</ng-template>
+                <ng-template matStepLabel>模版组成</ng-template>
 
                 <!-- <div style="margin-bottom: 1em">
                     <button type="submit" [disabled]="tempForm.pristine" mat-raised-button>保存</button> &nbsp;
@@ -44,7 +44,7 @@
             <!-- </form> -->
         </mat-step>
         <mat-step>
-            <ng-template matStepLabel>编辑组成内容</ng-template>
+            <ng-template matStepLabel>预览内容</ng-template>
             <div formArrayName="models" class="preview-content">
                 <div *ngFor="let model of modelsForm.value;let idx=index">
                     <h3>{{idx+1}}.【{{model.model_standard_name}}】</h3>
@@ -54,13 +54,13 @@
                                 [colspan]="model.table.cells[cell_key].colspan"
                                 [rowspan]="model.table.cells[cell_key].rowspan">
                                 <div class="grid-tile-div">
-                                    <div class="inline-table">
-                                        <span class="grid-span">{{model.table.cells[cell_key].name}} : </span>
+                                    <div class="inline-table-content">
+                                        <span class="grid-span">{{model.table.cells[cell_key].name}}: {{model.table.cells[cell_key].value}}</span>
                                     </div>
-                                    <div class="grid-input-div">
+                                    <!-- <div class="grid-input-div">
                                         <input placeholder="数据值" [value]="model.table.cells[cell_key].value" class="input_white">
-                                        <!-- <input placeholder="数据值" [(ngModel)]="model.table.cells[cell_key].value"> -->
-                                    </div>
+                                        <input placeholder="数据值" [(ngModel)]="model.table.cells[cell_key].value">
+                                    </div> -->
                                 </div>
                             </mat-grid-tile>
                         </div>

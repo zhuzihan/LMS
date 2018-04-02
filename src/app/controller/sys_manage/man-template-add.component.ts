@@ -25,7 +25,7 @@ export class ManTemplateAddComponent implements OnChanges, OnInit {
     tempForm: FormGroup;
     // modelsForm: FormArray;
     // modelsName: Observable<string[]>;
-    model_list_local : string[];
+    // model_list_local : string[];
     // model_list_local = model_list_local;
     selected = '试剂准备';
 
@@ -124,7 +124,7 @@ export class ManTemplateAddComponent implements OnChanges, OnInit {
     //     const modelListFormArray = this.fb.array(composition);
     //     this.tempForm.setControl('model_list', modelListFormArray);
     // }
-    //选择模块后，添加对应模块内容至表单
+
     setModelsOfTemplate () {
         const modelFGs: FormGroup[] = [];
         if(!this.modelListForm.pristine){

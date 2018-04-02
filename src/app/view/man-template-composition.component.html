@@ -16,12 +16,11 @@
         <!-- <hr> -->
         <h4>步骤</h4>
         <div formArrayName="model_list">
-            <div *ngFor="let list_item of model_list_form.controls; let i=index" class="model-full-width">
+            <div *ngFor="let list_item of modelListForm.controls; let i=index" class="model-full-width">
                 <mat-form-field class="field-quarter-width">
                     <mat-select  placeholder="选择模块" [formControlName]="i">
-                        <!-- <mat-option *ngFor="let model_item of model_list_local;" [value]="model_item" (click)="getTableHeads(expPara);saveTableName(expPara);"> -->
-                        <mat-option *ngFor="let model_item of model_list_local;" [value]="model_item"> 
-                            {{model_item}}
+                        <mat-option *ngFor="let model_item of modelsData;" [value]="model_item.model_name"> 
+                                {{model_item.model_standard_name}}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
