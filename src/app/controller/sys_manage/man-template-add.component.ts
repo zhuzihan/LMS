@@ -78,8 +78,8 @@ export class ManTemplateAddComponent implements OnChanges, OnInit {
         // this.modelListForm = this.fb.array([]);
         // this.modelsForm = this.fb.array([]);
 
-        // this.tempForm.setControl('model_list', this.modelListForm);
-        // this.tempForm.setControl('models', this.modelsForm);
+        this.tempForm.setControl('model_list', this.fb.array([""]));
+        this.tempForm.setControl('models', this.fb.array([]));
     }
 
     ngOnChanges(): void {
@@ -87,7 +87,9 @@ export class ManTemplateAddComponent implements OnChanges, OnInit {
             whole_name: this.template.whole_name,
             // model_list: this.template.model_list,
         });
-        this.setComposition(this.template.model_list);
+        this.tempForm.setControl('model_list', this.fb.array([""]));
+        this.tempForm.setControl('models', this.fb.array([]));
+        // this.setComposition(this.template.model_list);
         // console.log(this.tempForm);
     }
 
@@ -107,7 +109,9 @@ export class ManTemplateAddComponent implements OnChanges, OnInit {
     get modelListForm(): FormArray {
         return this.tempForm.get('model_list') as FormArray;
     }
-
+    get modelsForm(): FormArray {
+        return this.tempForm.get('models') as FormArray;
+    }
     deleteListItem(i: number) {
         this.modelListForm.removeAt(i);
     }
@@ -116,25 +120,21 @@ export class ManTemplateAddComponent implements OnChanges, OnInit {
         this.modelListForm.push(this.fb.control(''));
     }
 
-    // addModel(model: Model) {
-    //     this.modelsForm.push(this.fb.group(model));
+    // setComposition(composition: Array<String>) {
+    //     const modelListFormArray = this.fb.array(composition);
+    //     this.tempForm.setControl('model_list', modelListFormArray);
     // }
-
-    setComposition(composition: Array<String>) {
-        const modelListFormArray = this.fb.array(composition);
-        this.tempForm.setControl('model_list', modelListFormArray);
-        // console.log("setComposition");
-        // console.log(this.tempForm);
-    }
     //选择模块后，添加对应模块内容至表单
     setModelsOfTemplate () {
         const modelFGs: FormGroup[] = [];
-        for(const model_name of this.modelListForm.value){
-            modelFGs.push(this.fb.group(this.modelDataService.getModelOfTemplate(model_name)));
+        if(!this.modelListForm.pristine){
+            for(const model_name of this.modelListForm.value){
+                modelFGs.push(this.fb.group(this.modelDataService.getModelOfTemplate(model_name)));
+            }
+            const modelsFormArray = this.fb.array(modelFGs);
+            this.tempForm.setControl("models", modelsFormArray);
+            // console.log(this.modelsForm);
         }
-        const modelsFormArray = this.fb.array(modelFGs);
-        console.log(modelsFormArray);
-        this.tempForm.setControl("models", modelsFormArray);
     }
     // previewTemplate() { }
     prepareSaveTemplateList(): Template {
@@ -147,5 +147,8 @@ export class ManTemplateAddComponent implements OnChanges, OnInit {
         };
         // console.log(saveTemplate);
         return saveTemplate;
+    }
+    getKeys(item) {
+        return this.modelDataService.getKeys(item);
     }
 }

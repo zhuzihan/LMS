@@ -5,13 +5,13 @@
     <mat-horizontal-stepper linear #stepper="matHorizontalStepper">
         <mat-step>
             <!-- <form [formGroup]="tempForm"> -->
-                <ng-template matStepLabel>命名</ng-template>
-                <mat-form-field class="model-half-width">
-                    <input formControlName="whole_name" matInput placeholder="操作流程名称：">
-                </mat-form-field>
-                <!-- </form> -->
-                <div>
-                <button mat-button matStepperNext type="button">下一步</button>
+            <ng-template matStepLabel>命名</ng-template>
+            <mat-form-field class="model-half-width">
+                <input formControlName="whole_name" matInput placeholder="操作流程名称：">
+            </mat-form-field>
+            <!-- </form> -->
+            <div>
+            <button mat-button matStepperNext type="button">下一步</button>
             </div>
         </mat-step>
         <mat-step>
@@ -45,7 +45,71 @@
         </mat-step>
         <mat-step>
             <ng-template matStepLabel>编辑组成内容</ng-template>
-            编辑组成模块
+            <div formArrayName="models" class="preview-content">
+                <div *ngFor="let model of modelsForm.value;let idx=index">
+                    <h3>{{idx+1}}.【{{model.model_standard_name}}】</h3>
+                    <mat-grid-list cols="10" rowHeight="25px">
+                        <div *ngFor="let cell_key of getKeys(model.table.cells)">
+                            <mat-grid-tile
+                                [colspan]="model.table.cells[cell_key].colspan"
+                                [rowspan]="model.table.cells[cell_key].rowspan">
+                                <div class="grid-tile-div">
+                                    <div class="inline-table">
+                                        <span class="grid-span">{{model.table.cells[cell_key].name}} : </span>
+                                    </div>
+                                    <div class="grid-input-div">
+                                        <input placeholder="数据值" [value]="model.table.cells[cell_key].value">
+                                        <!-- <input placeholder="数据值" [(ngModel)]="model.table.cells[cell_key].value"> -->
+                                    </div>
+                                </div>
+                            </mat-grid-tile>
+                        </div>
+                    </mat-grid-list>
+                    <!-- {{model_key |json}} -->
+                </div>
+                <!-- {{modelsForm.value| json}} -->
+            </div>
+            <!-- <div *ngFor="let model_key of modelsForm.value;let idx=index"> -->
+
+
+
+                <!-- <div *ngFor="let array_key of getKeys(template.models[model_key].arrays)" [ngStyle]="{'width.px': 150*template.models[model_key].arrays[array_key].col_count}">
+                    <mat-grid-list [cols]="2*template.models[model_key].arrays[array_key].col_count" rowHeight="25px" [ngStyle]="{'min-width.px': 300}">
+                    <div *ngFor="let array_cell of template.models[model_key].arrays[array_key].cell_list">
+                        <mat-grid-tile *ngIf="array_cell.row == 1; else space"
+                            [colspan]="array_cell.colspan"
+                            [rowspan]="array_cell.rowspan">
+                                -|{{array_cell.value}}|-
+                        </mat-grid-tile>
+                        <ng-template #space>
+                            <mat-grid-tile  [ngSwitch]="array_cell.source_type" [colspan]="array_cell.colspan" [rowspan]="array_cell.rowspan">
+                                <div *ngSwitchCase="1">
+                                    <input placeholder="录入数据" value="{{array_cell.value}}">
+                                </div>
+                                <div *ngSwitchCase="2">
+                                    <button>引用数据源</button>
+                                </div>
+                                <div *ngSwitchCase="3">
+                                    <mat-form-field>
+                                        <input matInput [matDatepicker]="picker" placeholder="输入/选择日期">
+                                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker></mat-datepicker>
+                                    </mat-form-field>
+                                </div>
+                                <div *ngSwitchCase="4">
+                                    <button>选择参数表</button>
+                                </div>
+                                <div *ngSwitchCase="5">
+                                    <button>创建公式</button>
+                                </div>
+                                <div *ngSwitchDefault>Null</div>
+                            </mat-grid-tile>
+                        </ng-template>
+                    </div>
+                    </mat-grid-list>
+                </div> -->
+            <!-- </div> -->
+
             <div>
                 <button mat-button matStepperPrevious type="button">上一步</button>
                 <button mat-button matStepperNext type="button">下一步</button>
@@ -63,7 +127,7 @@
     </mat-horizontal-stepper>
 </form>
 
-    <p>Form value: {{ tempForm.value | json }}</p>
+    <!-- <p>Form value: {{ tempForm.value | json }}</p> -->
 
     <!-- <p>source_name:{{source_name | json}}</p> -->
     <!-- <p>Form status: {{ modelForm.status | json }}</p> -->
