@@ -82,3 +82,7 @@ mat-grid-tile {
   right: 30px;
   bottom: 30px;
 }
+
+.input_white {
+  background-color: white;
+}
