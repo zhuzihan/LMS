@@ -10,6 +10,7 @@
         <!-- <span>Name: {{modelForm.get('model_standard_name').value|json}}</span> -->
         <span *ngIf="modelForm.get('has_table').value == -1">无列表</span>
         <span *ngIf="modelForm.get('has_array').value == -1">无数据表</span>
+        <br/>
         <mat-form-field class="field-quarter-width">
             <input formControlName="model_standard_name" matInput placeholder="模块名称">
         </mat-form-field>
