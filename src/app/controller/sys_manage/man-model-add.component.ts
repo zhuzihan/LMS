@@ -109,6 +109,8 @@ export class ManModelAddComponent implements OnChanges, OnInit {
         this.modelForm = this.fb.group({
             model_name: '',
             model_standard_name: '',
+            registrant: '',
+            state: 1,
             has_table: 1,
             has_array: -1,
         });
@@ -125,6 +127,9 @@ export class ManModelAddComponent implements OnChanges, OnInit {
             model_id: this.model.model_id,
             model_name: this.model.model_name,
             model_standard_name: this.model.model_standard_name,
+            registrant: this.model.registrant,
+            remark: this.model.remark,
+            state: this.model.state,
             has_table: this.model.has_table,
             has_array: this.model.has_array,
         });
@@ -227,6 +232,9 @@ export class ManModelAddComponent implements OnChanges, OnInit {
             model_id: this.model.model_id,
             model_name: formModel.model_name as string,
             model_standard_name: formModel.model_standard_name as string,
+            registrant: formModel.registrant as string,
+            remark: formModel.remark as string,
+            state: formModel.state,
             has_table: formModel.has_table,
             has_array: formModel.has_array,
 

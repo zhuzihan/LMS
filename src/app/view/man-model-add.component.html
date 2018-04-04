@@ -13,11 +13,16 @@
                 <button type="submit" [disabled]="modelForm.pristine" mat-raised-button>保存</button> &nbsp;
                 <button type="reset" (click)="revert()" [disabled]="modelForm.pristine" mat-raised-button>重置</button>
             </div>
-            <!-- <span>Name: {{modelForm.get('model_standard_name').value|json}}</span> -->
             <span *ngIf="modelForm.get('has_table').value == -1">无列表</span>
             <span *ngIf="modelForm.get('has_array').value == -1">无数据表</span>
             <mat-form-field class="model-half-width">
                 <input formControlName="model_standard_name" matInput placeholder="模块名称">
+            </mat-form-field>
+            <mat-form-field class="model-half-width">
+                <input formControlName="registrant" matInput placeholder="登记人">
+            </mat-form-field>
+            <mat-form-field class="model-half-width">
+                <input formControlName="state" matInput placeholder="启用状态">
             </mat-form-field>
 
             <!-- <hr> -->
