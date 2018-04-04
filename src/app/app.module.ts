@@ -45,8 +45,8 @@ import { MatPaginatorIntlCro } from './service/mat-paginator-intl'
   ],
   providers: [
     ModelDataService,
-    FormModelDataService, 
-    DataManageService, 
+    FormModelDataService,
+    DataManageService,
     ExpParameterService,
     MatPaginatorIntlCro,
   ],

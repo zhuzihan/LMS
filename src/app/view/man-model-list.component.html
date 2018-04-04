@@ -19,18 +19,18 @@
           <ng-container matColumnDef="model_standard_name">
               <mat-header-cell *matHeaderCellDef> 模块名称 </mat-header-cell>
               <mat-cell *matCellDef="let element">
-                  <button mat-button color="primary" (click)="select(element);" class="button_inside_table">{{element.model_standard_name}} </button>
+                  <button mat-button color="primary" (click)="select(element);" class="button_inside_table">{{element.name}} </button>
               </mat-cell>
           </ng-container>
 
-          <ng-container matColumnDef="has_table">
-              <mat-header-cell *matHeaderCellDef> 是否有列表 </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.has_table}} </mat-cell>
+          <ng-container matColumnDef="remark">
+              <mat-header-cell *matHeaderCellDef> 说明 </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.remark}} </mat-cell>
           </ng-container>
 
-          <ng-container matColumnDef="has_array">
-              <mat-header-cell *matHeaderCellDef> 是否有数组 </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.has_array}} </mat-cell>
+          <ng-container matColumnDef="registrant">
+              <mat-header-cell *matHeaderCellDef> 登记人 </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.registrant}} </mat-cell>
           </ng-container>
 
           <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
