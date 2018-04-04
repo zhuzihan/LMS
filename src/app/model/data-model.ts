@@ -27,12 +27,9 @@ export class Template {
 
 // 模块
 export class Model {
-    model_id = 0; //数字
+    model_id = 0; // 数字
     model_name = '';    // 模块名称，字符串的id
     model_standard_name = ''; // 模块标准名称，用作model编辑
-    registrant = ''; // 登记人
-    remark = ''; // 说明
-    state = 1; //启用状态
     has_table = -1;     // 该模块是否拥有列表,'1'是，'-1'否
     has_array = -1;     // 该模块是否拥有数组,'1'是,且代表有一张数据表，'-1'否
     table: DataTable;     // 列表内容
