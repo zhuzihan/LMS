@@ -11,6 +11,7 @@ import { Observable } from 'rxjs/Observable';
 import { ModelDataService } from '../../service/model-data.service';
 import { ExpParameterService } from '../../service/exp-parameter.service';
 import { Model, DataCell, DataArray, space_model, source, DataTable } from '../../model/data-model';
+import { DataManageService } from '../../service/data-manage.service';
 
 @Component({
     // tslint:disable-next-line:component-selector
@@ -55,7 +56,8 @@ export class ManModelAddComponent implements OnChanges, OnInit {
     constructor(
         private fb: FormBuilder,
         private modelDataService: ModelDataService,
-        private expParameterSerivce: ExpParameterService) {
+        private expParameterSerivce: ExpParameterService,
+        private dataMangerService: DataManageService) {
         this.createForm();
     }
     ngOnInit(): void {
@@ -110,6 +112,7 @@ export class ManModelAddComponent implements OnChanges, OnInit {
             model_name: '',
             model_standard_name: '',
             registrant: '',
+            remark: '',
             state: 1,
             has_table: 1,
             has_array: -1,
@@ -127,9 +130,6 @@ export class ManModelAddComponent implements OnChanges, OnInit {
             model_id: this.model.model_id,
             model_name: this.model.model_name,
             model_standard_name: this.model.model_standard_name,
-            registrant: this.model.registrant,
-            remark: this.model.remark,
-            state: this.model.state,
             has_table: this.model.has_table,
             has_array: this.model.has_array,
         });
@@ -206,10 +206,14 @@ export class ManModelAddComponent implements OnChanges, OnInit {
     onSubmit() {
         // console.log("onsubmit1");
         this.model = this.prepareSaveModel();
+        const model_str: string = JSON.stringify(this.model);
+        const formModel = this.modelForm.value;
         // debug
-        // console.log(this.model);
-        this.modelDataService.addModelData(this.model).subscribe(/* error handing */);
-        this.ngOnChanges();
+        console.log(formModel);
+        // this.modelDataService.addModelData(this.model).subscribe(/* error handing */);
+        // tslint:disable-next-line:max-line-length
+        this.dataMangerService.saveModules(formModel.model_standard_name, formModel.registrant, Number(formModel.state), formModel.remark, model_str);
+        // this.ngOnChanges();
     }
     prepareSaveModel(): Model {
         const formModel = this.modelForm.value;
@@ -232,9 +236,6 @@ export class ManModelAddComponent implements OnChanges, OnInit {
             model_id: this.model.model_id,
             model_name: formModel.model_name as string,
             model_standard_name: formModel.model_standard_name as string,
-            registrant: formModel.registrant as string,
-            remark: formModel.remark as string,
-            state: formModel.state,
             has_table: formModel.has_table,
             has_array: formModel.has_array,
 
