@@ -54,8 +54,8 @@ export class DataCell {
     value = '';
     row = 0;
     col = 0;
-    rowspan = 0;
-    colspan = 0;
+    rowspan = 1;
+    colspan = 1;
 }
 
 export class ArrayCell {
@@ -67,8 +67,8 @@ export class ArrayCell {
     source_data: any = null;
     row = '';
     col = '';
-    colspan = 0;
-    rowspan = 0;
+    colspan = 1;
+    rowspan = 1;
 }
 
 // 数组
@@ -76,8 +76,8 @@ export class DataArray {
     array_name = '';
     col_count = 0;
     row_count = 0;
-    rowspan = 0;
-    colspan = 0;
+    rowspan = 1;
+    colspan = 1;
     source_sn = '';
     cell_list: Array<ArrayCell>;
     constructor(row, col) {
