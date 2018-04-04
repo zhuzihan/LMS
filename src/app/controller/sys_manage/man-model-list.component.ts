@@ -65,5 +65,8 @@ export class ManModelListComponent implements OnInit {
         //     });
         // });
     }
-    select(model: Model) { this.selectedModel = model; }
+    select(model: Model) {
+        console.log(JSON.parse(model['json']));
+        this.selectedModel = JSON.parse(model['json']);
+    }
 }
