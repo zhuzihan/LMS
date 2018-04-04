@@ -11,6 +11,7 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class DataManageService {
     private getDataUrl = baseUrl + '/operationFlowById'; // 服务器地址
+    private getModuleUrl = baseUrl + '/module/'; // 获取模板 Api
 
     constructor(private http: Http) { }
 
@@ -19,6 +20,14 @@ export class DataManageService {
         return this.http.post(url, { 'id': id })
                         .toPromise()
                         .then(response => response.json().json as String)
+                        .catch(this.handleError);
+    }
+
+    getModules(): Promise<Array<Object>> {
+        const url = `${this.getModuleUrl}`;
+        return this.http.get(url)
+                        .toPromise()
+                        .then(response => response.json() as Array<Object>)
                         .catch(this.handleError);
     }
 
