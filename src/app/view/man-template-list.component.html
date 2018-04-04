@@ -1,7 +1,7 @@
 <div class="inline-content">
     <div *ngIf="!selectedTemplate">
         <div *ngIf="isLoading" class="loading">
-            <mat-spinner [diameter]="30" class="loading"></mat-spinner>
+            <mat-spinner [diameter]="30" color="primary" class="loading"></mat-spinner>
         </div>
     
         <div [hidden]="isLoading">

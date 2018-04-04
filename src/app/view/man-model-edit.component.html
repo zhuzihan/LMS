@@ -10,10 +10,18 @@
         <!-- <span>Name: {{modelForm.get('model_standard_name').value|json}}</span> -->
         <span *ngIf="modelForm.get('has_table').value == -1">无列表</span>
         <span *ngIf="modelForm.get('has_array').value == -1">无数据表</span>
-        <mat-form-field class="model-half-width">
+        <mat-form-field class="field-quarter-width">
             <input formControlName="model_standard_name" matInput placeholder="模块名称">
         </mat-form-field>
-
+        <mat-form-field class="field-quarter-width">
+            <input formControlName="registrant" matInput placeholder="登记人">
+        </mat-form-field>
+        <mat-form-field class="field-quarter-width">
+            <input formControlName="state" matInput placeholder="启用状态">
+        </mat-form-field>
+        <mat-form-field class="field-half-and-quarter-width">
+            <input formControlName="remark" matInput placeholder="描述">
+        </mat-form-field>
         <!-- <hr> -->
         <h4>单元</h4>
         <div *ngIf="isLoading">
@@ -33,11 +41,17 @@
                             </mat-panel-description>
                         </mat-expansion-panel-header>
 
-                        <mat-form-field class="field-half-width">
+                        <mat-form-field class="field-quarter-width">
                             <input formControlName="name" #cellName matInput placeholder="单元名">
                         </mat-form-field>
+                        <mat-form-field class="field-quarter-width">
+                            <input formControlName="rowspan" matInput placeholder="所占行数">
+                        </mat-form-field>
+                        <mat-form-field class="field-quarter-width">
+                            <input formControlName="colspan" matInput placeholder="所占列数">
+                        </mat-form-field>
 
-                        <mat-form-field class="field-half-width">
+                        <mat-form-field class="field-quarter-width">
                             <mat-select placeholder="数据来源">
                                 <mat-option *ngFor="let s of source;" [value]="s" (click)="patchSourceData(i,s)">{{s.source_name}}</mat-option>
                             </mat-select>

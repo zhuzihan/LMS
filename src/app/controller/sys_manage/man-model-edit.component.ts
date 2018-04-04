@@ -68,6 +68,9 @@ export class ManModelEditComponent implements OnChanges, OnInit {
         this.modelForm = this.fb.group({
             model_name: '',
             model_standard_name: '',
+            registrant: '',
+            remark: '',
+            state: 1,
             has_table: 1,
             has_array: -1,
         });

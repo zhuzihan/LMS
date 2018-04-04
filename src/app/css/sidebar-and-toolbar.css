@@ -1,6 +1,7 @@
 /*toolbar and sidebar*/
 .toolbar {
-    background :#3f51b5;
+    /* background :#3f51b5; */
+    background: #009688;
     /* height: 60px; */
 }
 .toolbar-content{

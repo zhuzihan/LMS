@@ -6,15 +6,19 @@
 }
 .field-quarter-width { 
   display: inline-block!important;
-  width: 24%;
+  width: 24%!important;
 }
 .field-half-width { 
   display: inline-block!important;
-  width: 49%;
+  width: 49%!important;
+}
+.field-half-and-quarter-width {
+  display: inline-block!important;
+  width: 74%!important;
 }
 .field-full-width {
   display: inline-block!important;
-  width: 100%;
+  width: 100%!important;
 }
 
 .model-quarter-width { 

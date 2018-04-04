@@ -61,15 +61,11 @@ export class ManModelAddComponent implements OnChanges, OnInit {
         this.createForm();
     }
     ngOnInit(): void {
-        // 服务器奔溃，临时屏蔽
-        // this.expParameterSerivce.getExpParameter().then(responseData => {
-        //     this.expParameterData = responseData;
-        //     this.expParameterList = this.expParameterSerivce.convertParameterList(this.expParameterData);
-        //     this.isLoading = false;
-        // });
-        //
-        this.isLoading = false;
-
+        this.expParameterSerivce.getExpParameter().then(responseData => {
+            this.expParameterData = responseData;
+            this.expParameterList = this.expParameterSerivce.convertParameterList(this.expParameterData);
+            this.isLoading = false;
+        });
         this.ngOnChanges();
     }
     // getFrontValue(parameterList: Array<Object>, headKey: string, count: number) {
