@@ -87,7 +87,7 @@ export class ManTemplateAddComponent implements OnChanges, OnInit {
             whole_name: this.template.whole_name,
             // model_list: this.template.model_list,
         });
-        this.tempForm.setControl('model_list', this.fb.array([""]));
+        this.tempForm.setControl('model_list', this.fb.array(['']));
         this.tempForm.setControl('models', this.fb.array([]));
         // this.setComposition(this.template.model_list);
         // console.log(this.tempForm);
@@ -99,6 +99,7 @@ export class ManTemplateAddComponent implements OnChanges, OnInit {
         this.modelDataService.addTemplateData(this.template).subscribe(/* error handing */);
         this.ngOnChanges();
         console.log('submit');
+        // console.log(this.template);
     }
     // 重置内容
     revert() {
@@ -125,14 +126,14 @@ export class ManTemplateAddComponent implements OnChanges, OnInit {
     //     this.tempForm.setControl('model_list', modelListFormArray);
     // }
 
-    setModelsOfTemplate () {
+    setModelsOfTemplate() {
         const modelFGs: FormGroup[] = [];
-        if(!this.modelListForm.pristine){
-            for(const model_name of this.modelListForm.value){
+        if (!this.modelListForm.pristine) {
+            for (const model_name of this.modelListForm.value) {
                 modelFGs.push(this.fb.group(this.modelDataService.getModelOfTemplate(model_name)));
             }
             const modelsFormArray = this.fb.array(modelFGs);
-            this.tempForm.setControl("models", modelsFormArray);
+            this.tempForm.setControl('models', modelsFormArray);
             // console.log(this.modelsForm);
         }
     }

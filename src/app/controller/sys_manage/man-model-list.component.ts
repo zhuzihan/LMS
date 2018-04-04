@@ -9,6 +9,7 @@ import { Model } from '../../model/data-model';
 import { ModelDataService } from '../../service/model-data.service';
 import { MatPaginatorIntl} from '@angular/material';
 import { MatPaginatorIntlCro } from '../../service/mat-paginator-intl';
+import { DataManageService } from '../../service/data-manage.service';
 
 @Component({
     // tslint:disable-next-line:component-selector
@@ -18,8 +19,8 @@ import { MatPaginatorIntlCro } from '../../service/mat-paginator-intl';
     providers: [{ provide: MatPaginatorIntl, useClass: MatPaginatorIntlCro}]
 })
 export class ManModelListComponent implements OnInit {
-    displayedColumns = ['model_standard_name', 'has_table', 'has_array'];
-    models: Observable<Model[]>;
+    displayedColumns = ['model_standard_name', 'remark', 'registrant'];
+    // models: Array<Object> = [];
     modelData: Array<Object> = [];
     dataSource = new MatTableDataSource();
 
@@ -31,6 +32,7 @@ export class ManModelListComponent implements OnInit {
 
     constructor(
         private modelDataService: ModelDataService,
+        private dataMangerService: DataManageService
     ) { }
 
     ngOnInit() {
@@ -39,19 +41,29 @@ export class ManModelListComponent implements OnInit {
     }
     getModels() {
         this.isLoading = true;
-        this.models = this.modelDataService.getModelsData()
-            // Todo: error handling
-            .finally(() => {
-                this.isLoading = false;
-                this.selectedModel = undefined;
-                this.dataSource.paginator = this.paginator;
-            });
-        this.modelData = [];
-        this.models.forEach(models => {
-            models.forEach(model => {
-                this.modelData.push(model);
-            });
+        this.dataMangerService.getModules().then(responseData => {
+            console.log(responseData);
+            this.modelData = responseData;
+            this.dataSource = new MatTableDataSource<Object>(this.modelData);
+            this.isLoading = false;
+            this.selectedModel = undefined;
+            this.dataSource.paginator = this.paginator;
+            // console.log("afterngInit");
         });
+        // this.isLoading = true;
+        // this.models = this.modelDataService.getModelsData()
+        //     // Todo: error handling
+        //     .finally(() => {
+        //         this.isLoading = false;
+        //         this.selectedModel = undefined;
+        //         this.dataSource.paginator = this.paginator;
+        //     });
+        // this.modelData = [];
+        // this.models.forEach(models => {
+        //     models.forEach(model => {
+        //         this.modelData.push(model);
+        //     });
+        // });
     }
     select(model: Model) { this.selectedModel = model; }
 }
