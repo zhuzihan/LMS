@@ -132,8 +132,8 @@ export class ManModelEditComponent implements OnChanges, OnInit {
         this.clickedCellIndex = i;
         // console.log(this.clickedCellIndex);
         this.cells_form.controls[i].patchValue({
-            source_name: source['source_name'],
-            source_type: source['source_type'],
+            source_name: this.sourceControl['source_name'],
+            source_type: this.sourceControl['source_type'],
             value: '',
         });
         // console.log(this.sourceControl);
