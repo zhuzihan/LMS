@@ -19,7 +19,7 @@ import { DataManageService } from '../../service/data-manage.service';
     styleUrls: ['../../css/sys-management.component.css']
 })
 export class ManTemplateCompositionComponent implements OnChanges, OnInit {
-    @Input()template: Template;
+    @Input() template: Template;
     modelsData: Model[];
     models: Observable<Model[]>;
     tempForm: FormGroup;
@@ -33,11 +33,11 @@ export class ManTemplateCompositionComponent implements OnChanges, OnInit {
         //     this.isLoading = false;
         // });
         this.models = this.modelDataService.getModelsData()
-        // Todo: error handling
-        .finally(() => {
-            // this.isLoading = false;
-            // this.selectedModel = undefined;
-        });
+            // Todo: error handling
+            .finally(() => {
+                // this.isLoading = false;
+                // this.selectedModel = undefined;
+            });
         this.modelsData = [];
         this.models.forEach(models => {
             models.forEach(model => {
@@ -107,14 +107,14 @@ export class ManTemplateCompositionComponent implements OnChanges, OnInit {
         this.tempForm.setControl('model_list', modelListFormArray);
     }
 
-    setModelsOfTemplate () {
+    setModelsOfTemplate() {
         const modelFGs: FormGroup[] = [];
-        if(!this.modelListForm.pristine){
-            for(const model_name of this.modelListForm.value){
+        if (!this.modelListForm.pristine) {
+            for (const model_name of this.modelListForm.value) {
                 modelFGs.push(this.fb.group(this.modelDataService.getModelOfTemplate(model_name)));
             }
             const modelsFormArray = this.fb.array(modelFGs);
-            this.tempForm.setControl("models", modelsFormArray);
+            this.tempForm.setControl('models', modelsFormArray);
             // console.log(this.modelsForm);
         }
     }

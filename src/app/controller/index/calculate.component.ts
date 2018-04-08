@@ -8,7 +8,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CalculateComponent implements OnInit {
     showFiller = false;
-    
     constructor() { }
 
     ngOnInit(): void {

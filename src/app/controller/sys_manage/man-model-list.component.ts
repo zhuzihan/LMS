@@ -7,7 +7,7 @@ import 'rxjs/add/operator/finally';
 // import { ModelDataService } from './model-data.service'
 import { Model } from '../../model/data-model';
 import { ModelDataService } from '../../service/model-data.service';
-import { MatPaginatorIntl} from '@angular/material';
+import { MatPaginatorIntl } from '@angular/material';
 import { MatPaginatorIntlCro } from '../../service/mat-paginator-intl';
 import { DataManageService } from '../../service/data-manage.service';
 
@@ -16,7 +16,7 @@ import { DataManageService } from '../../service/data-manage.service';
     selector: 'man-model-list',
     templateUrl: '../../view/man-model-list.component.html',
     styleUrls: ['../../css/sys-management.component.css'],
-    providers: [{ provide: MatPaginatorIntl, useClass: MatPaginatorIntlCro}]
+    providers: [{ provide: MatPaginatorIntl, useClass: MatPaginatorIntlCro }]
 })
 export class ManModelListComponent implements OnInit {
     displayedColumns = ['model_standard_name', 'remark', 'registrant'];
