@@ -18,19 +18,24 @@
                             <div class="inline-table">
                                 <span class="grid-span">{{template.models[model_key].table.cells[cell_key].name}} : </span>
                             </div>
-                            <div class="grid-input-div">
+                            <!-- <div class="grid-input-div">
                                 <input placeholder="数据值" [(ngModel)]="template.models[model_key].table.cells[cell_key].value">
-                            </div>
-                            <!-- <div class="grid-input-div" [ngSwitch]="template.models[model_key].table.cells[cell_key].source_type">
-                                <input *ngSwitchCase="1" placeholder="数据值" [(ngModel)]="template.models[model_key].table.cells[cell_key].value">
-                                <input *ngSwitchCase="1" placeholder="数据值" [(ngModel)]="template.models[model_key].table.cells[cell_key].value">
-                                <div *ngSwitchCase="2">2</div>
-                                <span *ngSwitchCase="3">3</span>
-                                <span *ngSwitchCase="4">4</span>
-                                <span *ngSwitchCase="5">5</span>
-                                <span *ngSwitchCase="6">6</span>
-                                <input *ngSwitchDefault placeholder="数据值" [(ngModel)]="template.models[model_key].table.cells[cell_key].value">
                             </div> -->
+                            <div class="grid-input-div" [ngSwitch]="template.models[model_key].table.cells[cell_key].source_type">
+                                <input *ngSwitchCase="1" placeholder="数据值-1" [(ngModel)]="template.models[model_key].table.cells[cell_key].value">
+                                <input *ngSwitchCase="2" placeholder="数据值-2" [(ngModel)]="template.models[model_key].table.cells[cell_key].value">
+                                <div *ngSwitchCase="3">
+                                    <mat-form-field>
+                                        <input matInput [matDatepicker]="picker" placeholder="输入/选择日期" [(ngModel)]="template.models[model_key].table.cells[cell_key].value">
+                                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker></mat-datepicker>
+                                    </mat-form-field>
+                                </div>
+                                <input *ngSwitchCase="4" placeholder="数据值-4" [(ngModel)]="template.models[model_key].table.cells[cell_key].value">
+                                <input *ngSwitchCase="5" placeholder="数据值-5" [(ngModel)]="template.models[model_key].table.cells[cell_key].value">
+                                <input *ngSwitchCase="6" placeholder="数据值-6" [(ngModel)]="template.models[model_key].table.cells[cell_key].value">
+                                <input *ngSwitchDefault placeholder="数据值-0" [(ngModel)]="template.models[model_key].table.cells[cell_key].value">
+                            </div>
                         </div>
                     </mat-grid-tile>
                 </div>
