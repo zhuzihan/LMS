@@ -43,7 +43,7 @@ export class ManEquipParaListComponent implements OnInit {
         // console.log(this.dataSource);
     }
     // ngOnChanges() {
-        // console.log(this.selectedExpParameter);
+    // console.log(this.selectedExpParameter);
     // }
 
     select(expParameter: Object) { this.selectedExpParameter = expParameter; }

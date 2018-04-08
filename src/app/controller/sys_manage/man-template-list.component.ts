@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { DataManageService } from '../../service/data-manage.service';
 import { ExpParameterService } from '../../service/exp-parameter.service';
 import { MatTableDataSource, MatPaginator } from '@angular/material';
-import { MatPaginatorIntl} from '@angular/material';
+import { MatPaginatorIntl } from '@angular/material';
 import { MatPaginatorIntlCro } from '../../service/mat-paginator-intl';
 
 @Component({
@@ -13,7 +13,7 @@ import { MatPaginatorIntlCro } from '../../service/mat-paginator-intl';
     selector: 'man-template-list',
     templateUrl: '../../view/man-template-list.component.html',
     styleUrls: ['../../css/sys-management.component.css'],
-    providers: [{ provide: MatPaginatorIntl, useClass: MatPaginatorIntlCro}]
+    providers: [{ provide: MatPaginatorIntl, useClass: MatPaginatorIntlCro }]
 })
 export class ManTemplateListComponent implements OnInit {
     displayedColumns = ['whole_name', ];
@@ -33,9 +33,9 @@ export class ManTemplateListComponent implements OnInit {
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
     constructor(private dataManageService: DataManageService,
-                private expParameterService: ExpParameterService,
-                private modelDataService: ModelDataService,
-            ) { }
+        private expParameterService: ExpParameterService,
+        private modelDataService: ModelDataService,
+    ) { }
 
     ngOnInit() {
         // 服务器奔溃，临时屏蔽

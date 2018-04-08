@@ -20,7 +20,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 
 import { ManRoutingModule } from './man-routing.module';
 
-import { DialogTableForm } from './man-model-edit.component'
+import { DialogTableForm } from './man-model-edit.component';
 // import {CdkTableModule} from '@angular/cdk/table';
 import { MatTableDataSource } from '@angular/material';
 

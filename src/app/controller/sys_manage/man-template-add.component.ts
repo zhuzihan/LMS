@@ -78,7 +78,7 @@ export class ManTemplateAddComponent implements OnChanges, OnInit {
         // this.modelListForm = this.fb.array([]);
         // this.modelsForm = this.fb.array([]);
 
-        this.tempForm.setControl('model_list', this.fb.array([""]));
+        this.tempForm.setControl('model_list', this.fb.array(['']));
         this.tempForm.setControl('models', this.fb.array([]));
     }
 
