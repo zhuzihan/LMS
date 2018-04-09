@@ -16,7 +16,7 @@ import { DataManageService } from '../../service/data-manage.service';
 @Component({
     // tslint:disable-next-line:component-selector
     selector: 'man-model-add',
-    templateUrl: '../../view/man-model-add.component.html',
+    templateUrl: '../../view/sys-manage/man-model-add.component.html',
     styleUrls: ['../../css/sys-management.component.css']
 })
 export class ManModelAddComponent implements OnChanges, OnInit {

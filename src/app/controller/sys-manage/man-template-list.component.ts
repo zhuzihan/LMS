@@ -11,7 +11,7 @@ import { MatPaginatorIntlCro } from '../../service/mat-paginator-intl';
 @Component({
     // tslint:disable-next-line:component-selector
     selector: 'man-template-list',
-    templateUrl: '../../view/man-template-list.component.html',
+    templateUrl: '../../view/sys-manage/man-template-list.component.html',
     styleUrls: ['../../css/sys-management.component.css'],
     providers: [{ provide: MatPaginatorIntl, useClass: MatPaginatorIntlCro }]
 })

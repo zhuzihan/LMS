@@ -7,7 +7,7 @@ import { delay } from 'rxjs/operator/delay';
 @Component({
     // tslint:disable-next-line:component-selector
     selector: 'man-equip-para',
-    templateUrl: '../../view/man-equip-para-list.component.html',
+    templateUrl: '../../view/sys-manage/man-equip-para-list.component.html',
     styleUrls: ['../../css/sys-management.component.css']
 })
 

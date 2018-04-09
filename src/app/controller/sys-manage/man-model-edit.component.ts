@@ -17,7 +17,7 @@ import { Model, DataCell, DataArray, model_test, source, DataTable } from '../..
 @Component({
     // tslint:disable-next-line:component-selector
     selector: 'man-model-edit',
-    templateUrl: '../../view/man-model-edit.component.html',
+    templateUrl: '../../view/sys-manage/man-model-edit.component.html',
     styleUrls: ['../../css/sys-management.component.css']
 })
 export class ManModelEditComponent implements OnChanges, OnInit {

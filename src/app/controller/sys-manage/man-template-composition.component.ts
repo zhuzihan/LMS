@@ -15,7 +15,7 @@ import { DataManageService } from '../../service/data-manage.service';
 @Component({
     // tslint:disable-next-line:component-selector
     selector: 'man-template-composition',
-    templateUrl: '../../view/man-template-composition.component.html',
+    templateUrl: '../../view/sys-manage/man-template-composition.component.html',
     styleUrls: ['../../css/sys-management.component.css']
 })
 export class ManTemplateCompositionComponent implements OnChanges, OnInit {

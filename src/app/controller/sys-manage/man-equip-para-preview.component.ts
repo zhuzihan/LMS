@@ -7,7 +7,7 @@ import { ArrayType } from '@angular/compiler/src/output/output_ast';
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'man-equip-para-preview',
-  templateUrl: '../../view/man-equip-para-preview.component.html',
+  templateUrl: '../../view/sys-manage/man-equip-para-preview.component.html',
   styleUrls: ['../../css/sys-management.component.css'],
   providers: [ExpParameterService]
 })

@@ -15,7 +15,7 @@ import { Template, DataTable, source, DataArray } from '../../model/data-model';
 @Component({
     // tslint:disable-next-line:component-selector
     selector: 'man-template-preview',
-    templateUrl: '../../view/man-template-preview.component.html',
+    templateUrl: '../../view/sys-manage/man-template-preview.component.html',
     styleUrls: ['../../css/sys-management.component.css']
 })
 export class ManTemplatePreviewComponent {

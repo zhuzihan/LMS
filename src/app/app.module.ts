@@ -8,7 +8,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { Router } from '@angular/router';
 
-import { ManModule } from './controller/sys_manage/man.module';
+import { ManModule } from './controller/sys-manage/man.module';
 import { IndexModule } from './controller/index/index.module';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -22,7 +22,7 @@ import './polyfill';
 // Import Service
 import { DataManageService } from './service/data-manage.service';
 import { ModelDataService } from './service/model-data.service';
-import { FormModelDataService } from './controller/sys_manage/form-model-data.service';
+import { FormModelDataService } from './controller/sys-manage/form-model-data.service';
 import { ExpParameterService } from './service/exp-parameter.service';
 import { MatPaginatorIntlCro } from './service/mat-paginator-intl'
 

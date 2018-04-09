@@ -14,7 +14,7 @@ import { DataManageService } from '../../service/data-manage.service';
 @Component({
     // tslint:disable-next-line:component-selector
     selector: 'man-model-list',
-    templateUrl: '../../view/man-model-list.component.html',
+    templateUrl: '../../view/sys-manage/man-model-list.component.html',
     styleUrls: ['../../css/sys-management.component.css'],
     providers: [{ provide: MatPaginatorIntl, useClass: MatPaginatorIntlCro }]
 })

@@ -10,7 +10,7 @@ import { ModelDataService } from '../../service/model-data.service';
 @Component({
     // tslint:disable-next-line:component-selector
     selector: 'man-model-detail',
-    templateUrl: '../../view/man-model-detail.component.html',
+    templateUrl: '../../view/sys-manage/man-model-detail.component.html',
     styleUrls: ['../../css/sys-management.component.css']
 })
 export class ManModelDetailComponent implements OnInit {
