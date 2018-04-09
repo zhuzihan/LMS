@@ -22,8 +22,12 @@
                                 <input placeholder="数据值" [(ngModel)]="template.models[model_key].table.cells[cell_key].value">
                             </div> -->
                             <div class="grid-input-div" [ngSwitch]="template.models[model_key].table.cells[cell_key].source_type">
-                                <input *ngSwitchCase="1" placeholder="数据值-1" [(ngModel)]="template.models[model_key].table.cells[cell_key].value">
-                                <input *ngSwitchCase="2" placeholder="数据值-2" [(ngModel)]="template.models[model_key].table.cells[cell_key].value">
+                                <div *ngSwitchCase="1">
+                                    <input placeholder="数据值-1" [(ngModel)]="template.models[model_key].table.cells[cell_key].value">
+                                </div>
+                                <div *ngSwitchCase="2">
+                                    <button type="button" (click)="openSourceSelectDialog()" mat-button>引用数据</button>
+                                </div>
                                 <div *ngSwitchCase="3">
                                     <mat-form-field>
                                         <input matInput [matDatepicker]="picker" placeholder="输入/选择日期" [(ngModel)]="template.models[model_key].table.cells[cell_key].value">

@@ -271,7 +271,7 @@ export class ManModelEditComponent implements OnChanges, OnInit {
 @Component({
     // tslint:disable-next-line:component-selector
     selector: 'dialog-tableForm',
-    templateUrl: 'dialog-tableForm.html',
+    templateUrl: '../../view/dialog/dialog-tableForm.html',
 })
 // tslint:disable-next-line:component-class-suffix
 export class DialogTableForm {

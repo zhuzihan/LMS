@@ -1,15 +1,18 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges, Inject } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 // import { FormArray, FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { NgForOf } from '@angular/common';
 import { OnInit } from '@angular/core';
 import 'rxjs/add/operator/finally';
 
+import { Model } from '../../model/data-model';
 import { DataSource } from '@angular/cdk/collections';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { ModelDataService } from '../../service/model-data.service';
+import { DataManageService } from '../../service/data-manage.service';
 // import { Model, Field, source } from '../../model/data-model'
-import { Template, DataTable, source, DataArray } from '../../model/data-model';
+import { Template, DataTable, source, DataArray, DataCell } from '../../model/data-model';
 // import { DataManageService } from '../../service/data-manage.service';
 
 @Component({
@@ -20,10 +23,29 @@ import { Template, DataTable, source, DataArray } from '../../model/data-model';
 })
 export class ManTemplateEditComponent implements OnChanges {
     @Input() template: Template;
+    //数据来源传入数据
+    source: string;
+    
+    constructor(
+        private modelDataService: ModelDataService, 
+        public dialog: MatDialog
+    ) {}
 
-    constructor(private modelDataService: ModelDataService, ) {
+    openSourceSelectDialog(): void {
+        let dialogRef = this.dialog.open(SourceSelectDialog, {
+          width: '600px',
+          data: { source: this.source }
+        });
+    
+        dialogRef.afterClosed().subscribe(result => {
+          console.log(result);  
+          this.source = result;
+        //   console.log('The dialog was closed');
+        //   console.log(this.source_dialog);
+        });
     }
 
+      
     previewTemplate() { }
 
     getKeys(item) {
@@ -33,4 +55,71 @@ export class ManTemplateEditComponent implements OnChanges {
     ngOnChanges(): void {
         // console.log(this.template);
     }
+}
+
+@Component({
+    selector: 'dialog-source-select-dialog',
+    templateUrl: '../../view/dialog/dialog-source-select-dialog.html',
+    styleUrls: ['../../css/sys-management.component.css']
+})
+export class SourceSelectDialog {
+    displayedColumns = ['model_standard_name', 'remark', 'registrant'];
+    // models: Array<Object> = [];
+    modelData: Array<Object> = [];
+
+    isLoading = false;
+    selectedModelName: String;
+    selectedCellName: String;
+    cells: Array<Object> = [];
+    showAdd: false;
+
+    constructor(
+        private modelDataService: ModelDataService,
+        private dataMangerService: DataManageService,
+        public dialogRef: MatDialogRef<SourceSelectDialog>,
+      @Inject(MAT_DIALOG_DATA) public data: any
+    ) { }
+
+    ngOnInit() {
+        this.selectedCellName = null;
+        this.selectedModelName = null;
+        this.getModels();
+    }
+    getModels() {
+        this.isLoading = true;
+        this.dataMangerService.getModules().then(responseData => {
+            // console.log(responseData);
+            this.modelData = responseData;
+            console.log(this.modelData);
+            this.isLoading = false;
+            this.selectedModelName = undefined;
+        });
+    }
+    // select(model: Model) {
+    //     console.log(JSON.parse(model['json']));
+    //     this.selectedModel = JSON.parse(model['json']);
+    // }
+    onNoClick(): void {
+      this.dialogRef.close();
+    }
+
+    // 提取 cells 中的 Datacell 组合为数组
+    getCells(model: Object) {
+        const cells: Object[] = [];
+        // console.log(JSON.parse(model['json'])['table']['cells']);
+        this.cells = JSON.parse(model['json'])['table']['cells'];
+    }
+
+    // 保存模块名
+    selectModel(model: Object) {
+        this.selectedModelName = JSON.parse(model['json'])['model_name'];;
+        // console.log(this.selectedModelName);
+        this.getCells(model);
+    }
+    selectCell(cell: Object) {
+        this.selectedCellName = cell['sn'];
+        this.data.source = '{'+"#"+this.selectedModelName+"#"+this.selectedCellName+'}';
+        // console.log(this.source);
+    }
+    //console.log("#"+this.savedModelName+"#"+cell);
 }

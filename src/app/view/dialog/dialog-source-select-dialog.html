@@ -1,0 +1,24 @@
+<!-- <h1 mat-dialog-title>Hi {{data.name}}</h1> -->
+<h1 mat-dialog-title>引用数据源</h1>
+<div mat-dialog-content>
+    <mat-form-field class="field-full-width">
+        <mat-select placeholder="模块列表">
+            <mat-option *ngFor="let model of modelData;" [value]="model.name" (click)="selectModel(model);">
+                《{{model.name?model.name:"未命名模块"}}》 【备注：{{model.remark?model.remark:"无"}}】 【登记人：{{model.registrant?model.registrant:"无"}}】 【状态：{{model.state?"启用":"未启用"}}】
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="field-full-width">
+        <mat-select placeholder="选择单元">
+            <mat-option *ngFor="let cell of cells;let cellId = index" [value]="cell.name" (click)="selectCell(cell)">
+                《{{cell['name']?cell['name']:"未命名单元"}}》【来源：{{cell['dataSource']?cell['dataSource']:"无"}}】
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">返回</button>
+  <!-- <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button> -->
+  <button mat-button [mat-dialog-close]='data.source' cdkFocusInitial>确认</button>
+</div>

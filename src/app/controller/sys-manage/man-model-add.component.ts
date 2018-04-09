@@ -71,6 +71,11 @@ export class ManModelAddComponent implements OnChanges, OnInit {
     // getFrontValue(parameterList: Array<Object>, headKey: string, count: number) {
     //     return this.expParameterSerivce.getFrontValue(parameterList,headKey,count);
     // }
+    // 来源数据为参数表时，保存选择的表名
+    saveTableName(expPara: Object) {
+        this.savedTableName = expPara['tableName'];
+        // console.log(this.savedTableName);
+    }
     // 来源数据为参数表时，将数据添加至表单 (格式：expParameter#表名#表头)
     addEquipParaToForm(i: string, tableHead: string) {
         this.cells_form.controls[i].patchValue({
@@ -89,10 +94,7 @@ export class ManModelAddComponent implements OnChanges, OnInit {
         }
         // console.log(this.colDataArray);
     }
-    saveTableName(expPara: Object) {
-        this.savedTableName = expPara['tableName'];
-        // console.log(this.savedTableName);
-    }
+
     patchSourceData(i: number, s: object) {
         this.sourceControl = s;
         this.clickedCellIndex = i;
@@ -132,6 +134,7 @@ export class ManModelAddComponent implements OnChanges, OnInit {
         // this.setCells(this.model.cells);
         this.setTableForm(this.model.table);
         this.setArraysForm(this.model.arrays);
+        // this.setArraysForm({});
         // 临时保存数据置空
         this.savedTableName = '';
         console.log(this.modelForm);
@@ -190,13 +193,30 @@ export class ManModelAddComponent implements OnChanges, OnInit {
     get cell_list_form(): FormArray {
         return this.tableForm.get('cell_list') as FormArray;
     }
+    get arrays_form(): FormArray {
+        // console.log(this.modelForm.get('arrays'));
+        return this.modelForm.get('arrays') as FormArray;
+    }
     // 添加记录
     addCell() {
         this.cells_form.push(this.fb.group(new DataCell()));
     }
+    // 添加数组
+    addArray(row: number, col: number) {
+        // console.log(this.arrays_form.length);
+        if(this.arrays_form.length == 0){
+            this.setArraysForm(this.model.arrays);
+        } else {
+            this.arrays_form.push(this.fb.group(new DataArray(row,col)));
+        }
+    }
     // 删除单元
     removeCell(i: number) {
         this.cells_form.removeAt(i);
+    }
+    // 删除数组
+    removeArray(i: number) {
+        this.arrays_form.removeAt(i);
     }
     // 提交表单
     onSubmit() {

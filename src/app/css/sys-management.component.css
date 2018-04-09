@@ -4,6 +4,11 @@
   max-width: 800px;
   width: 100%;
 }
+
+.field-one-eighth-width { 
+  display: inline-block!important;
+  width: 12%!important;
+}
 .field-quarter-width { 
   display: inline-block!important;
   width: 24%!important;

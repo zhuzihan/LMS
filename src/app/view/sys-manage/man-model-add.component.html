@@ -48,10 +48,10 @@
                                 <input formControlName="name" #cellName matInput placeholder="单元名">
                             </mat-form-field>
                             <mat-form-field class="field-quarter-width">
-                                <input formControlName="rowspan" matInput placeholder="所占行数">
+                                <input formControlName="rowspan" matInput placeholder="行宽(1-10)">
                             </mat-form-field>
                             <mat-form-field class="field-quarter-width">
-                                <input formControlName="colspan" matInput placeholder="所占列数">
+                                <input formControlName="colspan" matInput placeholder="列宽(1-10)">
                             </mat-form-field>
 
                             <mat-form-field class="field-quarter-width">
@@ -59,6 +59,11 @@
                                     <mat-option *ngFor="let s of source;" [value]="s" (click)="patchSourceData(i,s)">{{s.source_name}}</mat-option>
                                 </mat-select>
                             </mat-form-field>
+                            <div *ngIf="sourceControl?.source_type==1 && clickedCellIndex == i">
+                                <!-- <mat-form-field>
+                                    <input formControlName="value" #cellValue matInput placeholder="数据值">
+                                </mat-form-field> -->
+                            </div>
                             <div *ngIf="sourceControl?.source_type==4 && clickedCellIndex == i">
                                 <mat-form-field class="field-full-width">
                                     <mat-select placeholder="参数表列表">
@@ -76,11 +81,24 @@
                                     </mat-select>
                                 </mat-form-field>
                             </div>
-
-                            <mat-form-field>
-                                <input formControlName="value" #cellValue matInput placeholder="数据值">
-                            </mat-form-field>
-
+                            <!-- <div *ngIf="sourceControl?.source_type==6 && clickedCellIndex == i">
+                                <mat-form-field class="field-quarter-width">
+                                    <input formControlName="name" #cellName matInput placeholder="数组名">
+                                </mat-form-field>
+                                <mat-form-field class="field-quarter-width">
+                                    <input formControlName="rowspan" matInput placeholder="行数">
+                                </mat-form-field>
+                                <mat-form-field class="field-quarter-width">
+                                    <input formControlName="colspan" matInput placeholder="列数">
+                                </mat-form-field>
+                                <button (click)="addArrayToForm(i)" type="button" mat-raised-button>确定</button>
+                            </div> -->
+                            <div [hidden]="sourceControl?.source_type!=1 && clickedCellIndex == i">
+                                <mat-form-field>
+                                    <input formControlName="value" #cellValue matInput placeholder="数据值">
+                                </mat-form-field>
+                            </div>
+    
                             <button (click)="removeCell(i)" type="button" mat-raised-button>删除</button>
                         </mat-expansion-panel>
 
@@ -88,28 +106,76 @@
                     <button (click)="addCell()" type="button" mat-raised-button>添加记录</button>
                 </div>
             </div>
-                <!-- <hr> -->
-                <!-- <h4>数组</h4> -->
-                <!-- <div formArrayName="arrays_form">
-                    <div *ngFor="let table of arrays_form.controls; let i=index" [formGroupName]="i">
-                        <h4>列 #{{i + 1}}</h4>
-                        <button (click)="removeArray(i)" type="button" mat-raised-button>删除</button>
-                        <div style="margin-left: 1em;">
-                        <mat-form-field class="model-quarter-width">
-                            <input formControlName="name" matInput placeholder="记录名">
-                        </mat-form-field>
-                        <mat-form-field class="model-quarter-width">
-                            <mat-select formControlName="source" placeholder="数据来源">
-                            <mat-option *ngFor="let s of source" [value]="s">{{s}}</mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                        <mat-form-field class="model-quarter-width">
-                            <input formControlName="value" matInput placeholder="数据值">
-                        </mat-form-field>
-                        </div>
-                    </div>
-                    <button (click)="addArray(1,1)" type="button" mat-raised-button>添加记录</button>
-                    </div> -->
+
+            <h4>数组</h4>
+            <!-- <div [formGroup]="modelForm" class="model-full-width"> -->
+                <div formArrayName="arrays">
+                    <mat-accordion>
+                        <mat-expansion-panel *ngFor="let array of arrays_form.controls; let i=index" [formGroupName]="i" class="model-full-width">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    单元 #{{i + 1}}
+                                </mat-panel-title>
+                                <mat-panel-description>
+                                    {{arrayName.value?arrayName.value:"点击输入数组名称"}} ( {{ArrayColCount.value?ArrayColCount.value:"未设置行数"}} x {{ArrayRowCount.value?ArrayRowCount.value:"未设置列数"}} )
+                                </mat-panel-description>
+                            </mat-expansion-panel-header>
+
+                            <mat-form-field class="field-quarter-width">
+                                <input formControlName="array_name" #arrayName matInput placeholder="数组名">
+                            </mat-form-field>
+                            <mat-form-field class="field-one-eighth-width">
+                                <input formControlName="col_count" #ArrayColCount matInput placeholder="行数">
+                            </mat-form-field>
+                            <mat-form-field class="field-one-eighth-width">
+                                <input formControlName="row_count" #ArrayRowCount matInput placeholder="列数">
+                            </mat-form-field>
+                            <mat-form-field class="field-one-eighth-width">
+                                <input formControlName="rowspan" matInput placeholder="行宽(1-10)">
+                            </mat-form-field>
+                            <mat-form-field class="field-one-eighth-width">
+                                <input formControlName="colspan" matInput placeholder="列宽(1-10)">
+                            </mat-form-field>
+
+                            <!-- <mat-form-field class="field-quarter-width">
+                                <mat-select placeholder="数据来源" >
+                                    <mat-option *ngFor="let s of source;" [value]="s" (click)="patchSourceData(i,s)">{{s.source_name}}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <div *ngIf="sourceControl?.source_type==1 && clickedCellIndex == i">
+                             
+                            </div>
+                            <div *ngIf="sourceControl?.source_type==4 && clickedCellIndex == i">
+                                <mat-form-field class="field-full-width">
+                                    <mat-select placeholder="参数表列表">
+                                        <mat-option *ngFor="let expPara of expParameterList;" [value]="expPara.tableName" (click)="getTableHeads(expPara);saveTableName(expPara);">
+                                            表《{{expPara.tableName}}》 【备注：{{expPara.tableRemark}}】 【登记人：{{expPara.tableName}}】 【状态：{{expPara.tableState}}】
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+
+                                <mat-form-field class="field-full-width">
+                                    <mat-select placeholder="参数表列">
+                                        <mat-option *ngFor="let col of Columns;let colId = index" [value]="col" (click)="addEquipParaToForm(i,col)">
+                                            (列{{i}})【{{col}}】|行1：{{colDataArray[colId][0]}}| |行2：{{colDataArray[colId][1]}}| |行3：{{colDataArray[colId][2]}}|...
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div> -->
+                           
+                            <!-- <div [hidden]="sourceControl?.source_type!=1 && clickedCellIndex == i">
+                                <mat-form-field>
+                                    <input formControlName="value" #cellValue matInput placeholder="数据值">
+                                </mat-form-field>
+                            </div> -->
+    
+                            <!-- <button (click)="removeCell(i)" type="button" mat-raised-button>删除</button> -->
+                        </mat-expansion-panel>
+
+                    </mat-accordion>
+                    <!-- <button (click)="addCell()" type="button" mat-raised-button>添加记录</button> -->
+                </div>
+            <!-- </div> -->
         </form>
 
     <p>Form value: {{ modelForm.value | json }}</p>
