@@ -39,13 +39,13 @@
                 <h3>预览的模板: {{selectedTemplate.whole_name}}</h3>
                 <man-template-preview [template]="selectedTemplate"></man-template-preview>
             </mat-tab>
-            <mat-tab label="组成">
-                <h3>编辑的模板: {{selectedTemplate.whole_name}}</h3>
-                <man-template-composition [template]="selectedTemplate"></man-template-composition>
-            </mat-tab>
             <mat-tab label="编辑">
                 <h3>编辑的模板: {{selectedTemplate.whole_name}}</h3>
                 <man-template-edit [template]="selectedTemplate"></man-template-edit>
+            </mat-tab>
+            <mat-tab label="组成">
+                <h3>编辑的模板: {{selectedTemplate.whole_name}}</h3>
+                <man-template-composition [template]="selectedTemplate"></man-template-composition>
             </mat-tab>
         </mat-tab-group>
         <div>
