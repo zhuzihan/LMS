@@ -27,6 +27,29 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.3.
 
+## 自动部署
+
+### 部署环境
+* 系统：Ubuntu 16.04.1  
+* Node版本：NodeJS 8+   
+* NPM版本：NPM 5.6.0  
+* 服务器：NGINX
+
+### 自动部署文件
+在bin文件夹下有三个文件分别是：
+* build.sh （正常部署，当Git文件发生改变时会自动重新编译并且部署，否则不会执行任何操作）
+* build.force.sh  （强制部署，无论Git上的文件是否发生改变，都会编译并部署）
+* build.debug.sh  （调试部署，去掉`--prod`优化参数部署，便于调试）
+
+### 部署步骤
+```
+git clone https://gitlab.com/Hansien/LMS.git
+cd LMS/
+sudo sh build.sh
+```
+
+###
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
