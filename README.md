@@ -44,7 +44,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ### 部署步骤
 ```
 git clone https://gitlab.com/Hansien/LMS.git
-cd LMS/
+cd LMS/bin/
 sudo sh build.sh
 ```
 
