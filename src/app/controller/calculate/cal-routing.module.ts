@@ -2,44 +2,23 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { CalculateComponent } from '../index/calculate.component';
-// import { ManEquipParaListComponent } from './man-equip-para-list.component';
-// import { ManModelListComponent } from './man-model-list.component';
-// import { ManModelAddComponent } from './man-model-add.component';
-// import { ManTemplateListComponent } from './man-template-list.component';
-// import { ManTemplateAddComponent } from './man-template-add.component';
-// import { ManJobModuleComponent } from './man-job-module.component';
-/*
-const ManRoutes: Routes = [
+import { CalIndexComponent } from '../calculate/cal-index.component';
+
+const CalRoutes: Routes = [
   {
-    path: 'sysManagement',
+    path: 'calculate',
     component: CalculateComponent,
     children: [
       {
-        path: '', component: ManEquipParaListComponent,
-        // children:[
-        //   { path: 'manModel',     component: ManModelComponent }
-        // ]
+        path: '', component: CalIndexComponent,
       },
-      // 实验器材参数
-      { path: 'manEquip', component: ManEquipParaListComponent },
-      // 检测标准模块
-      { path: 'manModel', component: ManModelListComponent },
-      // 新建标准模块
-      { path: 'manModelAdd', component: ManModelAddComponent },
-      // 原始记录模板
-      { path: 'manTemplate', component: ManTemplateListComponent },
-      // 新建记录模板
-      { path: 'manTemplateAdd', component: ManTemplateAddComponent },
-      // 作业指导模块
-      { path: 'manJobModule', component: ManJobModuleComponent },
+      // 计算主页
+      { path: 'calIndex', component: CalIndexComponent },
     ]
   }
 ];
-
-
 @NgModule({
-  imports: [RouterModule.forChild(ManRoutes)],
+  imports: [RouterModule.forChild(CalRoutes)],
   exports: [RouterModule]
 })
-export class ManRoutingModule { }
-*/
+export class CalRoutingModule { }

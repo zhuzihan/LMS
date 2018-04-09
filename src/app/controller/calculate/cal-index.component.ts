@@ -3,11 +3,11 @@ import { MatTableDataSource, MatPaginator } from '@angular/material';
 
 @Component({
     selector: 'man-equip-para',
-    templateUrl: '../../view/cal-index.component.html',
-    // styleUrls: ['../../css/sys-management.component.css']
+    templateUrl: '../../view/calculate/cal-index.component.html',
+    styleUrls: ['../../css/calculate.component.css']
 })
 
-export class ManEquipParaListComponent implements OnInit {
+export class CalIndexComponent implements OnInit {
 
 
     ngOnInit(): void {

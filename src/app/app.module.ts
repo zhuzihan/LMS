@@ -8,8 +8,9 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { Router } from '@angular/router';
 
-import { ManModule } from './controller/sys-manage/man.module';
 import { IndexModule } from './controller/index/index.module';
+import { CalModule } from './controller/calculate/cal.module';
+import { ManModule } from './controller/sys-manage/man.module';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -33,6 +34,7 @@ import { MatPaginatorIntlCro } from './service/mat-paginator-intl'
     // FormsModule,
     HttpModule,
     ManModule,
+    CalModule,
     IndexModule,
     AppRoutingModule,
 
