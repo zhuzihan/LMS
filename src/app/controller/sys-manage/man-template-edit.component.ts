@@ -40,6 +40,7 @@ export class ManTemplateEditComponent implements OnChanges {
         });
         dialogRef.afterClosed().subscribe(result => {
             // console.log(result);  
+            console.log("source sub:"+result); 
             this.source = result;
         //   console.log('The dialog was closed');
         //   console.log(this.source_dialog);
@@ -49,7 +50,7 @@ export class ManTemplateEditComponent implements OnChanges {
     openDateSelectDialog(): void {
         let dialogRef = this.dialog.open(DateSelectDialog, {
             width: '300px',
-            data: { source: this.dateOfDialog }
+            data: { date: this.dateOfDialog }
         });
         dialogRef.afterClosed().subscribe(result => {
             console.log("date sub:"+result);  
@@ -155,7 +156,7 @@ export class DateSelectDialog {
     }
     onClick(value:string): void {
         console.log("onClick:"+value);
-        this.data.dateOfDialog = value;
+        this.data.date = value;
     }
     onNoClick(): void {
         this.dialogRef.close();

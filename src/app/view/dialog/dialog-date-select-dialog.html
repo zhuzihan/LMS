@@ -6,8 +6,9 @@
         <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
     <p>value:{{dateInput.value}}</p>    
+    <button mat-button (click)="onClick(dateInput.value)" cdkFocusInitial>保存日期</button>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">返回</button>
-  <button mat-button [mat-dialog-close]='data.dateOfDialog' (click)="onClick(dateInput.value)" cdkFocusInitial>确认</button>
+  <button mat-button [mat-dialog-close]='data.dateOfDialog' cdkFocusInitial>确认</button>
 </div>
