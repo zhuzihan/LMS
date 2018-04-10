@@ -11,7 +11,7 @@ import { ManModelDetailComponent } from './man-model-detail.component';
 import { ManModelPreviewComponent } from './man-model-preview.component';
 import { ManModelAddComponent } from './man-model-add.component';
 import { ManTemplateListComponent } from './man-template-list.component';
-import { ManTemplateEditComponent } from './man-template-edit.component';
+import { ManTemplateEditComponent, SourceSelectDialog, DateSelectDialog } from './man-template-edit.component';
 import { ManTemplateCompositionComponent } from './man-template-composition.component';
 import { ManTemplatePreviewComponent } from './man-template-preview.component';
 import { ManTemplateAddComponent } from './man-template-add.component';
@@ -21,8 +21,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { ManRoutingModule } from './man-routing.module';
 
 import { DialogTableForm } from './man-model-edit.component';
-// 数据类型为引用时，选择数据来源
-import { SourceSelectDialog } from './man-template-edit.component'
+
 // import {CdkTableModule} from '@angular/cdk/table';
 import { MatTableDataSource } from '@angular/material';
 
@@ -53,11 +52,13 @@ import { MaterialModule } from '../../material.module';
     ManTemplateAddComponent,
     ManJobModuleComponent,
     DialogTableForm,
-    SourceSelectDialog
+    SourceSelectDialog,
+    DateSelectDialog
   ],
   entryComponents: [
     DialogTableForm,
-    SourceSelectDialog
+    SourceSelectDialog,
+    DateSelectDialog
   ],
   providers: [
   ]

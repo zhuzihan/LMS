@@ -13,6 +13,7 @@ import { ModelDataService } from '../../service/model-data.service';
 import { DataManageService } from '../../service/data-manage.service';
 // import { Model, Field, source } from '../../model/data-model'
 import { Template, DataTable, source, DataArray, DataCell } from '../../model/data-model';
+import { FormControl } from '@angular/forms';
 // import { DataManageService } from '../../service/data-manage.service';
 
 @Component({
@@ -25,6 +26,7 @@ export class ManTemplateEditComponent implements OnChanges {
     @Input() template: Template;
     //数据来源传入数据
     source: string;
+    dateOfDialog: string;
     
     constructor(
         private modelDataService: ModelDataService, 
@@ -33,15 +35,26 @@ export class ManTemplateEditComponent implements OnChanges {
 
     openSourceSelectDialog(): void {
         let dialogRef = this.dialog.open(SourceSelectDialog, {
-          width: '600px',
-          data: { source: this.source }
+            width: '600px',
+            data: { source: this.source }
         });
-    
         dialogRef.afterClosed().subscribe(result => {
-          console.log(result);  
-          this.source = result;
+            // console.log(result);  
+            this.source = result;
         //   console.log('The dialog was closed');
         //   console.log(this.source_dialog);
+        });
+    }
+
+    openDateSelectDialog(): void {
+        let dialogRef = this.dialog.open(DateSelectDialog, {
+            width: '300px',
+            data: { source: this.dateOfDialog }
+        });
+        dialogRef.afterClosed().subscribe(result => {
+            console.log("date sub:"+result);  
+            console.log("dateOfDialog:"+this.dateOfDialog);
+            this.dateOfDialog = result;
         });
     }
 
@@ -90,7 +103,7 @@ export class SourceSelectDialog {
         this.dataMangerService.getModules().then(responseData => {
             // console.log(responseData);
             this.modelData = responseData;
-            console.log(this.modelData);
+            // console.log(this.modelData);
             this.isLoading = false;
             this.selectedModelName = undefined;
         });
@@ -122,4 +135,30 @@ export class SourceSelectDialog {
         // console.log(this.source);
     }
     //console.log("#"+this.savedModelName+"#"+cell);
+}
+
+@Component({
+    selector: 'dialog-date-select-dialog',
+    templateUrl: '../../view/dialog/dialog-date-select-dialog.html',
+    styleUrls: ['../../css/sys-management.component.css']
+})
+export class DateSelectDialog {
+    dateValue: string;
+    // dateValue: FormControl;
+    constructor(
+        public dialogRef: MatDialogRef<DateSelectDialog>,
+
+    @Inject(MAT_DIALOG_DATA) public data: any
+    ) { }
+
+    ngOnInit() {   
+    }
+    onClick() {
+        console.log("onClick:"+this.dateValue);
+        // this.data.dateOfDialog = this.dateValue;
+        // console.log(this.data.dateOfDialog);
+    }
+    onNoClick(): void {
+        this.dialogRef.close();
+    }
 }

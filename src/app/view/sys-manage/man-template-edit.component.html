@@ -29,11 +29,12 @@
                                     <button type="button" (click)="openSourceSelectDialog()" mat-button>引用数据</button>
                                 </div>
                                 <div *ngSwitchCase="3">
-                                    <mat-form-field>
+                                    <button type="button" (click)="openDateSelectDialog()" mat-button>选择日期</button>
+                                    <!-- <mat-form-field>
                                         <input matInput [matDatepicker]="picker" placeholder="输入/选择日期" [(ngModel)]="template.models[model_key].table.cells[cell_key].value">
                                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                         <mat-datepicker #picker></mat-datepicker>
-                                    </mat-form-field>
+                                    </mat-form-field> -->
                                 </div>
                                 <input *ngSwitchCase="4" placeholder="数据值-4" [(ngModel)]="template.models[model_key].table.cells[cell_key].value">
                                 <input *ngSwitchCase="5" placeholder="数据值-5" [(ngModel)]="template.models[model_key].table.cells[cell_key].value">
