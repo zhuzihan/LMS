@@ -9,5 +9,5 @@
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">返回</button>
-  <button mat-button [mat-dialog-close]='data.dateOfDialog' (click)="onClick()" cdkFocusInitial>确认</button>
+  <button mat-button [mat-dialog-close]='data.dateOfDialog' (click)="onClick(dateInput.value)" cdkFocusInitial>确认</button>
 </div>

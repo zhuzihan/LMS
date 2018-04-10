@@ -153,10 +153,9 @@ export class DateSelectDialog {
 
     ngOnInit() {   
     }
-    onClick() {
-        console.log("onClick:"+this.dateValue);
-        // this.data.dateOfDialog = this.dateValue;
-        // console.log(this.data.dateOfDialog);
+    onClick(value:string): void {
+        console.log("onClick:"+value);
+        this.data.dateOfDialog = value;
     }
     onNoClick(): void {
         this.dialogRef.close();
