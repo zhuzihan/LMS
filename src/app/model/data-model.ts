@@ -5,7 +5,7 @@ export const source = [
     { source_name: '日期', source_type: 3 },
     { source_name: '参数表', source_type: 4 },
     { source_name: '公式', source_type: 5 },
-    { source_name: '数组', source_type: 6 },
+    // { source_name: '数组', source_type: 6 },
 ];
 // 模块列表
 export const model_list_local = [
@@ -57,7 +57,7 @@ export class DataCell {
     rowspan = 1;
     colspan = 1;
 }
-
+// 列数据
 export class ArrayCell {
     sn = '';
     value = '';
@@ -78,6 +78,7 @@ export class DataArray {
     row_count = 0;
     rowspan = 1;
     colspan = 1;
+    //数据来源
     source_sn = '';
     cell_list: Array<ArrayCell>;
     constructor(row, col) {
@@ -588,15 +589,15 @@ space_array_cell.row = '1';
 space_array_cell.col = 'A';
 space_array_cell.sn = 'A1';
 export const space_array: DataArray = new DataArray(2, 2);
-space_array.array_name = 'space_array';
+space_array.array_name = '';
 space_array.pushWithSpan(space_array_cell);
 export const space_template: Template = new Template();
 export const space_model: Model = new Model();
 space_model.model_id = 1;
 space_model.model_name = 'model_1';
 space_model.table = space_table;
-space_model.arrays = {};
-// space_model.arrays['space_array'] = space_array;
+// space_model.arrays = {};
+space_model.arrays['space_array'] = space_array;
 space_template.models[''] = space_model;
 space_template.model_list = [''];
 

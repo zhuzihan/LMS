@@ -21,6 +21,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { ManRoutingModule } from './man-routing.module';
 
 import { DialogTableForm } from './man-model-edit.component';
+// 数据类型为引用时，选择数据来源
+import { SourceSelectDialog } from './man-template-edit.component'
 // import {CdkTableModule} from '@angular/cdk/table';
 import { MatTableDataSource } from '@angular/material';
 
@@ -50,10 +52,12 @@ import { MaterialModule } from '../../material.module';
     ManTemplateEditComponent,
     ManTemplateAddComponent,
     ManJobModuleComponent,
-    DialogTableForm
+    DialogTableForm,
+    SourceSelectDialog
   ],
   entryComponents: [
     DialogTableForm,
+    SourceSelectDialog
   ],
   providers: [
   ]
