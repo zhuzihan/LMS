@@ -24,14 +24,14 @@ import { FormControl } from '@angular/forms';
 })
 export class ManTemplateEditComponent implements OnChanges {
     @Input() template: Template;
-    //数据来源传入数据
+    // 数据来源传入数据
     source: string;
     dateOfDialog: string;
-    
+
     constructor(
-        private modelDataService: ModelDataService, 
+        private modelDataService: ModelDataService,
         public dialog: MatDialog
-    ) {}
+    ) { }
 
     openSourceSelectDialog(): void {
         let dialogRef = this.dialog.open(SourceSelectDialog, {
@@ -39,11 +39,11 @@ export class ManTemplateEditComponent implements OnChanges {
             data: { source: this.source }
         });
         dialogRef.afterClosed().subscribe(result => {
-            // console.log(result);  
-            console.log("source sub:"+result); 
+            // console.log(result);
+            console.log('source sub:' + result);
             this.source = result;
-        //   console.log('The dialog was closed');
-        //   console.log(this.source_dialog);
+            //   console.log('The dialog was closed');
+            //   console.log(this.source_dialog);
         });
     }
 
@@ -53,13 +53,13 @@ export class ManTemplateEditComponent implements OnChanges {
             data: { date: this.dateOfDialog }
         });
         dialogRef.afterClosed().subscribe(result => {
-            console.log("date sub:"+result);  
-            console.log("dateOfDialog:"+this.dateOfDialog);
+            console.log('date sub:' + result);
+            console.log('dateOfDialog:' + this.dateOfDialog);
             this.dateOfDialog = result;
         });
     }
 
-      
+
     previewTemplate() { }
 
     getKeys(item) {
@@ -91,7 +91,7 @@ export class SourceSelectDialog {
         private modelDataService: ModelDataService,
         private dataMangerService: DataManageService,
         public dialogRef: MatDialogRef<SourceSelectDialog>,
-      @Inject(MAT_DIALOG_DATA) public data: any
+        @Inject(MAT_DIALOG_DATA) public data: any
     ) { }
 
     ngOnInit() {
@@ -114,7 +114,7 @@ export class SourceSelectDialog {
     //     this.selectedModel = JSON.parse(model['json']);
     // }
     onNoClick(): void {
-      this.dialogRef.close();
+        this.dialogRef.close();
     }
 
     // 提取 cells 中的 Datacell 组合为数组
@@ -132,10 +132,10 @@ export class SourceSelectDialog {
     }
     selectCell(cell: Object) {
         this.selectedCellName = cell['sn'];
-        this.data.source = '{'+"#"+this.selectedModelName+"#"+this.selectedCellName+'}';
+        this.data.source = '{' + '#' + this.selectedModelName + '#' + this.selectedCellName + '}';
         // console.log(this.source);
     }
-    //console.log("#"+this.savedModelName+"#"+cell);
+    // console.log("#"+this.savedModelName+"#"+cell);
 }
 
 @Component({
@@ -149,14 +149,61 @@ export class DateSelectDialog {
     constructor(
         public dialogRef: MatDialogRef<DateSelectDialog>,
 
-    @Inject(MAT_DIALOG_DATA) public data: any
-    ) { }
-
-    ngOnInit() {   
+        @Inject(MAT_DIALOG_DATA) public data: any
+    ) {
+        this.dateValue = '';
     }
-    onClick(value:string): void {
-        console.log("onClick:"+value);
-        this.data.date = value;
+
+    ngOnInit() {
+    }
+    onClick(): void {
+        const dateValueStr = this.dateValue.toString();
+        const strList = dateValueStr.split(' ');
+        let month = '';
+        let day = '';
+        let year = '';
+        switch (strList[1]) {
+            case 'Jan':
+                month = '01';
+                break;
+            case 'Feb':
+                month = '02';
+                break;
+            case 'Mar':
+                month = '03';
+                break;
+            case 'Apr':
+                month = '04';
+                break;
+            case 'May':
+                month = '05';
+                break;
+            case 'Jun':
+                month = '06';
+                break;
+            case 'Jul':
+                month = '07';
+                break;
+            case 'Aug':
+                month = '08';
+                break;
+            case 'Sep':
+                month = '09';
+                break;
+            case 'Oct':
+                month = '10';
+                break;
+            case 'Nov':
+                month = '11';
+                break;
+            case 'Dec':
+                month = '12';
+                break;
+        }
+        year = strList[3];
+        day = strList[2];
+        this.dateValue = year + '-' + month + '-' + day;
+        console.log('onClick:' + this.dateValue);
     }
     onNoClick(): void {
         this.dialogRef.close();

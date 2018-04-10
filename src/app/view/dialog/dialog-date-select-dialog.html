@@ -1,14 +1,14 @@
 <h1 mat-dialog-title>选择日期</h1>
 <div mat-dialog-content>
     <mat-form-field>
-        <input matInput [matDatepicker]="picker" #dateInput placeholder="输入/选择日期" (value)="dateValue">
+        <input matInput [matDatepicker]="picker" #dateInput placeholder="输入/选择日期"  (dateChange)="dateValue=$event.target.value">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
-    <p>value:{{dateInput.value}}</p>    
-    <button mat-button (click)="onClick(dateInput.value)" cdkFocusInitial>保存日期</button>
+    <p>value:{{dateValue}}</p>    
+    <!-- <button mat-button (click)="onClick(dateInput.value)" cdkFocusInitial>保存日期</button> -->
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">返回</button>
-  <button mat-button [mat-dialog-close]='data.dateOfDialog' cdkFocusInitial>确认</button>
+  <button mat-button [mat-dialog-close]='data.dateOfDialog' (click)="onClick()" cdkFocusInitial>确认</button>
 </div>
