@@ -22,9 +22,7 @@
                                 <input placeholder="数据值" [(ngModel)]="template.models[model_key].table.cells[cell_key].value">
                             </div> -->
                             <div class="grid-input-div" [ngSwitch]="template.models[model_key].table.cells[cell_key].source_type">
-                                <div *ngSwitchCase="1">
-                                    <input placeholder="数据值-1" [(ngModel)]="template.models[model_key].table.cells[cell_key].value">
-                                </div>
+                                <input *ngSwitchCase="1" placeholder="数据值-1" [(ngModel)]="template.models[model_key].table.cells[cell_key].value">
                                 <div *ngSwitchCase="2">
                                     <button type="button" (click)="openSourceSelectDialog()" mat-button>引用数据</button>
                                 </div>
