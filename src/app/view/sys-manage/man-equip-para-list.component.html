@@ -40,12 +40,11 @@
         </div>
 
     </div>
-    <div [hidden]="isLoading">
+    <div [hidden]="isLoading || selectedExpParameter">
         <mat-paginator #paginator
             [pageSize]="10"
             [pageSizeOptions]="[5, 10, 25, 100]"
             [showFirstLastButtons]="true">
         </mat-paginator>
     </div>
-    
 </div>
