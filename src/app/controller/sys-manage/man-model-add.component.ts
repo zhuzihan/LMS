@@ -13,6 +13,7 @@ import { ExpParameterService } from '../../service/exp-parameter.service';
 import { Model, DataCell, DataArray, space_model, source, DataTable } from '../../model/data-model';
 import { MyErrorStateMatcher } from '../error-state-matcher'
 import { DataManageService } from '../../service/data-manage.service';
+import { MatCheckboxChange } from '@angular/material';
 
 @Component({
     // tslint:disable-next-line:component-selector
@@ -53,6 +54,8 @@ export class ManModelAddComponent implements OnChanges, OnInit {
     expParameterList: Array<Object> = [];
     // 设置来源数据为参数表时保存的表头信息
     savedTableName: string;
+    // 启用状态
+    changeStateBox = true;
 
     // validator
     matcher = new MyErrorStateMatcher();
@@ -129,9 +132,12 @@ export class ManModelAddComponent implements OnChanges, OnInit {
     }
     ngOnChanges() {
         this.modelForm.reset({
-            model_id: this.model.model_id,
+            // model_id: this.model.model_id,
             model_name: this.model.model_name,
             model_standard_name: this.model.model_standard_name,
+            registrant: '',
+            remark: '',
+            state: 1,
             has_table: this.model.has_table,
             has_array: this.model.has_array,
         });
@@ -141,7 +147,10 @@ export class ManModelAddComponent implements OnChanges, OnInit {
         // this.setArraysForm({});
         // 临时保存数据置空
         this.savedTableName = '';
-        console.log(this.modelForm);
+        //启用状态
+        this.changeStateBox = true;
+        console.log(this.changeStateBox);
+        // console.log(this.modelForm);
     }
     // 重置内容
     revert() { this.ngOnChanges(); }
@@ -206,6 +215,9 @@ export class ManModelAddComponent implements OnChanges, OnInit {
         // console.log(this.modelForm.get('arrays'));
         return this.modelForm.get('arrays') as FormArray;
     }
+    get state(): FormControl {
+        return this.modelForm.get('state') as FormControl
+    }
     // 添加记录
     addCell() {
         this.cells_form.push(this.fb.group(new DataCell()));
@@ -226,6 +238,17 @@ export class ManModelAddComponent implements OnChanges, OnInit {
     // 删除数组
     removeArray(i: number) {
         this.arrays_form.removeAt(i);
+    }
+    changeState(event: MatCheckboxChange) {
+        if(event.checked == true){
+            this.modelForm.patchValue({
+                state: 1,
+            })
+        } else {
+            this.modelForm.patchValue({
+                state: -1,
+            }) 
+        }
     }
     // 提交表单
     onSubmit() {

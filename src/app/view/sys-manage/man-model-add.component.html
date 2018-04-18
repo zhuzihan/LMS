@@ -26,9 +26,7 @@
             <mat-form-field class="field-quarter-width">
                 <input formControlName="registrant" matInput placeholder="登记人">
             </mat-form-field>
-            <mat-form-field class="field-quarter-width">
-                <input formControlName="state" matInput placeholder="启用状态">
-            </mat-form-field>
+            <mat-checkbox checked="changeStateBox" color="primary" (change)="changeState($event)">启用</mat-checkbox>
             <mat-form-field class="field-half-and-quarter-width">
                 <input formControlName="remark" matInput placeholder="描述">
             </mat-form-field>
@@ -54,14 +52,14 @@
                                     名称不能为空！
                                 </mat-error>
                             </mat-form-field>
-                            <mat-form-field class="field-quarter-width">
-                                <input formControlName="rowspan" matInput placeholder="行宽(1-10)">
+                            <mat-form-field class="field-one-eighth-width">
+                                <input formControlName="rowspan" matInput type="number" min="1" max="10" placeholder="行宽(1-10)">
                             </mat-form-field>
-                            <mat-form-field class="field-quarter-width">
-                                <input formControlName="colspan" matInput placeholder="列宽(1-10)">
+                            <mat-form-field class="field-one-eighth-width">
+                                <input formControlName="colspan" matInput type="number" min="1" max="10" placeholder="列宽(1-10)">
                             </mat-form-field>
 
-                            <mat-form-field class="field-quarter-width">
+                            <mat-form-field class="field-one-eighth-width">
                                 <mat-select placeholder="数据来源" >
                                     <mat-option *ngFor="let s of source;" [value]="s" (click)="patchSourceData(i,s)">{{s.source_name}}</mat-option>
                                 </mat-select>
@@ -135,16 +133,16 @@
                                 </mat-error>
                             </mat-form-field>
                             <mat-form-field class="field-one-eighth-width">
-                                <input formControlName="col_count" #ArrayColCount matInput placeholder="行数">
+                                <input formControlName="col_count" #ArrayColCount min="1" type="number" matInput placeholder="行数">
                             </mat-form-field>
                             <mat-form-field class="field-one-eighth-width">
-                                <input formControlName="row_count" #ArrayRowCount matInput placeholder="列数">
+                                <input formControlName="row_count" #ArrayRowCount min="1" type="number" matInput placeholder="列数">
                             </mat-form-field>
                             <mat-form-field class="field-one-eighth-width">
-                                <input formControlName="rowspan" matInput placeholder="行宽(1-10)">
+                                <input formControlName="rowspan" type="number" min="1" max="10" matInput placeholder="行宽(1-10)">
                             </mat-form-field>
                             <mat-form-field class="field-one-eighth-width">
-                                <input formControlName="colspan" matInput placeholder="列宽(1-10)">
+                                <input formControlName="colspan" type="number" min="1" max="10" matInput placeholder="列宽(1-10)">
                             </mat-form-field>
 
                             <!-- <mat-form-field class="field-quarter-width">
