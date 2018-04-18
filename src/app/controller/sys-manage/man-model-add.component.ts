@@ -149,7 +149,7 @@ export class ManModelAddComponent implements OnChanges, OnInit {
         this.savedTableName = '';
         //启用状态
         this.changeStateBox = true;
-        console.log(this.changeStateBox);
+        // console.log(this.changeStateBox);
         // console.log(this.modelForm);
     }
     // 重置内容
