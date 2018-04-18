@@ -11,6 +11,7 @@ import { Observable } from 'rxjs/Observable';
 import { ModelDataService } from '../../service/model-data.service';
 import { ExpParameterService } from '../../service/exp-parameter.service';
 import { Model, DataCell, DataArray, space_model, source, DataTable } from '../../model/data-model';
+import { MyErrorStateMatcher } from '../error-state-matcher'
 import { DataManageService } from '../../service/data-manage.service';
 
 @Component({
@@ -52,6 +53,9 @@ export class ManModelAddComponent implements OnChanges, OnInit {
     expParameterList: Array<Object> = [];
     // 设置来源数据为参数表时保存的表头信息
     savedTableName: string;
+
+    // validator
+    matcher = new MyErrorStateMatcher();
 
     constructor(
         private fb: FormBuilder,
@@ -108,7 +112,7 @@ export class ManModelAddComponent implements OnChanges, OnInit {
     createForm() {
         this.modelForm = this.fb.group({
             model_name: '',
-            model_standard_name: '',
+            model_standard_name: ['', Validators.required],
             registrant: '',
             remark: '',
             state: 1,
@@ -186,6 +190,11 @@ export class ManModelAddComponent implements OnChanges, OnInit {
     //     const cellFormArray = this.fb.array(cellFGs);
     //     this.modelForm.setControl('cells_form', cellFormArray);
     // }
+
+    get model_standard_name(): FormControl {
+        return this.modelForm.get('model_standard_name') as FormControl
+    }
+
     // 获取数组
     get cells_form(): FormArray {
         return this.tableForm.get('cells') as FormArray;
@@ -265,4 +274,3 @@ export class ManModelAddComponent implements OnChanges, OnInit {
         return saveModel;
     }
 }
-

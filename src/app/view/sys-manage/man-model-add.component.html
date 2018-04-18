@@ -7,7 +7,7 @@
     <div [hidden]="isLoading">
         <h2>添加模块</h2>
 
-        <form [formGroup]="modelForm" (ngSubmit)="onSubmit()" class="field-form" novalidate>
+        <form [formGroup]="modelForm" (ngSubmit)="onSubmit()" class="field-form">
     
             <div style="margin-bottom: 1em">
                 <button type="submit" [disabled]="modelForm.pristine" mat-raised-button>保存</button> &nbsp;
@@ -17,7 +17,11 @@
             <span *ngIf="modelForm.get('has_array').value == -1">无数据表</span>
             <br/>
             <mat-form-field class="field-quarter-width">
-                <input formControlName="model_standard_name" matInput placeholder="模块名称">
+                <input [formControl]="model_standard_name" matInput placeholder="模块名称" required>
+                <mat-hint>Errors appear instantly!</mat-hint>
+                <mat-error *ngIf="model_standard_name.errors?.required">
+                  名称不能为空！
+                </mat-error>
             </mat-form-field>
             <mat-form-field class="field-quarter-width">
                 <input formControlName="registrant" matInput placeholder="登记人">
@@ -45,7 +49,10 @@
                             </mat-expansion-panel-header>
 
                             <mat-form-field class="field-quarter-width">
-                                <input formControlName="name" #cellName matInput placeholder="单元名">
+                                <input formControlName="name" #cellName matInput placeholder="单元名" required>
+                                <mat-error *ngIf="cell.get('name').errors?.required">
+                                    名称不能为空！
+                                </mat-error>
                             </mat-form-field>
                             <mat-form-field class="field-quarter-width">
                                 <input formControlName="rowspan" matInput placeholder="行宽(1-10)">
@@ -122,7 +129,10 @@
                             </mat-expansion-panel-header>
 
                             <mat-form-field class="field-quarter-width">
-                                <input formControlName="array_name" #arrayName matInput placeholder="数组名">
+                                <input formControlName="array_name" #arrayName matInput placeholder="数组名" required> 
+                                <mat-error *ngIf="array.get('array_name').errors?.required">
+                                    名称不能为空！
+                                </mat-error>
                             </mat-form-field>
                             <mat-form-field class="field-one-eighth-width">
                                 <input formControlName="col_count" #ArrayColCount matInput placeholder="行数">

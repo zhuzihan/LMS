@@ -27,6 +27,9 @@ import { MatTableDataSource } from '@angular/material';
 
 import { MaterialModule } from '../../material.module';
 
+// import { MyErrorStateMatcher } from '../../controller/error-state-matcher';
+// import {ErrorStateMatcher} from '@angular/material/core';
+
 @NgModule({
   imports: [
     ManRoutingModule,
@@ -61,6 +64,7 @@ import { MaterialModule } from '../../material.module';
     DateSelectDialog
   ],
   providers: [
+    // {provide: ErrorStateMatcher, useClass: MyErrorStateMatcher}
   ]
 })
 export class ManModule { }
