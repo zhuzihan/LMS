@@ -4,8 +4,17 @@
         <mat-grid-list cols="10" rowHeight="30px">
             <div *ngFor="let cell_key of getKeys(model.table.cells)">
                 <mat-grid-tile
-                    [colspan]="model.table.cells[cell_key].colspan" [rowspan]="model.table.cells[cell_key].rowspan">
-                        {{model.table.cells[cell_key].name}} : {{model.table.cells[cell_key].value}}
+                    [colspan]="model.table.cells[cell_key].colspan" 
+                    [rowspan]="model.table.cells[cell_key].rowspan">
+                    <div class="grid-tile-div">
+                        <div class="inline-table-bold">
+                            <span class="grid-span">{{model.table.cells[cell_key].name}}</span>
+                        </div>
+                        <div class="inline-table">
+                            <span class="grid-span-content">: {{model.table.cells[cell_key].value}}</span> 
+                        </div>
+                    </div>
+                    <!-- <div class="grid-tile-div"><span class="grid-span">: {{model.table.cells[cell_key].value}}</span></div> -->
                 </mat-grid-tile>
             </div>
             <div *ngFor="let array_key of getKeys(model.arrays)">
