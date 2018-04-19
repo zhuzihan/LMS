@@ -17,12 +17,7 @@
         <mat-step>
             <!-- <form [formGroup]="tempForm"> -->
                 <ng-template matStepLabel>模版组成</ng-template>
-
-                <!-- <div style="margin-bottom: 1em">
-                    <button type="submit" [disabled]="tempForm.pristine" mat-raised-button>保存</button> &nbsp;
-                    <button type="reset" (click)="revert()" [disabled]="tempForm.pristine" mat-raised-button>重置</button>
-                </div> -->
-
+                
                 <h4>步骤</h4>
                 <div formArrayName="model_list">
                     <div *ngFor="let list_item of modelListForm.controls; let i=index" class="model-full-width">
@@ -57,10 +52,6 @@
                                     <div class="inline-table-content">
                                         <span class="grid-span">{{model.table.cells[cell_key].name}}: {{model.table.cells[cell_key].value}}</span>
                                     </div>
-                                    <!-- <div class="grid-input-div">
-                                        <input placeholder="数据值" [value]="model.table.cells[cell_key].value" class="input_white">
-                                        <input placeholder="数据值" [(ngModel)]="model.table.cells[cell_key].value">
-                                    </div> -->
                                 </div>
                             </mat-grid-tile>
                         </div>
@@ -127,7 +118,7 @@
     </mat-horizontal-stepper>
 </form>
 
-    <!-- <p>Form value: {{ tempForm.value | json }}</p> -->
+    <p>Form value: {{ tempForm.value | json }}</p>
 
     <!-- <p>source_name:{{source_name | json}}</p> -->
     <!-- <p>Form status: {{ modelForm.status | json }}</p> -->

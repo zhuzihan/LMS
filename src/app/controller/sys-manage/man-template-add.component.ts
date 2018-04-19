@@ -98,7 +98,7 @@ export class ManTemplateAddComponent implements OnChanges, OnInit {
         this.template = this.prepareSaveTemplateList();
         this.modelDataService.addTemplateData(this.template).subscribe(/* error handing */);
         this.ngOnChanges();
-        console.log('submit');
+        // console.log('submit');
         // console.log(this.template);
     }
     // 重置内容
@@ -128,16 +128,21 @@ export class ManTemplateAddComponent implements OnChanges, OnInit {
 
     setModelsOfTemplate() {
         const modelFGs: FormGroup[] = [];
+        const models_kv: { [key: string]: Model; } = {}
         if (!this.modelListForm.pristine) {
             for (const model_name of this.modelListForm.value) {
-                modelFGs.push(this.fb.group(this.modelDataService.getModelOfTemplate(model_name)));
+                const model = this.fb.group(this.modelDataService.getModelOfTemplate(model_name));
+                models_kv[model_name] = model.value;
+                modelFGs.push(this.fb.group(models_kv));
+                console.log(modelFGs);
             }
+            // console.log(models_kv);
             const modelsFormArray = this.fb.array(modelFGs);
+            // console.log(modelsFormArray);
             this.tempForm.setControl('models', modelsFormArray);
-            // console.log(this.modelsForm);
+            console.log(this.tempForm);
         }
     }
-    // previewTemplate() { }
     prepareSaveTemplateList(): Template {
         const formTemp = this.tempForm.value;
         const saveTemplate: Template = {
@@ -146,7 +151,7 @@ export class ManTemplateAddComponent implements OnChanges, OnInit {
             model_list: formTemp.model_list as string[],
             models: this.template.models,
         };
-        // console.log(saveTemplate);
+        console.log(saveTemplate);
         return saveTemplate;
     }
     getKeys(item) {
