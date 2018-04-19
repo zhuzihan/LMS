@@ -33,7 +33,7 @@ export class ModelDataService {
         return of(models_test).delay(this.delayMs);
     }
     getModelsName(): Observable<string[]> {
-        const modelsName : string[] = [];
+        const modelsName: string[] = [];
         for (const model of models_test) {
             modelsName.push(model.model_name);
         }
@@ -70,13 +70,24 @@ export class ModelDataService {
         return of(newTemplateData).delay(this.delayMs); // simulate latency with delay
     }
     addTemplateData(template: Template): Observable<Template> {
-        template.template_id = templates_test.length + 1;
+        template.template_id = this.randomString(8);
         templates_test.push(template);
         return of(template).delay(this.delayMs);
     }
-    //获得对应模块名的模块
+    // 获得对应模块名的模块
     getModelOfTemplate(model_name: string) {
         // console.log("find");
         return models_test.find(m => m.model_name === model_name);
+    }
+
+    randomString(len: Number) {
+        len = len || 32;
+        const $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678@#$%&';    /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
+        const maxPos = $chars.length;
+        let pwd = '';
+        for (let i = 0; i < len; i++) {
+            pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
+        }
+        return pwd;
     }
 }
