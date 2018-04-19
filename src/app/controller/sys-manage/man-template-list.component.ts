@@ -55,7 +55,8 @@ export class ManTemplateListComponent implements OnInit {
             this.templates = template_list;
             this.dataSource = new MatTableDataSource<Object>(this.templates);
             this.isLoading = false;
-            console.log(this.templates);
+            this.selectedTemplate = undefined;
+            this.dataSource.paginator = this.paginator;
         });
         // this.dataManageService.getOperationFlow(42).then(jsonData => this.dataJson = jsonData);
         // console.log('Response Data: ', this.dataManageService.getOperationFlow(42));
