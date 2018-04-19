@@ -76,7 +76,7 @@ export class ModelDataService {
     }
     //获得对应模块名的模块
     getModelOfTemplate(model_name: string) {
-        console.log("find");
+        // console.log("find");
         return models_test.find(m => m.model_name === model_name);
     }
 }

@@ -98,7 +98,7 @@ export class ManTemplateAddComponent implements OnChanges, OnInit {
         this.template = this.prepareSaveTemplateList();
         this.modelDataService.addTemplateData(this.template).subscribe(/* error handing */);
         this.ngOnChanges();
-        console.log('submit');
+        // console.log('submit');
         // console.log(this.template);
     }
     // 重置内容
@@ -134,10 +134,9 @@ export class ManTemplateAddComponent implements OnChanges, OnInit {
             }
             const modelsFormArray = this.fb.array(modelFGs);
             this.tempForm.setControl('models', modelsFormArray);
-            // console.log(this.modelsForm);
+            console.log(this.tempForm);
         }
     }
-    // previewTemplate() { }
     prepareSaveTemplateList(): Template {
         const formTemp = this.tempForm.value;
         const saveTemplate: Template = {
@@ -146,7 +145,7 @@ export class ManTemplateAddComponent implements OnChanges, OnInit {
             model_list: formTemp.model_list as string[],
             models: this.template.models,
         };
-        // console.log(saveTemplate);
+        console.log(saveTemplate);
         return saveTemplate;
     }
     getKeys(item) {
