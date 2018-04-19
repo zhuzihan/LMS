@@ -17,7 +17,8 @@ import { MatPaginatorIntlCro } from '../../service/mat-paginator-intl';
 })
 export class ManTemplateListComponent implements OnInit {
     displayedColumns = ['whole_name', ];
-    templates: Observable<Template[]>;
+    // templates: Observable<Template[]>;
+    templates: Array<Object> = [];
     isLoading = true;
     selectedTemplate: Template;
     testTemplate: Template;
@@ -46,38 +47,46 @@ export class ManTemplateListComponent implements OnInit {
         //     this.getTemplates();
         // });
         this.getTemplates();
-        this.dataSource = new MatTableDataSource<Object>(this.templateData);
     }
 
     getTemplates() {
         this.isLoading = true;
+        this.dataManageService.getTemplates().then(template_list => {
+            this.templates = template_list;
+            this.dataSource = new MatTableDataSource<Object>(this.templates);
+            this.isLoading = false;
+            console.log(this.templates);
+        });
         // this.dataManageService.getOperationFlow(42).then(jsonData => this.dataJson = jsonData);
         // console.log('Response Data: ', this.dataManageService.getOperationFlow(42));
         // console.log('Response Data: ', this.dataJson);
         // this.selectedTemplate = undefined;
-        this.testTemplate = template_test;
-        this.templates = this.modelDataService.getTemplatesData()
-            .finally(() => {
-                this.isLoading = false;
-                this.selectedTemplate = undefined;
-                this.dataSource.paginator = this.paginator;
-            });
+        // this.testTemplate = template_test;
+        // this.templates = this.modelDataService.getTemplatesData()
+        //     .finally(() => {
+        //         this.isLoading = false;
+        //         this.selectedTemplate = undefined;
+        //         this.dataSource.paginator = this.paginator;
+        //     });
 
-        this.json_str = JSON.stringify(this.testTemplate);
-        this.json_data = JSON.parse(this.json_str);
-        for (const model_key of Object.keys(this.json_data.models)) {
-            this.fillCellValue(this.json_data.models[model_key]);
-        }
+        // this.json_str = JSON.stringify(this.testTemplate);
+        // this.json_data = JSON.parse(this.json_str);
+        // for (const model_key of Object.keys(this.json_data.models)) {
+        //     this.fillCellValue(this.json_data.models[model_key]);
+        // }
         // 转换用作表格数据
-        this.templateData = [];
-        this.templates.forEach(templates => {
-            templates.forEach(template => {
-                this.templateData.push(template);
-            });
-        });
+        // this.templateData = [];
+        // this.templates.forEach(templates => {
+        //     templates.forEach(template => {
+        //         this.templateData.push(template);
+        //     });
+        // });
     }
 
-    select(template: Template) { this.selectedTemplate = template; }
+    select(template: Object) {
+        console.log(JSON.parse(template['json']));
+    }
+
     previewTemplate() { }
 
     /*
