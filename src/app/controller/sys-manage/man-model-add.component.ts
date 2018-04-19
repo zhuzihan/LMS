@@ -225,10 +225,10 @@ export class ManModelAddComponent implements OnChanges, OnInit {
     // 添加数组
     addArray(row: number, col: number) {
         // console.log(this.arrays_form.length);
-        if(this.arrays_form.length == 0){
+        if (this.arrays_form.length == 0) {
             this.setArraysForm(this.model.arrays);
         } else {
-            this.arrays_form.push(this.fb.group(new DataArray(row,col)));
+            this.arrays_form.push(this.fb.group(new DataArray(row, col)));
         }
     }
     // 删除单元
@@ -240,14 +240,14 @@ export class ManModelAddComponent implements OnChanges, OnInit {
         this.arrays_form.removeAt(i);
     }
     changeState(event: MatCheckboxChange) {
-        if(event.checked == true){
+        if (event.checked == true) {
             this.modelForm.patchValue({
                 state: 1,
             })
         } else {
             this.modelForm.patchValue({
                 state: -1,
-            }) 
+            })
         }
     }
     // 提交表单
