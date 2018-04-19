@@ -66,6 +66,7 @@ export class ManTemplateAddComponent implements OnChanges, OnInit {
         // private dataManageService: DataManageService,
         private fb: FormBuilder,
         private modelDataService: ModelDataService,
+        private dataManageService: DataManageService
         // private expParameterSerivce: ExpParameterService,
     ) {
         this.createForm();
@@ -96,8 +97,10 @@ export class ManTemplateAddComponent implements OnChanges, OnInit {
     // 提交表单
     onSubmit() {
         this.template = this.prepareSaveTemplateList();
+        const formTemp = this.tempForm.value;
         this.modelDataService.addTemplateData(this.template).subscribe(/* error handing */);
         this.ngOnChanges();
+        this.dataManageService.saveTemplates(this.template.whole_name, '', -1, '', '1', JSON.stringify(this.template));
         // console.log('submit');
         // console.log(this.template);
     }
@@ -139,11 +142,15 @@ export class ManTemplateAddComponent implements OnChanges, OnInit {
     }
     prepareSaveTemplateList(): Template {
         const formTemp = this.tempForm.value;
+        const model_list: { [key: string]: Model; } = {};
+        for (const model of formTemp.models){
+            model_list[model['model_name']] = model;
+        }
         const saveTemplate: Template = {
             template_id: this.template.template_id,
             whole_name: formTemp.whole_name,
             model_list: formTemp.model_list as string[],
-            models: this.template.models,
+            models: model_list,
         };
         console.log(saveTemplate);
         return saveTemplate;
