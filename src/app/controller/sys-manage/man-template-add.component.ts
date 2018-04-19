@@ -128,17 +128,11 @@ export class ManTemplateAddComponent implements OnChanges, OnInit {
 
     setModelsOfTemplate() {
         const modelFGs: FormGroup[] = [];
-        const models_kv: { [key: string]: Model; } = {}
         if (!this.modelListForm.pristine) {
             for (const model_name of this.modelListForm.value) {
-                const model = this.fb.group(this.modelDataService.getModelOfTemplate(model_name));
-                models_kv[model_name] = model.value;
-                modelFGs.push(this.fb.group(models_kv));
-                console.log(modelFGs);
+                modelFGs.push(this.fb.group(this.modelDataService.getModelOfTemplate(model_name)));
             }
-            // console.log(models_kv);
             const modelsFormArray = this.fb.array(modelFGs);
-            // console.log(modelsFormArray);
             this.tempForm.setControl('models', modelsFormArray);
             console.log(this.tempForm);
         }
