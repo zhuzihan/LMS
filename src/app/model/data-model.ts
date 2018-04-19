@@ -9,17 +9,17 @@ export const source = [
 ];
 // 模块列表
 export const model_list_local = [
-    "试剂准备",
-    "标准溶液配制",
-    "工作母液配制",
-    "标准样品称样",
-    "model.1",
-    "model.2",
-]
+    '试剂准备',
+    '标准溶液配制',
+    '工作母液配制',
+    '标准样品称样',
+    'model.1',
+    'model.2',
+];
 
 // 模板
 export class Template {
-    template_id = 0;
+    template_id = '';
     whole_name = '';
     model_list = [];
     models: { [key: string]: Model; } = {};
@@ -78,7 +78,7 @@ export class DataArray {
     row_count = 0;
     rowspan = 1;
     colspan = 1;
-    //数据来源
+    // 数据来源
     source_sn = '';
     cell_list: Array<ArrayCell>;
     constructor(row, col) {
@@ -571,7 +571,7 @@ export const models_test: Model[] = [
 
 
 export const template_test: Template = new Template();
-template_test.template_id = 1;
+template_test.template_id = '1';
 template_test.whole_name = '测试模板';
 template_test.model_list = ['model.1'];
 template_test.models = { 'model.1': model_test };
