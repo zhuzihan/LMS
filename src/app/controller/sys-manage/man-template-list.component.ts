@@ -86,6 +86,7 @@ export class ManTemplateListComponent implements OnInit {
 
     select(template: Object) {
         console.log(JSON.parse(template['json']));
+        this.selectedTemplate = JSON.parse(template['json']);
     }
 
     previewTemplate() { }

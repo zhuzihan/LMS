@@ -5,37 +5,38 @@
 </mat-toolbar>
 
 <mat-sidenav-container class="sidenav-container">
-        <mat-sidenav #sidenav mode="side" opened class="sidenav-side">
-            <div>
-                <nav class="sidenav-side-nav">
-                    <button class="sidenav-button" mat-button routerLink="./manEquip">
-                        <div class="sidenav-button-div">
-                            <mat-icon >opacity</mat-icon>
-                            <span>分析检测-1</span>
-                        </div>
-                    </button>
-                    <button class="sidenav-button" mat-button routerLink="./manModel">
-                        <div class="sidenav-button-div">
-                            <mat-icon>opacity</mat-icon>
-                            <span>分析检测-2</span>
-                        </div>
-                    </button>
-                    <button class="sidenav-button" mat-button routerLink="./manTemplate">
-                        <div class="sidenav-button-div">
-                            <mat-icon >opacity</mat-icon>
-                            <span>分析检测-3</span>
-                        </div>
-                    </button>
-                    <button class="sidenav-button" mat-button routerLink="./manJobModule">
-                        <div class="sidenav-button-div">
-                            <mat-icon>opacity</mat-icon>
-                            <span>分析检测-4</span>
-                        </div>
-                    </button>
-                </nav>
-            </div>
-        </mat-sidenav>
-        <mat-sidenav-content class="sidenav-content">
-            <router-outlet></router-outlet>
-        </mat-sidenav-content>
-    </mat-sidenav-container>
+    <mat-sidenav #sidenav mode="side" opened class="sidenav-side">
+        <div>
+            <nav class="sidenav-side-nav">
+                <button class="sidenav-button" mat-button routerLink="./manEquip">
+                    <div class="sidenav-button-div">
+                        <mat-icon >opacity</mat-icon>
+                        <span>分析检测-1</span>
+                    </div>
+                </button>
+                <button class="sidenav-button" mat-button routerLink="./manModel">
+                    <div class="sidenav-button-div">
+                        <mat-icon>opacity</mat-icon>
+                        <span>分析检测-2</span>
+                    </div>
+                </button>
+                <button class="sidenav-button" mat-button routerLink="./manTemplate">
+                    <div class="sidenav-button-div">
+                        <mat-icon >opacity</mat-icon>
+                        <span>分析检测-3</span>
+                    </div>
+                </button>
+                <button class="sidenav-button" mat-button routerLink="./manJobModule">
+                    <div class="sidenav-button-div">
+                        <mat-icon>opacity</mat-icon>
+                        <span>分析检测-4</span>
+                    </div>
+                </button>
+            </nav>
+        </div>
+    </mat-sidenav>
+    <mat-sidenav-content class="sidenav-content">
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+<footer></footer>
