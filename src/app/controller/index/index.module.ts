@@ -9,6 +9,7 @@ import { SysManagementComponent } from './sys-management.component';
 
 import { IndexRoutingModule } from './index-routing.module';
 import { MaterialModule } from '../../material.module';
+import { FooterComponent } from '../../controller/footer.component'
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { MaterialModule } from '../../material.module';
     RegistrationComponent,
     AnalysisComponent,
     CalculateComponent,
-    SysManagementComponent
+    SysManagementComponent,
+    FooterComponent
   ],
   providers: [
 

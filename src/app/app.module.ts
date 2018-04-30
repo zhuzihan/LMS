@@ -14,6 +14,7 @@ import { ManModule } from './controller/sys-manage/man.module';
 
 import { AppRoutingModule } from './app-routing.module';
 
+// import { FooterComponent } from './controller/footer.component'
 import { PageNotFoundComponent } from './not-found.component';
 
 import { PizzaPartyAppModule } from './pizza-party-app.module';
@@ -44,6 +45,7 @@ import { MatPaginatorIntlCro } from './service/mat-paginator-intl'
   declarations: [
     AppComponent,
     PageNotFoundComponent,
+    // FooterComponent
   ],
   providers: [
     ModelDataService,
