@@ -29,6 +29,7 @@ export class ManModelListComponent implements OnInit {
     isLoading = false;
     selectedModel: Model;
     showAdd: false;
+    selectedObject: Object;
 
     constructor(
         private modelDataService: ModelDataService,
@@ -46,7 +47,7 @@ export class ManModelListComponent implements OnInit {
             this.modelData = responseData;
             this.dataSource = new MatTableDataSource<Object>(this.modelData);
             this.isLoading = false;
-            this.selectedModel = undefined;
+            this.selectedModel = null;
             this.dataSource.paginator = this.paginator;
             // console.log("afterngInit");
         });
@@ -66,7 +67,8 @@ export class ManModelListComponent implements OnInit {
         // });
     }
     select(model: Model) {
-        console.log(JSON.parse(model['json']));
+        // console.log(JSON.parse(model['json']));
         this.selectedModel = JSON.parse(model['json']);
+        this.selectedObject = model;
     }
 }
