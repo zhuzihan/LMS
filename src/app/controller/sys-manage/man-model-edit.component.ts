@@ -12,6 +12,7 @@ import { Observable } from 'rxjs/Observable';
 import { ModelDataService } from '../../service/model-data.service';
 import { ExpParameterService } from '../../service/exp-parameter.service';
 import { Model, DataCell, DataArray, model_test, source, DataTable } from '../../model/data-model';
+import { DataManageService } from '../../service/data-manage.service';
 // import { Model, DataCell, source, form_model_test } from '../../model/form-data-model';
 
 @Component({
@@ -25,6 +26,7 @@ export class ManModelEditComponent implements OnChanges, OnInit {
     // cells= [this.cells];
     // model = new Model(0, "", "", -1, -1,this.cells);
     @Input() model = model_test;
+    @Input() rawobject: Object = null;
     modelForm: FormGroup;
     tableForm: FormGroup;
     arraysForm: FormArray;
@@ -60,12 +62,14 @@ export class ManModelEditComponent implements OnChanges, OnInit {
         private fb: FormBuilder,
         private modelDataService: ModelDataService,
         private expParameterSerivce: ExpParameterService,
+        private dataManagerService: DataManageService,
         public dialog: MatDialog) {
         this.createForm();
         // this.setCells(this.model.cells);
     }
     createForm() {
         this.modelForm = this.fb.group({
+            id: '',
             model_name: '',
             model_standard_name: '',
             registrant: '',
@@ -140,9 +144,13 @@ export class ManModelEditComponent implements OnChanges, OnInit {
     }
     ngOnChanges() {
         this.modelForm.reset({
+            id: this.rawobject['id'],
             model_id: this.model.model_id,
             model_name: this.model.model_name,
             model_standard_name: this.model.model_standard_name,
+            registrant: this.rawobject['registrant'],
+            remark: this.rawobject['remark'],
+            state: this.rawobject['state'],
             has_table: this.model.has_table,
             has_array: this.model.has_array,
         });
@@ -216,9 +224,16 @@ export class ManModelEditComponent implements OnChanges, OnInit {
     onSubmit() {
         console.log('on_model_edit_submit');
         this.model = this.prepareSaveModel();
+        const formModel = this.modelForm.value;
+        const model_save_id = formModel['id'];
+        console.log(model_save_id);
+
+        // tslint:disable-next-line:max-line-length
+        this.dataManagerService.editModules(formModel['id'], formModel['name'], formModel['registrant'], formModel['remark'], formModel['state'], JSON.stringify(this.model));
+
         // debug
         // console.log(this.model);
-        this.modelDataService.updateModelData(this.model).subscribe(/* error handing */);
+        // this.modelDataService.updateModelData(this.model).subscribe(/* error handing */);
         this.ngOnChanges();
     }
     prepareSaveModel(): Model {
