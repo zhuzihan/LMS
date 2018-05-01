@@ -2,9 +2,13 @@
     padding: 12px;
     font-size: 12px;
     margin-top: 40px;
-    background: #00897B;
+    background: #009688;
     color: #fff;
     display: block;
+    position: relative;
+    /* display: flex;
+    flex-direction: column;
+    position: relative; */
   }
   .footer-list {
     -webkit-box-align: center;

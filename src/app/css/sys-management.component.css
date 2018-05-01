@@ -70,9 +70,12 @@ mat-grid-tile {
   justify-content: flex-start;
   left:20px;
 }
-
+.inline-content {
+  min-height: 100%;
+}
 .preview-content{
-    padding: 10px;
+  padding: 10px;
+  min-height: 100%;
 }
 .preview-array{
     width: 500px;

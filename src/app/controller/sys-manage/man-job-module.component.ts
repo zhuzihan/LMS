@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
     // tslint:disable-next-line:component-selector
     selector: 'man-job-module',
     templateUrl: '../../view/sys-manage/man-job-module.component.html',
-    // styleUrls: ['./preview.component.css']
+    styleUrls: ['../../css/sys-management.component.css']
 })
 export class ManJobModuleComponent implements OnInit {
 
