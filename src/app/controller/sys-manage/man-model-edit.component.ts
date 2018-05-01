@@ -107,8 +107,19 @@ export class ManModelEditComponent implements OnChanges, OnInit {
             this.expParameterData = responseData;
             this.expParameterList = this.expParameterSerivce.convertParameterList(this.expParameterData);
             this.modelId = this.routeInfor.snapshot.params['id'];
-            console.log("modelId="+this.modelId);
-            this.isLoading = false;
+            this.dataManagerService.getModules().then(responseData2 => {
+                const model_list = responseData2;
+                for (const model of model_list) {
+                    if (model['id'].toString() === this.modelId) {
+                        console.log('SAME');
+                        this.model = JSON.parse(model['json']);
+                        this.rawobject = model;
+                        break;
+                    }
+                }
+                this.isLoading = false;
+            });
+            // console.log("modelId="+this.modelId);
         });
     }
     // getFrontValue(parameterList: Array<Object>, headKey: string, count: number) {
