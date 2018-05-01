@@ -28,8 +28,8 @@ export class ManModelListComponent implements OnInit {
 
     isLoading = false;
     // selectedModel: Model;
-    selectedModel: false;
-    showAdd: false;
+    selectedModel =  false;
+    // showAdd: false;
     selectedObject: Object;
 
     constructor(
