@@ -8,6 +8,7 @@ import { ManModelAddComponent } from './man-model-add.component';
 import { ManTemplateListComponent } from './man-template-list.component';
 import { ManTemplateAddComponent } from './man-template-add.component';
 import { ManJobModuleComponent } from './man-job-module.component';
+import { ManModelEditComponent } from './man-model-edit.component';
 
 const ManRoutes: Routes = [
   {
@@ -23,7 +24,14 @@ const ManRoutes: Routes = [
       // 实验器材参数
       { path: 'manEquip', component: ManEquipParaListComponent },
       // 检测标准模块
-      { path: 'manModel', component: ManModelListComponent },
+      { path: 'manModel', 
+        component: ManModelListComponent ,
+        children: [
+          {
+            path: 'manModelEdit/:id', component: ManModelEditComponent,
+          }
+        ]
+      },
       // 新建标准模块
       { path: 'manModelAdd', component: ManModelAddComponent },
       // 原始记录模板
