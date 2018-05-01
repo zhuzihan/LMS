@@ -26,7 +26,7 @@ import { DataManageService } from './service/data-manage.service';
 import { ModelDataService } from './service/model-data.service';
 import { FormModelDataService } from './controller/sys-manage/form-model-data.service';
 import { ExpParameterService } from './service/exp-parameter.service';
-import { MatPaginatorIntlCro } from './service/mat-paginator-intl'
+import { MatPaginatorIntlCro } from './service/mat-paginator-intl';
 
 @NgModule({
   imports: [
