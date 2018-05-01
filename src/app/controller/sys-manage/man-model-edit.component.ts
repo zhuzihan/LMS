@@ -117,6 +117,7 @@ export class ManModelEditComponent implements OnChanges, OnInit {
                         break;
                     }
                 }
+                // 在异步加载完以后执行创建表单以及初始化表单
                 this.createForm();
                 this.ngOnChanges();
                 this.isLoading = false;
