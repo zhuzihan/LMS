@@ -32,11 +32,22 @@ export class DataManageService {
     }
 
     // 保存服务器模块列表
-    saveModules(name: string, registrant: string, state: Number, remark: string, json: string): Promise<Array<Object>> {
+    saveModules(name: string, registrant: string, state: number, remark: string, json: string): Promise<Array<Object>> {
         const url = `${this.getModuleUrl}`;
         // tslint:disable-next-line:max-line-length
         const post_data = { 'name': name, 'registrant': registrant, 'state': state, 'moduletype': 0, 'remark': remark, 'json': json };
         return this.http.post(url, post_data)
+            .toPromise()
+            .then(response => response.json() as Array<Object>)
+            .catch(this.handleError);
+    }
+
+    // 保存编辑的模块
+    editModules(moduleid: string, name: string, registrant: string, remark: string, state: number, json: string): Promise<Array<Object>> {
+        const url = `${this.getModuleUrl}/${moduleid}`;
+        // tslint:disable-next-line:max-line-length
+        const post_data = { 'name': name, 'registrant': registrant, 'state': state, 'remark': remark, 'json': json };
+        return this.http.put(url, post_data)
             .toPromise()
             .then(response => response.json() as Array<Object>)
             .catch(this.handleError);
@@ -53,7 +64,7 @@ export class DataManageService {
 
     // 保存模板到服务器
     // tslint:disable-next-line:max-line-length
-    saveTemplates(name: string, registrant: string, instructionbook: Number, remark: string, state: string, json: String): Promise<Array<Object>> {
+    saveTemplates(name: string, registrant: string, instructionbook: number, remark: string, state: string, json: string): Promise<Array<Object>> {
         const url = `${this.getTemplateUrl}`;
         // tslint:disable-next-line:max-line-length
         const post_data = { 'name': name, 'registrant': registrant, 'instructionbook': instructionbook, 'remark': remark, 'state': state, 'json': json};
