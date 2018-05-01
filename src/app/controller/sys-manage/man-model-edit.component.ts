@@ -3,6 +3,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FormArray, FormBuilder, FormGroup, Validators, FormControl, FormGroupName } from '@angular/forms';
 import { NgForOf } from '@angular/common';
 import { OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router'
 import 'rxjs/add/operator/finally';
 
 import { DataSource } from '@angular/cdk/collections';
@@ -27,6 +28,7 @@ export class ManModelEditComponent implements OnChanges, OnInit {
     // model = new Model(0, "", "", -1, -1,this.cells);
     @Input() model = model_test;
     @Input() rawobject: Object = null;
+    private modelId: number;
     modelForm: FormGroup;
     tableForm: FormGroup;
     arraysForm: FormArray;
@@ -63,6 +65,7 @@ export class ManModelEditComponent implements OnChanges, OnInit {
         private modelDataService: ModelDataService,
         private expParameterSerivce: ExpParameterService,
         private dataManagerService: DataManageService,
+        private routeInfor: ActivatedRoute,
         public dialog: MatDialog) {
         this.createForm();
         // this.setCells(this.model.cells);
@@ -103,6 +106,8 @@ export class ManModelEditComponent implements OnChanges, OnInit {
         this.expParameterSerivce.getExpParameter().then(responseData => {
             this.expParameterData = responseData;
             this.expParameterList = this.expParameterSerivce.convertParameterList(this.expParameterData);
+            this.modelId = this.routeInfor.snapshot.params['id'];
+            console.log("modelId="+this.modelId);
             this.isLoading = false;
         });
     }
