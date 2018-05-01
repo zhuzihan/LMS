@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="!isLoading">
     <h2>编辑</h2>
     <form [formGroup]="modelForm" (ngSubmit)="onSubmit()" class="field-form" novalidate>
 
@@ -29,7 +29,7 @@
             <mat-spinner [diameter]="24"></mat-spinner>
             <p>数据加载中... </p>
         </div>
-        <div  *ngIf="!isLoading" [formGroup]="tableForm" class="model-full-width">
+        <div  [formGroup]="tableForm" class="model-full-width">
             <div formArrayName="cells">
                 <mat-accordion multi="true">
                     <mat-expansion-panel *ngFor="let cell of cells_form.controls; let i=index" [expanded]="cellStep === 1" [formGroupName]="i" class="model-full-width">

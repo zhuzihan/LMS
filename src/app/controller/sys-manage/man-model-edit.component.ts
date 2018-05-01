@@ -67,7 +67,7 @@ export class ManModelEditComponent implements OnChanges, OnInit {
         private dataManagerService: DataManageService,
         private routeInfor: ActivatedRoute,
         public dialog: MatDialog) {
-        this.createForm();
+        
         // this.setCells(this.model.cells);
     }
     createForm() {
@@ -117,6 +117,7 @@ export class ManModelEditComponent implements OnChanges, OnInit {
                         break;
                     }
                 }
+                this.createForm();
                 this.isLoading = false;
             });
             // console.log("modelId="+this.modelId);
