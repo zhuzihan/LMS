@@ -20,7 +20,7 @@
               <mat-header-cell *matHeaderCellDef> 模块名称 </mat-header-cell>
               <mat-cell *matCellDef="let element">
                   <!-- <button mat-button color="primary" (click)="select(element);" class="button_inside_table">{{element.name}} </button> -->
-                  <button mat-button color="primary" class="button_inside_table"  [routerLink]="['./manModelEdit',element.id]">{{element.name}} </button>
+                  <button mat-button color="primary" class="button_inside_table"  (click)="jump();" [routerLink]="['./manModelEdit',element.id]">{{element.name}} </button>
               </mat-cell>
           </ng-container>
 
@@ -52,7 +52,8 @@
   </div> -->
 
   <div *ngIf="selectedModel">
-    <br/>
+    <router-outlet></router-outlet>
+    <!-- <br/>
     <mat-tab-group>
       <mat-tab label="预览">
         <h3>预览的模块: {{selectedModel.model_standard_name}}</h3>
@@ -66,8 +67,8 @@
 
     <div>
       <button mat-raised-button color="primary" (click)="selectedModel = !selectedModel;">返回</button>
-    </div>
+    </div> -->
   </div>
-  <router-outlet></router-outlet>
+
 </div>
 

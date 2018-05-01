@@ -27,7 +27,8 @@ export class ManModelListComponent implements OnInit {
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
     isLoading = false;
-    selectedModel: Model;
+    // selectedModel: Model;
+    selectedModel: false;
     showAdd: false;
     selectedObject: Object;
 
@@ -47,7 +48,7 @@ export class ManModelListComponent implements OnInit {
             this.modelData = responseData;
             this.dataSource = new MatTableDataSource<Object>(this.modelData);
             this.isLoading = false;
-            this.selectedModel = null;
+            this.selectedModel = false;
             this.dataSource.paginator = this.paginator;
             // console.log("afterngInit");
         });
@@ -66,9 +67,12 @@ export class ManModelListComponent implements OnInit {
         //     });
         // });
     }
-    select(model: Model) {
-        // console.log(JSON.parse(model['json']));
-        this.selectedModel = JSON.parse(model['json']);
-        this.selectedObject = model;
+    // select(model: Model) {
+    //     console.log(JSON.parse(model['json']));
+    //     this.selectedModel = JSON.parse(model['json']);
+    //     this.selectedObject = model;
+    // }
+    jump() {
+        this.selectedModel = true;
     }
 }
