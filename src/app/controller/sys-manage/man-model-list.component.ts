@@ -40,6 +40,7 @@ export class ManModelListComponent implements OnInit {
     ngOnInit() {
         this.getModels();
         this.dataSource = new MatTableDataSource<Object>(this.modelData);
+        console.log("list init");
     }
     getModels() {
         this.isLoading = true;
