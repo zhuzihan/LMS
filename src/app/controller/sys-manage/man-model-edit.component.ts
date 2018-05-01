@@ -118,6 +118,7 @@ export class ManModelEditComponent implements OnChanges, OnInit {
                     }
                 }
                 this.createForm();
+                this.ngOnChanges();
                 this.isLoading = false;
             });
             // console.log("modelId="+this.modelId);
